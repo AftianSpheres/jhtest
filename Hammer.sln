@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hammer.CSharp.Plugins", "Hammer.CSharp.Plugins.csproj", "{B0187A4B-38BB-C982-B004-C50B0029BAA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hammer.CSharp", "Hammer.CSharp.csproj", "{45BA4DBB-A143-55C9-A65D-AA3E16FAC03F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hammer.CSharp.Editor", "Hammer.CSharp.Editor.csproj", "{8EC90856-DAB1-4CD7-8E2A-C1C65E472FAA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B0187A4B-38BB-C982-B004-C50B0029BAA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0187A4B-38BB-C982-B004-C50B0029BAA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0187A4B-38BB-C982-B004-C50B0029BAA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0187A4B-38BB-C982-B004-C50B0029BAA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45BA4DBB-A143-55C9-A65D-AA3E16FAC03F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45BA4DBB-A143-55C9-A65D-AA3E16FAC03F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45BA4DBB-A143-55C9-A65D-AA3E16FAC03F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45BA4DBB-A143-55C9-A65D-AA3E16FAC03F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EC90856-DAB1-4CD7-8E2A-C1C65E472FAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EC90856-DAB1-4CD7-8E2A-C1C65E472FAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EC90856-DAB1-4CD7-8E2A-C1C65E472FAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EC90856-DAB1-4CD7-8E2A-C1C65E472FAA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
