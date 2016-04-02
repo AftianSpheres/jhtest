@@ -34,7 +34,7 @@ public class EnemyJellyMove : StateMachineBehaviour
         float cx;
         float cy;
         int r = UnityEngine.Random.Range(0, 64);
-        if (r == 0)
+        if (r == 0 || r == 1)
         {
             if (reticle.transform.localPosition.x > -1 * reticle.HalfSizeOfReticleSprite)
             {
@@ -63,7 +63,11 @@ public class EnemyJellyMove : StateMachineBehaviour
 
             heading = new Vector2(cx, cy);
         }
-        else if (r == 63)
+        else if (r == 2)
+        {
+            heading = Vector2.zero;
+        }
+        else if (r == 62 || r == 63)
         {
             cx = UnityEngine.Random.Range(-1, 2);
             cy = UnityEngine.Random.Range(-1, 2);
@@ -93,6 +97,7 @@ public class EnemyJellyMove : StateMachineBehaviour
             heading = new Vector2(heading.x, heading.y * -1);
         }
         animator.transform.position = new Vector3(nx, ny, animator.transform.position.z);
+        common.Heading = heading;
     }
 
 	// OnStateIK is called right after Animator.OnAnimatorIK(). Code that sets up animation IK (inverse kinematics) should be implemented here.

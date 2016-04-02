@@ -7,6 +7,7 @@ public class RoomController : MonoBehaviour
     public RegisteredSprite[] Occupants;
     public BoxCollider[] Colliders;
     public Bounds bounds;
+    public Vector2 BigRoomCellSize;
     public uint xPosition;
     public uint yPosition;
     public bool isActiveRoom;
@@ -15,7 +16,20 @@ public class RoomController : MonoBehaviour
 	// Use this for initialization
 	void Awake ()
     {
-        world.rooms[yPosition, xPosition] = this;
+        if (BigRoomCellSize.x > 1 || BigRoomCellSize.y > 1)
+        {
+            for (int iy = 0; iy < BigRoomCellSize.y; iy++)
+            {
+                for (int ix = 0; ix < BigRoomCellSize.x; ix++)
+                {
+                    world.rooms[yPosition + iy, xPosition + ix] = this;
+                }
+            }
+        }
+        else
+        {
+            world.rooms[yPosition, xPosition] = this;
+        }
         for (int i = 0; i < Occupants.Length; i++)
             {
             Occupants[i].room = this;
@@ -47,5 +61,15 @@ public class RoomController : MonoBehaviour
         }
     }
 
+    void OnDrawGizmosSelected()
+    {
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(new Vector3(bounds.min.x, bounds.min.y, bounds.min.z), new Vector3(bounds.max.x, bounds.min.y, bounds.min.z));
+        Gizmos.DrawLine(new Vector3(bounds.max.x, bounds.min.y, bounds.min.z), new Vector3(bounds.max.x, bounds.max.y, bounds.min.z));
+        Gizmos.DrawLine(new Vector3(bounds.min.x, bounds.min.y, bounds.min.z), new Vector3(bounds.min.x, bounds.max.y, bounds.min.z));
+        Gizmos.DrawLine(new Vector3(bounds.min.x, bounds.max.y, bounds.min.z), new Vector3(bounds.max.x, bounds.max.y, bounds.min.z));
+
+    }
 
 }

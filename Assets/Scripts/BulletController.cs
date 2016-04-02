@@ -38,7 +38,6 @@ public class BulletController : MonoBehaviour
     /// </summary>
     public void Fire (PlayerWeapon shot, float speed, int damage, int weight, Vector3 source, Vector3 to, Queue<BulletController> q, bool pierce)
     {
-        Debug.Log(world);
         roomColliders = world.cameraController.activeRoom.Colliders;
         Damage = damage;
         Pierce = pierce;

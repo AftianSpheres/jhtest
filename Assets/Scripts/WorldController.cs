@@ -23,7 +23,7 @@ public class WorldController : MonoBehaviour
     public AudioSource BGS0;
     public BulletPool PlayerBullets;
     public BulletPool EnemyBullets;
-    public RoomController FirstRoom;
+    public Vector2 FirstRoom;
 
     // Use this for initialization
     void Awake ()

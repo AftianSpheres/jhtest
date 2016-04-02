@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 00e3ddaad3260ea4f90605281323e464
-timeCreated: 1458997626
+timeCreated: 1459523244
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -12,6 +12,8 @@ TextureImporter:
     21300010: topofscreen0_bossbar_block
     21300012: topofscreen0_navbar_block
     21300014: topofscreen0_wpnbar_block
+    21300016: topofscreen0_fullbar
+    21300018: topofscreen0_emptybar
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -142,6 +144,17 @@ TextureImporter:
         y: 16
         width: 39
         height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: topofscreen0_fullbar
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 11
+        width: 1
+        height: 4
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}

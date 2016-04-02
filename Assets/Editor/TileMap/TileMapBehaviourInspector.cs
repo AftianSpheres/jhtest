@@ -474,11 +474,11 @@ public class TileMapBehaviourInspector : Editor
         Vector2 position = m_tileMap.gameObject.transform.position;
 
         Handles.color = Color.gray;
-        for (float i = 1; i < gridWidth; i++)
+        for (float i = 1; i < gridWidth; i+=m_tileSize)
         {
             Handles.DrawLine(new Vector3(i + position.x, position.y), new Vector3(i + position.x, gridHeight + position.y));
         }
-        for (float i = 1; i < gridHeight; i++)
+        for (float i = 1; i < gridHeight; i += m_tileSize)
         {
             Handles.DrawLine(new Vector3(position.x, i + position.y), new Vector3(gridWidth + position.x, i + position.y));
         }
@@ -502,9 +502,8 @@ public class TileMapBehaviourInspector : Editor
         {
             if (UpdateMouseHit())
             {
-                int tileX = Mathf.FloorToInt(m_mouseHitPos.x);
-                int tileY = Mathf.FloorToInt(m_mouseHitPos.y);
-
+                int tileX = Mathf.FloorToInt(m_mouseHitPos.x / (m_tileSize * m_tileResolution));
+                int tileY = Mathf.FloorToInt(m_mouseHitPos.y / (m_tileSize * m_tileResolution));
                 m_tileMap[tileX, tileY] = m_setTileID;
 
                 e.Use();
@@ -525,7 +524,7 @@ public class TileMapBehaviourInspector : Editor
         m_mouseHitPos = m_tileMap.transform.InverseTransformPoint(hit);
         m_mouseHitPos = new Vector3(m_mouseHitPos.x * m_tileSize, m_mouseHitPos.y * m_tileSize, m_mouseHitPos.z);
 
-        return (m_mouseHitPos.x >= 0 && m_mouseHitPos.x < m_tilesX * m_tileSize &&
-                m_mouseHitPos.y >= 0 && m_mouseHitPos.y < m_tilesY * m_tileSize);
+        return (m_mouseHitPos.x >= 0 && m_mouseHitPos.x < (m_tilesX * m_tileSize * m_tileResolution) &&
+                m_mouseHitPos.y >= 0 && m_mouseHitPos.y < (m_tilesY * m_tileSize * m_tileResolution));
     }
 }

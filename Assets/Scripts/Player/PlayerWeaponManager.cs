@@ -53,12 +53,12 @@ public class PlayerWeaponManager : MonoBehaviour
         switch (shot)
         {
             case PlayerWeapon.WeenieGun:
-                bulletPool.FireBullet(shot, 2f, CalcShotDamage(shot), 1, new Vector3(reticle.transform.position.x + reticle.HalfSizeOfReticleSprite, reticle.transform.position.y - reticle.HalfSizeOfReticleSprite, transform.position.z), transform.position);
+                bulletPool.FireBullet(shot, 2f, CalcShotDamage(shot), 1, new Vector3(reticle.transform.position.x + reticle.HalfSizeOfReticleSprite, reticle.transform.position.y - reticle.HalfSizeOfReticleSprite, transform.position.z), master.bulletOrigin.transform.position);
                 break;
             case PlayerWeapon.Shotgun:
                 for (int i = 0; i < 8; i++)
                 {
-                    bulletPool.FireBullet(shot, Random.Range(2.25f, 3.75f), CalcShotDamage(shot), 5, new Vector3(reticle.transform.position.x + reticle.HalfSizeOfReticleSprite + Random.Range(-3, 4), reticle.transform.position.y - reticle.HalfSizeOfReticleSprite + Random.Range(-3, 4), transform.position.z), transform.position);
+                    bulletPool.FireBullet(shot, Random.Range(2.25f, 3.75f), CalcShotDamage(shot), 5, new Vector3(reticle.transform.position.x + reticle.HalfSizeOfReticleSprite + Random.Range(-3, 4), reticle.transform.position.y - reticle.HalfSizeOfReticleSprite + Random.Range(-3, 4), transform.position.z), master.bulletOrigin.transform.position);
                 }
                 break;
             default:

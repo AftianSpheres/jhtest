@@ -13,7 +13,8 @@ public class CommonEnemyController : MonoBehaviour
     new public SpriteRenderer renderer;
     public Material defaultMat;
     public Material flashMat;
-    public int HitstunResistance;
+    public int Weight;
+    public Vector3 Heading;
     new public BoxCollider2D collider;
     public int CurrentHP;
     public int MaxHP;
@@ -75,7 +76,7 @@ public class CommonEnemyController : MonoBehaviour
     {
         if (animator.GetInteger("InvulnTime") >= 0)
         {
-            if (bullet.Weight >= HitstunResistance)
+            if (bullet.Weight >= Weight)
             {
                 animator.SetTrigger("HitHeavy");
                 TriggerInvuln();

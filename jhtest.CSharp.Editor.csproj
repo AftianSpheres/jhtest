@@ -143,7 +143,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
-    <Compile Include="Assets\Editor\RoomEditor.cs" />
     <Compile Include="Assets\Editor\TileMap\TileMapBehaviourInspector.cs" />
     <Compile Include="Assets\Universe\Editor\UniverseTool.cs" />
   </ItemGroup>

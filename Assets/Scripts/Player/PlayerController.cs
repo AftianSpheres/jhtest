@@ -10,7 +10,10 @@ public class PlayerController : MonoBehaviour {
     public PlayerWeaponManager wpnManager;
     public PlayerEnergy energy;
     public Animator animator;
+    public PlayerBulletOrigin bulletOrigin;
     new public BoxCollider2D collider;
+    public Vector3 KnockbackHeading;
+    public int KnockbackFrames;
     private PlayerReticleController reticle;
     public bool Invincible;
     public bool Locked;
@@ -242,6 +245,8 @@ public class PlayerController : MonoBehaviour {
             {
                 animator.SetTrigger("Hit");
                 energy.CurrentEnergy = energy.CurrentEnergy - bullet.Damage;
+                KnockbackHeading = bullet.Heading;
+                KnockbackFrames = bullet.Weight;
             }
         }
     }
@@ -258,6 +263,8 @@ public class PlayerController : MonoBehaviour {
             {
                 animator.SetTrigger("Hit");
                 energy.CurrentEnergy = energy.CurrentEnergy - enemy.CollideDmg;
+                KnockbackHeading = enemy.Heading;
+                KnockbackFrames = enemy.Weight;
             }
         }
     }
