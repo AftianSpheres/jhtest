@@ -33,7 +33,7 @@ public class CommonEnemyController : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void LateUpdate ()
+	void Update ()
     {
         if (register.Toggled == true)
         {

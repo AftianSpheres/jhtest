@@ -74,7 +74,7 @@ public class BulletController : MonoBehaviour
         {
             for (int i = 0; i < roomColliders.Length; i++)
             {
-                if (roomColliders[i].bounds != null)
+                if (roomColliders[i] != null)
                 {
                     if (collider.bounds.Intersects(roomColliders[i].bounds))
                     {
@@ -83,7 +83,7 @@ public class BulletController : MonoBehaviour
                 }
             }
         }
-        if (world.cameraController.rect.Contains(collider.bounds.center) == false)
+        if (world.cameraController.activeRoom.bounds.Contains(collider.bounds.center) == false)
         {
             Retire();
         }

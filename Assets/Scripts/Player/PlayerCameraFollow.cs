@@ -14,19 +14,19 @@ public class PlayerCameraFollow : MonoBehaviour
         {
             if (collider.bounds.center.y < master.world.cameraController.activeRoom.bounds.min.y)
             {
-                master.world.cameraController.ChangeScreen(0);
+                master.world.cameraController.ScrollAndChangeScreen(0);
             }
             else if (collider.bounds.center.y > master.world.cameraController.activeRoom.bounds.max.y)
             {
-                master.world.cameraController.ChangeScreen(1);
+                master.world.cameraController.ScrollAndChangeScreen(1);
             }
             else if (collider.bounds.center.x < master.world.cameraController.activeRoom.bounds.min.x)
             {
-                master.world.cameraController.ChangeScreen(2);
+                master.world.cameraController.ScrollAndChangeScreen(2);
             }
             else if (collider.bounds.center.x > master.world.cameraController.activeRoom.bounds.max.x)
             {
-                master.world.cameraController.ChangeScreen(3);
+                master.world.cameraController.ScrollAndChangeScreen(3);
             }
         }
 

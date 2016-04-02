@@ -74,11 +74,11 @@ public class TileMapVisibilityBehaviour : MonoBehaviour {
         m_texture = new Texture2D(
             m_tileMap.MeshSettings.TilesX,
             m_tileMap.MeshSettings.TilesY,
-            TextureFormat.RGBA32,
+            TextureFormat.Alpha8,
             false);
         m_texture.name = "TileMapVisibilityTexture";
         m_texture.filterMode = FilterMode.Point; // TODO filter mode selected by user?
-        m_texture.alphaIsTransparency = true;
+        //m_texture.alphaIsTransparency = true;
 
         // setup the grid to cache status, so we dont draw on the texture when we dont have to
         m_visible = new Grid<bool>();

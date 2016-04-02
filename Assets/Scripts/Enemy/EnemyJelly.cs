@@ -28,7 +28,7 @@ public class EnemyJelly: MonoBehaviour
                     }
                 }
             }
-            if (Random.Range(0, 180) != 0)
+            if (Random.Range(0, 90) != 0)
             {
                 FireThisFrame = false;
             }

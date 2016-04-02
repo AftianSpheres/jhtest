@@ -84,6 +84,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\EventRemovedBlock.cs" />
     <Compile Include="Assets\Scripts\BulletController.cs" />
     <Compile Include="Assets\Scripts\BulletPool.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Assets\Universe\Scripts\Manager.cs" />
     <Compile Include="Assets\Universe\Scripts\ManagerBase.cs" />
     <Compile Include="Assets\Universe\Scripts\Universe.cs" />
+    <Compile Include="Assets\WarpZone.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\SpritesColorFlash.shader" />

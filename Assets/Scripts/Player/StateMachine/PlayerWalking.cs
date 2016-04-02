@@ -15,7 +15,7 @@ public static class ExpensiveAccurateCollision
             animator.transform.position = new Vector3(animator.transform.position.x, animator.transform.position.y + (i * ay), animator.transform.position.z);
             for (int i2 = 0; i2 < roomColliders.Length; i2++)
             {
-                if (Collider.bounds.Intersects(roomColliders[i2].bounds))
+                if (roomColliders[i2] != null && Collider.bounds.Intersects(roomColliders[i2].bounds))
                 {
                     Collided = true;
                 }
@@ -32,7 +32,7 @@ public static class ExpensiveAccurateCollision
             animator.transform.position = new Vector3(animator.transform.position.x + (i * ax), animator.transform.position.y, animator.transform.position.z);
             for (int i2 = 0; i2 < roomColliders.Length; i2++)
             {
-                if (Collider.bounds.Intersects(roomColliders[i2].bounds))
+                if (roomColliders[i2] != null && Collider.bounds.Intersects(roomColliders[i2].bounds))
                 {
                     Collided = true;
                 }

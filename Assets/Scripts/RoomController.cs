@@ -4,13 +4,16 @@ using System.Collections;
 public class RoomController : MonoBehaviour
 {
     public WorldController world;
-    public RegisteredSprite[] Occupants;
+    public RegisteredSprite[] Enemies;
+    public RegisteredSprite[] NonEnemyOccupants;
+    public GameObject[] RoomObjects;
     public BoxCollider[] Colliders;
     public Bounds bounds;
     public Vector2 BigRoomCellSize;
     public uint xPosition;
     public uint yPosition;
     public bool isActiveRoom;
+    public Vector2[] EntryPoints;
 
 
 	// Use this for initialization
@@ -30,9 +33,9 @@ public class RoomController : MonoBehaviour
         {
             world.rooms[yPosition, xPosition] = this;
         }
-        for (int i = 0; i < Occupants.Length; i++)
+        for (int i = 0; i < Enemies.Length; i++)
             {
-            Occupants[i].room = this;
+            Enemies[i].room = this;
             }
 	}
 	
@@ -55,9 +58,9 @@ public class RoomController : MonoBehaviour
 
     void WakeUpOccupants ()
     {
-        for (int i = 0; i < Occupants.Length; i++)
+        for (int i = 0; i < Enemies.Length; i++)
         {
-            Occupants[i].Toggled = true;
+            Enemies[i].Toggled = true;
         }
     }
 
@@ -65,10 +68,10 @@ public class RoomController : MonoBehaviour
     {
 
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(new Vector3(bounds.min.x, bounds.min.y, bounds.min.z), new Vector3(bounds.max.x, bounds.min.y, bounds.min.z));
-        Gizmos.DrawLine(new Vector3(bounds.max.x, bounds.min.y, bounds.min.z), new Vector3(bounds.max.x, bounds.max.y, bounds.min.z));
-        Gizmos.DrawLine(new Vector3(bounds.min.x, bounds.min.y, bounds.min.z), new Vector3(bounds.min.x, bounds.max.y, bounds.min.z));
-        Gizmos.DrawLine(new Vector3(bounds.min.x, bounds.max.y, bounds.min.z), new Vector3(bounds.max.x, bounds.max.y, bounds.min.z));
+        Gizmos.DrawLine(new Vector3(bounds.min.x, bounds.min.y, bounds.min.z - 100), new Vector3(bounds.max.x, bounds.min.y, bounds.min.z - 100));
+        Gizmos.DrawLine(new Vector3(bounds.max.x, bounds.min.y, bounds.min.z - 100), new Vector3(bounds.max.x, bounds.max.y, bounds.min.z - 100));
+        Gizmos.DrawLine(new Vector3(bounds.min.x, bounds.min.y, bounds.min.z - 100), new Vector3(bounds.min.x, bounds.max.y, bounds.min.z - 100));
+        Gizmos.DrawLine(new Vector3(bounds.min.x, bounds.max.y, bounds.min.z - 100), new Vector3(bounds.max.x, bounds.max.y, bounds.min.z - 100));
 
     }
 

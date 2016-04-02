@@ -176,7 +176,16 @@ public class CameraController : MonoBehaviour
         }
     }
 	
-    public void ChangeScreen(int direction)
+    public void InstantChangeScreen (RoomController room)
+    {
+        nextRoom = room;
+        rect.center = new Vector2(room.bounds.center.x, room.bounds.center.y);
+        WindowLayer.transform.position = new Vector3(room.bounds.center.x, room.bounds.center.y + 8, WindowLayer.transform.position.z);
+        activeRoom = nextRoom;
+        
+    }
+
+    public void ScrollAndChangeScreen(int direction)
     {
         if (ForceScroll != 0)
         {

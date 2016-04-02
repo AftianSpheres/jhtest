@@ -9,6 +9,8 @@ public class EnemyJellyFire : StateMachineBehaviour
     {
         controller = animator.GetComponent<CommonEnemyController>();
         controller.world.EnemyBullets.FireBullet(PlayerWeapon.EnemyShot, 1.0f, controller.ShotDmg, 1, controller.world.player.GetComponent<Collider2D>().bounds.center, controller.transform.position);
+        controller.world.EnemyBullets.FireBullet(PlayerWeapon.EnemyShot, 2.0f, controller.ShotDmg, 1, controller.world.player.GetComponent<Collider2D>().bounds.center, controller.transform.position);
+        controller.world.EnemyBullets.FireBullet(PlayerWeapon.EnemyShot, 3.0f, controller.ShotDmg, 1, controller.world.player.GetComponent<Collider2D>().bounds.center, controller.transform.position);
     }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

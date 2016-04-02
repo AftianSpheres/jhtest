@@ -11,19 +11,79 @@ using System.Collections.Generic;
 /// </summary>
 public class WorldController : MonoBehaviour
 {
-    public int WorldSize_X;
-    public int WorldSize_Y;
+    [SerializeField]
+    private int worldSize_X;
+    public int WorldSize_X
+    {
+        get { return worldSize_X; }
+    }
+    [SerializeField]
+    private int worldSize_Y;
+    public int WorldSize_Y
+    {
+        get { return worldSize_Y; }
+    }
     public RoomController[,] rooms;
-    public PlayerController player;
-    public GameObject WindowLayer;
-    public Camera mainCamera;
-    public CameraController cameraController;
-    public PlayerReticleController reticle;
-    public AudioSource BGM0;
-    public AudioSource BGS0;
-    public BulletPool PlayerBullets;
-    public BulletPool EnemyBullets;
-    public Vector2 FirstRoom;
+    [SerializeField]
+    private PlayerController _player;
+    public PlayerController player
+    {
+        get { return _player; }
+    }
+    [SerializeField]
+    private GameObject windowLayer;
+    public GameObject WindowLayer
+    {
+        get { return windowLayer; }
+    }
+    [SerializeField]
+    private Camera _mainCamera;
+    public Camera mainCamera
+    {
+        get { return _mainCamera; }
+    }
+    [SerializeField]
+    private CameraController _cameraController;
+    public CameraController cameraController
+    {
+        get { return _cameraController; }
+    }
+    [SerializeField]
+    private PlayerReticleController _reticle;
+    public PlayerReticleController reticle
+    {
+        get { return _reticle; }
+    }
+    [SerializeField]
+    private AudioSource _BGM0; 
+    public AudioSource BGM0
+    {
+        get { return _BGM0; }
+    }
+    [SerializeField]
+    private AudioSource _BGS0;
+    public AudioSource BGS0
+    {
+        get { return _BGS0; }
+    }
+    [SerializeField]
+    private BulletPool playerBullets;
+    public BulletPool PlayerBullets
+    {
+        get { return playerBullets; }
+    }
+    [SerializeField]
+    private BulletPool enemyBullets;
+    public BulletPool EnemyBullets
+    {
+        get { return enemyBullets; }
+    }
+    [SerializeField]
+    private Vector2 firstRoom;
+    public Vector2 FirstRoom
+    {
+        get { return firstRoom; }
+    }
 
     // Use this for initialization
     void Awake ()
