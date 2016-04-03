@@ -12,6 +12,7 @@ public class PlayerHit : StateMachineBehaviour {
         source = animator.gameObject.GetComponent<AudioSource>();
         source.PlayOneShot(clip);
         controller = animator.gameObject.GetComponent<PlayerController>();
+        animator.SetBool("DodgeBurst", false);
     }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

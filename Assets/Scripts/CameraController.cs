@@ -176,13 +176,29 @@ public class CameraController : MonoBehaviour
         }
     }
 	
-    public void InstantChangeScreen (RoomController room)
+    public IEnumerator InstantChangeScreen (RoomController room, int i = 0)
     {
         nextRoom = room;
+        player.Locked = true;
         rect.center = new Vector2(room.bounds.center.x, room.bounds.center.y);
         WindowLayer.transform.position = new Vector3(room.bounds.center.x, room.bounds.center.y + 8, WindowLayer.transform.position.z);
+        while (i < 32)
+        {
+            if (i == 1)
+            {
+                world.Curtain.SetActive(true);
+                world.Curtain.GetComponent<SpriteRenderer>().color = Color.white;
+            }
+            else if (i == 8)
+            {
+                world.Curtain.GetComponent<SpriteRenderer>().color = Color.black;
+            }
+            i++;
+            yield return null;
+        }
+        world.Curtain.SetActive(false);
+        player.Locked = false;
         activeRoom = nextRoom;
-        
     }
 
     public void ScrollAndChangeScreen(int direction)

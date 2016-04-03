@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour {
     private PlayerReticleController reticle;
     public bool Invincible;
     public bool Locked;
+    public bool IgnoreCollision;
     static uint DoubleTapFrameWindow = 20; // no. of frames to check for double-tap sequence over...
     private float HorizAxisDTapBuffer = 0;
     private float VertAxisDTapBuffer = 0;

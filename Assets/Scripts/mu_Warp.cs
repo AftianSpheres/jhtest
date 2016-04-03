@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WarpZone : MonoBehaviour
+public class mu_Warp : MonoBehaviour
 {
     public RoomController room;
     public RoomController DestinationRoom;
     public uint DestinationEntryPoint;
     public Bounds bounds;
+    public AudioClip clip;
+    public AudioSource source;
 
 	// Use this for initialization
 	void Start () {
@@ -16,12 +18,17 @@ public class WarpZone : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-	    if (bounds.Contains(room.world.player.collider.bounds.center))
+	    if (bounds.Contains(room.world.player.collider.bounds.center) && room.world.player.animator.GetBool("DodgeBurst") == false)
         {
             room.world.player.transform.position = new Vector3(DestinationRoom.bounds.min.x + DestinationRoom.EntryPoints[DestinationEntryPoint].x, 
                 DestinationRoom.bounds.min.y + 16 + DestinationRoom.EntryPoints[DestinationEntryPoint].y, transform.position.z);
-            room.world.cameraController.InstantChangeScreen(DestinationRoom);
+            StartCoroutine(room.world.cameraController.InstantChangeScreen(DestinationRoom));
+            if (clip != null)
+            {
+                source.PlayOneShot(clip);
+            }
         }
+
 	}
 
     void OnDrawGizmosSelected()

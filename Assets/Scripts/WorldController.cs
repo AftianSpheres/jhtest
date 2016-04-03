@@ -84,6 +84,12 @@ public class WorldController : MonoBehaviour
     {
         get { return firstRoom; }
     }
+    [SerializeField]
+    private GameObject curtain;
+    public GameObject Curtain
+    {
+        get { return curtain; }
+    }
 
     // Use this for initialization
     void Awake ()

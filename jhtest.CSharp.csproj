@@ -84,7 +84,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\EventRemovedBlock.cs" />
     <Compile Include="Assets\Scripts\BulletController.cs" />
     <Compile Include="Assets\Scripts\BulletPool.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
@@ -98,6 +97,9 @@
     <Compile Include="Assets\Scripts\Enemy\EnemyJelly.cs" />
     <Compile Include="Assets\Scripts\FlickerySprite.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDEnergyBar.cs" />
+    <Compile Include="Assets\Scripts\Helpers\ExpensiveAccurateCollision.cs" />
+    <Compile Include="Assets\Scripts\Managers\PlayerDataManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\StylisticHacksManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerBulletOrigin.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerCameraFollow.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
@@ -114,13 +116,14 @@
     <Compile Include="Assets\Scripts\Player\StateMachine\PlayerWalking.cs" />
     <Compile Include="Assets\Scripts\RegisteredSprite.cs" />
     <Compile Include="Assets\Scripts\RoomController.cs" />
-    <Compile Include="Assets\Scripts\StylisticHacksManager.cs" />
     <Compile Include="Assets\Scripts\WorldController.cs" />
+    <Compile Include="Assets\Scripts\mu_Checkpoint.cs" />
+    <Compile Include="Assets\Scripts\mu_RemovableBlock.cs" />
+    <Compile Include="Assets\Scripts\mu_Warp.cs" />
     <Compile Include="Assets\Universe\Example\MyManager.cs" />
     <Compile Include="Assets\Universe\Scripts\Manager.cs" />
     <Compile Include="Assets\Universe\Scripts\ManagerBase.cs" />
     <Compile Include="Assets\Universe\Scripts\Universe.cs" />
-    <Compile Include="Assets\WarpZone.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\SpritesColorFlash.shader" />

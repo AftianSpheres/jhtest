@@ -7,7 +7,7 @@ public enum RoomEventConditions
     TargetNumberOfEnemiesKilled
 }
 
-public class EventRemovedBlock : MonoBehaviour
+public class mu_RemovableBlock : MonoBehaviour
 {
     public RoomController room;
     public RoomEventConditions condition;
@@ -25,13 +25,11 @@ public class EventRemovedBlock : MonoBehaviour
 	void Update ()
     {
         counter = 0;
-        Debug.Log(room.Enemies.Length);
 	    switch (condition)
         {
             case RoomEventConditions.TargetNumberOfEnemiesKilled:
                 for (int i = 0; i < room.Enemies.Length; i++)
                 {
-                    Debug.Log(room.Enemies[i]);
                     if (room.Enemies[i] == null)
                     {
 
