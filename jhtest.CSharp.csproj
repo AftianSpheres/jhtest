@@ -98,6 +98,7 @@
     <Compile Include="Assets\Scripts\FlickerySprite.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDEnergyBar.cs" />
     <Compile Include="Assets\Scripts\Helpers\ExpensiveAccurateCollision.cs" />
+    <Compile Include="Assets\Scripts\Helpers\HammerConstants.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerDataManager.cs" />
     <Compile Include="Assets\Scripts\Managers\StylisticHacksManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerBulletOrigin.cs" />
