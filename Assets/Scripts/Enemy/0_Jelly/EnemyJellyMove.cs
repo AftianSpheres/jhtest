@@ -12,7 +12,7 @@ public class EnemyJellyMove : StateMachineBehaviour
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         common = animator.GetComponent<CommonEnemyController>();
-        reticle = common.world.reticle;
+        reticle = common.room.world.reticle;
 
 	}
 

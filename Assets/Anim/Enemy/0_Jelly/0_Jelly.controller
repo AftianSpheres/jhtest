@@ -44,6 +44,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+  - m_Name: DefaultState
+    m_Type: 3
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -68,10 +74,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e968fa8b4f686cd408cffca0b969a236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reticle: {fileID: 0}
-  common: {fileID: 0}
-  camera: {fileID: 0}
-  heading: {x: 0, y: 0}
 --- !u!114 &11423332
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -420,7 +422,7 @@ AnimatorStateMachine:
     m_Position: {x: 288, y: 132, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110260740}
-    m_Position: {x: 324, y: 192, z: 0}
+    m_Position: {x: 288, y: 240, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 110163848}

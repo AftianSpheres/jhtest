@@ -14,10 +14,6 @@ public enum WindowedResolutionMultiplier
 
 public class PlayerDataManager : Manager <PlayerDataManager>
 {
-    public mu_Checkpoint LastCheckpoint;
-    public ulong ElapsedFrames = 0;
-    public uint DeathCounter = 0;
-
     public bool DisplayFullscreen = false;
     public WindowedResolutionMultiplier WindowedRes = WindowedResolutionMultiplier.x2;
     public KeyCode K_HorizLeft = KeyCode.A;
@@ -39,6 +35,6 @@ public class PlayerDataManager : Manager <PlayerDataManager>
 	// Update is called once per frame
 	void Update ()
     {
-        ElapsedFrames++;
+
 	}
 }

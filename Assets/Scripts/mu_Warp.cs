@@ -21,8 +21,8 @@ public class mu_Warp : MonoBehaviour
 	    if (bounds.Contains(room.world.player.collider.bounds.center) && room.world.player.animator.GetBool("DodgeBurst") == false)
         {
             room.world.player.transform.position = new Vector3(DestinationRoom.bounds.min.x + DestinationRoom.EntryPoints[DestinationEntryPoint].x, 
-                DestinationRoom.bounds.min.y + 16 + DestinationRoom.EntryPoints[DestinationEntryPoint].y, transform.position.z);
-            StartCoroutine(room.world.cameraController.InstantChangeScreen(DestinationRoom));
+                DestinationRoom.bounds.min.y + HammerConstants.SizeOfOneTile + DestinationRoom.EntryPoints[DestinationEntryPoint].y, transform.position.z);
+            StartCoroutine(room.world.cameraController.InstantChangeScreen(DestinationRoom, 30));
             if (clip != null)
             {
                 source.PlayOneShot(clip);

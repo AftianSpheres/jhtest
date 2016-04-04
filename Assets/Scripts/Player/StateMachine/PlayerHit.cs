@@ -13,12 +13,13 @@ public class PlayerHit : StateMachineBehaviour {
         source.PlayOneShot(clip);
         controller = animator.gameObject.GetComponent<PlayerController>();
         animator.SetBool("DodgeBurst", false);
+        controller.InvulnTime = 30;
     }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (controller.KnockbackFrames > 0)
+        if (controller.KnockbackFrames > 0 && controller.world.cameraController.activeRoom != null)
         {
             ExpensiveAccurateCollision.CollideWithScenery(animator, controller.world.cameraController.activeRoom.Colliders, controller.KnockbackHeading, controller.collider);
             controller.KnockbackFrames--;

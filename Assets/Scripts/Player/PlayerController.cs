@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour {
     private uint FramesSinceLastDTapEvent = 0;
     private bool DiscardDodgeInputs;
     private int[] DodgeAllowedStates;
+    public int InvulnTime;
 
     // Use this for initialization
     void Start ()
@@ -66,7 +67,10 @@ public class PlayerController : MonoBehaviour {
                 animator.SetBool("HeldUp", false);
             }
         }
-
+        if (InvulnTime > 0)
+        {
+            InvulnTime--;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -240,9 +244,9 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     void Hit(BulletController bullet)
     {
-        if (Invincible == false)
+        if (Invincible == false && Locked == false)
         {
-            if (animator.GetBool("DodgeBurst") == false)
+            if (animator.GetBool("DodgeBurst") == false && InvulnTime < 1)
             {
                 animator.SetTrigger("Hit");
                 energy.CurrentEnergy = energy.CurrentEnergy - bullet.Damage;
@@ -260,7 +264,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (Invincible == false && Locked == false)
         {
-            if (animator.GetBool("DodgeBurst") == false && enemy.CollideDmg > 0)
+            if (animator.GetBool("DodgeBurst") == false && enemy.CollideDmg > 0 && InvulnTime < 1)
             {
                 animator.SetTrigger("Hit");
                 energy.CurrentEnergy = energy.CurrentEnergy - enemy.CollideDmg;
@@ -268,6 +272,15 @@ public class PlayerController : MonoBehaviour {
                 KnockbackFrames = enemy.Weight;
             }
         }
+    }
+
+    public void Respawn ()
+    {
+        energy.Recover(100);
+        animator.Play("PlayerStand_D");
+        animator.SetBool("Dead", false);
+        world.GameStateManager.LastCheckpoint.RespawnAt();
+        world.GameStateManager.RerollSessionFingerprint();
     }
 
     /// <summary>

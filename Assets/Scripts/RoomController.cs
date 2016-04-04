@@ -6,7 +6,7 @@ public class RoomController : MonoBehaviour
     public WorldController world;
     public RegisteredSprite[] Enemies;
     public RegisteredSprite[] NonEnemyOccupants;
-    public GameObject[] RoomObjects;
+    public mu_Checkpoint RoomCheckpoint;
     public BoxCollider[] Colliders;
     public Bounds bounds;
     public Vector2 BigRoomCellSize;
@@ -14,10 +14,11 @@ public class RoomController : MonoBehaviour
     public uint yPosition;
     public bool isActiveRoom;
     public Vector2[] EntryPoints;
+    private GameStateManager gameStateManager;
 
 
-	// Use this for initialization
-	void Awake ()
+    // Use this for initialization
+    void Awake ()
     {
         if (BigRoomCellSize.x > 1 || BigRoomCellSize.y > 1)
         {
@@ -37,10 +38,11 @@ public class RoomController : MonoBehaviour
             {
             Enemies[i].room = this;
             }
-	}
-	
-	// Update is called once per frame
-	void Update ()
+        gameStateManager = GameObject.Find("Universe/GameStateManager").GetComponent<GameStateManager>();
+    }
+
+    // Update is called once per frame
+    void Update ()
     {
         if (world.cameraController.activeRoom == this)
         {
@@ -54,7 +56,29 @@ public class RoomController : MonoBehaviour
         {
             isActiveRoom = false;
         }
+        if (RoomCheckpoint != null)
+        {
+            if (bounds.Contains(world.player.collider.bounds.center) == true && gameStateManager.LastCheckpoint != RoomCheckpoint)
+            {
+                RoomCheckpoint.Activate();
+            } 
+        }
 	}
+
+    public void Refresh ()
+    {
+        for (int i = 0; i < Enemies.Length; i++)
+        {
+            CommonEnemyController e = Enemies[i].GetComponent<CommonEnemyController>();
+            e.Kill();
+            e.Respawn();
+            isActiveRoom = false;
+        }
+        for (int i = 0; i < NonEnemyOccupants.Length; i++)
+        {
+            NonEnemyOccupants[i].roomObjectRespawnAction.Invoke();
+        }
+    }
 
     void WakeUpOccupants ()
     {

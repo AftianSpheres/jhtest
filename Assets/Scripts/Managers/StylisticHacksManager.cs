@@ -11,13 +11,13 @@ public class StylisticHacksManager : Manager<StylisticHacksManager>
 {
     public WorldController world;
     public static uint SpritesAllowedOnScreen = 40;
-    public Queue<SpriteRenderer> sprites;
+    public Queue<FlickerySprite> sprites;
     private AudioSource BGM0;
 	// Use this for initialization
 	void Start () {
         Application.targetFrameRate = 60;
         QualitySettings.vSyncCount = 0;
-        sprites = new Queue<SpriteRenderer>();
+        sprites = new Queue<FlickerySprite>();
         world = GameObject.Find("Universe/World").GetComponent<WorldController>();
         BGM0 = world.BGM0;
 	}
@@ -32,8 +32,15 @@ public class StylisticHacksManager : Manager<StylisticHacksManager>
                 SpritesOK = true; // no need to slow down this frame - we can render everything
                 break;
             }
-            SpriteRenderer sprite = sprites.Dequeue();
-            sprite.enabled = true;
+            FlickerySprite sprite = sprites.Dequeue();
+            if (sprite.skip == true)
+            {
+                i -= 1;
+            }
+            else
+            {
+                sprite.sprite.enabled = true;
+            }
         }
         if (SpritesOK == false)
         {

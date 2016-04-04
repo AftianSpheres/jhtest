@@ -15,7 +15,7 @@ public class EnemyJelly: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (common.register.Toggled == true)
+        if (common.isDead == false && common.register.Toggled == true)
         {
             bool FireThisFrame = true;
             for (int i = 0; i < common.register.room.Colliders.Length; i++)

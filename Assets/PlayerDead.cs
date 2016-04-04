@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CommonEnemyDead : StateMachineBehaviour
+public class PlayerDead : StateMachineBehaviour
 {
-    private CommonEnemyController controller;
-
+    private WorldController world;
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        controller = animator.gameObject.GetComponent<CommonEnemyController>();
+        world = GameObject.Find("Universe/World").GetComponent<WorldController>();
 	}
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -19,8 +18,7 @@ public class CommonEnemyDead : StateMachineBehaviour
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        controller.world.player.GetComponent<PlayerEnergy>().Recover(100);
-        Destroy(animator.gameObject);
+        world.player.Respawn();
 	}
 
 	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

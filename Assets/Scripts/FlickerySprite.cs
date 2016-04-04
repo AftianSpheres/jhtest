@@ -4,9 +4,10 @@ using System.Collections.Generic;
 
 public class FlickerySprite : MonoBehaviour
 {
-    private Queue<SpriteRenderer> sprites;
-    private SpriteRenderer sprite;
+    private Queue<FlickerySprite> sprites;
+    public SpriteRenderer sprite;
     private bool mated = false;
+    public bool skip = false;
 
 	// Use this for initialization
 	void Start ()
@@ -22,9 +23,9 @@ public class FlickerySprite : MonoBehaviour
         {
             mate();
         }
-	    else if (sprites.Contains(sprite) == false)
+	    else if (sprites.Contains(this) == false)
         {
-            sprites.Enqueue(sprite);
+            sprites.Enqueue(this);
             sprite.enabled = false;
         }
 	}

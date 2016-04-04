@@ -169,6 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 329f6588bd90d9e4eb35faee6916447d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
+  skip: 0
 --- !u!114 &11417496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -223,6 +225,8 @@ MonoBehaviour:
   ShotDmg: 30
   InvulnTime: 30
   DamageQueue: 0
+  isDead: 0
+  flicker: {fileID: 11409086}
 --- !u!212 &21291264
 SpriteRenderer:
   m_ObjectHideFlags: 1

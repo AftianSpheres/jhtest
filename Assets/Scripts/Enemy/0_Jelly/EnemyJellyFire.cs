@@ -8,9 +8,9 @@ public class EnemyJellyFire : StateMachineBehaviour
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         controller = animator.GetComponent<CommonEnemyController>();
-        controller.world.EnemyBullets.FireBullet(PlayerWeapon.EnemyShot, 1.0f, controller.ShotDmg, 1, controller.world.player.GetComponent<Collider2D>().bounds.center, controller.transform.position);
-        controller.world.EnemyBullets.FireBullet(PlayerWeapon.EnemyShot, 2.0f, controller.ShotDmg, 1, controller.world.player.GetComponent<Collider2D>().bounds.center, controller.transform.position);
-        controller.world.EnemyBullets.FireBullet(PlayerWeapon.EnemyShot, 3.0f, controller.ShotDmg, 1, controller.world.player.GetComponent<Collider2D>().bounds.center, controller.transform.position);
+        controller.room.world.EnemyBullets.FireBullet(PlayerWeapon.EnemyShot, 1.0f, controller.ShotDmg, 1, controller.room.world.player.GetComponent<Collider2D>().bounds.center, controller.transform.position);
+        controller.room.world.EnemyBullets.FireBullet(PlayerWeapon.EnemyShot, 2.0f, controller.ShotDmg, 1, controller.room.world.player.GetComponent<Collider2D>().bounds.center, controller.transform.position);
+        controller.room.world.EnemyBullets.FireBullet(PlayerWeapon.EnemyShot, 3.0f, controller.ShotDmg, 1, controller.room.world.player.GetComponent<Collider2D>().bounds.center, controller.transform.position);
     }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

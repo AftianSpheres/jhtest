@@ -70,25 +70,32 @@ public class BulletController : MonoBehaviour
 
 	public void Update ()
     {
-        if (Pierce == false)
-        {
-            for (int i = 0; i < roomColliders.Length; i++)
-            {
-                if (roomColliders[i] != null)
-                {
-                    if (collider.bounds.Intersects(roomColliders[i].bounds))
-                    {
-                        Retire();
-                    }
-                }
-            }
-        }
-        if (world.cameraController.activeRoom.bounds.Contains(collider.bounds.center) == false)
+        if (world.cameraController.activeRoom == null)
         {
             Retire();
         }
-        WpnFiringAdjust();
-        LogicalPosition = new Vector3(LogicalPosition.x + Heading.x, LogicalPosition.y + Heading.y, LogicalPosition.z);
-        transform.position = new Vector3((float)Math.Round(LogicalPosition.x, 0, MidpointRounding.AwayFromZero), (float)Math.Round(LogicalPosition.y, 0, MidpointRounding.AwayFromZero), LogicalPosition.z);
+        else
+        {
+            if (Pierce == false)
+            {
+                for (int i = 0; i < roomColliders.Length; i++)
+                {
+                    if (roomColliders[i] != null)
+                    {
+                        if (collider.bounds.Intersects(roomColliders[i].bounds))
+                        {
+                            Retire();
+                        }
+                    }
+                }
+            }
+            if (world.cameraController.activeRoom.bounds.Contains(collider.bounds.center) == false)
+            {
+                Retire();
+            }
+            WpnFiringAdjust();
+            LogicalPosition = new Vector3(LogicalPosition.x + Heading.x, LogicalPosition.y + Heading.y, LogicalPosition.z);
+            transform.position = new Vector3((float)Math.Round(LogicalPosition.x, 0, MidpointRounding.AwayFromZero), (float)Math.Round(LogicalPosition.y, 0, MidpointRounding.AwayFromZero), LogicalPosition.z);
+        }
     }
 }

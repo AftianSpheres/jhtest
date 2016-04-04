@@ -12,13 +12,17 @@ public class mu_RemovableBlock : MonoBehaviour
     public RoomController room;
     public RoomEventConditions condition;
     public int TargetNumber;
+    new public BoxCollider collider;
+    new public SpriteRenderer renderer;
+    public RegisteredSprite register;
     private bool DestroyThisFrame = false;
     private int counter;
 
 
 	// Use this for initialization
-	void Start () {
-	
+	void Start ()
+    {
+        register.roomObjectRespawnAction = Respawn;
 	}
 	
 	// Update is called once per frame
@@ -30,10 +34,8 @@ public class mu_RemovableBlock : MonoBehaviour
             case RoomEventConditions.TargetNumberOfEnemiesKilled:
                 for (int i = 0; i < room.Enemies.Length; i++)
                 {
-                    if (room.Enemies[i] == null)
+                    if (room.Enemies[i].GetComponent<CommonEnemyController>().isDead == true)
                     {
-
-                        Debug.Log("");
                         counter++;
                     }
                 }
@@ -45,12 +47,20 @@ public class mu_RemovableBlock : MonoBehaviour
         }
         if (DestroyThisFrame == true)
         {
-            DestroySelf();
+            Disappear();
+            DestroyThisFrame = false;
         }
 	}
 
-    void DestroySelf ()
+    void Disappear ()
     {
-        Destroy(gameObject);
+        collider.enabled = false;
+        renderer.enabled = false;
+    }
+
+    public void Respawn ()
+    {
+        collider.enabled = true;
+        renderer.enabled = true;
     }
 }

@@ -4,7 +4,7 @@ using System.Collections;
 [RequireComponent (typeof(RegisteredSprite))]
 public class CommonEnemyController : MonoBehaviour
 {
-    public WorldController world;
+    public RoomController room;
     public MonoBehaviour module;
     public RegisteredSprite register;
     public Animator animator;
@@ -23,39 +23,47 @@ public class CommonEnemyController : MonoBehaviour
     public int InvulnTime;
     public int DamageQueue;
     private int HitFlashCounter;
+    private Vector3 StartingPos;
+    private int DefaultStateHash;
+    public bool isDead = false;
+    public FlickerySprite flicker;
 
 
 
 	// Use this for initialization
 	void Awake ()
     {
-        world = GameObject.Find("Universe/World").GetComponent<WorldController>();
+        StartingPos = transform.position;
+        DefaultStateHash = animator.GetCurrentAnimatorStateInfo(0).fullPathHash;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (register.Toggled == true)
+        if (isDead == false)
         {
-            if (animator.enabled == false)
+            if (register.Toggled == true)
             {
-                animator.enabled = true;
+                if (animator.enabled == false)
+                {
+                    animator.enabled = true;
+                }
+                CurrentHP -= DamageQueue;
+                DamageQueue = 0;
+                if (CurrentHP <= 0)
+                {
+                    Die();
+                }
+                if (HitFlashCounter < 1)
+                {
+                    renderer.material = defaultMat;
+                }
+                HitFlashCounter -= 1;
             }
-            CurrentHP -= DamageQueue;
-            DamageQueue = 0;
-            if (CurrentHP <= 0)
+            else
             {
-                Die();
+                animator.enabled = false;
             }
-            if (HitFlashCounter < 1)
-            {
-                renderer.material = defaultMat;
-            }
-            HitFlashCounter -= 1;
-        }
-        else
-        {
-            animator.enabled = false;
         }
 	}
 
@@ -90,6 +98,33 @@ public class CommonEnemyController : MonoBehaviour
             source.PlayOneShot(HitSFX);   
         }
 
+    }
+
+    public void Kill ()
+    {
+        animator.Play(DefaultStateHash);
+        room.world.player.GetComponent<PlayerEnergy>().Recover(100);
+        CurrentHP = MaxHP;
+        transform.position = StartingPos;
+        DamageQueue = 0;
+        renderer.material = defaultMat;
+        renderer.enabled = false;
+        collider.enabled = false;
+        isDead = true;
+        flicker.skip = true;
+    }
+
+    public void Respawn ()
+    {
+        renderer.enabled = true;
+        collider.enabled = true;
+        animator.SetBool("Dead", false);
+        isDead = false;
+        flicker.skip = false;
+        if (room.world.cameraController.activeRoom != room)
+        {
+            register.Toggled = false;
+        }
     }
 
     void TriggerHitstun(BulletController bullet)

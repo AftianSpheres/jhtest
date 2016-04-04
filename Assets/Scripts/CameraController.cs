@@ -125,7 +125,7 @@ public class CameraController : MonoBehaviour
                 CurrentRoomPlayerEntryPosition = player.transform.position;
             }
         }
-        else if (player.transform.position != CurrentRoomPlayerEntryPosition)
+        else if (player.transform.position != CurrentRoomPlayerEntryPosition && activeRoom != null)
         {
             int adj_x = 0;
             int adj_y = 0;
@@ -193,20 +193,21 @@ public class CameraController : MonoBehaviour
     /// 
     /// Doesn't support big rooms right now, but probably should.
     /// </summary>
-    public IEnumerator InstantChangeScreen (RoomController room, int i = 0)
+    public IEnumerator InstantChangeScreen (RoomController room, int FadeDuration, int i = 0)
     {
         nextRoom = room;
+        activeRoom = default(RoomController);
         player.Locked = true;
         rect.center = new Vector2(room.bounds.center.x, room.bounds.center.y);
         WindowLayer.transform.position = new Vector3(room.bounds.center.x, room.bounds.center.y + 8, WindowLayer.transform.position.z);
-        while (i < TransitionFadeLength)
+        while (i < FadeDuration)
         {
             if (i == 1)
             {
                 world.Curtain.SetActive(true);
                 world.Curtain.GetComponent<SpriteRenderer>().color = Color.white;
             }
-            else if (i == (TransitionFadeLength / 4))
+            else if (i == (FadeDuration / 4))
             {
                 world.Curtain.GetComponent<SpriteRenderer>().color = Color.black;
             }

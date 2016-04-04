@@ -90,15 +90,44 @@ public class WorldController : MonoBehaviour
     {
         get { return curtain; }
     }
+    [SerializeField]
+    private GameStateManager gameStateManager;
+    public GameStateManager GameStateManager
+    {
+        get { return gameStateManager; }
+    }
+
+    [SerializeField]
+    private int lastSessionFingerprint;
+    public int LastSessionFingerprint
+    {
+        get { return lastSessionFingerprint; }
+    }
 
     // Use this for initialization
     void Awake ()
     {
         rooms = new RoomController[WorldSize_Y, WorldSize_X];
+        gameStateManager = GameObject.Find("Universe/GameStateManager").GetComponent<GameStateManager>();
+        lastSessionFingerprint = gameStateManager.SessionFingerprint;
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+    // Update is called once per frame
+    void Update ()
+    {
+	    if (gameStateManager.SessionFingerprint != lastSessionFingerprint)
+        {
+            lastSessionFingerprint = gameStateManager.SessionFingerprint;
+            for (int iy = 0; iy < rooms.GetLength(0); iy++)
+            {
+                for (int ix = 0; ix < rooms.GetLength(1); ix++)
+                {
+                    if (rooms[iy, ix] != null)
+                    {
+                        rooms[iy, ix].Refresh();
+                    }
+                }
+            }
+        }
 	}
 }
