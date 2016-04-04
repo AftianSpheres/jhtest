@@ -31,8 +31,6 @@ public class PlayerShootCommon : StateMachineBehaviour
             animator.SetInteger("HaltFrames", HaltFrames - 1);
         }
         animator.SetInteger("Cooldown", animator.GetInteger("Cooldown") - 1);
-
-
     }
 
 	// OnStateExit is called before OnStateExit is called on any state inside this state machine

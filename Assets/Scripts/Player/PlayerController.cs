@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (energy.CurrentEnergy < 1)
+        if (energy.CurrentEnergy < 1 && animator.GetBool("Dead") == false)
         {
             Die();
         }
@@ -92,6 +92,7 @@ public class PlayerController : MonoBehaviour {
     void Die ()
     {
         animator.SetBool("Dead", true);
+        animator.SetTrigger("Die");
     }
 
     /// <summary>
@@ -276,11 +277,11 @@ public class PlayerController : MonoBehaviour {
 
     public void Respawn ()
     {
+        world.GameStateManager.LastCheckpoint.RespawnAt();
+        world.GameStateManager.RerollSessionFingerprint();
         energy.Recover(100);
         animator.Play("PlayerStand_D");
         animator.SetBool("Dead", false);
-        world.GameStateManager.LastCheckpoint.RespawnAt();
-        world.GameStateManager.RerollSessionFingerprint();
     }
 
     /// <summary>

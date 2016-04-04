@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f90dd6c845c62c7418769c62d99b8ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  world: {fileID: 0}
+  room: {fileID: 0}
   module: {fileID: 11429098}
   register: {fileID: 11417496}
   animator: {fileID: 9569220}
@@ -221,8 +221,8 @@ MonoBehaviour:
   collider: {fileID: 6146088}
   CurrentHP: 5
   MaxHP: 5
-  CollideDmg: 10
-  ShotDmg: 30
+  CollideDmg: 20
+  ShotDmg: 20
   InvulnTime: 30
   DamageQueue: 0
   isDead: 0

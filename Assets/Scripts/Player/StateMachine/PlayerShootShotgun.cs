@@ -38,32 +38,35 @@ public class PlayerShootShotgun : StateMachineBehaviour
             FrameCtr = animator.GetInteger("FrameCtr");
             if (FrameCtr % 90 == 0 || (animator.GetBool("Shooting") == false && animator.GetInteger("Cooldown") <= -1))
             {
-                if (wpnManager.master.energy.CheckIfCanFireWpn(PlayerWeaponManager.ShotEnergyCosts[(int)PlayerWeapon.Shotgun]) == true)
+                if ((animator.GetBool("HeldFire1") == true && animator.GetBool("FireSlotB") == false) || (animator.GetBool("HeldFire2") == true && animator.GetBool("FireSlotB") == true))
                 {
-                    wpnManager.FireBullet(PlayerWeapon.Shotgun);
-                    animator.SetInteger("HaltFrames", 30);
-                    source.PlayOneShot(sfx, 0.5f);
-                    animator.SetBool("Shooting", true);
-                    animator.SetInteger("Cooldown", 90);
-                    Vector3 PosMod;
-                    switch (animator.GetInteger("FacingDir"))
+                    if (wpnManager.master.energy.CheckIfCanFireWpn(PlayerWeaponManager.ShotEnergyCosts[(int)PlayerWeapon.Shotgun]) == true)
                     {
-                        case 0:
-                            PosMod = new Vector3(0, 2, 0);
-                            break;
-                        case 1:
-                            PosMod = new Vector3(0, -2, 0);
-                            break;
-                        case 2:
-                            PosMod = new Vector3(2, 0, 0);
-                            break;
-                        case 3:
-                            PosMod = new Vector3(-2, 0, 0);
-                            break;
-                        default:
-                            throw new System.Exception("FacingDir out of bounds!");
+                        wpnManager.FireBullet(PlayerWeapon.Shotgun);
+                        animator.SetInteger("HaltFrames", 30);
+                        source.PlayOneShot(sfx, 0.5f);
+                        animator.SetBool("Shooting", true);
+                        animator.SetInteger("Cooldown", 90);
+                        Vector3 PosMod;
+                        switch (animator.GetInteger("FacingDir"))
+                        {
+                            case 0:
+                                PosMod = new Vector3(0, 2, 0);
+                                break;
+                            case 1:
+                                PosMod = new Vector3(0, -2, 0);
+                                break;
+                            case 2:
+                                PosMod = new Vector3(2, 0, 0);
+                                break;
+                            case 3:
+                                PosMod = new Vector3(-2, 0, 0);
+                                break;
+                            default:
+                                throw new System.Exception("FacingDir out of bounds!");
+                        }
+                        ExpensiveAccurateCollision.CollideWithScenery(animator, roomColliders, PosMod, collider);
                     }
-                    ExpensiveAccurateCollision.CollideWithScenery(animator, roomColliders, PosMod, collider);
                 }
             }
         }
