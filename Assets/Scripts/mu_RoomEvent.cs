@@ -4,34 +4,32 @@ using System.Collections;
 public enum RoomEventConditions
 {
     None,
-    TargetNumberOfEnemiesKilled
+    TargetNumberOfEnemiesKilled,
+    DamageDealt
 }
 
-public class mu_RemovableBlock : MonoBehaviour
+public class mu_RoomEvent : MonoBehaviour
 {
     public RoomController room;
     public RoomEventConditions condition;
     public int TargetNumber;
-    new public BoxCollider collider;
-    new public SpriteRenderer renderer;
-    public RegisteredSprite register;
-    private bool DestroyThisFrame = false;
+    public bool EventActive;
     private int counter;
 
 
 	// Use this for initialization
 	void Start ()
     {
-        register.roomObjectRespawnAction = Respawn;
+
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        counter = 0;
 	    switch (condition)
         {
             case RoomEventConditions.TargetNumberOfEnemiesKilled:
+                counter = 0;
                 for (int i = 0; i < room.Enemies.Length; i++)
                 {
                     if (room.Enemies[i].GetComponent<CommonEnemyController>().isDead == true)
@@ -41,26 +39,31 @@ public class mu_RemovableBlock : MonoBehaviour
                 }
                 if (counter >= TargetNumber)
                 {
-                    DestroyThisFrame = true;
+                    EventActive = true;
+                }
+                break;
+
+            case RoomEventConditions.DamageDealt:
+                if (counter >= TargetNumber)
+                {
+                    EventActive = true;
                 }
                 break;
         }
-        if (DestroyThisFrame == true)
-        {
-            Disappear();
-            DestroyThisFrame = false;
-        }
 	}
 
-    void Disappear ()
+    public void BulletStrike (BulletController bullet)
     {
-        collider.enabled = false;
-        renderer.enabled = false;
+        if (condition == RoomEventConditions.DamageDealt)
+        {
+            counter += bullet.Damage;
+        }
     }
 
-    public void Respawn ()
+    public void Reset ()
     {
-        collider.enabled = true;
-        renderer.enabled = true;
+        counter = 0;
+        EventActive = false;
     }
+
 }

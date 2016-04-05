@@ -6,12 +6,11 @@ public class PlayerEnergy : MonoBehaviour
 {
     public PlayerController master;
     private AudioSource BGS0;
-    private PlayerWeaponManager wpnManager;
     public int Level;
     public int CurrentEnergy;
     public int MaxEnergy;
     public int CurrentMultiplierLevel;
-    public static int LevelMax = 10;
+    public static int LevelMax = 20;
     public static int EnergyPerLevel = 100;
     public static int MultiplierMax = 10;
 
@@ -21,7 +20,8 @@ public class PlayerEnergy : MonoBehaviour
 	void Start ()
     {
         BGS0 = master.world.BGS0;
-        wpnManager = master.wpnManager;
+        MaxEnergy = EnergyPerLevel * Level;
+        CurrentEnergy = MaxEnergy;
 	}
 	
 	// Update is called once per frame

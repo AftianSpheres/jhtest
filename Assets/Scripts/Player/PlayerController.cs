@@ -3,7 +3,22 @@ using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
 
+public static class PlayerStateHashes
+{
+    public static int PlayerStand_D = Animator.StringToHash("Base Layer.Neutral.Standing.PlayerStand_D");
+    public static int PlayerStand_U = Animator.StringToHash("Base Layer.Neutral.Standing.PlayerStand_U");
+    public static int PlayerStand_L = Animator.StringToHash("Base Layer.Neutral.Standing.PlayerStand_L");
+    public static int PlayerStand_R = Animator.StringToHash("Base Layer.Neutral.Standing.PlayerStand_R");
+    public static int PlayerWalk_D = Animator.StringToHash("Base Layer.Neutral.Walking.PlayerWalk_D");
+    public static int PlayerWalk_U = Animator.StringToHash("Base Layer.Neutral.Walking.PlayerWalk_U");
+    public static int PlayerWalk_L = Animator.StringToHash("Base Layer.Neutral.Walking.PlayerWalk_L");
+    public static int PlayerWalk_R = Animator.StringToHash("Base Layer.Neutral.Walking.PlayerWalk_R");
+    public static int CutsceneWalk_D = Animator.StringToHash("Base Layer.Neutral.Walking.CutsceneWalk_D");
+    public static int CutsceneWalk_U = Animator.StringToHash("Base Layer.Neutral.Walking.CutsceneWalk_U");
+    public static int CutsceneWalk_L = Animator.StringToHash("Base Layer.Neutral.Walking.CutsceneWalk_L");
+    public static int CutsceneWalk_R = Animator.StringToHash("Base Layer.Neutral.Walking.CutsceneWalk_R");
 
+}
 
 public class PlayerController : MonoBehaviour {
     public WorldController world;
@@ -14,7 +29,6 @@ public class PlayerController : MonoBehaviour {
     new public BoxCollider2D collider;
     public Vector3 KnockbackHeading;
     public int KnockbackFrames;
-    private PlayerReticleController reticle;
     public bool Invincible;
     public bool Locked;
     public bool IgnoreCollision;
@@ -25,24 +39,14 @@ public class PlayerController : MonoBehaviour {
     private bool VertAxisReleasedWithinWindow = false;
     private uint FramesSinceLastDTapEvent = 0;
     private bool DiscardDodgeInputs;
-    private int[] DodgeAllowedStates;
     public int InvulnTime;
+    private static int[] DodgeAllowedStates = { PlayerStateHashes.PlayerStand_D, PlayerStateHashes.PlayerStand_U, PlayerStateHashes.PlayerStand_L, PlayerStateHashes.PlayerStand_R,
+    PlayerStateHashes.PlayerWalk_D, PlayerStateHashes.PlayerWalk_U, PlayerStateHashes.PlayerWalk_L, PlayerStateHashes.PlayerWalk_R };
 
     // Use this for initialization
-    void Start ()
-    {
-        /// EWW EWW EWW
-        DodgeAllowedStates = new int[8];
-        DodgeAllowedStates[0] = Animator.StringToHash("Base Layer.Neutral.Standing.PlayerStand_D");
-        DodgeAllowedStates[1] = Animator.StringToHash("Base Layer.Neutral.Standing.PlayerStand_U");
-        DodgeAllowedStates[2] = Animator.StringToHash("Base Layer.Neutral.Standing.PlayerStand_L");
-        DodgeAllowedStates[3] = Animator.StringToHash("Base Layer.Neutral.Standing.PlayerStand_R");
-        DodgeAllowedStates[4] = Animator.StringToHash("Base Layer.Neutral.Walking.PlayerWalk_D");
-        DodgeAllowedStates[5] = Animator.StringToHash("Base Layer.Neutral.Walking.PlayerWalk_U");
-        DodgeAllowedStates[6] = Animator.StringToHash("Base Layer.Neutral.Walking.PlayerWalk_L");
-        DodgeAllowedStates[7] = Animator.StringToHash("Base Layer.Neutral.Walking.PlayerWalk_R");
-        reticle = world.reticle;
-    }
+    //void Start ()
+    //{
+    //}
 	
 	// Update is called once per frame
 	void Update ()

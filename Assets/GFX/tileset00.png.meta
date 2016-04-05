@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: e928bc454c016bf4c9daeeb8440de94b
-timeCreated: 1459457657
+timeCreated: 1459876633
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -11,7 +11,7 @@ TextureImporter:
     21300008: tileset00_4
     21300010: tileset00_5
     21300012: tileset00_6
-    21300014: tileset00_7
+    21300014: tileset00_vdoor_0
     21300016: tileset00_8
     21300018: tileset00_9
     21300020: tileset00_10
@@ -27,13 +27,13 @@ TextureImporter:
     21300040: tileset00_20
     21300042: tileset00_21
     21300044: tileset00_22
-    21300046: tileset00_23
+    21300046: tileset00_vdoor_1
     21300048: tileset00_24
     21300050: tileset00_25
     21300052: tileset00_26
     21300054: tileset00_27
     21300056: tileset00_28
-    21300058: tileset00_29
+    21300058: tileset00_hdoor_0
     21300060: tileset00_30
     21300062: tileset00_31
     21300064: tileset00_32
@@ -41,15 +41,15 @@ TextureImporter:
     21300068: tileset00_34
     21300070: tileset00_35
     21300072: tileset00_36
-    21300074: tileset00_37
+    21300074: tileset00_hdoor_1
     21300076: tileset00_38
-    21300078: tileset00_39
+    21300078: tileset00_vdoor_2
     21300080: tileset00_40
     21300082: tileset00_41
     21300084: tileset00_42
     21300086: tileset00_43
     21300088: tileset00_44
-    21300090: tileset00_45
+    21300090: tileset00_hdoor_2
     21300092: tileset00_46
     21300094: tileset00_47
     21300096: tileset00_48
@@ -132,6 +132,12 @@ TextureImporter:
     21300250: tileset00_125
     21300252: tileset00_126
     21300254: tileset00_127
+    21300256: tileset00_7
+    21300258: tileset00_23
+    21300260: tileset00_29
+    21300262: tileset00_37
+    21300264: tileset00_39
+    21300266: tileset00_45
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

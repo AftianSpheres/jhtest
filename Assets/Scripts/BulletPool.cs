@@ -32,8 +32,11 @@ public class BulletPool : MonoBehaviour
 
     public void FireBullet(PlayerWeapon shot, float speed, int damage, int weight, Vector3 to, Vector3 from, bool pierce = false)
     {
-        BulletController bulletController = pool.Dequeue();
-        bulletController.gameObject.SetActive(true);
-        bulletController.Fire(shot, speed, damage, weight, from, to, pool, pierce);
+        if (world.cameraController.activeRoom != null)
+        {
+            BulletController bulletController = pool.Dequeue();
+            bulletController.gameObject.SetActive(true);
+            bulletController.Fire(shot, speed, damage, weight, from, to, pool, pierce);
+        }
     }
 }

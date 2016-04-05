@@ -4,7 +4,6 @@ using System;
 
 public class PlayerDodging : StateMachineBehaviour
 {
-    private Vector3 CurrentPosition;
     private Collider[] roomColliders;
     private Collider2D collider;
 
@@ -34,7 +33,6 @@ public class PlayerDodging : StateMachineBehaviour
     // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
     override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        CurrentPosition = animator.transform.position;
         Vector3 PosMod = new Vector3(0, 0, 0);
         if (animator.GetBool("DodgeBurst") == true)
         {

@@ -10,7 +10,7 @@ public class PlayerCameraFollow : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (master.Locked == false)
+        if (master.Locked == false && master.world.cameraController.activeRoom != null)
         {
             if (collider.bounds.center.y < master.world.cameraController.activeRoom.bounds.min.y)
             {

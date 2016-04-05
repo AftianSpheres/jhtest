@@ -219,8 +219,8 @@ MonoBehaviour:
   Weight: 3
   Heading: {x: 0, y: 0, z: 0}
   collider: {fileID: 6146088}
-  CurrentHP: 5
-  MaxHP: 5
+  CurrentHP: 70
+  MaxHP: 70
   CollideDmg: 20
   ShotDmg: 20
   InvulnTime: 30

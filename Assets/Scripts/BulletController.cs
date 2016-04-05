@@ -52,8 +52,6 @@ public class BulletController : MonoBehaviour
         float run = TargetPosition.x - transform.position.x;
         float normalizationFactor = 1 / (Math.Abs(rise) + Math.Abs(run));
         Heading = new Vector2(normalizationFactor * run * Speed, normalizationFactor * rise * Speed);
-
-
     }
 	
     void Retire ()
@@ -84,6 +82,11 @@ public class BulletController : MonoBehaviour
                     {
                         if (collider.bounds.Intersects(roomColliders[i].bounds))
                         {
+                            mu_RoomEvent rb = roomColliders[i].gameObject.GetComponent<mu_RoomEvent>();
+                            if (rb != null)
+                            {
+                                rb.BulletStrike(this);
+                            }
                             Retire();
                         }
                     }

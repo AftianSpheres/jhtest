@@ -18,6 +18,11 @@ public class PlayerWeaponManager : MonoBehaviour
         0, // weenie gun
         5, // shotgun
         };
+    public static int[] DamageMultipliers =
+        {
+        1, // weenie gun
+        4, // shotgun
+        };
 
 	// Use this for initialization
 	void Start ()
@@ -37,13 +42,13 @@ public class PlayerWeaponManager : MonoBehaviour
 
     public int CalcShotDamage(PlayerWeapon shot)
     {
-        if (shot == PlayerWeapon.WeenieGun)
+        if (ShotEnergyCosts[(int)shot] == 0)
         {
-            return energy.Level;
+            return energy.Level * DamageMultipliers[(int)shot];
         }
         else
         {
-            return ShotEnergyCosts[(int)shot] * energy.Level;
+            return ShotEnergyCosts[(int)shot] * energy.Level * DamageMultipliers[(int)shot];
         }
     }
 

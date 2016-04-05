@@ -84,7 +84,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\PlayerDead.cs" />
     <Compile Include="Assets\Scripts\BulletController.cs" />
     <Compile Include="Assets\Scripts\BulletPool.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
@@ -95,6 +94,7 @@
     <Compile Include="Assets\Scripts\Enemy\Common\CommonEnemyInvuln.cs" />
     <Compile Include="Assets\Scripts\Enemy\CommonEnemyController.cs" />
     <Compile Include="Assets\Scripts\Enemy\CommonEnemyDead.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyBossMidBoss.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyJelly.cs" />
     <Compile Include="Assets\Scripts\FlickerySprite.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDEnergyBar.cs" />
@@ -121,7 +121,9 @@
     <Compile Include="Assets\Scripts\RoomController.cs" />
     <Compile Include="Assets\Scripts\WorldController.cs" />
     <Compile Include="Assets\Scripts\mu_Checkpoint.cs" />
-    <Compile Include="Assets\Scripts\mu_RemovableBlock.cs" />
+    <Compile Include="Assets\Scripts\mu_Door.cs" />
+    <Compile Include="Assets\Scripts\mu_FalseWall.cs" />
+    <Compile Include="Assets\Scripts\mu_RoomEvent.cs" />
     <Compile Include="Assets\Scripts\mu_Warp.cs" />
     <Compile Include="Assets\Universe\Example\MyManager.cs" />
     <Compile Include="Assets\Universe\Scripts\Manager.cs" />

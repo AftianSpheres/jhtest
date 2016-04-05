@@ -5,7 +5,6 @@ using System.Collections;
 public class PlayerWalking : StateMachineBehaviour
 {
     private bool OffFrame = false;
-    private Vector3 CurrentPosition;
     private Collider[] roomColliders;
     private Collider2D collider;
 
@@ -30,7 +29,6 @@ public class PlayerWalking : StateMachineBehaviour
     // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
     override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        CurrentPosition = animator.transform.position;
         Vector3 PosMod = new Vector3(0, 0, 0);
         int FrameCtr = animator.GetInteger("FrameCtr");
         animator.SetInteger("FrameCtr", FrameCtr + 1);

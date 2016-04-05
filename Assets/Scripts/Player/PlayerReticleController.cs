@@ -5,8 +5,7 @@ using System.Collections;
 public class PlayerReticleController : MonoBehaviour
 {
     public WorldController world;
-    new private Camera mainCamera;
-    private PlayerController player;
+    private Camera mainCamera;
     new public SpriteRenderer renderer;
     public Sprite OpenSprite;
     public Sprite ClosedSprite;
@@ -19,7 +18,6 @@ public class PlayerReticleController : MonoBehaviour
 	void Start ()
     {
         mainCamera = world.mainCamera;
-        player = world.player;
 	}
 	
 	// Update is called once per frame

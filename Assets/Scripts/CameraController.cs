@@ -13,6 +13,7 @@ public class CameraController : MonoBehaviour
     private PlayerController player;
     public RoomController activeRoom;
     public Rect rect;
+    public bool PlayerLockedToScroll;
     private RoomController nextRoom;
     private bool ScrollVertical = false;
     private int ForceScroll;
@@ -20,7 +21,6 @@ public class CameraController : MonoBehaviour
     private Vector3 CurrentRoomPlayerEntryPosition;
     private static int ScrollSpeed = 2;
     private static int CameraCatchUpDelay = 4;
-    private static int TransitionFadeLength = 32;
 
     /// <summary>
     /// MonoBehaviour.Start()
@@ -30,7 +30,8 @@ public class CameraController : MonoBehaviour
         rect.center = transform.position;
         WindowLayer = world.WindowLayer;
         player = world.player;
-        activeRoom = world.rooms[(int)world.FirstRoom.y, (int)world.FirstRoom.x];
+        RoomController firstRoom = world.rooms[(int)world.FirstRoom.y, (int)world.FirstRoom.x];
+        StartCoroutine(InstantChangeScreen(firstRoom, 0));
     }
 
     /// <summary>
@@ -122,6 +123,7 @@ public class CameraController : MonoBehaviour
             {
                 activeRoom = nextRoom;
                 player.Locked = false;
+                PlayerLockedToScroll = false;
                 CurrentRoomPlayerEntryPosition = player.transform.position;
             }
         }
@@ -193,8 +195,9 @@ public class CameraController : MonoBehaviour
     /// 
     /// Doesn't support big rooms right now, but probably should.
     /// </summary>
-    public IEnumerator InstantChangeScreen (RoomController room, int FadeDuration, int i = 0)
+    public IEnumerator InstantChangeScreen (RoomController room, int FadeDuration)
     {
+        int i = 0;
         nextRoom = room;
         activeRoom = default(RoomController);
         player.Locked = true;
@@ -284,6 +287,7 @@ public class CameraController : MonoBehaviour
                 throw new Exception("Tried to scroll the screen in an invalid direction!");
         }
         player.Locked = true;
+        PlayerLockedToScroll = true;
         float x;
         float y;
         if (ScrollVertical == true)

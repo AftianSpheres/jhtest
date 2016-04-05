@@ -60,7 +60,6 @@ public class PlayerShootWeenieGun : StateMachineBehaviour
     {
         if (active == true && animator.GetInteger("HaltFrames") <= 0)
         {
-            Vector3 CurrentPosition = animator.transform.position;
             Vector3 PosMod = new Vector3(0, 0, 0);
             if (FrameCtr % 2 == 0)
             {
