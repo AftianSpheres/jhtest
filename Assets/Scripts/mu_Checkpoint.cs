@@ -10,6 +10,10 @@ public class mu_Checkpoint : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
+        if (room.world.GameStateManager.LastCheckpoint == null)
+        {
+            Activate();
+        }
 	}
 
     public void Activate ()

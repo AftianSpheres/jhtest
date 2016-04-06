@@ -20,7 +20,7 @@ public class GameStateManager : Manager<GameStateManager> {
     // Use this for initialization
     void Start ()
     {
-        availableCheckpoints = new bool[Enum.GetNames(typeof(ExtantCheckpoints)).GetUpperBound(0)];
+        availableCheckpoints = new bool[Enum.GetNames(typeof(ExtantCheckpoints)).GetLength(0)];
         SessionFingerprint = UnityEngine.Random.Range(int.MinValue, int.MaxValue);
 	}
 	

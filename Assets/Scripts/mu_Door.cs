@@ -318,6 +318,5 @@ public class mu_Door : MonoBehaviour
         Gizmos.DrawLine(new Vector3(boundsToOpen.min.x, boundsToOpen.max.y, boundsToOpen.min.z - 100), new Vector3(boundsToOpen.max.x, boundsToOpen.max.y, boundsToOpen.min.z - 100));
 
     }
-
 #endif
 }

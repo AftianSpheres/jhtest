@@ -98,7 +98,7 @@ public class RoomController : MonoBehaviour
         }
     }
 
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
     void OnDrawGizmosSelected()
     {
 
@@ -109,5 +109,5 @@ public class RoomController : MonoBehaviour
         Gizmos.DrawLine(new Vector3(bounds.min.x, bounds.max.y, bounds.min.z - 100), new Vector3(bounds.max.x, bounds.max.y, bounds.min.z - 100));
 
     }
-#endif
+//#endif
 }

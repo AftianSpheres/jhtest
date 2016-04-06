@@ -387,6 +387,5 @@ public class CameraController : MonoBehaviour
         Gizmos.DrawLine(new Vector3(rect.min.x, rect.max.y, -250), new Vector3(rect.max.x, rect.max.y, -250));
 
     }
-
 #endif
 }

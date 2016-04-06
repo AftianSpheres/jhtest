@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 using System;
 using System.Collections;
@@ -78,6 +79,7 @@ public sealed class Universe : MonoBehaviour
 
         Deserialize(this);
         initialized = true;
+        SceneManager.LoadScene(1);
     }
 
     /// <summary>
@@ -132,6 +134,7 @@ public sealed class Universe : MonoBehaviour
                             clone.transform.parent = Universe.Instance.transform;
                             DontDestroyOnLoad(clone);
                             manager = clone.GetComponent(type) as ManagerBase;
+                            manager.Deserialize();
                         }
                     }
 

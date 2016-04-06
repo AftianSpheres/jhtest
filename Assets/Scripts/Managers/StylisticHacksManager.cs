@@ -18,39 +18,50 @@ public class StylisticHacksManager : Manager<StylisticHacksManager>
         Application.targetFrameRate = 60;
         QualitySettings.vSyncCount = 0;
         sprites = new Queue<FlickerySprite>();
-        world = GameObject.Find("Universe/World").GetComponent<WorldController>();
-        BGM0 = world.BGM0;
+
 	}
 
     void LateUpdate ()
     {
-        bool SpritesOK = false;
-        for (int i = 0; i < SpritesAllowedOnScreen; i++)
+        if (world == null)
         {
-            if (sprites.Count == 0)
+            GameObject worldobj = GameObject.Find("World");
+            if (worldobj != null)
             {
-                SpritesOK = true; // no need to slow down this frame - we can render everything
-                break;
+                world = worldobj.GetComponent<WorldController>();
+                BGM0 = world.BGM0;
             }
-            FlickerySprite sprite = sprites.Dequeue();
-            if (sprite.skip == true)
-            {
-                i -= 1;
-            }
-            else
-            {
-                sprite.sprite.enabled = true;
-            }
-        }
-        if (SpritesOK == false)
-        {
-            Application.targetFrameRate = 30;
         }
         else
         {
-            Application.targetFrameRate = 60;
+            bool SpritesOK = false;
+            for (int i = 0; i < SpritesAllowedOnScreen; i++)
+            {
+                if (sprites.Count == 0)
+                {
+                    SpritesOK = true; // no need to slow down this frame - we can render everything
+                    break;
+                }
+                FlickerySprite sprite = sprites.Dequeue();
+                if (sprite.skip == true)
+                {
+                    i -= 1;
+                }
+                else
+                {
+                    sprite.sprite.enabled = true;
+                }
+            }
+            if (SpritesOK == false)
+            {
+                Application.targetFrameRate = 30;
+            }
+            else
+            {
+                Application.targetFrameRate = 60;
+            }
+            BGM0.pitch = (float)Application.targetFrameRate / 60f;
         }
-        BGM0.pitch = (float)Application.targetFrameRate / 60f;
     }
 	
 }

@@ -11,6 +11,7 @@ using System.Collections.Generic;
 /// </summary>
 public class WorldController : MonoBehaviour
 {
+    private GameObject universe;
     [SerializeField]
     private int worldSize_X;
     public int WorldSize_X
@@ -110,27 +111,55 @@ public class WorldController : MonoBehaviour
     void Awake ()
     {
         rooms = new RoomController[WorldSize_Y, WorldSize_X];
-        gameStateManager = GameObject.Find("Universe/GameStateManager").GetComponent<GameStateManager>();
-        lastSessionFingerprint = gameStateManager.SessionFingerprint;
+        // Wait for the Universe to come online if need be
+        universe = GameObject.Find("Universe");
+        if (universe == null)
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            gameStateManager = GameObject.Find("Universe/GameStateManager").GetComponent<GameStateManager>();
+            Debug.Log(GameStateManager);
+        }
     }
 
     // Update is called once per frame
     void Update ()
     {
-	    if (gameStateManager.SessionFingerprint != lastSessionFingerprint)
+        if (universe == null)
         {
-            lastSessionFingerprint = gameStateManager.SessionFingerprint;
-            for (int iy = 0; iy < rooms.GetLength(0); iy++)
+            universe = GameObject.Find("Universe");
+            if (universe != null)
             {
-                for (int ix = 0; ix < rooms.GetLength(1); ix++)
+                for (int i = 0; i < transform.childCount; i++)
                 {
-                    if (rooms[iy, ix] != null)
+                    transform.GetChild(i).gameObject.SetActive(true);
+                }
+                gameStateManager = GameObject.Find("Universe/GameStateManager").GetComponent<GameStateManager>();
+            }
+        }
+        else
+        {
+            if (gameStateManager.SessionFingerprint != lastSessionFingerprint)
+            {
+                lastSessionFingerprint = gameStateManager.SessionFingerprint;
+                for (int iy = 0; iy < rooms.GetLength(0); iy++)
+                {
+                    for (int ix = 0; ix < rooms.GetLength(1); ix++)
                     {
-                        rooms[iy, ix].Refresh();
+                        if (rooms[iy, ix] != null)
+                        {
+                            rooms[iy, ix].Refresh();
+                        }
                     }
                 }
             }
         }
+
 	}
 
     /// <summary>
@@ -147,7 +176,6 @@ public class WorldController : MonoBehaviour
     /// </summary>
     public void ChangeBGM(AudioClip bgm)
     {
-        Debug.Log(bgm);
         if (_BGM0.clip != bgm)
         {
             _BGM0.Stop();
