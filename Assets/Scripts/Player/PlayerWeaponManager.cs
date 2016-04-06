@@ -2,6 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+/// Manages player's current weapons
+/// and available weaponry.
+/// </summary>
 [RequireComponent (typeof(PlayerController))]
 public class PlayerWeaponManager : MonoBehaviour
 {
@@ -40,6 +44,10 @@ public class PlayerWeaponManager : MonoBehaviour
         animator.SetInteger("SlotBWpn", (int)SlotBWpn);
     }
 
+    /// <summary>
+    /// Calculates damage dealt by shot.
+    /// Returns int.
+    /// </summary>
     public int CalcShotDamage(PlayerWeapon shot)
     {
         if (ShotEnergyCosts[(int)shot] == 0)
@@ -52,9 +60,11 @@ public class PlayerWeaponManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Fires a player shot of type passed as argument.
+    /// </summary>
     public void FireBullet(PlayerWeapon shot)
     {
-
         switch (shot)
         {
             case PlayerWeapon.WeenieGun:

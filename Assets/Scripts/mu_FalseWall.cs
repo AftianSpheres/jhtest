@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// False walls, destructible blocks, etc.
+/// </summary>
 public class mu_FalseWall : MonoBehaviour {
     public RoomController room;
     new public BoxCollider collider;
@@ -24,12 +27,19 @@ public class mu_FalseWall : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Goes poof.
+    /// </summary>
     void Disappear()
     {
         collider.enabled = false;
         renderer.enabled = false;
     }
 
+
+    /// <summary>
+    /// Goes un-poof.
+    /// </summary>
     public void Respawn()
     {
         roomEvent.Reset();

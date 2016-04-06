@@ -21,7 +21,7 @@ public class PlayerShootWeenieGun : StateMachineBehaviour
         {
             active = true;
             wpnManager = animator.gameObject.GetComponent<PlayerController>().wpnManager;
-            roomColliders = animator.gameObject.GetComponent<PlayerController>().world.cameraController.activeRoom.Colliders;
+            roomColliders = animator.gameObject.GetComponent<PlayerController>().world.activeRoom.Colliders;
             collider = animator.GetComponent<Collider2D>();
         }
         else

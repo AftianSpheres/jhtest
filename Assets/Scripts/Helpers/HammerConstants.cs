@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Game-wide constants.
+/// </summary>
 public static class HammerConstants
 {
     public static int LogicalResolution_Horizontal = 160;

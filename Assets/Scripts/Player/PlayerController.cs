@@ -3,6 +3,9 @@ using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
 
+/// <summary>
+/// Static class containing hashes for player animator states.
+/// </summary>
 public static class PlayerStateHashes
 {
     public static int PlayerStand_D = Animator.StringToHash("Base Layer.Neutral.Standing.PlayerStand_D");
@@ -20,6 +23,10 @@ public static class PlayerStateHashes
 
 }
 
+/// <summary>
+/// Controls player. Input handling, coordinating other MonoBehaviours, etc.
+/// Kinda ugly.
+/// </summary>
 public class PlayerController : MonoBehaviour {
     public WorldController world;
     public PlayerWeaponManager wpnManager;
@@ -42,11 +49,6 @@ public class PlayerController : MonoBehaviour {
     public int InvulnTime;
     private static int[] DodgeAllowedStates = { PlayerStateHashes.PlayerStand_D, PlayerStateHashes.PlayerStand_U, PlayerStateHashes.PlayerStand_L, PlayerStateHashes.PlayerStand_R,
     PlayerStateHashes.PlayerWalk_D, PlayerStateHashes.PlayerWalk_U, PlayerStateHashes.PlayerWalk_L, PlayerStateHashes.PlayerWalk_R };
-
-    // Use this for initialization
-    //void Start ()
-    //{
-    //}
 	
 	// Update is called once per frame
 	void Update ()
@@ -279,6 +281,9 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Respawns player.
+    /// </summary>
     public void Respawn ()
     {
         world.GameStateManager.LastCheckpoint.RespawnAt();

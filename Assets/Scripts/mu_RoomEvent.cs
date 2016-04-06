@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Enum containing valid conditions to trigger a RoomEvent.
+/// </summary>
 public enum RoomEventConditions
 {
     None,
@@ -8,6 +11,11 @@ public enum RoomEventConditions
     DamageDealt
 }
 
+/// <summary>
+/// Generic event checker/manager.
+/// Implements specialized functionality for monitoring game state.
+/// Other MonoBehaviours can use an attached RoomEvent to get that "for free."
+/// </summary>
 public class mu_RoomEvent : MonoBehaviour
 {
     public RoomController room;
@@ -52,6 +60,9 @@ public class mu_RoomEvent : MonoBehaviour
         }
 	}
 
+    /// <summary>
+    /// Hit the RoomEvent with a bullet.
+    /// </summary>
     public void BulletStrike (BulletController bullet)
     {
         if (condition == RoomEventConditions.DamageDealt)
@@ -60,6 +71,9 @@ public class mu_RoomEvent : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Resets the RoomEvent.
+    /// </summary>
     public void Reset ()
     {
         counter = 0;

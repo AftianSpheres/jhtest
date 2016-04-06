@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Conditions for opening a door.
+/// Note that "None" doesn't mean it doesn't open - it means it opens on contact. "Normal" door behavior.
+/// </summary>
 public enum DoorCondition
 {
     None,
@@ -9,6 +13,10 @@ public enum DoorCondition
     Special
 }
 
+/// <summary>
+/// Enum of directions.
+/// To do: refactor other things to use this instead of straight int-to-direction. At least I was consistent, so it shouldn't be too much of a pain.
+/// </summary>
 public enum Direction
 {
     Down,
@@ -17,6 +25,10 @@ public enum Direction
     Right
 }
 
+/// <summary>
+/// Door.
+/// RoomEvent integration for conditions outside of those that are part of the Door class.
+/// </summary>
 public class mu_Door : MonoBehaviour
 {
     public RoomController room;
@@ -59,7 +71,7 @@ public class mu_Door : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (room.world.cameraController.activeRoom == room && transitionInProgress == false)
+        if (room.world.activeRoom == room && transitionInProgress == false)
         {
             if (counter < 1)
             {
@@ -280,6 +292,9 @@ public class mu_Door : MonoBehaviour
         mirror.transitionInProgress = false;
     }
 
+    /// <summary>
+    /// Closes a door.
+    /// </summary>
     void Close()
     {
         renderer.sprite = frames[0];

@@ -2,6 +2,9 @@
 using System;
 using System.Collections;
 
+/// <summary>
+/// Is a reticle. Exists relative to viewport. Moves around. You get the idea.
+/// </summary>
 public class PlayerReticleController : MonoBehaviour
 {
     public WorldController world;
@@ -54,6 +57,9 @@ public class PlayerReticleController : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Snaps reticle back to default screen co-ords.
+    /// </summary>
     public void Snap()
     {
         transform.localPosition = DefaultOffset;

@@ -38,7 +38,7 @@ public class BulletController : MonoBehaviour
     /// </summary>
     public void Fire (PlayerWeapon shot, float speed, int damage, int weight, Vector3 source, Vector3 to, Queue<BulletController> q, bool pierce)
     {
-        roomColliders = world.cameraController.activeRoom.Colliders;
+        roomColliders = world.activeRoom.Colliders;
         Damage = damage;
         Pierce = pierce;
         Weight = weight;
@@ -68,7 +68,7 @@ public class BulletController : MonoBehaviour
 
 	public void Update ()
     {
-        if (world.cameraController.activeRoom == null)
+        if (world.activeRoom == null)
         {
             Retire();
         }
@@ -92,7 +92,7 @@ public class BulletController : MonoBehaviour
                     }
                 }
             }
-            if (world.cameraController.activeRoom.bounds.Contains(collider.bounds.center) == false)
+            if (world.activeRoom.bounds.Contains(collider.bounds.center) == false)
             {
                 Retire();
             }

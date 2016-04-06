@@ -19,9 +19,9 @@ public class PlayerHit : StateMachineBehaviour {
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (controller.KnockbackFrames > 0 && controller.world.cameraController.activeRoom != null)
+        if (controller.KnockbackFrames > 0 && controller.world.activeRoom != null)
         {
-            ExpensiveAccurateCollision.CollideWithScenery(animator, controller.world.cameraController.activeRoom.Colliders, controller.KnockbackHeading, controller.collider);
+            ExpensiveAccurateCollision.CollideWithScenery(animator, controller.world.activeRoom.Colliders, controller.KnockbackHeading, controller.collider);
             controller.KnockbackFrames--;
         }
     }

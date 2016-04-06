@@ -104,6 +104,8 @@ public class WorldController : MonoBehaviour
         get { return lastSessionFingerprint; }
     }
 
+    public RoomController activeRoom;
+
     // Use this for initialization
     void Awake ()
     {
@@ -130,4 +132,30 @@ public class WorldController : MonoBehaviour
             }
         }
 	}
+
+    /// <summary>
+    /// Changes the active room to the RoomController passed to it.
+    /// </summary>
+    public void ChangeRoom(RoomController room)
+    {
+        activeRoom = room;
+    }
+
+    /// <summary>
+    /// Stops the current BGM track, then plays the AudioClip passed to it.
+    /// If arg == null evaluates as true, just stops the BGM. (no BGM)
+    /// </summary>
+    public void ChangeBGM(AudioClip bgm)
+    {
+        Debug.Log(bgm);
+        if (_BGM0.clip != bgm)
+        {
+            _BGM0.Stop();
+            if (bgm != null)
+            {
+                _BGM0.clip = bgm;
+                _BGM0.Play();
+            }
+        }
+    }
 }

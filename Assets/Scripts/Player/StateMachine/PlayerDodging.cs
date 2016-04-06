@@ -10,7 +10,7 @@ public class PlayerDodging : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        roomColliders = animator.gameObject.GetComponent<PlayerController>().world.cameraController.activeRoom.Colliders;
+        roomColliders = animator.gameObject.GetComponent<PlayerController>().world.activeRoom.Colliders;
         collider = animator.GetComponent<Collider2D>();
     }
 

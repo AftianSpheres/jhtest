@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// MonoBehavior providing shared state and functionality for all enemy types.
+/// </summary>
 [RequireComponent (typeof(RegisteredSprite))]
 public class CommonEnemyController : MonoBehaviour
 {
@@ -75,11 +78,17 @@ public class CommonEnemyController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Kills an enemy.
+    /// </summary>
     void Die()
     {
         animator.SetBool("Dead", true);
     }
 
+    /// <summary>
+    /// Hits an enemy with the bullet passed as argument.
+    /// </summary>
     void Hit(BulletController bullet)
     {
         if (animator.GetInteger("InvulnTime") >= 0)
@@ -100,6 +109,12 @@ public class CommonEnemyController : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// ...also kills an enemy?
+    /// This should, uh, probably be refactored to something sane.
+    /// This is the final "finish the animation, we dead dead" part, though.
+    /// So, uh: don't use this outside of the attached animator.
+    /// </summary>
     public void Kill ()
     {
         animator.Play(DefaultStateHash);
@@ -114,6 +129,9 @@ public class CommonEnemyController : MonoBehaviour
         flicker.skip = true;
     }
 
+    /// <summary>
+    /// Respawns an enemy.
+    /// </summary>
     public void Respawn ()
     {
         renderer.enabled = true;
@@ -121,17 +139,23 @@ public class CommonEnemyController : MonoBehaviour
         animator.SetBool("Dead", false);
         isDead = false;
         flicker.skip = false;
-        if (room.world.cameraController.activeRoom != room)
+        if (room.world.activeRoom != room)
         {
             register.Toggled = false;
         }
     }
 
+    /// <summary>
+    /// Should trigger hitstun. Does not trigger hitstun.
+    /// </summary>
     void TriggerHitstun(BulletController bullet)
     {
 
     }
 
+    /// <summary>
+    /// Triggers temporary i-frames.
+    /// </summary>
     void TriggerInvuln()
     {
         animator.SetInteger("InvulnTime", InvulnTime);

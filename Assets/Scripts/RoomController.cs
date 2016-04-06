@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// A room. Stores room data. Does room things.
+/// </summary>
 public class RoomController : MonoBehaviour
 {
     public WorldController world;
+    public AudioClip bgm;
     public RegisteredSprite[] Enemies;
     public RegisteredSprite[] NonEnemyOccupants;
     public mu_Checkpoint RoomCheckpoint;
@@ -44,7 +48,7 @@ public class RoomController : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-        if (world.cameraController.activeRoom == this)
+        if (world.activeRoom == this)
         {
             if (isActiveRoom == false)
             {
@@ -65,6 +69,9 @@ public class RoomController : MonoBehaviour
         }
 	}
 
+    /// <summary>
+    /// Respawns respawnable room elements.
+    /// </summary>
     public void Refresh ()
     {
         for (int i = 0; i < Enemies.Length; i++)
@@ -80,6 +87,9 @@ public class RoomController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Wakes up any RegisteredSprites attached to the room.
+    /// </summary>
     void WakeUpOccupants ()
     {
         for (int i = 0; i < Enemies.Length; i++)
@@ -88,6 +98,7 @@ public class RoomController : MonoBehaviour
         }
     }
 
+#if UNITY_EDITOR
     void OnDrawGizmosSelected()
     {
 
@@ -98,5 +109,5 @@ public class RoomController : MonoBehaviour
         Gizmos.DrawLine(new Vector3(bounds.min.x, bounds.max.y, bounds.min.z - 100), new Vector3(bounds.max.x, bounds.max.y, bounds.min.z - 100));
 
     }
-
+#endif
 }

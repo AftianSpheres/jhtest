@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Manages weapon graphics & offsets for bullet origin.
+/// </summary>
 public class PlayerBulletOrigin : MonoBehaviour
 {
     public PlayerController master;
@@ -8,12 +11,6 @@ public class PlayerBulletOrigin : MonoBehaviour
     public Sprite[] spriteSet_00;
     public Sprite[] spriteSet_01;
     private static Vector3[] offsets = { new Vector3(1, -5, 0), new Vector3(7, -1, 0), new Vector3(-1, -5, 0), new Vector3(7, -5, 0) };
-
-
-	// Use this for initialization
-	void Start () {
-	
-	}
 	
 	// Update is called once per frame
 	void Update ()

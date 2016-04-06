@@ -2,6 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+/// Manages a specialized "only bullets" object pool.
+/// </summary>
 public class BulletPool : MonoBehaviour
 {
     public WorldController world;
@@ -30,9 +33,13 @@ public class BulletPool : MonoBehaviour
 	    
 	}
 
+    /// <summary>
+    /// Fires a bullet from the pool.
+    /// Takes a shitload of arguments, but luckily the names & types are intuitive enough.
+    /// </summary>
     public void FireBullet(PlayerWeapon shot, float speed, int damage, int weight, Vector3 to, Vector3 from, bool pierce = false)
     {
-        if (world.cameraController.activeRoom != null)
+        if (world.activeRoom != null)
         {
             BulletController bulletController = pool.Dequeue();
             bulletController.gameObject.SetActive(true);
