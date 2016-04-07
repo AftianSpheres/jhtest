@@ -209,7 +209,7 @@ public class CameraController : MonoBehaviour
         WindowLayer.transform.position = new Vector3(room.bounds.center.x, room.bounds.center.y + 8, WindowLayer.transform.position.z);
         while (i < FadeDuration)
         {
-            if (i == 1)
+            if (i == 0)
             {
                 world.Curtain.SetActive(true);
                 world.Curtain.GetComponent<SpriteRenderer>().color = Color.white;

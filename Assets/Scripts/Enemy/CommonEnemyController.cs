@@ -67,7 +67,7 @@ public class CommonEnemyController : MonoBehaviour
             {
                 animator.enabled = false;
             }
-        }
+        }     
 	}
 
     void OnTriggerEnter2D(Collider2D other)

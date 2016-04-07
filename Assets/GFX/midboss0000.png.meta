@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: b39c989d35487ae4eaf98426adf4f487
-timeCreated: 1459819839
+timeCreated: 1459989471
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -98,10 +98,10 @@ TextureImporter:
     - name: midboss0000_s0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 95
+        x: 68
+        y: 64
         width: 24
-        height: 16
+        height: 32
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -109,10 +109,10 @@ TextureImporter:
     - name: midboss0000_s1
       rect:
         serializedVersion: 2
-        x: 5
-        y: 79
-        width: 23
-        height: 15
+        x: 36
+        y: 64
+        width: 24
+        height: 32
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,9 +121,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 4
-        y: 54
+        y: 80
         width: 24
-        height: 24
+        height: 32
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,8 +131,8 @@ TextureImporter:
     - name: midboss0000_rise1
       rect:
         serializedVersion: 2
-        x: 36
-        y: 63
+        x: 68
+        y: 96
         width: 24
         height: 32
       alignment: 1
@@ -142,10 +142,10 @@ TextureImporter:
     - name: midboss0000_spotn
       rect:
         serializedVersion: 2
-        x: 44
-        y: 48
-        width: 8
-        height: 4
+        x: 100
+        y: 96
+        width: 24
+        height: 32
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,10 +153,10 @@ TextureImporter:
     - name: midboss0000_spotl
       rect:
         serializedVersion: 2
-        x: 16
-        y: 40
-        width: 8
-        height: 4
+        x: 100
+        y: 32
+        width: 24
+        height: 32
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,10 +164,10 @@ TextureImporter:
     - name: midboss0000_spotr
       rect:
         serializedVersion: 2
-        x: 32
-        y: 40
-        width: 8
-        height: 4
+        x: 100
+        y: 64
+        width: 24
+        height: 32
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,10 +175,10 @@ TextureImporter:
     - name: midboss0000_shade
       rect:
         serializedVersion: 2
-        x: 4
-        y: 24
+        x: 36
+        y: 32
         width: 24
-        height: 14
+        height: 32
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -186,10 +186,10 @@ TextureImporter:
     - name: midboss0000_glow
       rect:
         serializedVersion: 2
-        x: 36
-        y: 15
+        x: 68
+        y: 32
         width: 24
-        height: 14
+        height: 32
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
