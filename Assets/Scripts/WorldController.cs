@@ -12,6 +12,8 @@ using System.Collections.Generic;
 public class WorldController : MonoBehaviour
 {
     private GameObject universe;
+    private float TimeBuffer;
+    private float NameHashBuffer;
     [SerializeField]
     private int worldSize_X;
     public int WorldSize_X
@@ -183,6 +185,11 @@ public class WorldController : MonoBehaviour
             {
                 _BGM0.clip = bgm;
                 _BGM0.Play();
+                _BGM0.time = TimeBuffer;
+            }
+            else
+            {
+                _BGM0.clip = default(AudioClip);
             }
         }
     }

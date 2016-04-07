@@ -10,4 +10,5 @@ public static class HammerConstants
     public static int LogicalResolution_Vertical = 144;
     public static int SizeOfOneTile = 16;
     public static int HeightOfHUD = 16;
+
 }

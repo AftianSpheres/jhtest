@@ -84,7 +84,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\MidBossWait.cs" />
     <Compile Include="Assets\Scripts\BulletController.cs" />
     <Compile Include="Assets\Scripts\BulletPool.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
@@ -92,6 +91,8 @@
     <Compile Include="Assets\Scripts\Enemy\0_Jelly\EnemyJellyFloat.cs" />
     <Compile Include="Assets\Scripts\Enemy\0_Jelly\EnemyJellyHit.cs" />
     <Compile Include="Assets\Scripts\Enemy\0_Jelly\EnemyJellyMove.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Boss\MidBoss\StateMachine\MidBossHide.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Boss\MidBoss\StateMachine\MidBossWait.cs" />
     <Compile Include="Assets\Scripts\Enemy\Common\CommonEnemyInvuln.cs" />
     <Compile Include="Assets\Scripts\Enemy\CommonEnemyController.cs" />
     <Compile Include="Assets\Scripts\Enemy\CommonEnemyDead.cs" />
