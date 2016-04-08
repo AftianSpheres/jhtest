@@ -4,15 +4,16 @@ using System.Collections;
 
 public static class ExpensiveAccurateCollision
 {
-    public static void CollideWithScenery(Animator animator, Collider[] roomColliders, Vector3 PosMod, Collider2D Collider)
+    public static bool CollideWithScenery(Animator animator, Collider[] roomColliders, Vector3 PosMod, Collider2D Collider)
     {
         if (animator.gameObject.GetComponent<PlayerController>() != null && animator.gameObject.GetComponent<PlayerController>().IgnoreCollision == true)
         {
             animator.transform.position += PosMod;
-            return;
+            return false;
         }
         Vector3 KnownGood = animator.transform.position;
         bool Collided = false;
+        bool ret = false;
         float ax = PosMod.x / Math.Abs(PosMod.x);
         float ay = PosMod.y / Math.Abs(PosMod.y);
         for (int i = 1; i < Math.Abs(PosMod.y) + 1; i++)
@@ -30,6 +31,7 @@ public static class ExpensiveAccurateCollision
                 KnownGood = animator.transform.position;
             }
         }
+        ret = Collided;
         Collided = false;
         animator.transform.position = KnownGood;
         for (int i = 1; i < Math.Abs(PosMod.x) + 1; i++)
@@ -47,6 +49,11 @@ public static class ExpensiveAccurateCollision
                 KnownGood = animator.transform.position;
             }
         }
+        if (ret == false)
+        {
+            ret = Collided;
+        }
         animator.transform.position = KnownGood;
+        return ret;
     }
 }

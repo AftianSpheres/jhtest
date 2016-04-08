@@ -29,6 +29,8 @@ public class CommonEnemyController : MonoBehaviour
     private Vector3 StartingPos;
     private int DefaultStateHash;
     public bool isDead = false;
+    public bool Vulnerable;
+    public bool Collideable;
     public FlickerySprite flicker;
 
 
@@ -72,7 +74,7 @@ public class CommonEnemyController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("PlayerBullet") == true)
+        if (other.CompareTag("PlayerBullet") == true && Vulnerable == true)
         {
             Hit(other.gameObject.GetComponent<BulletController>());
         }
@@ -89,7 +91,7 @@ public class CommonEnemyController : MonoBehaviour
     /// <summary>
     /// Hits an enemy with the bullet passed as argument.
     /// </summary>
-    void Hit(BulletController bullet)
+    public void Hit(BulletController bullet)
     {
         if (animator.GetInteger("InvulnTime") >= 0)
         {

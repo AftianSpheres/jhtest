@@ -21,11 +21,11 @@ public class MidBossHide : StateMachineBehaviour
         }
 
         // Otherwise: Decide how many charges we're going to make while in shadow form.
-        // 1-3 above 50% HP, 2-4 above 25%, 3-5 after that
+        // 2-4 above 50% HP, 3-5 above 25%, 4-6 after that
 
-        else
+        else if (animator.GetInteger("ChargeCount") < 0) // we set ChargeCount to -1 before we finish up - so being < 0 means we just entered this state from neutral
         {
-            ChargeCount = UnityEngine.Random.Range(1, 4);
+            ChargeCount = UnityEngine.Random.Range(2, 5);
             if (common.CurrentHP <= common.MaxHP / 4)
             {
                 ChargeCount += 2;
@@ -34,6 +34,12 @@ public class MidBossHide : StateMachineBehaviour
             {
                 ChargeCount += 1;
             }
+        }
+
+        else // if it's exactly 0, we're done
+        {
+            animator.SetTrigger("Unhide");
+            animator.SetInteger("ChargeCount", -1);
         }
 	}
 
@@ -45,7 +51,7 @@ public class MidBossHide : StateMachineBehaviour
 
         if (FrameCtr > 30)
         {
-            Vector3 TransformOffset = common.room.world.player.transform.position - animator.transform.position;
+            Vector3 TransformOffset = common.room.world.player.collider.bounds.center - common.collider.bounds.center;
             float nf = 1 / (Math.Abs(TransformOffset.x) + Math.Abs(TransformOffset.y));
             animator.SetFloat("ChargeHeading_X", nf * TransformOffset.x * 3);
             animator.SetFloat("ChargeHeading_Y", nf * TransformOffset.y * 3);
@@ -62,6 +68,8 @@ public class MidBossHide : StateMachineBehaviour
                 animator.SetInteger("ChargeDir", (int)Direction.Right);
             }
             animator.SetTrigger("Charge");
+            ChargeCount--;
+            animator.SetInteger("ChargeCount", ChargeCount);
         }
         FrameCtr++;
 	}

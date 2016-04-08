@@ -36,7 +36,7 @@ public class MidBossWait : StateMachineBehaviour
             {
                 AttackThisFrame = true;
             }
-            else if (Random.Range(common.MaxHP - common.CurrentHP, common.MaxHP *300f) < common.MaxHP)
+            else if (Random.Range(common.MaxHP - common.CurrentHP, common.MaxHP *150f) < common.MaxHP)
             {
                 AttackThisFrame = true;
                 if (AttackThisFrame == true)
