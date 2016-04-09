@@ -27,6 +27,7 @@ public class CommonEnemyController : MonoBehaviour
     public int DamageQueue;
     private int HitFlashCounter;
     private Vector3 StartingPos;
+    public Vector3 StartingCenter;
     private int DefaultStateHash;
     public bool isDead = false;
     public bool Vulnerable;
@@ -39,6 +40,7 @@ public class CommonEnemyController : MonoBehaviour
 	void Awake ()
     {
         StartingPos = transform.position;
+        StartingCenter = collider.bounds.center;
         DefaultStateHash = animator.GetCurrentAnimatorStateInfo(0).fullPathHash;
 	}
 	
@@ -116,6 +118,7 @@ public class CommonEnemyController : MonoBehaviour
     /// This should, uh, probably be refactored to something sane.
     /// This is the final "finish the animation, we dead dead" part, though.
     /// So, uh: don't use this outside of the attached animator.
+    /// (exception to that rule: Generic Fleshy Things that just sit and die when they're killed)
     /// </summary>
     public void Kill ()
     {

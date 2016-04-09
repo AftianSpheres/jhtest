@@ -16,6 +16,7 @@ GameObject:
   - 82: {fileID: 8202962}
   - 114: {fileID: 11419394}
   - 95: {fileID: 9550872}
+  - 114: {fileID: 11483382}
   m_Layer: 0
   m_Name: MidBoss_egg
   m_TagString: Enemy
@@ -30,7 +31,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148686}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 32, y: 48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -63,7 +64,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 7, y: -7}
+  m_Offset: {x: 8, y: -8}
   serializedVersion: 2
   m_Size: {x: 10, y: 10}
 --- !u!82 &8202962
@@ -149,7 +150,7 @@ Animator:
   m_GameObject: {fileID: 148686}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f1d71df873298364aa2574f066a653b5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -168,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 329f6588bd90d9e4eb35faee6916447d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21225052}
   skip: 0
 --- !u!114 &11419394
 MonoBehaviour:
@@ -182,7 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room: {fileID: 0}
-  Toggled: 1
+  Toggled: 0
 --- !u!114 &11465698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -203,19 +204,32 @@ MonoBehaviour:
   renderer: {fileID: 21225052}
   defaultMat: {fileID: 2100000, guid: 5527276efeeacba40a1bff2dd0a0b32c, type: 2}
   flashMat: {fileID: 2100000, guid: abbc8e588022c394d9861da9076b7438, type: 2}
-  Weight: 3
+  Weight: 2147483647
   Heading: {x: 0, y: 0, z: 0}
   collider: {fileID: 6104210}
-  CurrentHP: 10
-  MaxHP: 10
+  CurrentHP: 1
+  MaxHP: 1
   CollideDmg: 25
   ShotDmg: 0
   InvulnTime: 0
   DamageQueue: 0
+  StartingCenter: {x: 0, y: 0, z: 0}
   isDead: 0
   Vulnerable: 1
   Collideable: 1
   flicker: {fileID: 11408108}
+--- !u!114 &11483382
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55af3e3a361306d468104a718828a9d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  common: {fileID: 11465698}
 --- !u!212 &21225052
 SpriteRenderer:
   m_ObjectHideFlags: 1

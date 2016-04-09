@@ -4,7 +4,7 @@ using System.Collections;
 public class MidBossVuln : StateMachineBehaviour
 {
     private int TossCtr;
-    private int FrameCtr = 0;
+    private int FrameCtr;
     private CommonEnemyController common;
     private EnemyBossMidBoss module;
 
@@ -14,14 +14,16 @@ public class MidBossVuln : StateMachineBehaviour
         common = animator.gameObject.GetComponent<CommonEnemyController>();
         module = common.module as EnemyBossMidBoss;
         module.Attack(BossMidBoss_Attacks.ArrowRain);
+        FrameCtr = 0;
 	}
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-	    if (FrameCtr > 85)
+	    if (FrameCtr > 210)
         {
             animator.SetTrigger("Recover");
+            animator.SetBool("ChargeIntoNeutral", true);
         }
         FrameCtr++;
 	}

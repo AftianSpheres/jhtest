@@ -4,15 +4,16 @@ using System.Collections;
 public class MidBossWait : StateMachineBehaviour
 {
     private CommonEnemyController common;
-    private Vector3 PlayerLastFramePos;
-    private int FrameCtr = 0;
+    private EnemyBossMidBoss module;
+    private int FrameCtr;
+    
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         common = animator.gameObject.GetComponent<CommonEnemyController>();
-        PlayerLastFramePos = common.room.world.player.transform.position;
-        animator.transform.position = new Vector3(Mathf.RoundToInt(common.room.bounds.center.x) - HammerConstants.SizeOfOneTile, Mathf.RoundToInt(common.room.bounds.center.y) + common.renderer.sprite.rect.height, 
-            animator.transform.position.z);
+        module = common.module as EnemyBossMidBoss;
+        FrameCtr = 0;
+        animator.SetBool("ChargeIntoNeutral", false);
     }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -23,29 +24,29 @@ public class MidBossWait : StateMachineBehaviour
         FrameCtr++;
 
         // ...if we've spent more than 3/4 of a second, decide whether or not to try and attack.
-        // More common when we're low on health. Always attack if the player is below 33% energy.
+        // Always attack if the player is below 33% energy.
 
-        bool AttackThisFrame = false;
+        bool ChargeThisFrame = false;
 
-        if (FrameCtr > 45)
+        if (FrameCtr % 60 == 0)
+        {
+            module.Attack(BossMidBoss_Attacks.ThingyToss);
+        }
+        else if (FrameCtr > 240)
         {
             if (common.room.world.player.energy.CheckIfCanFireWpn(33, false) == false)
             {
-                AttackThisFrame = true;
+                ChargeThisFrame = true;
             }
-            else if (Random.Range(common.MaxHP - common.CurrentHP, common.MaxHP *150f) < common.MaxHP)
+            else if (Random.Range(0, 90) == 0)
             {
-                AttackThisFrame = true;
+                ChargeThisFrame = true;
             }
-            if (AttackThisFrame == true)
+            if (ChargeThisFrame == true)
             {
                 animator.SetTrigger("Hide");
             }
         }
-
-        // Housekeeping
-
-        PlayerLastFramePos = common.room.world.player.transform.position;
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

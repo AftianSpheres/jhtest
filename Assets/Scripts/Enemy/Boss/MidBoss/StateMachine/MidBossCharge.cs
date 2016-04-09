@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System;
-using System.Collections;
 
 public class MidBossCharge : StateMachineBehaviour {
     private Vector3 ChargeHeading;
@@ -26,6 +25,15 @@ public class MidBossCharge : StateMachineBehaviour {
         if (ExpensiveAccurateCollision.CollideWithScenery(animator, common.room.Colliders, PosMod, common.collider) == true)
         {
             animator.SetTrigger("HitWall");
+        }
+
+        if (animator.GetBool("ChargeIntoNeutral") == true)
+        {
+            if (Mathf.Abs(Mathf.Abs(common.collider.bounds.center.x) - Mathf.Abs(common.StartingCenter.x)) <= 8 &&
+                Mathf.Abs(Mathf.Abs(common.collider.bounds.center.y) - Mathf.Abs(common.StartingCenter.y)) <= 8)
+            {
+                animator.SetTrigger("HitWall");
+            }
         }
 	}
 

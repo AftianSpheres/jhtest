@@ -12,10 +12,25 @@ public class MidBossHide : StateMachineBehaviour
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         common = animator.gameObject.GetComponent<CommonEnemyController>();
+        if (animator.GetInteger("ChargeCount") == 0)
+        {
+            animator.SetTrigger("Unhide");
+            animator.SetInteger("ChargeCount", -1);
+        }
+
+        // First things first: if ChargeIntoNeutral is set, we skip the rest of this state's logic and just... do that.
+
+        else if (animator.GetBool("ChargeIntoNeutral") == true)
+        {
+            animator.SetInteger("ChargeCount", 1); // after this charge: we cool
+            ChargeCount = 1;
+            Vector3 TransformOffset = common.StartingCenter - common.collider.bounds.center;
+            WorkOutDirectionAndCharge(animator, TransformOffset);
+        }
 
         // If we're entering into this with a ChargeCount stored in the animator, we use that.
 
-        if (animator.GetInteger("ChargeCount") > 0)
+        else if (animator.GetInteger("ChargeCount") > 0)
         {
             ChargeCount = animator.GetInteger("ChargeCount");
         }
@@ -35,12 +50,6 @@ public class MidBossHide : StateMachineBehaviour
                 ChargeCount += 1;
             }
         }
-
-        else // if it's exactly 0, we're done
-        {
-            animator.SetTrigger("Unhide");
-            animator.SetInteger("ChargeCount", -1);
-        }
 	}
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -52,24 +61,7 @@ public class MidBossHide : StateMachineBehaviour
         if (FrameCtr > 30)
         {
             Vector3 TransformOffset = common.room.world.player.collider.bounds.center - common.collider.bounds.center;
-            float nf = 1 / (Math.Abs(TransformOffset.x) + Math.Abs(TransformOffset.y));
-            animator.SetFloat("ChargeHeading_X", nf * TransformOffset.x * 3);
-            animator.SetFloat("ChargeHeading_Y", nf * TransformOffset.y * 3);
-            if (Math.Abs(TransformOffset.y) > Math.Abs(TransformOffset.x))
-            {
-                animator.SetInteger("ChargeDir", (int)Direction.Down);
-            }
-            else if (TransformOffset.x < 0)
-            {
-                animator.SetInteger("ChargeDir", (int)Direction.Left);
-            }
-            else
-            {
-                animator.SetInteger("ChargeDir", (int)Direction.Right);
-            }
-            animator.SetTrigger("Charge");
-            ChargeCount--;
-            animator.SetInteger("ChargeCount", ChargeCount);
+            WorkOutDirectionAndCharge(animator, TransformOffset);
         }
         FrameCtr++;
 	}
@@ -88,4 +80,27 @@ public class MidBossHide : StateMachineBehaviour
 	//override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 	//
 	//}
+
+    void WorkOutDirectionAndCharge (Animator animator, Vector3 TransformOffset)
+    {
+        float nf = 1 / (Math.Abs(TransformOffset.x) + Math.Abs(TransformOffset.y));
+        animator.SetFloat("ChargeHeading_X", nf * TransformOffset.x * 3);
+        animator.SetFloat("ChargeHeading_Y", nf * TransformOffset.y * 3);
+        if (Math.Abs(TransformOffset.y) > Math.Abs(TransformOffset.x))
+        {
+            animator.SetInteger("ChargeDir", (int)Direction.Down);
+        }
+        else if (TransformOffset.x < 0)
+        {
+            animator.SetInteger("ChargeDir", (int)Direction.Left);
+        }
+        else
+        {
+            animator.SetInteger("ChargeDir", (int)Direction.Right);
+        }
+        animator.SetTrigger("Charge");
+        ChargeCount--;
+        animator.SetInteger("ChargeCount", ChargeCount);
+        Debug.Log(ChargeCount);
+    }
 }

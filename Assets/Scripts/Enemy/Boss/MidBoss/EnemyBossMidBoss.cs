@@ -12,18 +12,15 @@ public class EnemyBossMidBoss : MonoBehaviour
 {
     public CommonEnemyController common;
     public MidBossHeart heart;
+    public CommonEnemyController[] eyes;
     public bool CurrentlyAttacking = false;
     public bool PanicMode = false;
-    private static int[] VulnerableStates = { Animator.StringToHash("Base Layer.vuln"),
-                                              Animator.StringToHash("Base Layer.ATK: Toss"),
-                                              Animator.StringToHash("Base Layer.ATK: Arrow Rain") };
+    private static int[] VulnerableStates = { Animator.StringToHash("Base Layer.vuln") };
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (common.animator.GetCurrentAnimatorStateInfo(0).fullPathHash == VulnerableStates[0]
-         || common.animator.GetCurrentAnimatorStateInfo(0).fullPathHash == VulnerableStates[1]
-         || common.animator.GetCurrentAnimatorStateInfo(0).fullPathHash == VulnerableStates[2])
+        if (common.animator.GetCurrentAnimatorStateInfo(0).fullPathHash == VulnerableStates[0])
         {
             heart.Vulnerable = true;
         }
@@ -31,11 +28,15 @@ public class EnemyBossMidBoss : MonoBehaviour
         {
             heart.Vulnerable = false;
         }
-        if (common.CurrentHP < (common.MaxHP / 2))
+        PanicMode = true; // ...but this doesn't actually count for anything, unless...
+        for (int i = 0; i < eyes.Length; i++)
         {
-            PanicMode = true;
+            if (eyes[i].isDead == false)
+            {
+                PanicMode = false; // any of the eyes is alive, we wait to start using the bullet-hell version of our arrow rain attack
+            }
         }
-	}
+    }
 
     public void Attack(BossMidBoss_Attacks atk)
     {
@@ -46,6 +47,17 @@ public class EnemyBossMidBoss : MonoBehaviour
                 case BossMidBoss_Attacks.ArrowRain:
                     StartCoroutine(FireArrowRain());
                     break;
+                case BossMidBoss_Attacks.ThingyToss:
+                    Vector3 destination;
+                    destination = new Vector3(float.MinValue, common.collider.bounds.center.y, common.collider.bounds.center.z );
+                    common.room.world.EnemyBullets.FireBullet(PlayerWeapon.GenericEnemyShot, 2.0f, common.ShotDmg, 2, destination, common.collider.bounds.center, true);
+                    destination = new Vector3(float.MaxValue, common.collider.bounds.center.y, common.collider.bounds.center.z);
+                    common.room.world.EnemyBullets.FireBullet(PlayerWeapon.GenericEnemyShot, 2.0f, common.ShotDmg, 2, destination, common.collider.bounds.center, true);
+                    destination = new Vector3(common.collider.bounds.center.x, float.MinValue, common.collider.bounds.center.z);
+                    common.room.world.EnemyBullets.FireBullet(PlayerWeapon.GenericEnemyShot, 2.0f, common.ShotDmg, 2, destination, common.collider.bounds.center, true);
+                    destination = new Vector3(common.collider.bounds.center.x, float.MaxValue, common.collider.bounds.center.z);
+                    common.room.world.EnemyBullets.FireBullet(PlayerWeapon.GenericEnemyShot, 2.0f, common.ShotDmg, 2, destination, common.collider.bounds.center, true);
+                    break;
             }
         }
 
@@ -55,6 +67,7 @@ public class EnemyBossMidBoss : MonoBehaviour
     {
         int i;
         int r = Random.Range(0, 2);
+        CurrentlyAttacking = true;
         if (r == 0 || PanicMode == true)
         {
             i = 0;
@@ -99,5 +112,6 @@ public class EnemyBossMidBoss : MonoBehaviour
                 yield return null;
             }
         }
+        CurrentlyAttacking = false;
     }
 }
