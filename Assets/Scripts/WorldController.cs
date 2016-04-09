@@ -11,7 +11,7 @@ using System.Collections.Generic;
 /// </summary>
 public class WorldController : MonoBehaviour
 {
-    private GameObject universe;
+    private GameObject _universe;
     private float TimeBuffer;
     private float NameHashBuffer;
     [SerializeField]
@@ -101,6 +101,13 @@ public class WorldController : MonoBehaviour
     }
 
     [SerializeField]
+    private PlayerDataManager playerDataManager;
+    public PlayerDataManager PlayerDataManager
+    {
+        get { return playerDataManager; }
+    }
+
+    [SerializeField]
     private int lastSessionFingerprint;
     public int LastSessionFingerprint
     {
@@ -114,8 +121,8 @@ public class WorldController : MonoBehaviour
     {
         rooms = new RoomController[WorldSize_Y, WorldSize_X];
         // Wait for the Universe to come online if need be
-        universe = GameObject.Find("Universe");
-        if (universe == null)
+        _universe = GameObject.Find("Universe");
+        if (_universe == null)
         {
             for (int i = 0; i < transform.childCount; i++)
             {
@@ -125,23 +132,24 @@ public class WorldController : MonoBehaviour
         else
         {
             gameStateManager = GameObject.Find("Universe/GameStateManager").GetComponent<GameStateManager>();
-            Debug.Log(GameStateManager);
+            playerDataManager = GameObject.Find("Universe/PlayerDataManager").GetComponent<PlayerDataManager>();
         }
     }
 
     // Update is called once per frame
     void Update ()
     {
-        if (universe == null)
+        if (_universe == null)
         {
-            universe = GameObject.Find("Universe");
-            if (universe != null)
+            _universe = GameObject.Find("Universe");
+            if (_universe != null)
             {
                 for (int i = 0; i < transform.childCount; i++)
                 {
                     transform.GetChild(i).gameObject.SetActive(true);
                 }
                 gameStateManager = GameObject.Find("Universe/GameStateManager").GetComponent<GameStateManager>();
+                playerDataManager = GameObject.Find("Universe/PlayerDataManager").GetComponent<PlayerDataManager>();
             }
         }
         else

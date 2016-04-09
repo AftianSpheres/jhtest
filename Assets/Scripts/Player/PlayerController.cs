@@ -39,20 +39,21 @@ public class PlayerController : MonoBehaviour {
     public bool Invincible;
     public bool Locked;
     public bool IgnoreCollision;
-    static uint DoubleTapFrameWindow = 20; // no. of frames to check for double-tap sequence over...
-    private float HorizAxisDTapBuffer = 0;
-    private float VertAxisDTapBuffer = 0;
-    private bool HorizAxisReleasedWithinWindow = false;
-    private bool VertAxisReleasedWithinWindow = false;
-    private uint FramesSinceLastDTapEvent = 0;
+    static int DoubleTapFrameWindow = 20; // no. of frames to check for double-tap sequence over...
     private bool DiscardDodgeInputs;
     public int InvulnTime;
+    private int[] DoubleTapWindows = { 0, 0, 0, 0 };
     private static int[] DodgeAllowedStates = { PlayerStateHashes.PlayerStand_D, PlayerStateHashes.PlayerStand_U, PlayerStateHashes.PlayerStand_L, PlayerStateHashes.PlayerStand_R,
     PlayerStateHashes.PlayerWalk_D, PlayerStateHashes.PlayerWalk_U, PlayerStateHashes.PlayerWalk_L, PlayerStateHashes.PlayerWalk_R };
 	
 	// Update is called once per frame
 	void Update ()
     {
+        for (int i = 0; i < DoubleTapWindows.Length; i++)
+        {
+            DoubleTapWindows[i]--;
+        }
+
         if (energy.CurrentEnergy < 1 && animator.GetBool("Dead") == false)
         {
             Die();
@@ -117,7 +118,15 @@ public class PlayerController : MonoBehaviour {
 
         //HeldFire1 bool
 
-        if (Input.GetButton("Fire1"))
+        if (Input.GetKey(KeyCode.Slash) == true)
+        {
+            Debug.Break();
+        }
+        else
+        {
+        }
+
+        if (Input.GetKey(world.PlayerDataManager.K_Fire1) == true)
         {
             animator.SetBool("HeldFire1", true);
         }
@@ -128,7 +137,7 @@ public class PlayerController : MonoBehaviour {
 
         //HeldFire2 bool
 
-        if (Input.GetButton("Fire2"))
+        if (Input.GetKey(world.PlayerDataManager.K_Fire2) == true)
         {
             animator.SetBool("HeldFire2", true);
             animator.SetBool("FireSlotB", true);
@@ -138,85 +147,67 @@ public class PlayerController : MonoBehaviour {
             animator.SetBool("HeldFire2", false);
         }
 
-        // InputRight/InputLeft triggers
-
-        if (Input.GetAxis("Horizontal") != 0 && DiscardDodgeInputs == false)
+        if (DiscardDodgeInputs == false)
         {
-            if (HorizAxisReleasedWithinWindow == true)
+            // InputRight/InputLeft triggers
+
+            if (Input.GetKeyDown(world.PlayerDataManager.K_HorizLeft) == true)
             {
-                if (HorizAxisDTapBuffer > 0 && Input.GetAxis("Horizontal") > 0)
-                {
-                    animator.SetTrigger("InputRight");
-                }
-                else if (HorizAxisDTapBuffer < 0 && Input.GetAxis("Horizontal") < 0)
+                if (DoubleTapWindows[(int)Direction.Left] > 0)
                 {
                     animator.SetTrigger("InputLeft");
                 }
-                HorizAxisReleasedWithinWindow = false;
-                FramesSinceLastDTapEvent = 0;
-                HorizAxisDTapBuffer = 0;
-            }
-            else
-            {
-                HorizAxisDTapBuffer = Input.GetAxis("Horizontal");
-            }
-        }
-        else if (Input.GetAxis("Horizontal") == 0 && HorizAxisDTapBuffer != 0)
-        {
-            HorizAxisReleasedWithinWindow = true;
-        }
-
-        // InputDown/InputUp triggers
-
-        if (Input.GetAxis("Vertical") != 0 && DiscardDodgeInputs == false)
-        {
-            if (VertAxisReleasedWithinWindow == true)
-            {
-                if (VertAxisDTapBuffer > 0 && Input.GetAxis("Vertical") > 0)
+                else
                 {
-                    animator.SetTrigger("InputUp");
+                    DoubleTapWindows[(int)Direction.Left] = DoubleTapFrameWindow;
                 }
-                else if (VertAxisDTapBuffer < 0 && Input.GetAxis("Vertical") < 0)
+            }
+            else if (Input.GetKeyDown(world.PlayerDataManager.K_HorizRight) == true)
+            {
+                if (DoubleTapWindows[(int)Direction.Right] > 0)
+                {
+                    animator.SetTrigger("InputRight");
+                }
+                else
+                {
+                    DoubleTapWindows[(int)Direction.Right] = DoubleTapFrameWindow;
+                }
+            }
+
+            // InputDown/InputUp triggers
+
+            if (Input.GetKeyDown(world.PlayerDataManager.K_VertDown) == true)
+            {
+                if (DoubleTapWindows[(int)Direction.Down] > 0)
                 {
                     animator.SetTrigger("InputDown");
                 }
-                VertAxisReleasedWithinWindow = false;
-                FramesSinceLastDTapEvent = 0;
-                VertAxisDTapBuffer = 0;
+                else
+                {
+                    DoubleTapWindows[(int)Direction.Down] = DoubleTapFrameWindow;
+                }
             }
-            else
+            else if (Input.GetKeyDown(world.PlayerDataManager.K_VertUp) == true)
             {
-                VertAxisDTapBuffer = Input.GetAxis("Vertical");
+                if (DoubleTapWindows[(int)Direction.Up] > 0)
+                {
+                    animator.SetTrigger("InputUp");
+                }
+                else
+                {
+                    DoubleTapWindows[(int)Direction.Up] = DoubleTapFrameWindow;
+                }
             }
-        }
-        else if (Input.GetAxis("Vertical") == 0 && VertAxisDTapBuffer != 0)
-        {
-            VertAxisReleasedWithinWindow = true;
-        }
-
-        // Double-tap detection housekeeping
-
-        if (HorizAxisDTapBuffer != 0 || VertAxisDTapBuffer != 0)
-        {
-            FramesSinceLastDTapEvent++;
-        }
-        if (FramesSinceLastDTapEvent > DoubleTapFrameWindow || DiscardDodgeInputs == true)
-        {
-            HorizAxisReleasedWithinWindow = false;
-            VertAxisReleasedWithinWindow = false;
-            FramesSinceLastDTapEvent = 0;
-            HorizAxisDTapBuffer = 0;
-            VertAxisDTapBuffer = 0;
         }
 
         // HeldRight/HeldLeft bools
 
-        if (Input.GetAxis("Horizontal") > 0)
+        if (Input.GetKey(world.PlayerDataManager.K_HorizRight) == true)
         {
             animator.SetBool("HeldRight", true);
             animator.SetBool("HeldLeft", false);
         }
-        else if (Input.GetAxis("Horizontal") < 0)
+        else if (Input.GetKey(world.PlayerDataManager.K_HorizLeft) == true)
         {
             animator.SetBool("HeldRight", false);
             animator.SetBool("HeldLeft", true);
@@ -229,12 +220,12 @@ public class PlayerController : MonoBehaviour {
 
         // HeldDown/HeldUp bools
 
-        if (Input.GetAxis("Vertical") > 0)
+        if (Input.GetKey(world.PlayerDataManager.K_VertUp) == true)
         {
             animator.SetBool("HeldUp", true);
             animator.SetBool("HeldDown", false);
         }
-        else if (Input.GetAxis("Vertical") < 0)
+        else if (Input.GetKey(world.PlayerDataManager.K_VertDown) == true)
         {
             animator.SetBool("HeldUp", false);
             animator.SetBool("HeldDown", true);

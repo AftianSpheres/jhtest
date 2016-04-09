@@ -8,20 +8,21 @@ using System.Collections.Generic;
 public class BulletPool : MonoBehaviour
 {
     public WorldController world;
-    private Queue<BulletController> pool;
+    public Queue<BulletController> q;
     public int MaximumAllowedBullets;
     public GameObject prefab;
+    public Sprite[] frames;
 
     // Use this for initialization
     void Start ()
     {
-        pool = new Queue<BulletController>(MaximumAllowedBullets);
+        q = new Queue<BulletController>(MaximumAllowedBullets);
         for (int i = 0; i < MaximumAllowedBullets; i++)
         {
             GameObject bullet = Instantiate(prefab);
             BulletController bulletController = bullet.GetComponent<BulletController>();
             bulletController.world = world;
-            pool.Enqueue(bulletController);
+            q.Enqueue(bulletController);
             bullet.gameObject.SetActive(false);
             bullet.transform.SetParent(transform);
         }
@@ -41,9 +42,9 @@ public class BulletPool : MonoBehaviour
     {
         if (world.activeRoom != null)
         {
-            BulletController bulletController = pool.Dequeue();
+            BulletController bulletController = q.Dequeue();
             bulletController.gameObject.SetActive(true);
-            bulletController.Fire(shot, speed, damage, weight, from, to, pool, pierce);
+            bulletController.Fire(shot, speed, damage, weight, from, to, this, pierce);
         }
     }
 }

@@ -187,6 +187,7 @@ public class CameraController : MonoBehaviour
             }
             WindowLayer.transform.position = new Vector3(WindowLayer.transform.position.x + adj_x, WindowLayer.transform.position.y + adj_y, WindowLayer.transform.position.z);
             rect.center = new Vector2(WindowLayer.transform.position.x, WindowLayer.transform.position.y - (HammerConstants.HeightOfHUD / 2));
+
         }
     }
 

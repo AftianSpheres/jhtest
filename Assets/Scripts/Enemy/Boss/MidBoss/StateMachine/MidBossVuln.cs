@@ -5,11 +5,15 @@ public class MidBossVuln : StateMachineBehaviour
 {
     private int TossCtr;
     private int FrameCtr = 0;
+    private CommonEnemyController common;
+    private EnemyBossMidBoss module;
 
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-	   
+        common = animator.gameObject.GetComponent<CommonEnemyController>();
+        module = common.module as EnemyBossMidBoss;
+        module.Attack(BossMidBoss_Attacks.ArrowRain);
 	}
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

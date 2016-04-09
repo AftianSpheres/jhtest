@@ -41,7 +41,10 @@ namespace UnityTileMap
                 m_settings = value;
 
                 if (m_material == null)
-                    m_material = new Material(Shader.Find("Sprites/Default")) {color = Color.white};
+                {
+                    m_material = new Material(Shader.Find("Sprites/EZ"));
+                }
+
 
                 m_mesh = CreateMesh();
 
@@ -55,7 +58,14 @@ namespace UnityTileMap
 
         protected Material Material
         {
-            get { return m_material ?? (m_material = new Material(Shader.Find("Sprites/Default")) {color = Color.white}); }
+            get
+            {
+                if (m_material == null)
+                {
+                    m_material = new Material(Shader.Find("Sprites/Default"));
+                }
+                return m_material;
+            }
         }
 
         protected Texture MaterialTexture

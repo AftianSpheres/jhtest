@@ -8,7 +8,9 @@ public enum PlayerWeapon
     WeenieGun,
     Shotgun,
 
-    EnemyShot = 100000
+    GenericEnemyShot = 100000,
+    MidBoss_Arrow_Vert,
+    MidBoss_Arrow_Horiz
 }
 
 public class BulletController : MonoBehaviour
@@ -24,7 +26,8 @@ public class BulletController : MonoBehaviour
     public bool Homing;
     public Vector3 TargetPosition;
     new public BoxCollider2D collider;
-    private Queue<BulletController> pool;
+    new public SpriteRenderer renderer;
+    private Queue<BulletController> q;
     private Collider[] roomColliders;
     public Transform HomingTarget;
 
@@ -36,13 +39,13 @@ public class BulletController : MonoBehaviour
     /// <summary>
     /// Called when we recover a bullet to use with a weapon.
     /// </summary>
-    public void Fire (PlayerWeapon shot, float speed, int damage, int weight, Vector3 source, Vector3 to, Queue<BulletController> q, bool pierce)
+    public void Fire (PlayerWeapon shot, float speed, int damage, int weight, Vector3 source, Vector3 to, BulletPool pool, bool pierce)
     {
         roomColliders = world.activeRoom.Colliders;
         Damage = damage;
         Pierce = pierce;
         Weight = weight;
-        pool = q;
+        q = pool.q;
         Speed = speed;
         ShotType = shot;
         TargetPosition = to;
@@ -52,11 +55,20 @@ public class BulletController : MonoBehaviour
         float run = TargetPosition.x - transform.position.x;
         float normalizationFactor = 1 / (Math.Abs(rise) + Math.Abs(run));
         Heading = new Vector2(normalizationFactor * run * Speed, normalizationFactor * rise * Speed);
+        switch (ShotType)
+        {
+            case PlayerWeapon.MidBoss_Arrow_Vert:
+                renderer.sprite = pool.frames[1];
+                break;
+            case PlayerWeapon.MidBoss_Arrow_Horiz:
+                renderer.sprite = pool.frames[2];
+                break;
+        }
     }
 	
     void Retire ()
     {
-        pool.Enqueue(this);
+        q.Enqueue(this);
         gameObject.SetActive(false);
     }
 

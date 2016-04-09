@@ -6,6 +6,7 @@ public class PlayerDodging : StateMachineBehaviour
 {
     private Collider[] roomColliders;
     private Collider2D collider;
+    bool DirReleased;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -60,7 +61,7 @@ public class PlayerDodging : StateMachineBehaviour
                 }
                 else
                 {
-                    animator.speed = 1.25f;
+                    animator.speed = 1.1f;
                 }
             }
             else if (animator.GetCurrentAnimatorStateInfo(0).IsTag("FaceUp"))
@@ -87,7 +88,7 @@ public class PlayerDodging : StateMachineBehaviour
                 }
                 else
                 {
-                    animator.speed = 1.25f;
+                    animator.speed = 1.1f;
                 }
             }
             else if (animator.GetCurrentAnimatorStateInfo(0).IsTag("FaceLeft"))
@@ -114,7 +115,7 @@ public class PlayerDodging : StateMachineBehaviour
                 }
                 else
                 {
-                    animator.speed = 1.25f;
+                    animator.speed = 1.1f;
                 }
             }
             else if (animator.GetCurrentAnimatorStateInfo(0).IsTag("FaceRight"))
@@ -141,7 +142,7 @@ public class PlayerDodging : StateMachineBehaviour
                 }
                 else
                 {
-                    animator.speed = 1.25f;
+                    animator.speed = 1.1f;
                 }
             }
         }

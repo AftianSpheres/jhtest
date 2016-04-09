@@ -16,6 +16,8 @@ public class StylisticHacksManager : Manager<StylisticHacksManager>
 	// Use this for initialization
 	void Start () {
         Application.targetFrameRate = 60;
+        QualitySettings.anisotropicFiltering = UnityEngine.AnisotropicFiltering.Disable;
+        QualitySettings.antiAliasing = 0;
         QualitySettings.vSyncCount = 0;
         sprites = new Queue<FlickerySprite>();
 
@@ -54,7 +56,7 @@ public class StylisticHacksManager : Manager<StylisticHacksManager>
             }
             if (SpritesOK == false)
             {
-                Application.targetFrameRate = 30;
+                Application.targetFrameRate = 60 - Mathf.RoundToInt((60f / (sprites.Count)));
             }
             else
             {

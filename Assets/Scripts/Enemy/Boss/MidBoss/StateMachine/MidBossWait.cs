@@ -11,6 +11,8 @@ public class MidBossWait : StateMachineBehaviour
     {
         common = animator.gameObject.GetComponent<CommonEnemyController>();
         PlayerLastFramePos = common.room.world.player.transform.position;
+        animator.transform.position = new Vector3(Mathf.RoundToInt(common.room.bounds.center.x) - HammerConstants.SizeOfOneTile, Mathf.RoundToInt(common.room.bounds.center.y) + common.renderer.sprite.rect.height, 
+            animator.transform.position.z);
     }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -19,16 +21,11 @@ public class MidBossWait : StateMachineBehaviour
         // Housekeeping
 
         FrameCtr++;
-        Vector3 PosMod = common.room.world.player.transform.position - PlayerLastFramePos;
-        
-        // Match the player's movements
-
-        ExpensiveAccurateCollision.CollideWithScenery(animator, common.room.Colliders, PosMod, common.collider);
 
         // ...if we've spent more than 3/4 of a second, decide whether or not to try and attack.
         // More common when we're low on health. Always attack if the player is below 33% energy.
 
-        bool AttackThisFrame;
+        bool AttackThisFrame = false;
 
         if (FrameCtr > 45)
         {
@@ -39,10 +36,10 @@ public class MidBossWait : StateMachineBehaviour
             else if (Random.Range(common.MaxHP - common.CurrentHP, common.MaxHP *150f) < common.MaxHP)
             {
                 AttackThisFrame = true;
-                if (AttackThisFrame == true)
-                {
-                    animator.SetTrigger("Hide");
-                }
+            }
+            if (AttackThisFrame == true)
+            {
+                animator.SetTrigger("Hide");
             }
         }
 

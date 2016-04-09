@@ -228,6 +228,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   common: {fileID: 11452086}
   heart: {fileID: 11454002}
+  CurrentlyAttacking: 0
+  PanicMode: 0
 --- !u!114 &11452086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -313,7 +315,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300004, guid: b39c989d35487ae4eaf98426adf4f487, type: 3}
+  m_Sprite: {fileID: 21300008, guid: b39c989d35487ae4eaf98426adf4f487, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
