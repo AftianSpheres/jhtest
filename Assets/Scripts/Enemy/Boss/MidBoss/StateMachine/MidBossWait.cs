@@ -14,6 +14,7 @@ public class MidBossWait : StateMachineBehaviour
         module = common.module as EnemyBossMidBoss;
         FrameCtr = 0;
         animator.SetBool("ChargeIntoNeutral", false);
+        
     }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -22,6 +23,40 @@ public class MidBossWait : StateMachineBehaviour
         // Housekeeping
 
         FrameCtr++;
+
+        // Align with the player but keep our distance
+
+        float d = Vector3.Distance(common.collider.bounds.center, common.room.world.player.collider.bounds.center);
+
+        if (d < 128)
+        {
+            float dx = Mathf.Abs(common.collider.bounds.center.x - common.room.world.player.collider.bounds.center.x);
+            float dy = Mathf.Abs(common.collider.bounds.center.y - common.room.world.player.collider.bounds.center.y);
+
+            if (dx > dy)
+            {
+                if (common.collider.bounds.center.y > common.room.world.player.collider.bounds.center.y)
+                {
+                    ExpensiveAccurateCollision.CollideWithScenery(animator, common.room.Colliders, Vector3.down, common.collider);
+                }
+                else
+                {
+                    ExpensiveAccurateCollision.CollideWithScenery(animator, common.room.Colliders, Vector3.up, common.collider);
+                }
+            }
+            else
+            {
+                if (common.collider.bounds.center.x > common.room.world.player.collider.bounds.center.x)
+                {
+                    ExpensiveAccurateCollision.CollideWithScenery(animator, common.room.Colliders, Vector3.left, common.collider);
+                }
+                else
+                {
+                    ExpensiveAccurateCollision.CollideWithScenery(animator, common.room.Colliders, Vector3.right, common.collider);
+                }
+            }
+
+        }
 
         // ...if we've spent more than 3/4 of a second, decide whether or not to try and attack.
         // Always attack if the player is below 33% energy.

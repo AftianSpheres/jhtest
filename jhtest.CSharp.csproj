@@ -84,10 +84,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\DummyEnemyModule.cs" />
-    <Compile Include="Assets\Scripts\BulletController.cs" />
-    <Compile Include="Assets\Scripts\BulletPool.cs" />
-    <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Enemy\0_Jelly\EnemyJelly.cs" />
     <Compile Include="Assets\Scripts\Enemy\0_Jelly\EnemyJellyFire.cs" />
     <Compile Include="Assets\Scripts\Enemy\0_Jelly\EnemyJellyFloat.cs" />
@@ -102,7 +98,7 @@
     <Compile Include="Assets\Scripts\Enemy\Common\CommonEnemyController.cs" />
     <Compile Include="Assets\Scripts\Enemy\Common\CommonEnemyDead.cs" />
     <Compile Include="Assets\Scripts\Enemy\Common\CommonEnemyInvuln.cs" />
-    <Compile Include="Assets\Scripts\FlickerySprite.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Common\EnemyModule.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDEnergyBar.cs" />
     <Compile Include="Assets\Scripts\Helpers\ExpensiveAccurateCollision.cs" />
     <Compile Include="Assets\Scripts\Helpers\HammerConstants.cs" />
@@ -123,14 +119,18 @@
     <Compile Include="Assets\Scripts\Player\StateMachine\PlayerStateGroupAllowShooting.cs" />
     <Compile Include="Assets\Scripts\Player\StateMachine\PlayerUpdateFacing.cs" />
     <Compile Include="Assets\Scripts\Player\StateMachine\PlayerWalking.cs" />
-    <Compile Include="Assets\Scripts\RegisteredSprite.cs" />
-    <Compile Include="Assets\Scripts\RoomController.cs" />
-    <Compile Include="Assets\Scripts\WorldController.cs" />
-    <Compile Include="Assets\Scripts\mu_Checkpoint.cs" />
-    <Compile Include="Assets\Scripts\mu_Door.cs" />
-    <Compile Include="Assets\Scripts\mu_FalseWall.cs" />
-    <Compile Include="Assets\Scripts\mu_RoomEvent.cs" />
-    <Compile Include="Assets\Scripts\mu_Warp.cs" />
+    <Compile Include="Assets\Scripts\RoomObjects\RegisteredSprite.cs" />
+    <Compile Include="Assets\Scripts\RoomObjects\mu_Checkpoint.cs" />
+    <Compile Include="Assets\Scripts\RoomObjects\mu_Door.cs" />
+    <Compile Include="Assets\Scripts\RoomObjects\mu_FalseWall.cs" />
+    <Compile Include="Assets\Scripts\RoomObjects\mu_RoomEvent.cs" />
+    <Compile Include="Assets\Scripts\RoomObjects\mu_Warp.cs" />
+    <Compile Include="Assets\Scripts\WorldObjects\BulletController.cs" />
+    <Compile Include="Assets\Scripts\WorldObjects\BulletPool.cs" />
+    <Compile Include="Assets\Scripts\WorldObjects\CameraController.cs" />
+    <Compile Include="Assets\Scripts\WorldObjects\FlickerySprite.cs" />
+    <Compile Include="Assets\Scripts\WorldObjects\RoomController.cs" />
+    <Compile Include="Assets\Scripts\WorldObjects\WorldController.cs" />
     <Compile Include="Assets\Universe\Example\MyManager.cs" />
     <Compile Include="Assets\Universe\Scripts\Manager.cs" />
     <Compile Include="Assets\Universe\Scripts\ManagerBase.cs" />

@@ -5,7 +5,7 @@ using System.Collections;
 /// Enemy-specific behavior module for "enemies" that don't actually HAVE
 /// any AI. 
 /// </summary>
-public class DummyEnemyModule : MonoBehaviour {
+public class EnemyModule : MonoBehaviour {
     public CommonEnemyController common;
 	
 	// Update is called once per frame
@@ -16,4 +16,9 @@ public class DummyEnemyModule : MonoBehaviour {
             common.Kill();
         }
 	}
+
+    public void Respawn ()
+    {
+
+    }
 }

@@ -228,6 +228,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   common: {fileID: 11452086}
   heart: {fileID: 11454002}
+  eyes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   CurrentlyAttacking: 0
   PanicMode: 0
 --- !u!114 &11452086

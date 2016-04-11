@@ -29,8 +29,7 @@ public class MidBossCharge : StateMachineBehaviour {
 
         if (animator.GetBool("ChargeIntoNeutral") == true)
         {
-            if (Mathf.Abs(Mathf.Abs(common.collider.bounds.center.x) - Mathf.Abs(common.StartingCenter.x)) <= 8 &&
-                Mathf.Abs(Mathf.Abs(common.collider.bounds.center.y) - Mathf.Abs(common.StartingCenter.y)) <= 8)
+            if (Vector3.Distance(common.collider.bounds.center, common.StartingCenter) <= 16)
             {
                 animator.SetTrigger("HitWall");
             }

@@ -2,9 +2,8 @@
 using System.Collections;
 
 [RequireComponent(typeof(CommonEnemyController))]
-public class EnemyJelly: MonoBehaviour
+public class EnemyJelly: EnemyModule
 {
-    public CommonEnemyController common;
 
 	// Use this for initialization
 	void Start ()
@@ -37,5 +36,11 @@ public class EnemyJelly: MonoBehaviour
                 common.animator.SetTrigger("Fire");
             }
         }
+    }
+
+    new public void Respawn()
+    {
+        common.animator.ResetTrigger("Fire");
+        common.animator.SetInteger("FloatingFrame", 0);
     }
 }

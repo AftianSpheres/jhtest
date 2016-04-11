@@ -225,6 +225,7 @@ MonoBehaviour:
   ShotDmg: 20
   InvulnTime: 30
   DamageQueue: 0
+  StartingCenter: {x: 0, y: 0, z: 0}
   isDead: 0
   Vulnerable: 1
   Collideable: 1

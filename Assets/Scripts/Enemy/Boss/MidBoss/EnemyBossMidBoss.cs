@@ -8,9 +8,8 @@ public enum BossMidBoss_Attacks
     ThingyToss
 }
 
-public class EnemyBossMidBoss : MonoBehaviour
+public class EnemyBossMidBoss : EnemyModule
 {
-    public CommonEnemyController common;
     public MidBossHeart heart;
     public CommonEnemyController[] eyes;
     public bool CurrentlyAttacking = false;
@@ -36,6 +35,20 @@ public class EnemyBossMidBoss : MonoBehaviour
                 PanicMode = false; // any of the eyes is alive, we wait to start using the bullet-hell version of our arrow rain attack
             }
         }
+    }
+
+    new public void Respawn()
+    {
+        common.animator.ResetTrigger("Hide");
+        common.animator.ResetTrigger("Charge");
+        common.animator.ResetTrigger("Unhide");
+        common.animator.ResetTrigger("HitWall");
+        common.animator.ResetTrigger("Recover");
+        common.animator.SetInteger("ChargeCount", -1);
+        common.animator.SetInteger("ChargeDir", -1);
+        common.animator.SetFloat("ChargeHeading_X", 0f);
+        common.animator.SetFloat("ChargeHeading_Y", 0f);
+        common.animator.SetBool("ChargeIntoNeutral", false);
     }
 
     public void Attack(BossMidBoss_Attacks atk)

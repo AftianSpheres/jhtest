@@ -8,7 +8,7 @@ using System.Collections;
 public class CommonEnemyController : MonoBehaviour
 {
     public RoomController room;
-    public MonoBehaviour module;
+    public EnemyModule module;
     public RegisteredSprite register;
     public Animator animator;
     public AudioClip HitSFX;
@@ -142,6 +142,8 @@ public class CommonEnemyController : MonoBehaviour
         renderer.enabled = true;
         collider.enabled = true;
         animator.SetBool("Dead", false);
+        animator.ResetTrigger("HitHeavy");
+        animator.ResetTrigger("HitLight");
         isDead = false;
         flicker.skip = false;
         if (room.world.activeRoom != room)
