@@ -38,7 +38,7 @@ public class BulletPool : MonoBehaviour
     /// Fires a bullet from the pool.
     /// Takes a shitload of arguments, but luckily the names & types are intuitive enough.
     /// </summary>
-    public void FireBullet(PlayerWeapon shot, float speed, int damage, int weight, Vector3 to, Vector3 from, bool pierce = false)
+    public void FireBullet(WeaponType shot, float speed, int damage, int weight, Vector3 to, Vector3 from, bool pierce = false)
     {
         if (world.activeRoom != null)
         {

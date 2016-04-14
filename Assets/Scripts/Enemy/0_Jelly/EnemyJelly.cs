@@ -17,11 +17,11 @@ public class EnemyJelly: EnemyModule
         if (common.isDead == false && common.register.Toggled == true)
         {
             bool FireThisFrame = true;
-            for (int i = 0; i < common.register.room.Colliders.Length; i++)
+            for (int i = 0; i < common.register.room.collision.allCollision.Length; i++)
             {
-                if (common.register.room.Colliders[i].bounds != null)
+                if (common.register.room.collision.allCollision[i] != null)
                 {
-                    if (common.collider.bounds.Intersects(common.register.room.Colliders[i].bounds))
+                    if (common.collider.bounds.Intersects(common.register.room.collision.allCollision[i]))
                     {
                         FireThisFrame = false;
                     }

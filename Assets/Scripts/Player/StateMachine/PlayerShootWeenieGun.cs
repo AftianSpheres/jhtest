@@ -6,10 +6,12 @@ public class PlayerShootWeenieGun : StateMachineBehaviour
     private bool active;
     private PlayerWeaponManager wpnManager;
     private int FrameCtr;
-    private Collider[] roomColliders;
+    private Bounds[] roomColliders;
     private Collider2D collider;
     private AudioSource source;
     private AudioClip sfx;
+    private int wt;
+    private bool b;
 
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -17,11 +19,21 @@ public class PlayerShootWeenieGun : StateMachineBehaviour
         sfx = Resources.Load("SFX/fire_wg") as AudioClip;
         source = animator.gameObject.GetComponent<AudioSource>();
         animator.SetInteger("HaltFrames", 10);
-        if ((animator.GetInteger("SlotAWpn") == (int)PlayerWeapon.WeenieGun && animator.GetBool("FireSlotB") == false) || (animator.GetInteger("SlotBWpn") == (int)PlayerWeapon.WeenieGun && animator.GetBool("FireSlotB") == true))
+        if (animator.GetBool("FireSlotB") == true)
+        {
+            wt = animator.GetInteger("SlotBWpn");
+            b = true;
+        }
+        else
+        {
+            wt = animator.GetInteger("SlotAWpn");
+            b = false;
+        }
+        if ((wt == (int)WeaponType.pWG || wt == (int)WeaponType.pWGII) && animator.GetBool("FireSlotB") == b)
         {
             active = true;
             wpnManager = animator.gameObject.GetComponent<PlayerController>().wpnManager;
-            roomColliders = animator.gameObject.GetComponent<PlayerController>().world.activeRoom.Colliders;
+            roomColliders = animator.gameObject.GetComponent<PlayerController>().world.activeRoom.collision.allCollision;
             collider = animator.GetComponent<Collider2D>();
         }
         else
@@ -40,7 +52,7 @@ public class PlayerShootWeenieGun : StateMachineBehaviour
             {
                 if ((animator.GetBool("HeldFire1") == true && animator.GetBool("FireSlotB") == false) || (animator.GetBool("HeldFire2") == true && animator.GetBool("FireSlotB") == true))
                 {
-                    wpnManager.FireBullet(PlayerWeapon.WeenieGun);
+                    wpnManager.FireBullet((WeaponType)wt);
                     source.PlayOneShot(sfx, 0.5f);
                     animator.SetBool("FireRoundDone", true);
                     animator.SetBool("Shooting", true);

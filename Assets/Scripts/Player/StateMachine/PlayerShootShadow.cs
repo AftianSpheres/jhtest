@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerShootShotgun : StateMachineBehaviour
+public class PlayerShootShadow : StateMachineBehaviour
 {
     private bool active;
     private PlayerWeaponManager wpnManager;
@@ -14,10 +14,9 @@ public class PlayerShootShotgun : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        sfx = Resources.Load("SFX/fire_sg") as AudioClip;
+        sfx = Resources.Load("SFX/fire_shd") as AudioClip;
         source = animator.gameObject.GetComponent<AudioSource>();
-        animator.SetInteger("HaltFrames", 10);
-        if ((animator.GetInteger("SlotAWpn") == (int)WeaponType.pShotgun && animator.GetBool("FireSlotB") == false) || (animator.GetInteger("SlotBWpn") == (int)WeaponType.pShotgun && animator.GetBool("FireSlotB") == true))
+        if ((animator.GetInteger("SlotAWpn") == (int)WeaponType.pShadow && animator.GetBool("FireSlotB") == false) || (animator.GetInteger("SlotBWpn") == (int)WeaponType.pShadow && animator.GetBool("FireSlotB") == true))
         {
             active = true;
             wpnManager = animator.gameObject.GetComponent<PlayerController>().wpnManager;
@@ -40,32 +39,12 @@ public class PlayerShootShotgun : StateMachineBehaviour
             {
                 if ((animator.GetBool("HeldFire1") == true && animator.GetBool("FireSlotB") == false) || (animator.GetBool("HeldFire2") == true && animator.GetBool("FireSlotB") == true))
                 {
-                    if (wpnManager.master.energy.CheckIfCanFireWpn(PlayerWeaponManager.ShotEnergyCosts[(int)WeaponType.pShotgun]) == true)
+                    if (wpnManager.master.energy.CheckIfCanFireWpn(PlayerWeaponManager.ShotEnergyCosts[(int)WeaponType.pShadow]) == true)
                     {
-                        wpnManager.FireBullet(WeaponType.pShotgun);
-                        animator.SetInteger("HaltFrames", 30);
+                        wpnManager.FireBullet(WeaponType.pShadow);
                         source.PlayOneShot(sfx, 0.5f);
                         animator.SetBool("Shooting", true);
-                        animator.SetInteger("Cooldown", 90);
-                        Vector3 PosMod;
-                        switch (animator.GetInteger("FacingDir"))
-                        {
-                            case 0:
-                                PosMod = new Vector3(0, 2, 0);
-                                break;
-                            case 1:
-                                PosMod = new Vector3(0, -2, 0);
-                                break;
-                            case 2:
-                                PosMod = new Vector3(2, 0, 0);
-                                break;
-                            case 3:
-                                PosMod = new Vector3(-2, 0, 0);
-                                break;
-                            default:
-                                throw new System.Exception("FacingDir out of bounds!");
-                        }
-                        ExpensiveAccurateCollision.CollideWithScenery(animator, roomColliders, PosMod, collider);
+                        animator.SetInteger("Cooldown", 10);
                     }
                 }
             }

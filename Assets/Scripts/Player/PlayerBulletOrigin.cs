@@ -23,7 +23,7 @@ public class PlayerBulletOrigin : MonoBehaviour
         else
         {
             renderer.enabled = true;
-            PlayerWeapon wpn;
+            WeaponType wpn;
             if (master.animator.GetBool("FireSlotB") == true)
             {
                 wpn = master.wpnManager.SlotBWpn;
@@ -34,11 +34,15 @@ public class PlayerBulletOrigin : MonoBehaviour
             }
             switch (wpn)
             {
-                case PlayerWeapon.WeenieGun:
+                case WeaponType.pWG:
+                case WeaponType.pWGII:
                     renderer.sprite = spriteSet_00[master.animator.GetInteger("FacingDir")];
                     break;
-                case PlayerWeapon.Shotgun:
+                case WeaponType.pShotgun:
                     renderer.sprite = spriteSet_01[master.animator.GetInteger("FacingDir")];
+                    break;
+                case WeaponType.pShadow:
+                    renderer.sprite = default(Sprite);
                     break;
             }
             if (master.animator.GetInteger("FacingDir") == 1 || master.animator.GetInteger("FacingDir") == 2)

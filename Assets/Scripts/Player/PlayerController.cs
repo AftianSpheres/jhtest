@@ -29,6 +29,8 @@ public static class PlayerStateHashes
 /// </summary>
 public class PlayerController : MonoBehaviour {
     public WorldController world;
+    new public SpriteRenderer renderer;
+    public FlickerySprite fs;
     public PlayerWeaponManager wpnManager;
     public PlayerEnergy energy;
     public Animator animator;

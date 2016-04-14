@@ -37,22 +37,22 @@ public class MidBossWait : StateMachineBehaviour
             {
                 if (common.collider.bounds.center.y > common.room.world.player.collider.bounds.center.y)
                 {
-                    ExpensiveAccurateCollision.CollideWithScenery(animator, common.room.Colliders, Vector3.down, common.collider);
+                    ExpensiveAccurateCollision.CollideWithScenery(animator, common.room.collision.allCollision, Vector3.down, common.collider);
                 }
                 else
                 {
-                    ExpensiveAccurateCollision.CollideWithScenery(animator, common.room.Colliders, Vector3.up, common.collider);
+                    ExpensiveAccurateCollision.CollideWithScenery(animator, common.room.collision.allCollision, Vector3.up, common.collider);
                 }
             }
             else
             {
                 if (common.collider.bounds.center.x > common.room.world.player.collider.bounds.center.x)
                 {
-                    ExpensiveAccurateCollision.CollideWithScenery(animator, common.room.Colliders, Vector3.left, common.collider);
+                    ExpensiveAccurateCollision.CollideWithScenery(animator, common.room.collision.allCollision, Vector3.left, common.collider);
                 }
                 else
                 {
-                    ExpensiveAccurateCollision.CollideWithScenery(animator, common.room.Colliders, Vector3.right, common.collider);
+                    ExpensiveAccurateCollision.CollideWithScenery(animator, common.room.collision.allCollision, Vector3.right, common.collider);
                 }
             }
 

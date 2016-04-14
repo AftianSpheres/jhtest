@@ -22,7 +22,7 @@ public class MidBossCharge : StateMachineBehaviour {
         Vector3 llp = LogicalPosition;
         LogicalPosition += ChargeHeading;
         Vector3 PosMod = new Vector3((float)Math.Round(LogicalPosition.x - llp.x, 0, MidpointRounding.AwayFromZero), (float)Math.Round(LogicalPosition.y - llp.y, 0, MidpointRounding.AwayFromZero), 0);
-        if (ExpensiveAccurateCollision.CollideWithScenery(animator, common.room.Colliders, PosMod, common.collider) == true)
+        if (ExpensiveAccurateCollision.CollideWithScenery(animator, common.room.collision.allCollision, PosMod, common.collider) == true)
         {
             animator.SetTrigger("HitWall");
         }

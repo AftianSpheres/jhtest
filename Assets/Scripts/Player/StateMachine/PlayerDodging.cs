@@ -4,14 +4,14 @@ using System;
 
 public class PlayerDodging : StateMachineBehaviour
 {
-    private Collider[] roomColliders;
+    private Bounds[] roomColliders;
     private Collider2D collider;
     bool DirReleased;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        roomColliders = animator.gameObject.GetComponent<PlayerController>().world.activeRoom.Colliders;
+        roomColliders = animator.gameObject.GetComponent<PlayerController>().world.activeRoom.collision.allCollision;
         collider = animator.GetComponent<Collider2D>();
     }
 

@@ -59,6 +59,10 @@ public class PlayerEnergy : MonoBehaviour
     /// </summary>
     public bool CheckIfCanFireWpn(int Percentage, bool apply_immediate = true)
     {
+        if (master.Invincible == true)
+        {
+            return true;
+        }
         if (Percentage > 100 || Percentage < 0)
         {
             throw new System.Exception("Invalid weapon energy percentage!");
