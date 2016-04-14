@@ -221,7 +221,75 @@ public class RoomCollider : MonoBehaviour
 
     public GameObject GetAssocGameObject (int index, rcGameObjectSearchMode mode)
     {
-        throw new Exception("This isn't implemented yet and it really needs to be!");
+        GameObject ret;
+        GameObject[] tmp;
+        switch (mode)
+        {
+            case rcGameObjectSearchMode.layer0:
+                tmp = new GameObject[layer0_full_obj.Length + layer0_shootthru_obj.Length];
+                layer0_full_obj.CopyTo(tmp, 0);
+                layer0_shootthru_obj.CopyTo(tmp, layer0_full_obj.Length);
+                index -= (_layer0_full.Length + _layer0_shootthru.Length);
+                break;
+            case rcGameObjectSearchMode.layer0_full:
+                tmp = new GameObject[layer0_full_obj.Length];
+                layer0_full_obj.CopyTo(tmp, 0);
+                index -= (_layer0_full.Length);
+                break;
+            case rcGameObjectSearchMode.layer0_shootthru:
+                tmp = new GameObject[layer0_shootthru_obj.Length];
+                layer0_shootthru_obj.CopyTo(tmp, 0);
+                index -= (_layer0_shootthru.Length);
+                break;
+            case rcGameObjectSearchMode.layer1:
+                tmp = new GameObject[layer1_full_obj.Length + layer1_shootthru_obj.Length];
+                layer1_full_obj.CopyTo(tmp, 0);
+                layer1_shootthru_obj.CopyTo(tmp, layer1_full_obj.Length);
+                index -= (_layer1_full.Length + _layer1_shootthru.Length);
+                break;
+            case rcGameObjectSearchMode.layer1_full:
+                tmp = new GameObject[layer1_full_obj.Length];
+                layer1_full_obj.CopyTo(tmp, 0);
+                index -= (_layer1_full.Length);
+                break;
+            case rcGameObjectSearchMode.layer1_shootthru:
+                tmp = new GameObject[layer1_shootthru_obj.Length];
+                layer1_shootthru_obj.CopyTo(tmp, 0);
+                index -= (_layer1_shootthru.Length);
+                break;
+            case rcGameObjectSearchMode.all:
+                tmp = new GameObject[layer0_full_obj.Length + layer0_shootthru_obj.Length + layer1_full_obj.Length + layer1_shootthru_obj.Length];
+                layer0_full_obj.CopyTo(tmp, 0);
+                layer0_shootthru_obj.CopyTo(tmp, layer0_full_obj.Length);
+                layer1_full_obj.CopyTo(tmp, layer0_full_obj.Length + layer0_shootthru_obj.Length);
+                layer1_shootthru_obj.CopyTo(tmp, layer0_full_obj.Length + layer0_shootthru_obj.Length + layer1_full_obj.Length);
+                index -= (_layer0_full.Length + _layer0_shootthru.Length + _layer1_full.Length + _layer1_shootthru.Length);
+                break;
+            case rcGameObjectSearchMode.all_full:
+                tmp = new GameObject[layer0_full_obj.Length + layer1_full_obj.Length];
+                layer0_full_obj.CopyTo(tmp, 0);
+                layer1_full_obj.CopyTo(tmp, layer0_full_obj.Length);
+                index -= (_layer0_full.Length + _layer1_full.Length);
+                break;
+            case rcGameObjectSearchMode.all_shootthru:
+                tmp = new GameObject[layer0_shootthru_obj.Length + layer1_shootthru_obj.Length];
+                layer0_shootthru_obj.CopyTo(tmp, 0);
+                layer1_shootthru_obj.CopyTo(tmp, layer0_shootthru_obj.Length);
+                index -= (_layer0_shootthru.Length + _layer1_shootthru.Length);
+                break;
+            default:
+                throw new Exception("Called RoomCollider.GetAssocGameObject with invalid argument: " + mode.ToString()); 
+        }
+        if (index > 0 && index < tmp.Length)
+        {
+            Debug.Log(index);
+            ret = tmp[index];
+        }
+        else
+        {
+            ret = default(GameObject);
+        }
+        return ret;
     }
 
 
@@ -265,5 +333,4 @@ public class RoomCollider : MonoBehaviour
         }
     }
 #endif
-
 }

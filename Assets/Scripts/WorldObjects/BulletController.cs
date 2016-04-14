@@ -158,10 +158,13 @@ public class BulletController : MonoBehaviour
                     {
                         if (collider.bounds.Intersects(world.activeRoom.collision.allCollision[i]))
                         {
-                            mu_RoomEvent rb = world.activeRoom.collision.GetAssocGameObject(i, rcGameObjectSearchMode.all).GetComponent<mu_RoomEvent>();
-                            if (rb != null)
+                            if (world.activeRoom.collision.GetAssocGameObject(i, rcGameObjectSearchMode.all) != null)
                             {
-                                rb.BulletStrike(this);
+                                mu_RoomEvent rb = world.activeRoom.collision.GetAssocGameObject(i, rcGameObjectSearchMode.all).GetComponent<mu_RoomEvent>();
+                                if (rb != null)
+                                {
+                                    rb.BulletStrike(this);
+                                }
                             }
                             Retire();
                         }
