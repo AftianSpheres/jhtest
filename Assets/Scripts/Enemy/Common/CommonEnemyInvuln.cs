@@ -12,7 +12,7 @@ public class CommonEnemyInvuln : StateMachineBehaviour
     {
         renderer = animator.gameObject.GetComponent<SpriteRenderer>();
         mat1 = renderer.material;
-        mat2 = Resources.Load<Material>("FlashMat");
+        mat2 = GlobalStaticResources.FlashMat;
 	}
 
 	// OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine

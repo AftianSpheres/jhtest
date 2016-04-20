@@ -14,7 +14,7 @@ public class PlayerShootShadow : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        sfx = Resources.Load("SFX/fire_shd") as AudioClip;
+        sfx = GlobalStaticResources.FireShadowSFX;
         source = animator.gameObject.GetComponent<AudioSource>();
         if ((animator.GetInteger("SlotAWpn") == (int)WeaponType.pShadow && animator.GetBool("FireSlotB") == false) || (animator.GetInteger("SlotBWpn") == (int)WeaponType.pShadow && animator.GetBool("FireSlotB") == true))
         {

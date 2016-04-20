@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour {
     private int[] DoubleTapWindows = { 0, 0, 0, 0 };
     private static int[] DodgeAllowedStates = { PlayerStateHashes.PlayerStand_D, PlayerStateHashes.PlayerStand_U, PlayerStateHashes.PlayerStand_L, PlayerStateHashes.PlayerStand_R,
     PlayerStateHashes.PlayerWalk_D, PlayerStateHashes.PlayerWalk_U, PlayerStateHashes.PlayerWalk_L, PlayerStateHashes.PlayerWalk_R };
+    public AudioSource source;
 	
 	// Update is called once per frame
 	void Update ()

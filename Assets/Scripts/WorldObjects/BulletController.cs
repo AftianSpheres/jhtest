@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public enum WeaponType
 {
+    None = -1,
     pWG,
     pWGII,
     pShotgun,
@@ -152,15 +153,15 @@ public class BulletController : MonoBehaviour
         {
             if (Pierce == false)
             {
-                for (int i = 0; i < world.activeRoom.collision.allCollision.Length; i++)
+                for (int i = 0; i < world.activeRoom.collision.allFull.Length; i++)
                 {
-                    if (world.activeRoom.collision.allCollision[i] != null)
+                    if (world.activeRoom.collision.allFull[i] != null)
                     {
-                        if (collider.bounds.Intersects(world.activeRoom.collision.allCollision[i]))
+                        if (collider.bounds.Intersects(world.activeRoom.collision.allFull[i]))
                         {
-                            if (world.activeRoom.collision.GetAssocGameObject(i, rcGameObjectSearchMode.all) != null)
+                            if (world.activeRoom.collision.GetAssocGameObject(i, rcGameObjectSearchMode.all_full) != null)
                             {
-                                mu_RoomEvent rb = world.activeRoom.collision.GetAssocGameObject(i, rcGameObjectSearchMode.all).GetComponent<mu_RoomEvent>();
+                                mu_RoomEvent rb = world.activeRoom.collision.GetAssocGameObject(i, rcGameObjectSearchMode.all_full).GetComponent<mu_RoomEvent>();
                                 if (rb != null)
                                 {
                                     rb.BulletStrike(this);

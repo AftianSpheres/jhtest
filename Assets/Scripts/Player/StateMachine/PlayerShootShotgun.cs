@@ -14,7 +14,7 @@ public class PlayerShootShotgun : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        sfx = Resources.Load("SFX/fire_sg") as AudioClip;
+        sfx = GlobalStaticResources.FireShotgunSFX;
         source = animator.gameObject.GetComponent<AudioSource>();
         animator.SetInteger("HaltFrames", 10);
         if ((animator.GetInteger("SlotAWpn") == (int)WeaponType.pShotgun && animator.GetBool("FireSlotB") == false) || (animator.GetInteger("SlotBWpn") == (int)WeaponType.pShotgun && animator.GetBool("FireSlotB") == true))

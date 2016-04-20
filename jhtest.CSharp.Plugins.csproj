@@ -135,8 +135,35 @@
     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\Vortex.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Barker&apos;s Retro Text Printer Free\readme.txt" />
     <None Include="Assets\Resources\SpritesColorFlash.shader" />
     <None Include="Assets\Resources\SpritesEZ.shader" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn00.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn01.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn02.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn03.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn04.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn05.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn06.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn07.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn08.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn09.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn10.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn11.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn12.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn13.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn14.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn15.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn16.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn17.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn18.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn19.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn20.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn21.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn22.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn23.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn24.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn_names.txt" />
     <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlurEffectConeTaps.shader" />

@@ -84,7 +84,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\RoomCollider.cs" />
+    <Compile Include="Assets\Barker&apos;s Retro Text Printer Free\Scripts\RetroPrinterScriptBasic.cs" />
     <Compile Include="Assets\Scripts\Enemy\0_Jelly\EnemyJelly.cs" />
     <Compile Include="Assets\Scripts\Enemy\0_Jelly\EnemyJellyFire.cs" />
     <Compile Include="Assets\Scripts\Enemy\0_Jelly\EnemyJellyFloat.cs" />
@@ -101,11 +101,15 @@
     <Compile Include="Assets\Scripts\Enemy\Common\CommonEnemyInvuln.cs" />
     <Compile Include="Assets\Scripts\Enemy\Common\EnemyModule.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDEnergyBar.cs" />
+    <Compile Include="Assets\Scripts\HUD\HUDWeaponIcon.cs" />
     <Compile Include="Assets\Scripts\Helpers\ExpensiveAccurateCollision.cs" />
+    <Compile Include="Assets\Scripts\Helpers\GlobalStaticResources.cs" />
     <Compile Include="Assets\Scripts\Helpers\HammerConstants.cs" />
     <Compile Include="Assets\Scripts\Managers\GameStateManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerDataManager.cs" />
     <Compile Include="Assets\Scripts\Managers\StylisticHacksManager.cs" />
+    <Compile Include="Assets\Scripts\Menus\MenuSystem.cs" />
+    <Compile Include="Assets\Scripts\Menus\WeaponSelect.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerBulletOrigin.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerCameraFollow.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
@@ -131,6 +135,7 @@
     <Compile Include="Assets\Scripts\WorldObjects\BulletPool.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\CameraController.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\FlickerySprite.cs" />
+    <Compile Include="Assets\Scripts\WorldObjects\RoomCollider.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\RoomController.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\WorldController.cs" />
     <Compile Include="Assets\Universe\Example\MyManager.cs" />
@@ -139,8 +144,35 @@
     <Compile Include="Assets\Universe\Scripts\Universe.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Barker&apos;s Retro Text Printer Free\readme.txt" />
     <None Include="Assets\Resources\SpritesColorFlash.shader" />
     <None Include="Assets\Resources\SpritesEZ.shader" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn00.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn01.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn02.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn03.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn04.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn05.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn06.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn07.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn08.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn09.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn10.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn11.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn12.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn13.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn14.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn15.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn16.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn17.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn18.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn19.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn20.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn21.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn22.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn23.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn24.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn_names.txt" />
     <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlurEffectConeTaps.shader" />
