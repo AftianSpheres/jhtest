@@ -80,6 +80,10 @@ public class CommonEnemyController : MonoBehaviour
         {
             Hit(other.gameObject.GetComponent<BulletController>());
         }
+        else if (other.CompareTag("Boom") == true && Vulnerable == true)
+        {
+            Hit(other.gameObject.GetComponent<BoomEffect>());
+        }
     }
 
     /// <summary>
@@ -111,6 +115,29 @@ public class CommonEnemyController : MonoBehaviour
             source.PlayOneShot(HitSFX);   
         }
 
+    }
+
+    /// <summary>
+    /// We've been hit by something: in this case, an explosion.
+    /// </summary>
+    void Hit(BoomEffect boom)
+    {
+        if (animator.GetInteger("InvulnTime") >= 0 && boom.owner != gameObject)
+        {
+            if (boom.PushbackStrength >= Weight)
+            {
+                animator.SetTrigger("HitHeavy");
+                TriggerInvuln();
+            }
+            else
+            {
+                renderer.material = flashMat;
+                HitFlashCounter = 10;
+            }
+            animator.SetTrigger("Hit");
+            DamageQueue += boom.Damage;
+            source.PlayOneShot(HitSFX);
+        }
     }
 
     /// <summary>

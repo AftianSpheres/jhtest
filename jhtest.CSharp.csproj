@@ -131,6 +131,8 @@
     <Compile Include="Assets\Scripts\RoomObjects\mu_FalseWall.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_RoomEvent.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_Warp.cs" />
+    <Compile Include="Assets\Scripts\WorldObjects\BoomEffect.cs" />
+    <Compile Include="Assets\Scripts\WorldObjects\BoomPool.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\BulletController.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\BulletPool.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\CameraController.cs" />

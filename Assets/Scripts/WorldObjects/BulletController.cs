@@ -39,6 +39,7 @@ public enum WeaponType
 public class BulletController : MonoBehaviour
 {
     public WorldController world;
+    public BoomPool boomPool;
     new public BoxCollider2D collider;
     new public SpriteRenderer renderer;
     private Bounds[] roomColliders;
@@ -122,7 +123,13 @@ public class BulletController : MonoBehaviour
 
         switch (ShotType)
         {
+            case WeaponType.pWG:
+            case WeaponType.pWGII:
+            case WeaponType.pShotgun:
+                boomPool.StartBoom(collider.bounds.center, BoomType.EnergyThingy);
+                break;
             case WeaponType.pShadow:
+                boomPool.StartBoom(collider.bounds.center, BoomType.EnergyThingy);
                 world.player.transform.position = snapToThing;
                 float nx = collider.bounds.center.x;
                 float ny = collider.bounds.center.y;

@@ -93,6 +93,10 @@ public class PlayerController : MonoBehaviour {
         {
             Hit(other.gameObject.GetComponent<CommonEnemyController>());
         }
+        else if (other.CompareTag("Boom") == true)
+        {
+            Hit(other.gameObject.GetComponent<BoomEffect>());
+        }
     }
 
     /// <summary>
@@ -271,6 +275,38 @@ public class PlayerController : MonoBehaviour {
                 energy.CurrentEnergy = energy.CurrentEnergy - enemy.CollideDmg;
                 KnockbackHeading = enemy.Heading;
                 KnockbackFrames = enemy.Weight;
+            }
+        }
+    }
+
+    /// <summary>
+    /// We've been hit by something: in this case, an explosion.
+    /// </summary>
+    void Hit(BoomEffect boom)
+    {
+        if (Invincible == false && Locked == false && boom.owner != gameObject)
+        {
+            if (animator.GetBool("DodgeBurst") == false && boom.Collideable == true && InvulnTime < 1)
+            {
+                animator.SetTrigger("Hit");
+                energy.CurrentEnergy = energy.CurrentEnergy - boom.Damage;
+                if (boom.collider.bounds.center.y > collider.bounds.center.y)
+                {
+                    KnockbackHeading = Vector2.down * boom.PushbackStrength;
+                }
+                else if (boom.collider.bounds.center.y < collider.bounds.center.y)
+                {
+                    KnockbackHeading = Vector2.up * boom.PushbackStrength;
+                }
+                else if (boom.collider.bounds.center.y < collider.bounds.center.y)
+                {
+                    KnockbackHeading = Vector2.left * boom.PushbackStrength;
+                }
+                else
+                {
+                    KnockbackHeading = Vector2.right * boom.PushbackStrength;
+                }
+                KnockbackFrames = boom.PushbackStrength;
             }
         }
     }

@@ -48,5 +48,8 @@ public static class GlobalStaticResources
     public static AudioClip PlayerRollSFX = Resources.Load<AudioClip>("SFX/player_roll");
     public static Material FlashMat = Resources.Load<Material>("FlashMat");
 
+    public static Sprite[] BoomGFX = Resources.LoadAll<Sprite>("GFX/boom");
+    public static Sprite[] Boom0 = { BoomGFX[0], BoomGFX[1], BoomGFX[2], BoomGFX[3] };
+    public static Sprite[] Boom1 = { BoomGFX[4], BoomGFX[5], BoomGFX[6], BoomGFX[7] };
     public static Sprite[] PlayerWeaponIcons = Resources.LoadAll<Sprite>("GFX/wpnicons");
 }

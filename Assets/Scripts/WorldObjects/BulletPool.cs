@@ -12,6 +12,7 @@ public class BulletPool : MonoBehaviour
     public int MaximumAllowedBullets;
     public GameObject prefab;
     public Sprite[] frames;
+    public BoomPool boomPool;
 
     // Use this for initialization
     void Start ()
@@ -22,17 +23,13 @@ public class BulletPool : MonoBehaviour
             GameObject bullet = Instantiate(prefab);
             BulletController bulletController = bullet.GetComponent<BulletController>();
             bulletController.world = world;
+            bulletController.boomPool = boomPool;
             q.Enqueue(bulletController);
             bullet.gameObject.SetActive(false);
+            bullet.gameObject.name = "[" + gameObject.name + "] Bullet " + i;
             bullet.transform.SetParent(transform);
         }
     }
-	
-	// Update is called once per frame
-	void Update ()
-    {
-	    
-	}
 
     /// <summary>
     /// Fires a bullet from the pool.

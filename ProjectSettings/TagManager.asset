@@ -4,14 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - PlayerBullet
   - Enemy
+  - PlayerBullet
   - EnemyBullet
-  - InteractableThing
-  - BGElement
-  - Reticle
-  - PooledEnemyBullet
-  - WorldController
+  - Boom
   layers:
   - Default
   - TransparentFX
