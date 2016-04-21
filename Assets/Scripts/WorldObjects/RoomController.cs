@@ -4,6 +4,8 @@ using System.Collections;
 /// <summary>
 /// A room. Stores room data. Does room things.
 /// </summary>
+[RequireComponent(typeof(RoomCollider))]
+[RequireComponent(typeof(RoomPriorityMap))]
 public class RoomController : MonoBehaviour
 {
     public WorldController world;
@@ -12,6 +14,7 @@ public class RoomController : MonoBehaviour
     public RegisteredSprite[] NonEnemyOccupants;
     public mu_Checkpoint RoomCheckpoint;
     public RoomCollider collision;
+    public RoomPriorityMap priorityMap;
     public Bounds bounds;
     public Vector2 BigRoomCellSize;
     public uint xPosition;

@@ -39,20 +39,24 @@ public enum WeaponType
 public class BulletController : MonoBehaviour
 {
     public WorldController world;
+    new public BoxCollider2D collider;
+    new public SpriteRenderer renderer;
+    private Bounds[] roomColliders;
+    private Queue<BulletController> q;
+    public Transform HomingTarget;
     public WeaponType ShotType;
+    public Vector3 TargetPosition;
+    private Vector3 LogicalPosition;
+    private Vector3 snapToThing;
     public Vector2 Heading;
-    public Vector3 LogicalPosition;
+    public Vector2 Trail;
+    public float Range;
     public float Speed;
     public int Damage;
     public int Weight;
+    public int Priority;
     public bool Pierce;
     public bool Homing;
-    public Vector3 TargetPosition;
-    new public BoxCollider2D collider;
-    new public SpriteRenderer renderer;
-    private Queue<BulletController> q;
-    private Bounds[] roomColliders;
-    public Transform HomingTarget;
 
     void Start ()
     {
@@ -64,7 +68,9 @@ public class BulletController : MonoBehaviour
     /// </summary>
     public void Fire (WeaponType shot, float speed, int damage, int weight, Vector3 source, Vector3 to, BulletPool pool, bool pierce)
     {
-        roomColliders = world.activeRoom.collision.allFull;
+        Range = -1;
+        Trail = Vector2.zero;
+        roomColliders = world.activeRoom.collision.fullCollide;
         Damage = damage;
         Pierce = pierce;
         Weight = weight;
@@ -78,6 +84,14 @@ public class BulletController : MonoBehaviour
         float run = TargetPosition.x - transform.position.x;
         float normalizationFactor = 1 / (Math.Abs(rise) + Math.Abs(run));
         Heading = new Vector2(normalizationFactor * run * Speed, normalizationFactor * rise * Speed);
+        for (int i = 0; i < world.activeRoom.priorityMap.priorities.Length; i++)
+        {
+            if (world.activeRoom.priorityMap.zones[i].Contains(collider.bounds.center) == true)
+            {
+                Priority = world.activeRoom.priorityMap.priorities[i];
+                break;
+            }
+        }
         switch (ShotType)
         {
             case WeaponType.pWG:
@@ -88,6 +102,8 @@ public class BulletController : MonoBehaviour
 
             case WeaponType.pShadow:
                 renderer.sprite = pool.frames[1];
+                Range = 160;
+                snapToThing = world.player.transform.position;
                 break;
 
             case WeaponType.eMidBoss_Arrow_Vert:
@@ -107,6 +123,7 @@ public class BulletController : MonoBehaviour
         switch (ShotType)
         {
             case WeaponType.pShadow:
+                world.player.transform.position = snapToThing;
                 float nx = collider.bounds.center.x;
                 float ny = collider.bounds.center.y;
                 if (nx < world.activeRoom.bounds.min.x)
@@ -151,23 +168,50 @@ public class BulletController : MonoBehaviour
         }
         else
         {
+            switch (ShotType)
+            {
+                case WeaponType.pShadow:
+                    world.player.transform.position = transform.position;
+                    break;
+            }
             if (Pierce == false)
             {
-                for (int i = 0; i < world.activeRoom.collision.allFull.Length; i++)
+                bool chkCollision = true;
+                for (int i = 0; i < world.activeRoom.priorityMap.priorities.Length; i++)
                 {
-                    if (world.activeRoom.collision.allFull[i] != null)
+                    if (world.activeRoom.priorityMap.priorities[i] > Priority && collider.bounds.Intersects(world.activeRoom.priorityMap.zones[i]) == true)
                     {
-                        if (collider.bounds.Intersects(world.activeRoom.collision.allFull[i]))
+                        Retire();
+                        break;
+                    }
+                }
+                for (int i = 0; i < world.activeRoom.priorityMap.priorities.Length; i++)
+                {
+                    if (world.activeRoom.priorityMap.priorities[i] < Priority && collider.bounds.Intersects(world.activeRoom.priorityMap.zones[i]) == true)
+                    {
+                        chkCollision = false;
+                        break;
+                    }
+                }
+                if (chkCollision == true)
+                {
+                    for (int i = 0; i < world.activeRoom.collision.fullCollide.Length; i++)
+                    {
+                        if (world.activeRoom.collision.fullCollide[i] != null)
                         {
-                            if (world.activeRoom.collision.GetAssocGameObject(i, rcGameObjectSearchMode.all_full) != null)
+                            if (collider.bounds.Intersects(world.activeRoom.collision.fullCollide[i]))
                             {
-                                mu_RoomEvent rb = world.activeRoom.collision.GetAssocGameObject(i, rcGameObjectSearchMode.all_full).GetComponent<mu_RoomEvent>();
-                                if (rb != null)
+                                if (world.activeRoom.collision.GetAssocGameObject(i, rcGameObjectSearchMode.fullCollide) != null)
                                 {
-                                    rb.BulletStrike(this);
+                                    mu_RoomEvent rb = world.activeRoom.collision.GetAssocGameObject(i, rcGameObjectSearchMode.fullCollide).GetComponent<mu_RoomEvent>();
+                                    if (rb != null)
+                                    {
+                                        rb.BulletStrike(this);
+                                    }
                                 }
+                                Retire();
+                                break;
                             }
-                            Retire();
                         }
                     }
                 }
@@ -178,7 +222,12 @@ public class BulletController : MonoBehaviour
             }
             WpnFiringAdjust();
             LogicalPosition = new Vector3(LogicalPosition.x + Heading.x, LogicalPosition.y + Heading.y, LogicalPosition.z);
+            Trail += Heading;
             transform.position = new Vector3((float)Math.Round(LogicalPosition.x, 0, MidpointRounding.AwayFromZero), (float)Math.Round(LogicalPosition.y, 0, MidpointRounding.AwayFromZero), LogicalPosition.z);
+            if (Range > 0 && Mathf.Abs(Trail.x) + Mathf.Abs(Trail.y) > Range)
+            {
+                Retire();
+            }
         }
     }
 }

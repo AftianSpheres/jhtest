@@ -132,7 +132,7 @@ public sealed class Universe : MonoBehaviour
                             GameObject clone = Instantiate(go) as GameObject;
                             clone.name = type.Name;
                             clone.transform.parent = Universe.Instance.transform;
-                            DontDestroyOnLoad(clone);
+                            //DontDestroyOnLoad(clone);
                             manager = clone.GetComponent(type) as ManagerBase;
                             manager.Deserialize();
                         }

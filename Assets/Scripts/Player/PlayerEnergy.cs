@@ -30,7 +30,10 @@ public class PlayerEnergy : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-
+        if (master.world.activeRoom != null && master.world.activeRoom.RoomCheckpoint != null && master.Locked == false)
+        {
+            Recover(1);
+        }
 	}
 
     /// <summary>
