@@ -102,7 +102,6 @@ public class RoomCollider : MonoBehaviour
         }
         if (index > 0 && index < tmp.Length)
         {
-            Debug.Log(index);
             ret = tmp[index];
         }
         else

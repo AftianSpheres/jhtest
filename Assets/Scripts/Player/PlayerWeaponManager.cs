@@ -53,6 +53,26 @@ public class PlayerWeaponManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Unlocks a weapon, and sets it to a slot if none are full.
+    /// </summary>
+    /// <param name="wpn"></param>
+    public void AddWeapon(WeaponType wpn)
+    {
+        if (WpnUnlocks[(int)wpn] == false)
+        {
+            WpnUnlocks[(int)wpn] = true;
+            if (SlotAWpn == WeaponType.None)
+            {
+                SlotAWpn = wpn;
+            }
+            else if (SlotBWpn == WeaponType.None)
+            {
+                SlotBWpn = wpn;
+            }
+        }
+    }
+
+    /// <summary>
     /// Calculates damage dealt by shot.
     /// Returns int.
     /// </summary>
@@ -73,20 +93,36 @@ public class PlayerWeaponManager : MonoBehaviour
     /// </summary>
     public void FireBullet(WeaponType shot)
     {
+        BoxCollider2D homingTarget = default(BoxCollider2D);
+        float nearestDist = float.MaxValue;
+        Vector3 r = (new Vector3(reticle.transform.position.x + reticle.HalfSizeOfReticleSprite, reticle.transform.position.y - reticle.HalfSizeOfReticleSprite, transform.position.z));
+        for (int i = 0; i < master.world.activeRoom.Enemies.Length; i++)
+        {
+            CommonEnemyController cec = master.world.activeRoom.Enemies[i].GetComponent<CommonEnemyController>();
+            if (cec != null)
+            {
+                Vector3 point = cec.collider.bounds.ClosestPoint(r);
+                if (Mathf.Abs(r.x - point.x) + Mathf.Abs(r.y - point.y) < nearestDist && cec.collider.enabled == true)
+                {
+                    nearestDist = Mathf.Abs(r.x - point.x) + Mathf.Abs(r.y - point.y);
+                    homingTarget = cec.collider;
+                }
+            }
+        }
         switch (shot)
         {
             case WeaponType.pWG:
             case WeaponType.pWGII:
-                bulletPool.FireBullet(shot, 2f, CalcShotDamage(shot), 1, new Vector3(reticle.transform.position.x + reticle.HalfSizeOfReticleSprite, reticle.transform.position.y - reticle.HalfSizeOfReticleSprite, transform.position.z), master.bulletOrigin.transform.position);
+                bulletPool.FireBullet(shot, 2f, CalcShotDamage(shot), 1, r, master.bulletOrigin.transform.position, false);
                 break;
             case WeaponType.pShotgun:
                 for (int i = 0; i < 8; i++)
                 {
-                    bulletPool.FireBullet(shot, Random.Range(2.25f, 3.75f), CalcShotDamage(shot), 5, new Vector3(reticle.transform.position.x + reticle.HalfSizeOfReticleSprite + Random.Range(-3, 4), reticle.transform.position.y - reticle.HalfSizeOfReticleSprite + Random.Range(-3, 4), transform.position.z), master.bulletOrigin.transform.position);
+                    bulletPool.FireBullet(shot, Random.Range(2.25f, 3.75f), CalcShotDamage(shot), 5, r + Random.Range(-3, 4) * Vector3.right + Random.Range(-3, 4) * Vector3.up, master.bulletOrigin.transform.position);
                 }
                 break;
             case WeaponType.pShadow:
-                bulletPool.FireBullet(shot, 5f, CalcShotDamage(shot), 1, new Vector3(reticle.transform.position.x + reticle.HalfSizeOfReticleSprite, reticle.transform.position.y - reticle.HalfSizeOfReticleSprite, transform.position.z), master.bulletOrigin.transform.position);
+                bulletPool.FireBullet(shot, 5f, CalcShotDamage(shot), 1, r, master.bulletOrigin.transform.position);
                 master.collider.enabled = false;
                 master.Locked = true;
                 animator.enabled = false;

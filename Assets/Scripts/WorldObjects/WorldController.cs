@@ -82,6 +82,12 @@ public class WorldController : MonoBehaviour
         get { return enemyBullets; }
     }
     [SerializeField]
+    private BoomPool booms;
+    public BoomPool Booms
+    {
+        get { return booms; }
+    }
+    [SerializeField]
     private Vector2 firstRoom;
     public Vector2 FirstRoom
     {

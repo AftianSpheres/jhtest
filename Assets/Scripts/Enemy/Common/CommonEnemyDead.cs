@@ -4,6 +4,7 @@ using System.Collections;
 public class CommonEnemyDead : StateMachineBehaviour
 {
     private CommonEnemyController controller;
+    public BoomType boom = BoomType.SmokePuff;
 
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -21,6 +22,8 @@ public class CommonEnemyDead : StateMachineBehaviour
     {
         if (controller.isDead == false)
         {
+            controller.room.world.Booms.StartBoom(controller.collider.bounds.center, boom);
+            controller.room.world.Booms.StartBoom(controller.collider.bounds.center + (4 * Vector3.left) + (4 * Vector3.up), boom);
             controller.Kill();
         }
 	}

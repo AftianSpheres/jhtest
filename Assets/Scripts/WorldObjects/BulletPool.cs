@@ -35,13 +35,13 @@ public class BulletPool : MonoBehaviour
     /// Fires a bullet from the pool.
     /// Takes a shitload of arguments, but luckily the names & types are intuitive enough.
     /// </summary>
-    public void FireBullet(WeaponType shot, float speed, int damage, int weight, Vector3 to, Vector3 from, bool pierce = false)
+    public void FireBullet(WeaponType shot, float speed, int damage, int weight, Vector3 to, Vector3 from, bool pierce = false, BoxCollider2D homingTarget = default(BoxCollider2D), int homingPrecision = 0, int homingWindow = int.MaxValue)
     {
         if (world.activeRoom != null)
         {
             BulletController bulletController = q.Dequeue();
             bulletController.gameObject.SetActive(true);
-            bulletController.Fire(shot, speed, damage, weight, from, to, this, pierce);
+            bulletController.Fire(shot, speed, damage, weight, from, to, this, pierce, homingTarget, homingPrecision, homingWindow);
         }
     }
 }

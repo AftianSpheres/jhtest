@@ -129,6 +129,7 @@
     <Compile Include="Assets\Scripts\RoomObjects\mu_Checkpoint.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_Door.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_FalseWall.cs" />
+    <Compile Include="Assets\Scripts\RoomObjects\mu_ItemPickup.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_RoomEvent.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_Warp.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\BoomEffect.cs" />

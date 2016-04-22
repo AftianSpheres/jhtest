@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a7b2e2d4eed3c124ea4d668c2278984b
-timeCreated: 1460509364
+timeCreated: 1461356034
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -9,6 +9,7 @@ TextureImporter:
     21300004: player_bullet_0
     21300006: player_shell_0
     21300008: player_shot0000_shd
+    21300010: sp_heal
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -106,6 +107,17 @@ TextureImporter:
         y: 54
         width: 4
         height: 4
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: sp_heal
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 1
+        width: 8
+        height: 8
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}

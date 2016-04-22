@@ -111,6 +111,7 @@ public class CommonEnemyController : MonoBehaviour
                 renderer.material = flashMat;
                 HitFlashCounter = 10;
             }
+            bullet.HitTarget();
             DamageQueue += bullet.Damage;
             source.PlayOneShot(HitSFX);   
         }
@@ -150,7 +151,7 @@ public class CommonEnemyController : MonoBehaviour
     public void Kill ()
     {
         animator.Play(DefaultStateHash);
-        room.world.player.GetComponent<PlayerEnergy>().Recover(100);
+        room.world.EnemyBullets.FireBullet(WeaponType.spEnergyRecover, 5, 0, 0, room.world.player.collider.bounds.center, collider.bounds.center, true, room.world.player.collider, 0);
         CurrentHP = MaxHP;
         transform.position = StartingPos;
         DamageQueue = 0;

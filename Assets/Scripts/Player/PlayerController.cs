@@ -97,6 +97,10 @@ public class PlayerController : MonoBehaviour {
         {
             Hit(other.gameObject.GetComponent<BoomEffect>());
         }
+        else if (other.CompareTag("Pickup") == true)
+        {
+            Pickup(other.gameObject.GetComponent<mu_ItemPickup>());
+        }
     }
 
     /// <summary>
@@ -125,15 +129,7 @@ public class PlayerController : MonoBehaviour {
 
         //HeldFire1 bool
 
-        if (Input.GetKey(KeyCode.Slash) == true)
-        {
-            Debug.Break();
-        }
-        else
-        {
-        }
-
-        if (Input.GetKey(world.PlayerDataManager.K_Fire1) == true)
+        if (Input.GetKey(world.PlayerDataManager.K_Fire1) == true && wpnManager.SlotAWpn != WeaponType.None)
         {
             animator.SetBool("HeldFire1", true);
         }
@@ -144,7 +140,7 @@ public class PlayerController : MonoBehaviour {
 
         //HeldFire2 bool
 
-        if (Input.GetKey(world.PlayerDataManager.K_Fire2) == true)
+        if (Input.GetKey(world.PlayerDataManager.K_Fire2) == true && wpnManager.SlotBWpn != WeaponType.None)
         {
             animator.SetBool("HeldFire2", true);
             animator.SetBool("FireSlotB", true);
@@ -249,10 +245,20 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     void Hit(BulletController bullet)
     {
-        if (Invincible == false && Locked == false)
+        if (animator.GetBool("Dead") == true)
+        {
+            bullet.HitTarget();
+        }
+        else if (bullet.ShotType == WeaponType.spEnergyRecover) // not a "real" bullet, but a thing that acts like an enemy bullet, sorta
+        {
+            bullet.HitTarget();
+            energy.Recover(100);
+        }
+        else if (Invincible == false && Locked == false)
         {
             if (animator.GetBool("DodgeBurst") == false && InvulnTime < 1)
             {
+                bullet.HitTarget();
                 animator.SetTrigger("Hit");
                 energy.CurrentEnergy = energy.CurrentEnergy - bullet.Damage;
                 KnockbackHeading = bullet.Heading;
@@ -267,7 +273,7 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     void Hit(CommonEnemyController enemy)
     {
-        if (Invincible == false && Locked == false)
+        if (Invincible == false && Locked == false && animator.GetBool("Dead") == false)
         {
             if (animator.GetBool("DodgeBurst") == false && enemy.CollideDmg > 0 && InvulnTime < 1)
             {
@@ -284,7 +290,7 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     void Hit(BoomEffect boom)
     {
-        if (Invincible == false && Locked == false && boom.owner != gameObject)
+        if (Invincible == false && Locked == false && boom.owner != gameObject && animator.GetBool("Dead") == false)
         {
             if (animator.GetBool("DodgeBurst") == false && boom.Collideable == true && InvulnTime < 1)
             {
@@ -308,6 +314,19 @@ public class PlayerController : MonoBehaviour {
                 }
                 KnockbackFrames = boom.PushbackStrength;
             }
+        }
+    }
+
+    /// <summary>
+    /// Picks up pickup.
+    /// </summary>
+    public void Pickup (mu_ItemPickup pickup)
+    {
+        switch (pickup.pickupType)
+        {
+            case PickupType.Weapon:
+                wpnManager.AddWeapon(pickup.weaponType);
+                break;
         }
     }
 
