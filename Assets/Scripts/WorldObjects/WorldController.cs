@@ -121,6 +121,7 @@ public class WorldController : MonoBehaviour
     }
 
     public RoomController activeRoom;
+    public List<PauseableSprite> pauseableSprites;
 
     // Use this for initialization
     void Awake ()
@@ -205,6 +206,28 @@ public class WorldController : MonoBehaviour
             {
                 _BGM0.clip = default(AudioClip);
             }
+        }
+    }
+
+    /// <summary>
+    /// Pauses every PauseableSprite.
+    /// </summary>
+    public void Pause ()
+    {
+        for (int i = 0; i < pauseableSprites.Count; i++)
+        {
+            pauseableSprites[i].Pause();
+        }
+    }
+
+    /// <summary>
+    /// Unpauses every PauseableSprite.
+    /// </summary>
+    public void Unpause ()
+    {
+        for (int i = 0; i < pauseableSprites.Count; i++)
+        {
+            pauseableSprites[i].Unpause();
         }
     }
 }

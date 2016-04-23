@@ -2,6 +2,11 @@
 using System;
 using System.Collections;
 
+/// <summary>
+/// Static class containing always-loaded resources for easy use.
+/// There should be a reasonable expectation that anything here could be called at any time during gameplay!
+/// If that doesn't hold, DON'T PUT IT HERE.
+/// </summary>
 public static class GlobalStaticResources
 {
     public static Func<String, TextAsset> loadTextResource = Resources.Load<TextAsset>;

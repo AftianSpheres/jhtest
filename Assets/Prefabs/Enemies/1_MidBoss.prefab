@@ -34,6 +34,7 @@ GameObject:
   - 95: {fileID: 9562952}
   - 82: {fileID: 8209712}
   - 50: {fileID: 5049740}
+  - 114: {fileID: 11471560}
   m_Layer: 0
   m_Name: 1_MidBoss
   m_TagString: Enemy
@@ -295,6 +296,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   room: {fileID: 0}
   Toggled: 0
+--- !u!114 &11471560
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907ea04a7b9882346a24097e4ea653b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21231082
 SpriteRenderer:
   m_ObjectHideFlags: 1

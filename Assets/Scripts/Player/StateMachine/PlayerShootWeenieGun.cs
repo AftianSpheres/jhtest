@@ -29,11 +29,12 @@ public class PlayerShootWeenieGun : StateMachineBehaviour
             wt = animator.GetInteger("SlotAWpn");
             b = false;
         }
-        if ((wt == (int)WeaponType.pWG || wt == (int)WeaponType.pWGII) && animator.GetBool("FireSlotB") == b)
+        RoomController room = animator.gameObject.GetComponent<PlayerController>().world.activeRoom;
+        if (((wt == (int)WeaponType.pWG || wt == (int)WeaponType.pWGII) && animator.GetBool("FireSlotB") == b) && room != null)
         {
             active = true;
             wpnManager = animator.gameObject.GetComponent<PlayerController>().wpnManager;
-            roomColliders = animator.gameObject.GetComponent<PlayerController>().world.activeRoom.collision.allCollision;
+            roomColliders = room.collision.allCollision;
             collider = animator.GetComponent<Collider2D>();
         }
         else

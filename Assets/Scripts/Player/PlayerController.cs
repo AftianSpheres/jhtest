@@ -27,27 +27,31 @@ public static class PlayerStateHashes
 /// Controls player. Input handling, coordinating other MonoBehaviours, etc.
 /// Kinda ugly.
 /// </summary>
+[RequireComponent(typeof(PauseableSprite))]
 public class PlayerController : MonoBehaviour {
-    public WorldController world;
-    new public SpriteRenderer renderer;
-    public FlickerySprite fs;
-    public PlayerWeaponManager wpnManager;
-    public PlayerEnergy energy;
-    public Animator animator;
-    public PlayerBulletOrigin bulletOrigin;
-    new public BoxCollider2D collider;
-    public Vector3 KnockbackHeading;
-    public int KnockbackFrames;
-    public bool Invincible;
-    public bool Locked;
-    public bool IgnoreCollision;
     static int DoubleTapFrameWindow = 20; // no. of frames to check for double-tap sequence over...
-    private bool DiscardDodgeInputs;
-    public int InvulnTime;
-    private int[] DoubleTapWindows = { 0, 0, 0, 0 };
     private static int[] DodgeAllowedStates = { PlayerStateHashes.PlayerStand_D, PlayerStateHashes.PlayerStand_U, PlayerStateHashes.PlayerStand_L, PlayerStateHashes.PlayerStand_R,
     PlayerStateHashes.PlayerWalk_D, PlayerStateHashes.PlayerWalk_U, PlayerStateHashes.PlayerWalk_L, PlayerStateHashes.PlayerWalk_R };
+
+    public WorldController world;
+    new public BoxCollider2D collider;
+    new public SpriteRenderer renderer;
+    public Animator animator;
     public AudioSource source;
+    public FlickerySprite fs;
+    public PlayerBulletOrigin bulletOrigin;
+    public PlayerEnergy energy;
+    public PlayerWeaponManager wpnManager;
+    public Vector3 KnockbackHeading;
+    public bool DontWarp;
+    public bool IgnoreCollision;
+    public bool Invincible;
+    public bool Locked;
+    public int InvulnTime;
+    public int KnockbackFrames;
+    private bool DiscardDodgeInputs;
+    private int[] DoubleTapWindows = { 0, 0, 0, 0 };
+
 	
 	// Update is called once per frame
 	void Update ()
@@ -56,7 +60,6 @@ public class PlayerController : MonoBehaviour {
         {
             DoubleTapWindows[i]--;
         }
-
         if (energy.CurrentEnergy < 1 && animator.GetBool("Dead") == false)
         {
             Die();
@@ -66,6 +69,10 @@ public class PlayerController : MonoBehaviour {
             if (Locked == false)
             {
                 HandleInputs();
+                if (DontWarp == true)
+                {
+                    DontWarp = false;
+                }
             }
             else
             {
@@ -105,7 +112,6 @@ public class PlayerController : MonoBehaviour {
 
     /// <summary>
     /// Die motherfucker die motherfucker die.
-    /// Then load the Game Over screen motherfucker load the Game Over screen motherfucker load the Game Over screen.
     /// </summary>
     void Die ()
     {

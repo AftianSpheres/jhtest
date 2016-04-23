@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11476536}
   - 61: {fileID: 6184006}
   - 50: {fileID: 5088728}
+  - 114: {fileID: 11481556}
   m_Layer: 0
   m_Name: EnemyBullet
   m_TagString: EnemyBullet
@@ -76,6 +77,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
   skip: 0
+--- !u!114 &11481556
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 167394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907ea04a7b9882346a24097e4ea653b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11485780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -88,18 +100,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   world: {fileID: 0}
-  ShotType: 100000
-  Heading: {x: 0, y: 0}
-  LogicalPosition: {x: 0, y: 0, z: 0}
-  Speed: 0
-  Damage: 0
-  Weight: 0
-  Pierce: 0
-  Homing: 0
-  TargetPosition: {x: 0, y: 0, z: 0}
   collider: {fileID: 6184006}
   renderer: {fileID: 21256158}
+  boomPool: {fileID: 0}
   HomingTarget: {fileID: 0}
+  TargetPosition: {x: 0, y: 0, z: 0}
+  Heading: {x: 0, y: 0}
+  Trail: {x: 0, y: 0}
+  ShotType: 100000
+  PierceScenery: 0
+  PierceTargets: 0
+  Range: 0
+  Speed: 0
+  Damage: 0
+  HomingPrecision: 0
+  HomingWindow: 0
+  Priority: 0
+  Weight: 0
 --- !u!212 &21256158
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+[RequireComponent(typeof(PauseableSprite))]
 public class BoomEffect : MonoBehaviour
 {
     public WorldController world;

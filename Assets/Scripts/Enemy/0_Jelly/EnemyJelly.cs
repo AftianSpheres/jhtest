@@ -19,7 +19,7 @@ public class EnemyJelly: EnemyModule
             bool FireThisFrame = true;
             for (int i = 0; i < common.register.room.collision.allCollision.Length; i++)
             {
-                if (common.register.room.collision.allCollision[i] != null)
+                if (common.register.room.collision.allCollision[i] != default(Bounds))
                 {
                     if (common.collider.bounds.Intersects(common.register.room.collision.allCollision[i]))
                     {

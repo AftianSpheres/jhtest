@@ -2,6 +2,16 @@
 using System.Collections;
 
 /// <summary>
+/// Enum containing all valid regions that rooms can be part of. Minimap and map menu will use this to figure out which rooms to draw.
+/// </summary>
+public enum RoomRegion
+{
+    None,
+    TestMap,
+    TestMapB1F
+}
+
+/// <summary>
 /// A room. Stores room data. Does room things.
 /// </summary>
 [RequireComponent(typeof(RoomCollider))]
@@ -15,6 +25,7 @@ public class RoomController : MonoBehaviour
     public mu_Checkpoint RoomCheckpoint;
     public RoomCollider collision;
     public RoomPriorityMap priorityMap;
+    public RoomRegion region;
     public Bounds bounds;
     public Vector2 BigRoomCellSize;
     public uint xPosition;
@@ -24,7 +35,9 @@ public class RoomController : MonoBehaviour
     private GameStateManager gameStateManager;
 
 
-    // Use this for initialization
+    /// <summary>
+    /// MonoBehaviour.Awake()
+    /// </summary>
     void Awake ()
     {
         if (BigRoomCellSize.x > 1 || BigRoomCellSize.y > 1)
@@ -48,7 +61,9 @@ public class RoomController : MonoBehaviour
         gameStateManager = GameObject.Find("Universe/GameStateManager").GetComponent<GameStateManager>();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// MonoBehaviour.Update()
+    /// </summary>
     void Update ()
     {
         if (world.activeRoom == this)

@@ -101,6 +101,5 @@ public class MidBossHide : StateMachineBehaviour
         animator.SetTrigger("Charge");
         ChargeCount--;
         animator.SetInteger("ChargeCount", ChargeCount);
-        Debug.Log(ChargeCount);
     }
 }

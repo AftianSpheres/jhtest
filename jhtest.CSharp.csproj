@@ -100,6 +100,7 @@
     <Compile Include="Assets\Scripts\Enemy\Common\CommonEnemyDead.cs" />
     <Compile Include="Assets\Scripts\Enemy\Common\CommonEnemyInvuln.cs" />
     <Compile Include="Assets\Scripts\Enemy\Common\EnemyModule.cs" />
+    <Compile Include="Assets\Scripts\HUD\HUDDebug.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDEnergyBar.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDWeaponIcon.cs" />
     <Compile Include="Assets\Scripts\Helpers\ExpensiveAccurateCollision.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="Assets\Scripts\WorldObjects\BulletPool.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\CameraController.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\FlickerySprite.cs" />
+    <Compile Include="Assets\Scripts\WorldObjects\PauseableSprite.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\RoomCollider.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\RoomController.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\RoomPriorityMap.cs" />

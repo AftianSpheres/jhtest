@@ -35,9 +35,13 @@ public class PlayerWeaponManager : MonoBehaviour
         1, // flamethrower
         1, // icicle
         };
+    private static int SlotAWpnHash = Animator.StringToHash("SlotAWpn");
+    private static int SlotBWpnHash = Animator.StringToHash("SlotBWpn");
 
-	// Use this for initialization
-	void Start ()
+    /// <summary>
+    /// MonoBehaviour.Start()
+    /// </summary>
+    void Start ()
     {
         animator = master.animator;
         reticle = master.world.reticle;
@@ -45,11 +49,13 @@ public class PlayerWeaponManager : MonoBehaviour
         energy = master.energy;
 	}
 	
-	// Update is called once per frame
+	/// <summary>
+    /// MonoBehaviour.Update()
+    /// </summary>
 	void Update ()
     {
-        animator.SetInteger("SlotAWpn", (int)SlotAWpn);
-        animator.SetInteger("SlotBWpn", (int)SlotBWpn);
+        animator.SetInteger(SlotAWpnHash, (int)SlotAWpn);
+        animator.SetInteger(SlotBWpnHash, (int)SlotBWpn);
     }
 
     /// <summary>

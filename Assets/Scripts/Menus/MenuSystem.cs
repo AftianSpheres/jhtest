@@ -2,25 +2,32 @@
 using System;
 using System.Collections;
 
+/// <summary>
+/// Valid operating modes for the menu system.
+/// </summary>
 public enum MenuSystemMode
 {
     None,
     WeaponSelect
 }
 
+/// <summary>
+/// Virtual menu system. Interact with this to bring menus onto the screen.
+/// </summary>
 public class MenuSystem : MonoBehaviour {
     public WorldController world;
-    public MenuSystemMode mode;
-    public GameObject WanderingSprites;
-    public GameObject GeneratedSprites;
-    public GameObject Rooms;
-    public WeaponSelect WpnSelectMenu;
-    public GameObject TargetingReticle;
-    public bool menuActive;
-    public AudioSource source;
+    public Action menuPreOpenAction;
     public Action menuOpenAction;
     public Action menuCloseAction;
+    public AudioSource source;
+    public GameObject TargetingReticle;
+    public MenuSystemMode mode;
+    public WeaponSelect WpnSelectMenu;
+    public bool menuActive;
 
+    /// <summary>
+    /// MonoBehaviour.Update()
+    /// </summary>
     void Update ()
     {
         switch (mode)
@@ -34,20 +41,10 @@ public class MenuSystem : MonoBehaviour {
         }
     }
 
-    void EnableBGSprites ()
-    {
-        WanderingSprites.SetActive(true);
-        GeneratedSprites.SetActive(true);
-        Rooms.SetActive(true);
-    }
-
-    void DisableBGSprites ()
-    {
-        WanderingSprites.SetActive(false);
-        GeneratedSprites.SetActive(false);
-        Rooms.SetActive(false);
-    }
-
+    /// <summary>
+    /// Changes menu system mode to the specified mode.
+    /// </summary>
+    /// <param name="_mode"></param>
     public void ChangeMode(MenuSystemMode _mode)
     {
         switch (_mode)
@@ -56,38 +53,44 @@ public class MenuSystem : MonoBehaviour {
                 StartCoroutine(ScrollMenusOutOfFrame());
                 break;
             case MenuSystemMode.WeaponSelect:
-                menuOpenAction = WpnSelectMenu.Open;
-                WpnSelectMenu.gameObject.SetActive(true);
-                TargetingReticle.SetActive(false);
-                StartCoroutine(ScrollMenusIntoFrame());
-                mode = MenuSystemMode.WeaponSelect;
+                if (world.player.wpnManager.SlotAWpn != WeaponType.None) // this menu can't be opened without at least one weapon
+                {
+                    menuPreOpenAction = WpnSelectMenu.PreOpen;
+                    menuOpenAction = WpnSelectMenu.Open;
+                    WpnSelectMenu.gameObject.SetActive(true);
+                    TargetingReticle.SetActive(false);
+                    StartCoroutine(ScrollMenusIntoFrame());
+                    mode = MenuSystemMode.WeaponSelect;
+                }
                 break;
             default:
                 throw new System.Exception("Invalid menu system mode: " + _mode);
         }
     }
 
-    public IEnumerator ScrollMenusIntoFrame (bool withHUD = true)
+    /// <summary>
+    /// Coroutine: scrolls menus into frame from "under" HUD bar.
+    /// </summary>
+    public IEnumerator ScrollMenusIntoFrame ()
     {
-        int v = 0;
-        if (withHUD == true)
-        {
-            v = HammerConstants.HeightOfHUD;
-        }
+        world.Pause();
+        menuPreOpenAction();
         source.PlayOneShot(GlobalStaticResources.MenuOpenSFX);
         while (transform.localPosition.y != 0)
         {
             transform.localPosition = transform.localPosition + (Vector3.down * 4);
             yield return null;
         }
-        DisableBGSprites();
+
         menuActive = true;
         menuOpenAction();
     }
 
+    /// <summary>
+    /// Coroutine: scrolls menus out of frame and "under" HUD bar.
+    /// </summary>
     public IEnumerator ScrollMenusOutOfFrame (bool withHUD = true)
     {
-        EnableBGSprites();
         menuActive = false;
         int v = 0;
         if (withHUD == true)
@@ -102,11 +105,13 @@ public class MenuSystem : MonoBehaviour {
         }
         TargetingReticle.SetActive(true);
         mode = MenuSystemMode.None;
+        menuPreOpenAction = default(Action);
         if (menuCloseAction != null)
         {
             menuCloseAction();
             menuCloseAction = default(Action);
         }
+        world.Unpause();
     }
 
 }

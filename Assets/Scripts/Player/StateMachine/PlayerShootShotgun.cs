@@ -17,11 +17,12 @@ public class PlayerShootShotgun : StateMachineBehaviour
         sfx = GlobalStaticResources.FireShotgunSFX;
         source = animator.gameObject.GetComponent<AudioSource>();
         animator.SetInteger("HaltFrames", 10);
-        if ((animator.GetInteger("SlotAWpn") == (int)WeaponType.pShotgun && animator.GetBool("FireSlotB") == false) || (animator.GetInteger("SlotBWpn") == (int)WeaponType.pShotgun && animator.GetBool("FireSlotB") == true))
+        RoomController room = animator.gameObject.GetComponent<PlayerController>().world.activeRoom;
+        if (((animator.GetInteger("SlotAWpn") == (int)WeaponType.pShotgun && animator.GetBool("FireSlotB") == false) || (animator.GetInteger("SlotBWpn") == (int)WeaponType.pShotgun && animator.GetBool("FireSlotB") == true)) && room != null)
         {
             active = true;
             wpnManager = animator.gameObject.GetComponent<PlayerController>().wpnManager;
-            roomColliders = animator.gameObject.GetComponent<PlayerController>().world.activeRoom.collision.allCollision;
+            roomColliders = room.collision.allCollision;
             collider = animator.GetComponent<Collider2D>();
         }
         else

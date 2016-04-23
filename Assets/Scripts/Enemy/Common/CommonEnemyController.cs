@@ -5,6 +5,7 @@ using System.Collections;
 /// MonoBehavior providing shared state and functionality for all enemy types.
 /// </summary>
 [RequireComponent (typeof(RegisteredSprite))]
+[RequireComponent (typeof(PauseableSprite))]
 public class CommonEnemyController : MonoBehaviour
 {
     public RoomController room;

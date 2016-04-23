@@ -6,8 +6,6 @@ public class PlayerShootShadow : StateMachineBehaviour
     private bool active;
     private PlayerWeaponManager wpnManager;
     private int FrameCtr;
-    private Bounds[] roomColliders;
-    private Collider2D collider;
     private AudioSource source;
     private AudioClip sfx;
 
@@ -20,8 +18,6 @@ public class PlayerShootShadow : StateMachineBehaviour
         {
             active = true;
             wpnManager = animator.gameObject.GetComponent<PlayerController>().wpnManager;
-            roomColliders = animator.gameObject.GetComponent<PlayerController>().world.activeRoom.collision.allCollision;
-            collider = animator.GetComponent<Collider2D>();
         }
         else
         {

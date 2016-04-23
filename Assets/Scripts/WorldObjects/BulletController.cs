@@ -49,26 +49,27 @@ public enum WeaponType
 public class BulletController : MonoBehaviour
 {
     public WorldController world;
-    public BoomPool boomPool;
+    private Queue<BulletController> q;
     new public BoxCollider2D collider;
     new public SpriteRenderer renderer;
-    private Bounds[] roomColliders;
-    private Queue<BulletController> q;
+    public BoomPool boomPool;
     public BoxCollider2D HomingTarget;
-    public WeaponType ShotType;
-    public Vector3 TargetPosition;
+    private Bounds[] roomColliders;
     private Vector3 LogicalPosition = Vector3.zero;
     private Vector3 snapToThing;
+    public Vector3 TargetPosition;
     public Vector2 Heading;
     public Vector2 Trail;
+    public WeaponType ShotType;
+    public bool PierceScenery;
+    public bool PierceTargets;
     public float Range;
     public float Speed;
     public int Damage;
-    public int Weight;
-    public int Priority;
-    public bool Pierce;
     public int HomingPrecision;
     public int HomingWindow;
+    public int Priority;
+    public int Weight;
 
     /// <summary>
     /// UnityEngine.Update()
@@ -95,7 +96,7 @@ public class BulletController : MonoBehaviour
             {
                 Retire();
             }
-            else if (Pierce == false)
+            else if (PierceScenery == false)
             {
                 CollisionCheck();
             }
@@ -115,13 +116,13 @@ public class BulletController : MonoBehaviour
     /// <summary>
     /// Called when we recover a bullet to use with a weapon.
     /// </summary>
-    public void Fire (WeaponType shot, float speed, int damage, int weight, Vector3 source, Vector3 to, BulletPool pool, bool pierce, BoxCollider2D homingTarget = default(BoxCollider2D), int homingPrecision = 0, int homingWindow = int.MaxValue)
+    public void Fire (WeaponType shot, float speed, int damage, int weight, Vector3 source, Vector3 to, BulletPool pool, bool pierceScenery, BoxCollider2D homingTarget = default(BoxCollider2D), int homingPrecision = 0, int homingWindow = int.MaxValue)
     {
         Range = -1;
         Trail = Vector2.zero;
         roomColliders = world.activeRoom.collision.fullCollide;
         Damage = damage;
-        Pierce = pierce;
+        PierceScenery = pierceScenery;
         Weight = weight;
         q = pool.q;
         Speed = speed;
@@ -174,7 +175,7 @@ public class BulletController : MonoBehaviour
     /// </summary>
     public void HitTarget ()
     {
-        if (Pierce == false || (HomingTarget != null && HomingPrecision < 1))
+        if (PierceScenery == false || (HomingTarget != null && HomingPrecision < 1))
         {
             Retire();
         }
@@ -263,11 +264,11 @@ public class BulletController : MonoBehaviour
         }
         if (chkCollision == true)
         {
-            for (int i = 0; i < world.activeRoom.collision.fullCollide.Length; i++)
+            for (int i = 0; i < roomColliders.Length; i++)
             {
-                if (world.activeRoom.collision.fullCollide[i] != null)
+                if (roomColliders[i] != default(Bounds))
                 {
-                    if (collider.bounds.Intersects(world.activeRoom.collision.fullCollide[i]))
+                    if (collider.bounds.Intersects(roomColliders[i]))
                     {
                         if (world.activeRoom.collision.GetAssocGameObject(i, rcGameObjectSearchMode.fullCollide) != null)
                         {

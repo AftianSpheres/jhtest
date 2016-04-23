@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Valid types of item pickup.
+/// </summary>
 public enum PickupType
 {
     Weapon,
@@ -9,13 +12,18 @@ public enum PickupType
     KeyItem
 }
 
+/// <summary>
+/// A RoomObject representing an item (guns, etc.) which can be picked up and acquired.
+/// </summary>
 public class mu_ItemPickup : MonoBehaviour
 {
     public RoomController room;
     public PickupType pickupType;
     public WeaponType weaponType;
 	
-	// Update is called once per frame
+	/// <summary>
+    /// Monobehaviour.Update()
+    /// </summary>
 	void Update ()
     {
 	    switch (pickupType)

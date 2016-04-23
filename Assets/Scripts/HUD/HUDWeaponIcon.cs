@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// HUD weapon icon element.
+/// </summary>
 public class HUDWeaponIcon : MonoBehaviour
 {
     public WorldController world;
@@ -8,13 +11,17 @@ public class HUDWeaponIcon : MonoBehaviour
     new public SpriteRenderer renderer;
     public bool isSlotB;
 
-	// Use this for initialization
+	/// <summary>
+    /// Monobehaviour.Start()
+    /// </summary>
 	void Start ()
     {
         wpnManager = world.player.wpnManager;
 	}
 	
-	// Update is called once per frame
+	/// <summary>
+    /// Monobehaviour.Update()
+    /// </summary>
 	void Update ()
     {
 	    if (isSlotB == false)

@@ -4,13 +4,11 @@ using System;
 public class MidBossCharge : StateMachineBehaviour {
     private Vector3 ChargeHeading;
     private CommonEnemyController common;
-    private Direction ChargeDir;
     private Vector3 LogicalPosition;
 
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        ChargeDir = (Direction)animator.GetInteger("ChargeDir");
         ChargeHeading = new Vector3(animator.GetFloat("ChargeHeading_X"), animator.GetFloat("ChargeHeading_Y"), 0);
         common = animator.gameObject.GetComponent<CommonEnemyController>();
         LogicalPosition = animator.transform.position;
