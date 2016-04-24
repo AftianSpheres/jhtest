@@ -5,10 +5,11 @@ public class PlayerHit : StateMachineBehaviour {
 
     private AudioSource source;
     private PlayerController controller;
-    private AudioClip clip = GlobalStaticResources.PlayerHitSFX;
+    private AudioClip clip;
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        clip = Resources.Load<AudioClip>(GlobalStaticResources.p_PlayerHitSFX);
         source = animator.gameObject.GetComponent<AudioSource>();
         source.PlayOneShot(clip);
         controller = animator.gameObject.GetComponent<PlayerController>();

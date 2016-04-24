@@ -42,21 +42,22 @@ public static class GlobalStaticResources
     };
 
 
-    public static AudioClip CursorDownSFX = Resources.Load<AudioClip>("SFX/cursor_down");
-    public static AudioClip CursorUpSFX = Resources.Load<AudioClip>("SFX/cursor_up");
-    public static AudioClip FireBasicSFX = Resources.Load<AudioClip>("SFX/fire_wg");
-    public static AudioClip FireShotgunSFX = Resources.Load<AudioClip>("SFX/fire_sg");
-    public static AudioClip FireShadowSFX = Resources.Load<AudioClip>("SFX/fire_shd");
-    public static AudioClip MenuCloseSFX = Resources.Load<AudioClip>("SFX/menu_close");
-    public static AudioClip MenuOpenSFX = Resources.Load<AudioClip>("SFX/menu_open");
-    public static AudioClip PlayerHitSFX = Resources.Load<AudioClip>("SFX/player_hit");
-    public static AudioClip PlayerRollSFX = Resources.Load<AudioClip>("SFX/player_roll");
-    public static Material FlashMat = Resources.Load<Material>("FlashMat");
+    public static string p_CursorDownSFX = "SFX/cursor_down";
+    public static string p_CursorUpSFX = "SFX/cursor_up";
+    public static string p_FireBasicSFX = "SFX/fire_wg";
+    public static string p_FireShotgunSFX = "SFX/fire_sg";
+    public static string p_FireShadowSFX = "SFX/fire_shd";
+    public static string p_MenuCloseSFX = "SFX/menu_close";
+    public static string p_MenuOpenSFX = "SFX/menu_open";
+    public static string p_PlayerHitSFX = "SFX/player_hit";
+    public static string p_PlayerRollSFX = "SFX/player_roll";
+    public static string p_FlashMat = "FlashMat";
 
-    public static Sprite[] BoomGFX = Resources.LoadAll<Sprite>("GFX/boom");
-    public static Sprite[] Boom0 = { BoomGFX[0], BoomGFX[1], BoomGFX[2], BoomGFX[3] };
-    public static Sprite[] Boom1 = { BoomGFX[4], BoomGFX[5], BoomGFX[6], BoomGFX[7] };
-    public static Sprite[] PlayerWeaponIcons = Resources.LoadAll<Sprite>("GFX/wpnicons");
+    public static string p_BoomGFX = "GFX/boom";
+    public static int[] i_Boom0 = { 0, 1, 2, 3 };
+    public static int[] i_Boom1 = { 4, 5, 6, 7 };
+    public static string p_PlayerWeaponIcons = "GFX/wpnicons";
 
-    public static Sprite EnergyRecoverGFX = Resources.Load<Sprite>("GFX/energy_recover");
+    public static string p_EnergyRecoverGFX = "GFX/energy_recover";
+
 }

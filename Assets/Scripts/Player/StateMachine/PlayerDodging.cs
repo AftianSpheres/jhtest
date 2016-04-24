@@ -15,7 +15,8 @@ public class PlayerDodging : StateMachineBehaviour
         controller = animator.gameObject.GetComponent<PlayerController>();
         roomColliders = controller.world.activeRoom.collision.allCollision;
         collider = animator.GetComponent<Collider2D>();
-        controller.source.PlayOneShot(GlobalStaticResources.PlayerRollSFX);
+        controller.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_PlayerRollSFX));
+
     }
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state

@@ -75,7 +75,7 @@ public class MenuSystem : MonoBehaviour {
     {
         world.Pause();
         menuPreOpenAction();
-        source.PlayOneShot(GlobalStaticResources.MenuOpenSFX);
+        source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_MenuOpenSFX));
         while (transform.localPosition.y != 0)
         {
             transform.localPosition = transform.localPosition + (Vector3.down * 4);
@@ -97,7 +97,7 @@ public class MenuSystem : MonoBehaviour {
         {
             v = HammerConstants.HeightOfHUD;
         }
-        source.PlayOneShot(GlobalStaticResources.MenuCloseSFX);
+        source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_MenuCloseSFX));
         while (transform.localPosition.y < 128 + v)
         {
             transform.localPosition = transform.localPosition + (Vector3.up * 4);

@@ -26,21 +26,24 @@ public class WeaponSelect : MonoBehaviour
     static Vector3 upperCenterIconPos = new Vector3(72, -16, 0);
     static Vector3 lowerCenterIconPos = new Vector3(72, -48, 0);
     public RetroPrinterScriptBasic textbox;
+    private Sprite[] WpnIcons;
 
     /// <summary>
     /// MonoBehaviour.Awake()
     /// </summary>
 	void Awake ()
     {
+        WpnIcons = Resources.LoadAll<Sprite>(GlobalStaticResources.p_PlayerWeaponIcons);
+
         wpnManager = menuSystem.world.player.wpnManager;
         slotASelection = new SpriteRenderer[HammerConstants.NumberOfWeapons];
         slotBSelection = new SpriteRenderer[HammerConstants.NumberOfWeapons];
         for (int i = 0; i < wpnManager.WpnUnlocks.Length; i++)
         {
             SpriteRenderer s = Instantiate(uiSpritePrefab).GetComponent<SpriteRenderer>();
-            if (i < GlobalStaticResources.PlayerWeaponIcons.Length)
+            if (i < WpnIcons.Length)
             {
-                s.sprite = GlobalStaticResources.PlayerWeaponIcons[i];
+                s.sprite = WpnIcons[i];
             }
             else
             {
@@ -96,12 +99,12 @@ public class WeaponSelect : MonoBehaviour
                 if (Input.GetKeyDown(menuSystem.world.PlayerDataManager.K_VertUp) == true)
                 {
                     SwitchActiveSlot();
-                    menuSystem.source.PlayOneShot(GlobalStaticResources.CursorUpSFX);
+                    menuSystem.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_CursorUpSFX));
                 }
                 else if (Input.GetKeyDown(menuSystem.world.PlayerDataManager.K_VertDown) == true)
                 {
                     SwitchActiveSlot();
-                    menuSystem.source.PlayOneShot(GlobalStaticResources.CursorDownSFX);
+                    menuSystem.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_CursorDownSFX));
                 }
             }
             if ((ActiveSlotIsSlotB == false && wpnCount_a > 1) || (wpnManager.SlotBWpn != WeaponType.None && wpnCount_b > 1))
@@ -109,12 +112,12 @@ public class WeaponSelect : MonoBehaviour
                 if (Input.GetKeyDown(menuSystem.world.PlayerDataManager.K_HorizLeft) == true)
                 {
                     ScrollWpnSelection(true, ActiveSlotIsSlotB);
-                    menuSystem.source.PlayOneShot(GlobalStaticResources.CursorDownSFX);
+                    menuSystem.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_CursorDownSFX));
                 }
                 else if (Input.GetKeyDown(menuSystem.world.PlayerDataManager.K_HorizRight) == true)
                 {
                     ScrollWpnSelection(false, ActiveSlotIsSlotB);
-                    menuSystem.source.PlayOneShot(GlobalStaticResources.CursorUpSFX);
+                    menuSystem.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_CursorUpSFX));
                 }
             }
         }

@@ -165,7 +165,7 @@ public class BulletController : MonoBehaviour
                 renderer.sprite = pool.frames[2];
                 break;
             case WeaponType.spEnergyRecover:
-                renderer.sprite = GlobalStaticResources.EnergyRecoverGFX;
+                renderer.sprite = Resources.Load<Sprite>(GlobalStaticResources.p_EnergyRecoverGFX);
                 break;
         }
     }
@@ -186,7 +186,10 @@ public class BulletController : MonoBehaviour
     /// </summary>
     void Retire ()
     {
-        q.Enqueue(this);
+        if (q != null)
+        {
+            q.Enqueue(this);
+        }
         gameObject.SetActive(false);
 
         switch (ShotType)

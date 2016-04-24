@@ -32,7 +32,7 @@ public class HUDWeaponIcon : MonoBehaviour
             }
             else
             {
-                renderer.sprite = GlobalStaticResources.PlayerWeaponIcons[(int)wpnManager.SlotAWpn];
+                renderer.sprite = Resources.LoadAll<Sprite>(GlobalStaticResources.p_PlayerWeaponIcons)[(int)wpnManager.SlotAWpn];
             }
         }
         else
@@ -43,7 +43,7 @@ public class HUDWeaponIcon : MonoBehaviour
             }
             else
             {
-                renderer.sprite = GlobalStaticResources.PlayerWeaponIcons[(int)wpnManager.SlotBWpn];
+                renderer.sprite = Resources.LoadAll<Sprite>(GlobalStaticResources.p_PlayerWeaponIcons)[(int)wpnManager.SlotBWpn];
             }
         }
 	}
