@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour {
     private int[] DoubleTapWindows = { 0, 0, 0, 0 };
     [SerializeField]
     private Sprite specialPoseGFX;
+    public Direction facingDir;
 
 	
 	// Update is called once per frame
@@ -70,6 +71,7 @@ public class PlayerController : MonoBehaviour {
         {
             if (Locked == false)
             {
+                facingDir = (Direction)animator.GetInteger("FacingDir");
                 HandleInputs();
                 if (DontWarp == true)
                 {
