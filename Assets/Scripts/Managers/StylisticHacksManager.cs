@@ -16,6 +16,9 @@ public class StylisticHacksManager : Manager<StylisticHacksManager>
 	// Use this for initialization
 	void Start () {
         Application.targetFrameRate = 60;
+#if !UNITY_EDITOR
+        Cursor.visible = false;
+#endif
         QualitySettings.anisotropicFiltering = UnityEngine.AnisotropicFiltering.Disable;
         QualitySettings.antiAliasing = 0;
         QualitySettings.vSyncCount = 0;

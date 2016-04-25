@@ -33,7 +33,7 @@ public class MenuSystem : MonoBehaviour {
         switch (mode)
         {
             case MenuSystemMode.None: // not in menu
-                if (Input.GetKeyDown(world.PlayerDataManager.K_Menu) == true && world.player.Locked == false)
+                if (Input.GetKeyDown(world.PlayerDataManager.K_Menu) == true && world.player.Locked == false && world.paused == false)
                 {
                     ChangeMode(MenuSystemMode.WeaponSelect);
                 }

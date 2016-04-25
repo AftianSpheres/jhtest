@@ -51,6 +51,8 @@ public static class GlobalStaticResources
     public static string p_MenuOpenSFX = "SFX/menu_open";
     public static string p_PlayerHitSFX = "SFX/player_hit";
     public static string p_PlayerRollSFX = "SFX/player_roll";
+    public static string p_TextPrintSFX = "SFX/text_print";
+    public static string p_WeaponGetFanfare = "SFX/ff_wpn";
     public static string p_FlashMat = "FlashMat";
 
     public static string p_BoomGFX = "GFX/boom";

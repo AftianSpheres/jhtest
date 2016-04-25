@@ -8,7 +8,8 @@ public class RetroPrinterScriptBasic : MonoBehaviour {
 
 	#region Private fields
 	
-	private AudioSource Audio;
+	public AudioSource source;
+    private WorldController world;
 	
 	private string mainText = "";
 	
@@ -28,6 +29,7 @@ public class RetroPrinterScriptBasic : MonoBehaviour {
 	public List<string> FullText;
 	
 	public bool runOnStart = true;
+    public bool finishedTextBlock = false;
 
     public int lineCount;
     public int CharsPerFrame = 1;
@@ -35,8 +37,9 @@ public class RetroPrinterScriptBasic : MonoBehaviour {
 	
 	#endregion
 
-	void Start () {
-		
+	void Start ()
+    {
+        world = GameObject.Find("World").GetComponent<WorldController>();	
 		Init();
 
         if (runOnStart == true)
@@ -57,6 +60,7 @@ public class RetroPrinterScriptBasic : MonoBehaviour {
 	
 	IEnumerator UpdateText()
 	{
+        finishedTextBlock = false;
 		foreach(string s in FullText)
 		{
 			if(!running)
@@ -65,6 +69,7 @@ public class RetroPrinterScriptBasic : MonoBehaviour {
 			yield return StartCoroutine( UpdateLine(s) );
 			
 		}
+        finishedTextBlock = true;
 	}
 	
 	IEnumerator UpdateLine(string line)
@@ -88,6 +93,17 @@ public class RetroPrinterScriptBasic : MonoBehaviour {
 				else
 				{
                     int i2 = 0;
+                    if (source != null)
+                    {
+                        if (world.BGS0.isPlaying == true)
+                        {
+                            source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_TextPrintSFX), 0.25f);
+                        }
+                        else
+                        {
+                            source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_TextPrintSFX), 1f);
+                        }
+                    }
                     while (i2 < CharsPerFrame && i + i2 < line.Length)
                     {
                         mainText += line[i + i2];
@@ -104,12 +120,17 @@ public class RetroPrinterScriptBasic : MonoBehaviour {
 		}
 		
 	}
-	
-    public void Play(TextAsset a)
+
+    public void Play(string s)
     {
         Stop();
-        FullText = new List<String>(a.ToString().Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None));
+        FullText = new List<string>(s.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None));
         Run();
+    }
+
+    public void Play(TextAsset a)
+    {
+        Play(a.ToString());
     }
 
     void Run()

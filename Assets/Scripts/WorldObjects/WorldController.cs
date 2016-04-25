@@ -119,9 +119,16 @@ public class WorldController : MonoBehaviour
     {
         get { return lastSessionFingerprint; }
     }
+    [SerializeField]
+    private HUDMainTextbox mainTextbox;
+    public HUDMainTextbox MainTextbox
+    {
+        get { return mainTextbox; }
+    }
 
     public RoomController activeRoom;
     public List<PauseableSprite> pauseableSprites;
+    public bool paused = false;
 
     // Use this for initialization
     void Awake ()
@@ -218,6 +225,8 @@ public class WorldController : MonoBehaviour
         {
             pauseableSprites[i].Pause();
         }
+        paused = true;
+
     }
 
     /// <summary>
@@ -229,5 +238,6 @@ public class WorldController : MonoBehaviour
         {
             pauseableSprites[i].Unpause();
         }
+        paused = false;
     }
 }

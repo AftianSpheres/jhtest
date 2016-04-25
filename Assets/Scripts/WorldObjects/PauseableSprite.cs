@@ -67,7 +67,10 @@ public class PauseableSprite : MonoBehaviour
         {
             for (int i = 0; i < PausedBehaviours.Count; i++)
             {
-                PausedBehaviours[i].enabled = true;
+                if (PausedBehaviours[i] != null)
+                {
+                    PausedBehaviours[i].enabled = true;
+                }
             }
             PausedBehaviours = new List<Behaviour>(AttachedBehaviours.Count);
             Paused = false;

@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour {
     public int KnockbackFrames;
     private bool DiscardDodgeInputs;
     private int[] DoubleTapWindows = { 0, 0, 0, 0 };
+    [SerializeField]
+    private Sprite specialPoseGFX;
 
 	
 	// Update is called once per frame
@@ -106,7 +108,7 @@ public class PlayerController : MonoBehaviour {
         }
         else if (other.CompareTag("Pickup") == true)
         {
-            Pickup(other.gameObject.GetComponent<mu_ItemPickup>());
+            other.gameObject.GetComponent<mu_ItemPickup>().Pickup();
         }
     }
 
@@ -323,17 +325,9 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    /// <summary>
-    /// Picks up pickup.
-    /// </summary>
-    public void Pickup (mu_ItemPickup pickup)
+    public void DoSpecialPose ()
     {
-        switch (pickup.pickupType)
-        {
-            case PickupType.Weapon:
-                wpnManager.AddWeapon(pickup.weaponType);
-                break;
-        }
+        renderer.sprite = specialPoseGFX;
     }
 
     /// <summary>
