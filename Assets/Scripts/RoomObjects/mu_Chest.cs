@@ -13,13 +13,13 @@ public class mu_Chest : MonoBehaviour
     public static int sensitivityZone = 2;
     public AudioSource source;
     public AudioClip clip;
-    public ChestFlags flag;
+    public mufm_Generic flagManager;
     private Bounds boundsToOpen;
 
     void Start ()
     {
         boundsToOpen = new Bounds(collider.bounds.center, new Vector3(collider.bounds.size.x + sensitivityZone, collider.bounds.size.y + sensitivityZone, collider.bounds.size.z));
-        if ((room.world.GameStateManager.chests & flag) == flag)
+        if (flagManager.CheckFlag() == true)
         {
             renderer.sprite = frames[1];
             open = true;
@@ -56,7 +56,7 @@ public class mu_Chest : MonoBehaviour
         room.world.player.Locked = false;
         pickup.gameObject.SetActive(true);
         pickup.Pickup();
-        room.world.GameStateManager.chests |= flag;
+        flagManager.ActivateFlag();
     }
 
 #if UNITY_EDITOR

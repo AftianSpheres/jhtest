@@ -80,7 +80,7 @@ public class RoomController : MonoBehaviour
         }
         if (RoomCheckpoint != null)
         {
-            if (bounds.Contains(world.player.collider.bounds.center) == true && gameStateManager.LastCheckpoint != RoomCheckpoint)
+            if (bounds.Contains(world.player.collider.bounds.center) == true && gameStateManager.LastCheckpoint != RoomCheckpoint.checkpointValue)
             {
                 RoomCheckpoint.Activate();
             } 

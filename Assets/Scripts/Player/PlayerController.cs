@@ -20,6 +20,7 @@ public static class PlayerStateHashes
     public static int CutsceneWalk_U = Animator.StringToHash("Base Layer.Neutral.Walking.CutsceneWalk_U");
     public static int CutsceneWalk_L = Animator.StringToHash("Base Layer.Neutral.Walking.CutsceneWalk_L");
     public static int CutsceneWalk_R = Animator.StringToHash("Base Layer.Neutral.Walking.CutsceneWalk_R");
+    public static int Dead = Animator.StringToHash("Base Layer.Dead");
 
 }
 
@@ -55,9 +56,13 @@ public class PlayerController : MonoBehaviour {
     private Sprite specialPoseGFX;
     public Direction facingDir;
 
-	
-	// Update is called once per frame
-	void Update ()
+	void Start ()
+    {
+        animator.Play(world.GameStateManager.levelLoadPlayerAnimHash, 0, world.GameStateManager.levelLoadPlayerAnimTime);
+    }
+
+    // Update is called once per frame
+    void Update ()
     {
         for (int i = 0; i < DoubleTapWindows.Length; i++)
         {
@@ -337,11 +342,8 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     public void Respawn ()
     {
-        world.GameStateManager.LastCheckpoint.RespawnAt();
-        world.GameStateManager.RerollSessionFingerprint();
-        energy.Recover(100);
-        animator.Play("PlayerStand_D");
-        animator.SetBool("Dead", false);
+        world.GameStateManager.RespawnPlayer();
+        animator.ResetTrigger("Hit");
     }
 
     /// <summary>

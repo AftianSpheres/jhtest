@@ -36,9 +36,9 @@ public class WeaponSelect : MonoBehaviour
         WpnIcons = Resources.LoadAll<Sprite>(GlobalStaticResources.p_PlayerWeaponIcons);
 
         wpnManager = menuSystem.world.player.wpnManager;
-        slotASelection = new SpriteRenderer[HammerConstants.NumberOfWeapons];
-        slotBSelection = new SpriteRenderer[HammerConstants.NumberOfWeapons];
-        for (int i = 0; i < wpnManager.WpnUnlocks.Length; i++)
+        slotASelection = new SpriteRenderer[HammerConstants.NumberOfWeapons + 1];
+        slotBSelection = new SpriteRenderer[HammerConstants.NumberOfWeapons + 1];
+        for (int i = 0; i < HammerConstants.NumberOfWeapons + 1; i++)
         {
             SpriteRenderer s = Instantiate(uiSpritePrefab).GetComponent<SpriteRenderer>();
             if (i < WpnIcons.Length)
@@ -122,8 +122,8 @@ public class WeaponSelect : MonoBehaviour
             }
         }
         DrawWpnSequence();
-        menuSystem.world.player.wpnManager.SlotAWpn = (WeaponType)index_a;
-        menuSystem.world.player.wpnManager.SlotBWpn = (WeaponType)index_b;
+        menuSystem.world.player.wpnManager.ChangeActiveWeapon((WeaponType)index_a);
+        menuSystem.world.player.wpnManager.ChangeActiveWeapon((WeaponType)index_b, true);
     }
 
     /// <summary>
@@ -157,9 +157,10 @@ public class WeaponSelect : MonoBehaviour
     /// </summary>
     public void PreOpen ()
     {
-        for (int i = 0; i < wpnManager.WpnUnlocks.Length; i++)
+        for (int i = 0; i < HammerConstants.NumberOfWeapons + 1; i++)
         {
-            if (wpnManager.WpnUnlocks[i] == true)
+            int mask = 1 << i;
+            if (((int)wpnManager.WpnUnlocks & mask) == mask)
             {
                 slotASelection[i].enabled = true;
                 slotBSelection[i].enabled = true;
@@ -202,6 +203,7 @@ public class WeaponSelect : MonoBehaviour
     {
         int sprCountToRight = 1;
         int sprCountToLeft = 1;
+        int mask;
         if (index > -1 && a[index] != null)
         {
             a[index].transform.localPosition = defaultPos;
@@ -212,7 +214,8 @@ public class WeaponSelect : MonoBehaviour
         }
         for (int i = index - 1; i > -1; i--)
         {
-            if (a[i] != null && i != opposingIndex && wpnManager.WpnUnlocks[i] == true)
+            mask = 1 << i;
+            if (a[i] != null && i != opposingIndex && ((int)wpnManager.WpnUnlocks & mask) == mask)
             {
                 a[i].transform.localPosition = defaultPos + (Vector3.left * sprCountToLeft * 24);
                 a[i].enabled = true;
@@ -221,7 +224,8 @@ public class WeaponSelect : MonoBehaviour
         }
         for (int i = index + 1; i < a.Length; i++)
         {
-            if (a[i] != null && i != opposingIndex && wpnManager.WpnUnlocks[i] == true)
+            mask = 1 << i;
+            if (a[i] != null && i != opposingIndex && ((int)wpnManager.WpnUnlocks & mask) == mask)
             {
                 a[i].transform.localPosition = defaultPos + (Vector3.right * sprCountToRight * 24);
                 a[i].enabled = true;
@@ -232,11 +236,12 @@ public class WeaponSelect : MonoBehaviour
         {
             for (int i = 0; i < index; i++)
             {
+                mask = 1 << i;
                 if (sprCountToRight >= sprCountToLeft)
                 {
                     break;
                 }
-                else if (a[i] != null && i != opposingIndex && wpnManager.WpnUnlocks[i] == true)
+                else if (a[i] != null && i != opposingIndex && ((int)wpnManager.WpnUnlocks & mask) == mask)
                 {
                     a[i].transform.localPosition = defaultPos + (Vector3.right * sprCountToRight * 24);
                     a[i].enabled = true;
@@ -249,11 +254,12 @@ public class WeaponSelect : MonoBehaviour
         {
             for (int i = HammerConstants.NumberOfWeapons - 1; i > index; i--)
             {
+                mask = 1 << i;
                 if (sprCountToLeft >= sprCountToRight)
                 {
                     break;
                 }
-                else if (a[i] != null && i != opposingIndex && wpnManager.WpnUnlocks[i] == true)
+                else if (a[i] != null && i != opposingIndex && ((int)wpnManager.WpnUnlocks & mask) == mask)
                 {
                     a[i].transform.localPosition = defaultPos + (Vector3.left * sprCountToLeft * 24);
                     a[i].enabled = true;
@@ -303,7 +309,8 @@ public class WeaponSelect : MonoBehaviour
             {
                 i = 0;
             }
-            if (wpnManager.WpnUnlocks[i] == true && i != I)
+            int mask = 1 << i;
+            if (((int)wpnManager.WpnUnlocks & mask) == mask && i != I)
             {
                 break;
             }

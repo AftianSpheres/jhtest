@@ -35,7 +35,8 @@ public class mu_ItemPickup : MonoBehaviour
 	    switch (pickupType)
         {
             case PickupType.Weapon:
-                if (room.world.player.wpnManager.WpnUnlocks[(int)weaponType] == true)
+                int mask = 1 << ((int)weaponType);
+                if (((int)room.world.player.wpnManager.WpnUnlocks & mask) == mask)
                 {
                     Destroy(gameObject);
                 }

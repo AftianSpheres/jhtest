@@ -10,13 +10,13 @@ using System.Collections.Generic;
 public class PlayerWeaponManager : MonoBehaviour
 {
     public PlayerController master;
-    private Animator animator;
     private PlayerReticleController reticle;
     private BulletPool bulletPool;
     private PlayerEnergy energy;
     public WeaponType SlotAWpn;
     public WeaponType SlotBWpn;
-    public bool[] WpnUnlocks;
+    //public bool[] WpnUnlocks;
+    public HeldWeapons WpnUnlocks;
     public static int[] ShotEnergyCosts =
         {
         0, // weenie gun
@@ -43,39 +43,42 @@ public class PlayerWeaponManager : MonoBehaviour
     /// </summary>
     void Start ()
     {
-        animator = master.animator;
         reticle = master.world.reticle;
         bulletPool = master.world.PlayerBullets;
         energy = master.energy;
-	}
-	
-	/// <summary>
-    /// MonoBehaviour.Update()
-    /// </summary>
-	void Update ()
-    {
-        animator.SetInteger(SlotAWpnHash, (int)SlotAWpn);
-        animator.SetInteger(SlotBWpnHash, (int)SlotBWpn);
+        WpnUnlocks = master.world.GameStateManager.heldWeapons;
+        ChangeActiveWeapon(master.world.GameStateManager.activePlayerWeapons[0]);
+        ChangeActiveWeapon(master.world.GameStateManager.activePlayerWeapons[1], true);
+
     }
 
     /// <summary>
     /// Unlocks a weapon, and sets it to a slot if none are full.
     /// </summary>
-    /// <param name="wpn"></param>
     public void AddWeapon(WeaponType wpn)
     {
-        if (WpnUnlocks[(int)wpn] == false)
+        HeldWeapons wpnToMask;
+        if (wpn == WeaponType.None || (int)wpn > HammerConstants.NumberOfWeapons + 1)
         {
-            WpnUnlocks[(int)wpn] = true;
+            throw new System.Exception("Tried to add invalid weapon of type " + wpn.ToString());
+        }
+        else
+        {
+            wpnToMask = (HeldWeapons)(1 << (int)wpn);
+        }
+        if ((WpnUnlocks & wpnToMask) != wpnToMask)
+        {
+            WpnUnlocks |= wpnToMask;
             if (SlotAWpn == WeaponType.None)
             {
-                SlotAWpn = wpn;
+                ChangeActiveWeapon(wpn);
             }
             else if (SlotBWpn == WeaponType.None)
             {
-                SlotBWpn = wpn;
+                ChangeActiveWeapon(wpn, true);
             }
         }
+        master.world.GameStateManager.heldWeapons = WpnUnlocks;
     }
 
     /// <summary>
@@ -91,6 +94,22 @@ public class PlayerWeaponManager : MonoBehaviour
         else
         {
             return ShotEnergyCosts[(int)shot] * energy.Level * DamageMultipliers[(int)shot];
+        }
+    }
+
+    public void ChangeActiveWeapon(WeaponType wpn, bool isSlotB = false)
+    {
+        if (isSlotB == false)
+        {
+            SlotAWpn = wpn;
+            master.world.GameStateManager.activePlayerWeapons[0] = SlotAWpn;
+            master.animator.SetInteger(SlotAWpnHash, (int)SlotAWpn);
+        }
+        else
+        {
+            SlotBWpn = wpn;
+            master.world.GameStateManager.activePlayerWeapons[1] = SlotBWpn;
+            master.animator.SetInteger(SlotBWpnHash, (int)SlotBWpn);
         }
     }
 
@@ -131,7 +150,7 @@ public class PlayerWeaponManager : MonoBehaviour
                 bulletPool.FireBullet(shot, 5f, CalcShotDamage(shot), 1, r, master.bulletOrigin.transform.position);
                 master.collider.enabled = false;
                 master.Locked = true;
-                animator.enabled = false;
+                master.animator.enabled = false;
                 master.renderer.enabled = false;
                 master.fs.skip = true;
                 master.bulletOrigin.gameObject.SetActive(false);

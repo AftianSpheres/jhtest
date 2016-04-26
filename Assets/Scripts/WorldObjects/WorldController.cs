@@ -146,6 +146,7 @@ public class WorldController : MonoBehaviour
         else
         {
             gameStateManager = GameObject.Find("Universe/GameStateManager").GetComponent<GameStateManager>();
+            gameStateManager.world = this;
             playerDataManager = GameObject.Find("Universe/PlayerDataManager").GetComponent<PlayerDataManager>();
         }
     }

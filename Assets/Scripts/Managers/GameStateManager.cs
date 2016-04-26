@@ -1,60 +1,61 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 using System.Collections;
 
-[Flags]
-public enum ExtantCheckpoints
+[Serializable]
+public class GameStateManager : Manager<GameStateManager>
 {
-    None = 0,
-    Checkpoint00 = 1
-}
-
-[Flags]
-public enum ChestFlags
-{
-    None = 0,
-    TestMapR01ShotgunChest = 1
-}
-
-[Flags]
-public enum UnlockedWeapons
-{
-    None = 0,
-    WG = 1,
-    WGII = 2,
-    Shotgun = 4,
-    Shadow = 8,
-    Flamethrower = 16,
-    Icicle = 32,
-    Rift = 64,
-    Missile = 128,
-    Laser = 256,
-    Gatling = 512
-}
-
-public class GameStateManager : Manager<GameStateManager> {
-    public ChestFlags chests = 0;
-    public UnlockedWeapons playerWeapons;
-    public mu_Checkpoint LastCheckpoint;
+    public WorldController world;
+    public ChestFlags_Circle chestFlags_Circle = 0;
+    public ChestFlags_Forest chestFlags_Forest = 0;
+    public ChestFlags_Marina chestFlags_Marina = 0;
+    public ChestFlags_TestMap chestFlags_TestMap = 0;
+    public ChestFlags_Valley chestFlags_Valley = 0;
+    public ChestFlags_Village chestFlags_Village = 0;
+    public EventFlags_Circle eventFlags_Circle = 0;
+    public EventFlags_Forest eventFlags_Forest = 0;
+    public EventFlags_Global eventFlags_Global = 0;
+    public EventFlags_Marina eventFlags_Marina = 0;
+    public EventFlags_TestMap eventFlags_TestMap = 0;
+    public EventFlags_Valley eventFlags_Valley = 0;
+    public EventFlags_Village eventFlags_Villags = 0;
+    public Checkpoints availableCheckpoints = 0;
+    public Checkpoints LastCheckpoint;
+    public HeldKeyItems heldKeyItems = 0;
+    public HeldPassiveItems heldPassiveItems = 0;
+    public HeldWeapons heldWeapons = 0;
+    public WeaponType[] activePlayerWeapons = { WeaponType.None, WeaponType.None };
+    public Vector3 respawnPosition;
+    public uint DeathCounter = 0;
+    public uint PlayerLevel = 0;
+    public int[] areaKeys = new int[HammerConstants.NumberOfAreas];
+    public int levelLoadPlayerAnimHash = PlayerStateHashes.PlayerStand_D;
+    public float levelLoadPlayerAnimTime = 0f;
+    public uint[] respawnRoomCoords = new uint[2];
+    public int respawnLevelIndex = 0;
     public int SessionFingerprint;
     public ulong ElapsedFrames = 0;
-    public uint DeathCounter = 0;
-    public bool[] availableCheckpoints;
 
-
-    // Use this for initialization
+    /// <summary>
+    /// MonoBehavious.Start()
+    /// </summary>
     void Start ()
     {
-        availableCheckpoints = new bool[Enum.GetNames(typeof(ExtantCheckpoints)).GetLength(0)];
         SessionFingerprint = UnityEngine.Random.Range(int.MinValue, int.MaxValue);
 	}
 	
-	// Update is called once per frame
+    /// <summary>
+    /// MonoBehaviour.Update()
+    /// </summary>
 	void Update ()
     {
         ElapsedFrames++;
     }
 
+    /// <summary>
+    /// Generates a new session fingerprint value.
+    /// </summary>
     public void RerollSessionFingerprint ()
     {
         int r = SessionFingerprint;
@@ -63,5 +64,41 @@ public class GameStateManager : Manager<GameStateManager> {
             r = UnityEngine.Random.Range(int.MinValue, int.MaxValue);
         }
         SessionFingerprint = r;
+    }
+
+    /// <summary>
+    /// Respawns player at last visited checkpoint.
+    /// </summary>
+    public void RespawnPlayer()
+    {
+        if (SceneManager.GetActiveScene().buildIndex != respawnLevelIndex)
+        {
+            world = default(WorldController);
+            levelLoadPlayerAnimHash = PlayerStateHashes.Dead;
+            levelLoadPlayerAnimTime = 1.0f;
+            SceneManager.LoadScene(respawnLevelIndex, LoadSceneMode.Single);
+        }
+        StartCoroutine(in_RespawnPlayer());
+    }
+
+    /// <summary>
+    /// INTERNAL: handles timing w/ level loading and screen fade animation
+    /// </summary>
+    IEnumerator in_RespawnPlayer()
+    {
+        while (world == null) // if we changed scenes, we need to make sure that the new scene has loaded and its WorldController has mated with the GameStateManager
+        {
+            yield return null;
+        }
+        StartCoroutine(world.cameraController.InstantChangeScreen(world.rooms[respawnRoomCoords[0], respawnRoomCoords[1]], 60));
+        RerollSessionFingerprint();
+        while (world.activeRoom == null)
+        {
+            yield return null;
+        }
+        world.player.transform.position = respawnPosition;
+        world.player.energy.Recover(100);
+        world.player.animator.Play(PlayerStateHashes.PlayerStand_D);
+        world.player.animator.SetBool("Dead", false);
     }
 }
