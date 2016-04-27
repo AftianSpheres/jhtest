@@ -54,10 +54,6 @@ public class RoomController : MonoBehaviour
         {
             world.rooms[yPosition, xPosition] = this;
         }
-        for (int i = 0; i < Enemies.Length; i++)
-            {
-            Enemies[i].room = this;
-            }
         gameStateManager = GameObject.Find("Universe/GameStateManager").GetComponent<GameStateManager>();
     }
 

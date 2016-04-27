@@ -22,6 +22,8 @@ public class mu_RoomEvent : MonoBehaviour
     public RoomEventConditions condition;
     public int TargetNumber;
     public bool EventActive;
+    public mufm_Generic FlagActivatedOnEvent;
+    public mufm_Generic FlagSubstitutedForEvent;
     private int counter;
 
 
@@ -34,6 +36,10 @@ public class mu_RoomEvent : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        if (FlagSubstitutedForEvent != null && FlagSubstitutedForEvent.CheckFlag() == true)
+        {
+            EventActive = true;
+        }
 	    switch (condition)
         {
             case RoomEventConditions.TargetNumberOfEnemiesKilled:
@@ -57,6 +63,10 @@ public class mu_RoomEvent : MonoBehaviour
                     EventActive = true;
                 }
                 break;
+        }
+        if (FlagActivatedOnEvent != null && EventActive == true)
+        {
+            FlagActivatedOnEvent.ActivateFlag();
         }
 	}
 

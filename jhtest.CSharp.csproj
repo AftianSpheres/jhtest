@@ -102,8 +102,11 @@
     <Compile Include="Assets\Scripts\Enemy\Common\EnemyModule.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDDebug.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDEnergyBar.cs" />
+    <Compile Include="Assets\Scripts\HUD\HUDKeyCounter.cs" />
+    <Compile Include="Assets\Scripts\HUD\HUDLevelCounter.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDMainTextbox.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDWeaponIcon.cs" />
+    <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\AreaType.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\Checkpoints.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\ChestFlags_Circle.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\ChestFlags_Forest.cs" />
@@ -121,6 +124,7 @@
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\HeldKeyItems.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\HeldPassiveItems.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\HeldWeapons.cs" />
+    <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\PickupType.cs" />
     <Compile Include="Assets\Scripts\Helpers\ExpensiveAccurateCollision.cs" />
     <Compile Include="Assets\Scripts\Helpers\GlobalStaticResources.cs" />
     <Compile Include="Assets\Scripts\Helpers\HammerConstants.cs" />
@@ -145,12 +149,15 @@
     <Compile Include="Assets\Scripts\Player\StateMachine\PlayerUpdateFacing.cs" />
     <Compile Include="Assets\Scripts\Player\StateMachine\PlayerWalking.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\FlagManagers\mufm_Chest_TestMap.cs" />
+    <Compile Include="Assets\Scripts\RoomObjects\FlagManagers\mufm_Event_TestMap.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\FlagManagers\mufm_Generic.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\RegisteredSprite.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_Checkpoint.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_Chest.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_Door.cs" />
+    <Compile Include="Assets\Scripts\RoomObjects\mu_EventManagedObject.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_FalseWall.cs" />
+    <Compile Include="Assets\Scripts\RoomObjects\mu_FlagManagedObject.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_ItemPickup.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_RoomEvent.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_Warp.cs" />

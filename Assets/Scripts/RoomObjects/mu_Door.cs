@@ -40,11 +40,13 @@ public class mu_Door : MonoBehaviour
     public AudioClip clip;
     public AudioSource source;
     public DoorCondition condition;
+    public DoorCondition postUnlockCondition;
     public mu_RoomEvent specialCondition;
     public Direction direction;
     public bool open = false;
     public bool transitionInProgress = false;
     public Bounds boundsToOpen;
+    public mufm_Generic Flag;
     private static int DoorSensitivityZone = 2;
     private int counter = 0;
     private static int DoorDelayFrames = 8;
@@ -71,13 +73,17 @@ public class mu_Door : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        if ((condition == DoorCondition.AreaKey || condition == DoorCondition.KeyItem) && Flag.CheckFlag() == true)
+        {
+            Unlock();
+        }
         if (room.world.activeRoom == room && transitionInProgress == false)
         {
             if (counter < 1)
             {
                 counter = 0;
             }
-            if (counter == 0 && player.Locked == false)
+            if (counter == 0 && player.Locked == false && open == true)
             {
                 Close();
             }
@@ -194,6 +200,63 @@ public class mu_Door : MonoBehaviour
                                     break;
                             }
                             break;
+                        case DoorCondition.AreaKey:
+                            switch (direction)
+                            {
+                                case Direction.Down:
+                                    if (boundsToOpen.Contains(new Vector3(player.collider.bounds.min.x, player.collider.bounds.max.y, player.collider.bounds.center.z)) == true
+                                    && boundsToOpen.Contains(new Vector3(player.collider.bounds.max.x, player.collider.bounds.max.y, player.collider.bounds.center.z)) == true
+                                    && player.animator.GetCurrentAnimatorStateInfo(0).fullPathHash == PlayerStateHashes.PlayerWalk_U)
+                                    {
+                                        if (room.world.GameStateManager.areaKeys[(int)room.world.Area] > 0)
+                                        {
+                                            room.world.GameStateManager.areaKeys[(int)room.world.Area]--;
+                                            Unlock();
+                                            source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_KeySFX));
+                                        }
+                                    }
+                                    break;
+                                case Direction.Up:
+                                    if (boundsToOpen.Contains(new Vector3(player.collider.bounds.min.x, player.collider.bounds.min.y, player.collider.bounds.center.z)) == true
+                                    && boundsToOpen.Contains(new Vector3(player.collider.bounds.max.x, player.collider.bounds.min.y, player.collider.bounds.center.z)) == true
+                                    && player.animator.GetCurrentAnimatorStateInfo(0).fullPathHash == PlayerStateHashes.PlayerWalk_D)
+                                    {
+                                        if (room.world.GameStateManager.areaKeys[(int)room.world.Area] > 0)
+                                        {
+                                            room.world.GameStateManager.areaKeys[(int)room.world.Area]--;
+                                            Unlock();
+                                            source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_KeySFX));
+                                        }
+                                    }
+                                    break;
+                                case Direction.Left:
+                                    if (boundsToOpen.Contains(new Vector3(player.collider.bounds.max.x, player.collider.bounds.min.y, player.collider.bounds.center.z)) == true
+                                    && boundsToOpen.Contains(new Vector3(player.collider.bounds.max.x, player.collider.bounds.max.y, player.collider.bounds.center.z)) == true
+                                    && player.animator.GetCurrentAnimatorStateInfo(0).fullPathHash == PlayerStateHashes.PlayerWalk_R)
+                                    {
+                                        if (room.world.GameStateManager.areaKeys[(int)room.world.Area] > 0)
+                                        {
+                                            room.world.GameStateManager.areaKeys[(int)room.world.Area]--;
+                                            Unlock();
+                                            source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_KeySFX));
+                                        }
+                                    }
+                                    break;
+                                case Direction.Right:
+                                    if (boundsToOpen.Contains(new Vector3(player.collider.bounds.min.x, player.collider.bounds.min.y, player.collider.bounds.center.z)) == true
+                                    && boundsToOpen.Contains(new Vector3(player.collider.bounds.min.x, player.collider.bounds.max.y, player.collider.bounds.center.z)) == true
+                                    && player.animator.GetCurrentAnimatorStateInfo(0).fullPathHash == PlayerStateHashes.PlayerWalk_L)
+                                    {
+                                        if (room.world.GameStateManager.areaKeys[(int)room.world.Area] > 0)
+                                        {
+                                            room.world.GameStateManager.areaKeys[(int)room.world.Area]--;
+                                            Unlock();
+                                            source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_KeySFX));
+                                        }
+                                    }
+                                    break;
+                            }
+                            break;
                         case DoorCondition.Special:
                             if (specialCondition.EventActive == true && open == false && transitionInProgress == false)
                             {
@@ -305,6 +368,16 @@ public class mu_Door : MonoBehaviour
         mirror.transitionInProgress = false;
         open = false;
         mirror.open = false;
+    }
+
+    /// <summary>
+    /// Unlocks a door.
+    /// </summary>
+    void Unlock()
+    {
+        renderer.sprite = frames[0];
+        mirror.renderer.sprite = mirror.frames[0];
+        condition = postUnlockCondition;
     }
 
 #if UNITY_EDITOR

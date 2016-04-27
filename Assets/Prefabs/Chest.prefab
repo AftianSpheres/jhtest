@@ -32,7 +32,7 @@ GameObject:
   - 114: {fileID: 11405996}
   - 82: {fileID: 8225104}
   m_Layer: 0
-  m_Name: mu_Chest
+  m_Name: Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,6 +193,7 @@ MonoBehaviour:
   open: 0
   source: {fileID: 8225104}
   clip: {fileID: 8300000, guid: 04c02059b63f840449d89754cea310ac, type: 3}
+  flagManager: {fileID: 0}
 --- !u!114 &11465456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -207,6 +208,7 @@ MonoBehaviour:
   room: {fileID: 0}
   pickupType: 0
   weaponType: 2
+  Flag: {fileID: 0}
 --- !u!212 &21295022
 SpriteRenderer:
   m_ObjectHideFlags: 1

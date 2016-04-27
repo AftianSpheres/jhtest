@@ -125,7 +125,12 @@ public class WorldController : MonoBehaviour
     {
         get { return mainTextbox; }
     }
-
+    [SerializeField]
+    private AreaType area;
+    public AreaType Area
+    {
+        get { return area; }
+    }
     public RoomController activeRoom;
     public List<PauseableSprite> pauseableSprites;
     public bool paused = false;

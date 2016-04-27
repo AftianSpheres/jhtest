@@ -13,7 +13,6 @@ public class EnemyJellyMove : StateMachineBehaviour
     {
         common = animator.GetComponent<CommonEnemyController>();
         reticle = common.room.world.reticle;
-
 	}
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

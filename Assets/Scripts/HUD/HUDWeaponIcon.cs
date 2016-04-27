@@ -9,6 +9,7 @@ public class HUDWeaponIcon : MonoBehaviour
     public WorldController world;
     public PlayerWeaponManager wpnManager;
     new public SpriteRenderer renderer;
+    public WeaponType wpnValueCache;
     public bool isSlotB;
 
 	/// <summary>
@@ -26,24 +27,32 @@ public class HUDWeaponIcon : MonoBehaviour
     {
 	    if (isSlotB == false)
         {
-            if (wpnManager.SlotAWpn == WeaponType.None)
+            if (wpnManager.SlotAWpn != wpnValueCache)
             {
-                renderer.sprite = default(Sprite);
-            }
-            else
-            {
-                renderer.sprite = Resources.LoadAll<Sprite>(GlobalStaticResources.p_PlayerWeaponIcons)[(int)wpnManager.SlotAWpn];
+                wpnValueCache = wpnManager.SlotAWpn;
+                if (wpnManager.SlotAWpn == WeaponType.None)
+                {
+                    renderer.sprite = default(Sprite);
+                }
+                else
+                {
+                    renderer.sprite = Resources.LoadAll<Sprite>(GlobalStaticResources.p_PlayerWeaponIcons)[(int)wpnManager.SlotAWpn];
+                }
             }
         }
         else
         {
-            if (wpnManager.SlotBWpn == WeaponType.None)
+            if (wpnManager.SlotBWpn != wpnValueCache)
             {
-                renderer.sprite = default(Sprite);
-            }
-            else
-            {
-                renderer.sprite = Resources.LoadAll<Sprite>(GlobalStaticResources.p_PlayerWeaponIcons)[(int)wpnManager.SlotBWpn];
+                wpnValueCache = wpnManager.SlotBWpn;
+                if (wpnManager.SlotBWpn == WeaponType.None)
+                {
+                    renderer.sprite = default(Sprite);
+                }
+                else
+                {
+                    renderer.sprite = Resources.LoadAll<Sprite>(GlobalStaticResources.p_PlayerWeaponIcons)[(int)wpnManager.SlotBWpn];
+                }
             }
         }
 	}
