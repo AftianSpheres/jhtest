@@ -52,6 +52,8 @@ public class PlayerController : MonoBehaviour {
     public int KnockbackFrames;
     private bool DiscardDodgeInputs;
     private int[] DoubleTapWindows = { 0, 0, 0, 0 };
+    public uint[] CurrentWorldCoords = { 0, 0 };
+    private RoomController lastRoom;
     [SerializeField]
     private Sprite specialPoseGFX;
     public Direction facingDir;
@@ -64,6 +66,24 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
+        uint chkVal;
+        if (world.activeRoom != null && (lastRoom != world.activeRoom || world.activeRoom.BigRoomCellSize.x > 0 || world.activeRoom.BigRoomCellSize.y > 0))
+        {
+            lastRoom = world.activeRoom;
+            chkVal = 0;
+            if (world.activeRoom.BigRoomCellSize.y > 0)
+            {
+                chkVal = (uint)Mathf.FloorToInt((collider.bounds.center.y - world.activeRoom.bounds.min.y) / (HammerConstants.LogicalResolution_Vertical - HammerConstants.HeightOfHUD));
+            }
+            CurrentWorldCoords[0] = world.activeRoom.yPosition + chkVal;
+            chkVal = 0;
+            if (world.activeRoom.BigRoomCellSize.y > 0)
+            {
+                chkVal = (uint)Mathf.FloorToInt((collider.bounds.center.x - world.activeRoom.bounds.min.x) / HammerConstants.LogicalResolution_Horizontal);
+            }
+            CurrentWorldCoords[1] = world.activeRoom.xPosition + chkVal;
+            world.Minimap.Refresh();
+        }
         for (int i = 0; i < DoubleTapWindows.Length; i++)
         {
             DoubleTapWindows[i]--;

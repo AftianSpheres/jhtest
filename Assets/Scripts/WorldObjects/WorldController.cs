@@ -131,6 +131,12 @@ public class WorldController : MonoBehaviour
     {
         get { return area; }
     }
+    [SerializeField]
+    private Cartographer minimap;
+    public Cartographer Minimap
+    {
+        get { return minimap; }
+    }
     public RoomController activeRoom;
     public List<PauseableSprite> pauseableSprites;
     public bool paused = false;

@@ -100,11 +100,13 @@
     <Compile Include="Assets\Scripts\Enemy\Common\CommonEnemyDead.cs" />
     <Compile Include="Assets\Scripts\Enemy\Common\CommonEnemyInvuln.cs" />
     <Compile Include="Assets\Scripts\Enemy\Common\EnemyModule.cs" />
+    <Compile Include="Assets\Scripts\HUD\Cartographer.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDDebug.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDEnergyBar.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDKeyCounter.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDLevelCounter.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDMainTextbox.cs" />
+    <Compile Include="Assets\Scripts\HUD\HUDSubregionNamePopup.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDWeaponIcon.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\AreaType.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\Checkpoints.cs" />
@@ -125,6 +127,7 @@
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\HeldPassiveItems.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\HeldWeapons.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\PickupType.cs" />
+    <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\SubregionType.cs" />
     <Compile Include="Assets\Scripts\Helpers\ExpensiveAccurateCollision.cs" />
     <Compile Include="Assets\Scripts\Helpers\GlobalStaticResources.cs" />
     <Compile Include="Assets\Scripts\Helpers\HammerConstants.cs" />
@@ -181,6 +184,7 @@
     <None Include="Assets\Barker&apos;s Retro Text Printer Free\readme.txt" />
     <None Include="Assets\Resources\SpritesColorFlash.shader" />
     <None Include="Assets\Resources\SpritesEZ.shader" />
+    <None Include="Assets\Resources\Text\en-us\system\subregions.txt" />
     <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn00.txt" />
     <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn01.txt" />
     <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn02.txt" />

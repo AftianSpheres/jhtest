@@ -138,6 +138,7 @@
     <None Include="Assets\Barker&apos;s Retro Text Printer Free\readme.txt" />
     <None Include="Assets\Resources\SpritesColorFlash.shader" />
     <None Include="Assets\Resources\SpritesEZ.shader" />
+    <None Include="Assets\Resources\Text\en-us\system\subregions.txt" />
     <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn00.txt" />
     <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn01.txt" />
     <None Include="Assets\Resources\Text\en-us\system\wpn_menu\wpn02.txt" />

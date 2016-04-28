@@ -2,16 +2,6 @@
 using System.Collections;
 
 /// <summary>
-/// Enum containing all valid regions that rooms can be part of. Minimap and map menu will use this to figure out which rooms to draw.
-/// </summary>
-public enum RoomRegion
-{
-    None,
-    TestMap,
-    TestMapB1F
-}
-
-/// <summary>
 /// A room. Stores room data. Does room things.
 /// </summary>
 [RequireComponent(typeof(RoomCollider))]
@@ -25,7 +15,7 @@ public class RoomController : MonoBehaviour
     public mu_Checkpoint RoomCheckpoint;
     public RoomCollider collision;
     public RoomPriorityMap priorityMap;
-    public RoomRegion region;
+    public SubregionType Subregion;
     public Bounds bounds;
     public Vector2 BigRoomCellSize;
     public uint xPosition;

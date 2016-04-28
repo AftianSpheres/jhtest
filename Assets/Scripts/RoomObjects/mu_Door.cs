@@ -58,14 +58,7 @@ public class mu_Door : MonoBehaviour
         {
             throw new System.Exception("Doors must be paired!");
         }
-        if (direction == Direction.Down || direction == Direction.Up)
-        {
-            boundsToOpen = new Bounds(collider.bounds.center, new Vector3(collider.bounds.size.x, collider.bounds.size.y + DoorSensitivityZone, collider.bounds.size.z));
-        }
-        else
-        {
-            boundsToOpen = new Bounds(collider.bounds.center, new Vector3(collider.bounds.size.x + DoorSensitivityZone, collider.bounds.size.y, collider.bounds.size.z));
-        }
+        GetBoundsToOpen();
         player = room.world.player;
 
 	}
@@ -294,9 +287,11 @@ public class mu_Door : MonoBehaviour
         }
         renderer.sprite = frames[2];
         source.PlayOneShot(clip);
+        open = true;
+        GetBoundsToOpen();
         collider.enabled = false;
         transitionInProgress = false;
-        open = true;
+
     }
 
     /// <summary>
@@ -367,7 +362,38 @@ public class mu_Door : MonoBehaviour
         transitionInProgress = false;
         mirror.transitionInProgress = false;
         open = false;
+        GetBoundsToOpen();
         mirror.open = false;
+        mirror.GetBoundsToOpen();
+    }
+
+    /// <summary>
+    /// Gets the bounds the door uses to open or draw player through.
+    /// </summary>
+    void GetBoundsToOpen()
+    {
+        if (open == true && condition == DoorCondition.Special) // special conditions make doors stay open, so we have to draw the bounds in a little to make that feel right
+        {
+            if (direction == Direction.Down || direction == Direction.Up)
+            {
+                boundsToOpen = new Bounds(collider.bounds.center, new Vector3(collider.bounds.size.x, collider.bounds.size.y - DoorSensitivityZone, collider.bounds.size.z));
+            }
+            else
+            {
+                boundsToOpen = new Bounds(collider.bounds.center, new Vector3(collider.bounds.size.x - DoorSensitivityZone, collider.bounds.size.y, collider.bounds.size.z));
+            }
+        }
+        else
+        {
+            if (direction == Direction.Down || direction == Direction.Up)
+            {
+                boundsToOpen = new Bounds(collider.bounds.center, new Vector3(collider.bounds.size.x, collider.bounds.size.y + DoorSensitivityZone, collider.bounds.size.z));
+            }
+            else
+            {
+                boundsToOpen = new Bounds(collider.bounds.center, new Vector3(collider.bounds.size.x + DoorSensitivityZone, collider.bounds.size.y, collider.bounds.size.z));
+            }
+        }
     }
 
     /// <summary>

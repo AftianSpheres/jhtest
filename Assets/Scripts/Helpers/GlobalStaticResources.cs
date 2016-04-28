@@ -11,6 +11,7 @@ public static class GlobalStaticResources
 {
     public static Func<String, TextAsset> loadTextResource = Resources.Load<TextAsset>;
 
+    public static string p_subregion_names = "Text/" + HammerConstants.LocalizationPrefix + "/system/subregions";
     public static string p_wpn_names = "Text/" + HammerConstants.LocalizationPrefix + "/system/wpn_menu/wpn_names";
     public static string[] p_wpn_descs =
     {
@@ -52,6 +53,7 @@ public static class GlobalStaticResources
     public static string p_MenuOpenSFX = "SFX/menu_open";
     public static string p_PlayerHitSFX = "SFX/player_hit";
     public static string p_PlayerRollSFX = "SFX/player_roll";
+    public static string p_SubregionPopupFanfare = "SFX/ff_subregion_popup";
     public static string p_TextPrintSFX = "SFX/text_print";
     public static string p_WeaponGetFanfare = "SFX/ff_wpn";
     public static string p_FlashMat = "FlashMat";
