@@ -23,6 +23,7 @@ public class BulletPool : MonoBehaviour
             GameObject bullet = Instantiate(prefab);
             BulletController bulletController = bullet.GetComponent<BulletController>();
             bulletController.world = world;
+            bulletController.fs.world = world;
             bulletController.boomPool = boomPool;
             q.Enqueue(bulletController);
             bullet.gameObject.SetActive(false);
@@ -40,6 +41,7 @@ public class BulletPool : MonoBehaviour
         if (world.activeRoom != null)
         {
             BulletController bulletController = q.Dequeue();
+            bulletController.fs.room = world.activeRoom;
             bulletController.gameObject.SetActive(true);
             bulletController.Fire(shot, speed, damage, weight, from, to, this, pierce, homingTarget, homingPrecision, homingWindow);
         }

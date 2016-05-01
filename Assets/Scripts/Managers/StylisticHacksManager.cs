@@ -13,12 +13,16 @@ public class StylisticHacksManager : Manager<StylisticHacksManager>
     public static uint SpritesAllowedOnScreen = 40;
     public Queue<FlickerySprite> sprites;
     private AudioSource BGM0;
-	// Use this for initialization
-	void Start () {
+    public float fps;
+    float LastSecondTime = 0.0f;
+    int currentUpdateHit = 0;
+
+    // Use this for initialization
+    void Start () {
         Application.targetFrameRate = 60;
-#if !UNITY_EDITOR
+        #if !UNITY_EDITOR
         Cursor.visible = false;
-#endif
+        #endif
         QualitySettings.anisotropicFiltering = UnityEngine.AnisotropicFiltering.Disable;
         QualitySettings.antiAliasing = 0;
         QualitySettings.vSyncCount = 0;
@@ -48,13 +52,16 @@ public class StylisticHacksManager : Manager<StylisticHacksManager>
                     break;
                 }
                 FlickerySprite sprite = sprites.Dequeue();
-                if (sprite.skip == true)
+                if (sprite != null)
                 {
-                    i -= 1;
-                }
-                else
-                {
-                    sprite.sprite.enabled = true;
+                    if (sprite.skip == true)
+                    {
+                        i -= 1;
+                    }
+                    else
+                    {
+                        sprite.sprite.enabled = true;
+                    }
                 }
             }
             if (SpritesOK == false)
@@ -65,7 +72,14 @@ public class StylisticHacksManager : Manager<StylisticHacksManager>
             {
                 Application.targetFrameRate = 60;
             }
-            BGM0.pitch = (float)Application.targetFrameRate / 60f;
+            currentUpdateHit++;
+            if (currentUpdateHit == 60)
+            {
+                LastSecondTime = Time.realtimeSinceStartup;
+                currentUpdateHit = 0;
+                fps = Mathf.Round(60 - (60 * (Time.realtimeSinceStartup - LastSecondTime)));
+                BGM0.pitch = fps / 60f;
+            }
         }
     }
 	

@@ -10,6 +10,7 @@ public class BoomEffect : MonoBehaviour
     new public BoxCollider2D collider;
     new public SpriteRenderer renderer;
     public Sprite[] BoomSprites;
+    public FlickerySprite fs;
     public bool Collideable;
     public int Damage;
     public int Duration;

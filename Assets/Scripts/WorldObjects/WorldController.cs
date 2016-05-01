@@ -114,6 +114,13 @@ public class WorldController : MonoBehaviour
     }
 
     [SerializeField]
+    private StylisticHacksManager stylisticHacksManager;
+    public StylisticHacksManager StylisticHacksManager
+    {
+        get { return stylisticHacksManager; }
+    }
+
+    [SerializeField]
     private int lastSessionFingerprint;
     public int LastSessionFingerprint
     {
@@ -159,6 +166,7 @@ public class WorldController : MonoBehaviour
             gameStateManager = GameObject.Find("Universe/GameStateManager").GetComponent<GameStateManager>();
             gameStateManager.world = this;
             playerDataManager = GameObject.Find("Universe/PlayerDataManager").GetComponent<PlayerDataManager>();
+            stylisticHacksManager = GameObject.Find("Universe/StylisticHacksManager").GetComponent<StylisticHacksManager>();
         }
     }
 

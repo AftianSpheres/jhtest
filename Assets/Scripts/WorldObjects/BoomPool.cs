@@ -23,6 +23,7 @@ public class BoomPool : MonoBehaviour
             GameObject boom = Instantiate(prefab);
             BoomEffect boomEffect = boom.GetComponent<BoomEffect>();
             boomEffect.world = world;
+            boomEffect.fs.world = world;
             q.Enqueue(boomEffect);
             boom.gameObject.SetActive(false);
             boom.gameObject.name = "Boom" + i;
@@ -34,6 +35,7 @@ public class BoomPool : MonoBehaviour
     {
         BoomEffect boomEffect = q.Dequeue();
         boomEffect.gameObject.SetActive(true);
+        boomEffect.fs.room = world.activeRoom;
         boomEffect.owner = owner;
         boomEffect.q = q;
         Sprite[] allSprites = Resources.LoadAll<Sprite>(GlobalStaticResources.p_BoomGFX);

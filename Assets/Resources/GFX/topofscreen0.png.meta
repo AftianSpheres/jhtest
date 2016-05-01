@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 00e3ddaad3260ea4f90605281323e464
-timeCreated: 1461880711
+timeCreated: 1461976366
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -20,6 +20,8 @@ TextureImporter:
     21300026: mm_connect
     21300028: mm_activeconnect
     21300030: mm_disconnect
+    21300032: mm_fused
+    21300034: mm_activefused
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -181,6 +183,28 @@ TextureImporter:
         serializedVersion: 2
         x: 150
         y: 9
+        width: 1
+        height: 3
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: mm_fused
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 5
+        width: 1
+        height: 3
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: mm_activefused
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 1
         width: 1
         height: 3
       alignment: 1

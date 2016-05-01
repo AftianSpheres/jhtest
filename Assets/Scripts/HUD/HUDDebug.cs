@@ -7,6 +7,7 @@ using System.Collections;
 /// </summary>
 public class HUDDebug : MonoBehaviour
 {
+    public WorldController world;
     public TextMesh textMesh;
     float LastSecondTime = 0.0f;
     int currentUpdateHit = 0;
@@ -31,8 +32,7 @@ public class HUDDebug : MonoBehaviour
         currentUpdateHit++;
         if (currentUpdateHit == 60)
         {
-            float fps = Mathf.Round(120 - (60 * (Time.realtimeSinceStartup - LastSecondTime)));
-            textMesh.text = fps.ToString();
+            textMesh.text = world.StylisticHacksManager.fps.ToString();
             LastSecondTime = Time.realtimeSinceStartup;
             currentUpdateHit = 0;
         }

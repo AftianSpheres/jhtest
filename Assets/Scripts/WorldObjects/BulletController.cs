@@ -54,6 +54,7 @@ public class BulletController : MonoBehaviour
     new public SpriteRenderer renderer;
     public BoomPool boomPool;
     public BoxCollider2D HomingTarget;
+    public FlickerySprite fs;
     private Bounds[] roomColliders;
     private Vector3 LogicalPosition = Vector3.zero;
     private Vector3 snapToThing;

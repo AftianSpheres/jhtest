@@ -80,6 +80,7 @@ MonoBehaviour:
   renderer: {fileID: 21209764}
   boomPool: {fileID: 0}
   HomingTarget: {fileID: 0}
+  fs: {fileID: 11416158}
   TargetPosition: {x: 0, y: 0, z: 0}
   Heading: {x: 0, y: 0}
   Trail: {x: 0, y: 0}
@@ -104,7 +105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 329f6588bd90d9e4eb35faee6916447d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21209764}
+  room: {fileID: 0}
+  world: {fileID: 0}
   skip: 0
 --- !u!114 &11464214
 MonoBehaviour:

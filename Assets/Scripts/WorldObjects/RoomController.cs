@@ -21,6 +21,8 @@ public class RoomController : MonoBehaviour
     public uint xPosition;
     public uint yPosition;
     public bool isActiveRoom;
+    public bool[] topSideConnections;
+    public bool[] rightSideConnections;
     public Vector2[] EntryPoints;
     private GameStateManager gameStateManager;
 

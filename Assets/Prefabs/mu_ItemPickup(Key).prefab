@@ -12,6 +12,7 @@ GameObject:
   - 114: {fileID: 11407930}
   - 114: {fileID: 11488476}
   - 61: {fileID: 6181130}
+  - 114: {fileID: 11477874}
   m_Layer: 0
   m_Name: mu_ItemPickup(Key)
   m_TagString: Pickup
@@ -61,6 +62,21 @@ MonoBehaviour:
   weaponType: -1
   Flag: {fileID: 11488476}
   displayLifespan: 60
+--- !u!114 &11477874
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329f6588bd90d9e4eb35faee6916447d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21245090}
+  room: {fileID: 0}
+  world: {fileID: 0}
+  skip: 0
 --- !u!114 &11488476
 MonoBehaviour:
   m_ObjectHideFlags: 1
