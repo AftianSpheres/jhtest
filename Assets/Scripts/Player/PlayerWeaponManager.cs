@@ -13,10 +13,13 @@ public class PlayerWeaponManager : MonoBehaviour
     private PlayerReticleController reticle;
     private BulletPool bulletPool;
     private PlayerEnergy energy;
+    public TabooType Taboo;
     public WeaponType SlotAWpn;
     public WeaponType SlotBWpn;
-    //public bool[] WpnUnlocks;
     public HeldWeapons WpnUnlocks;
+    public bool TabooReady = true;
+    public int TabooCooldownTimer;
+    public static int TabooCooldownTime = 3600;
     public static int[] ShotEnergyCosts =
         {
         0, // weenie gun
@@ -47,9 +50,25 @@ public class PlayerWeaponManager : MonoBehaviour
         bulletPool = master.world.PlayerBullets;
         energy = master.energy;
         WpnUnlocks = master.world.GameStateManager.heldWeapons;
+        Taboo = master.world.GameStateManager.activeTaboo;
         ChangeActiveWeapon(master.world.GameStateManager.activePlayerWeapons[0]);
         ChangeActiveWeapon(master.world.GameStateManager.activePlayerWeapons[1], true);
 
+    }
+
+    /// <summary>
+    /// MonoBehaviour.Update()
+    /// </summary>
+    void Update()
+    {
+        if (TabooReady == false)
+        {
+            TabooCooldownTimer--;
+            if (TabooCooldownTimer <= 0)
+            {
+                TabooReady = true;
+            }
+        }
     }
 
     /// <summary>
@@ -162,4 +181,56 @@ public class PlayerWeaponManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Invokes current Taboo.
+    /// </summary>
+    public void InvokeTaboo()
+    {
+        switch (Taboo)
+        {
+            case TabooType.Eyes:
+                StartCoroutine(in_Taboo_Eyes());
+                break;
+            default:
+                throw new System.Exception("Invoked invalid Taboo of value " + Taboo.ToString());
+        }
+    }
+
+    /// <summary>
+    /// Handles Taboo: Eyes
+    /// </summary>
+    IEnumerator in_Taboo_Eyes ()
+    {
+        master.InvulnTime += 90;
+        Vector3 newHeading;
+        switch (master.facingDir)
+        {
+            case Direction.Down:
+                newHeading = Vector3.down;
+                break;
+            case Direction.Up:
+                newHeading = Vector3.up;
+                break;
+            case Direction.Left:
+                newHeading = Vector3.left;
+                break;
+            case Direction.Right:
+                newHeading = Vector3.right;
+                break;
+            default:
+                throw new System.Exception("Invalid player facing direction: " + master.facingDir.ToString());
+        }
+        for (int i = 0; i < 30; i++)
+        {
+            for (int i2 = 0; i2 < master.world.EnemyBullets.allBullets.Count; i2++)
+            {
+                if (master.world.EnemyBullets.allBullets[i2].gameObject.activeInHierarchy == true)
+                {
+                    master.world.EnemyBullets.allBullets[i2].Heading = newHeading;
+                    master.world.EnemyBullets.allBullets[i2].tag = "PlayerBullet";
+                }
+            }
+            yield return null;
+        }
+    }
 }

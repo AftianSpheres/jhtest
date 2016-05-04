@@ -8,6 +8,7 @@ using System.Collections.Generic;
 public class BulletPool : MonoBehaviour
 {
     public WorldController world;
+    public List<BulletController> allBullets;
     public Queue<BulletController> q;
     public int MaximumAllowedBullets;
     public GameObject prefab;
@@ -18,14 +19,17 @@ public class BulletPool : MonoBehaviour
     void Start ()
     {
         q = new Queue<BulletController>(MaximumAllowedBullets);
+        allBullets = new List<BulletController>(MaximumAllowedBullets);
         for (int i = 0; i < MaximumAllowedBullets; i++)
         {
             GameObject bullet = Instantiate(prefab);
             BulletController bulletController = bullet.GetComponent<BulletController>();
+            bulletController.OriginalTag = bullet.tag;
             bulletController.world = world;
             bulletController.fs.world = world;
             bulletController.boomPool = boomPool;
             q.Enqueue(bulletController);
+            allBullets.Add(bulletController);
             bullet.gameObject.SetActive(false);
             bullet.gameObject.name = "[" + gameObject.name + "] Bullet " + i;
             bullet.transform.SetParent(transform);

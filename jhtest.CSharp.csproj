@@ -107,7 +107,9 @@
     <Compile Include="Assets\Scripts\HUD\HUDLevelCounter.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDMainTextbox.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDSubregionNamePopup.cs" />
+    <Compile Include="Assets\Scripts\HUD\HUDTabooIcon.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDWeaponIcon.cs" />
+    <Compile Include="Assets\Scripts\HUD\TabooOverlay.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\AreaType.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\Checkpoints.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\ChestFlags_Circle.cs" />
@@ -125,9 +127,12 @@
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\EventFlags_Village.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\HeldKeyItems.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\HeldPassiveItems.cs" />
+    <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\HeldTaboos.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\HeldWeapons.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\PickupType.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\SubregionType.cs" />
+    <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\TabooType.cs" />
+    <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\WeaponType.cs" />
     <Compile Include="Assets\Scripts\Helpers\ExpensiveAccurateCollision.cs" />
     <Compile Include="Assets\Scripts\Helpers\GlobalStaticResources.cs" />
     <Compile Include="Assets\Scripts\Helpers\HammerConstants.cs" />

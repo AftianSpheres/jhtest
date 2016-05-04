@@ -1,45 +1,6 @@
 ﻿using UnityEngine;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-
-/// <summary>
-/// Types of bullets and bullet-like Not Bullets.
-/// </summary>
-public enum WeaponType
-{
-    None = -1,
-    pWG,
-    pWGII,
-    pShotgun,
-    pShadow,
-    pFlamethrower,
-    pIcicle,
-    pw7,
-    pw8,
-    pw9,
-    pw10,
-    pw11,
-    pw12,
-    pw13,
-    pw14,
-    pw15,
-    pw16,
-    pw17,
-    pw18,
-    pw19,
-    pw20,
-    pw21,
-    pw22,
-    pw23,
-    pw24,
-
-    eGeneric = 100000,
-    eMidBoss_Arrow_Vert,
-    eMidBoss_Arrow_Horiz,
-
-    spEnergyRecover = 500000
-}
 
 /// <summary>
 /// A horrible, messy thing that controls the logic for every single "bullet" in the game.
@@ -53,6 +14,7 @@ public class BulletController : MonoBehaviour
     new public BoxCollider2D collider;
     new public SpriteRenderer renderer;
     public BoomPool boomPool;
+    public BulletPool bulletPool;
     public BoxCollider2D HomingTarget;
     public FlickerySprite fs;
     private Bounds[] roomColliders;
@@ -62,6 +24,7 @@ public class BulletController : MonoBehaviour
     public Vector2 Heading;
     public Vector2 Trail;
     public WeaponType ShotType;
+    public string OriginalTag;
     public bool PierceScenery;
     public bool PierceTargets;
     public float Range;
@@ -110,7 +73,14 @@ public class BulletController : MonoBehaviour
             FiringAdjust();
             Trail += Heading;
             LogicalPosition = new Vector3(LogicalPosition.x + Heading.x, LogicalPosition.y + Heading.y, LogicalPosition.z);
-            transform.position = new Vector3((float)Math.Round(LogicalPosition.x, 0, MidpointRounding.AwayFromZero), (float)Math.Round(LogicalPosition.y, 0, MidpointRounding.AwayFromZero), LogicalPosition.z);
+            if (float.IsNaN((float)Math.Round(LogicalPosition.x, 0, MidpointRounding.AwayFromZero)) == true || float.IsNaN((float)Math.Round(LogicalPosition.y, 0, MidpointRounding.AwayFromZero)) == true)
+            {
+                Retire();
+            }
+            else
+            {
+                transform.position = new Vector3((float)Math.Round(LogicalPosition.x, 0, MidpointRounding.AwayFromZero), (float)Math.Round(LogicalPosition.y, 0, MidpointRounding.AwayFromZero), LogicalPosition.z);
+            }
         }
     }
 
@@ -119,6 +89,7 @@ public class BulletController : MonoBehaviour
     /// </summary>
     public void Fire (WeaponType shot, float speed, int damage, int weight, Vector3 source, Vector3 to, BulletPool pool, bool pierceScenery, BoxCollider2D homingTarget = default(BoxCollider2D), int homingPrecision = 0, int homingWindow = int.MaxValue)
     {
+        tag = OriginalTag;
         Range = -1;
         Trail = Vector2.zero;
         roomColliders = world.activeRoom.collision.fullCollide;
@@ -126,6 +97,7 @@ public class BulletController : MonoBehaviour
         PierceScenery = pierceScenery;
         Weight = weight;
         q = pool.q;
+        bulletPool = pool;
         Speed = speed;
         ShotType = shot;
         TargetPosition = to;
@@ -192,7 +164,7 @@ public class BulletController : MonoBehaviour
             q.Enqueue(this);
         }
         gameObject.SetActive(false);
-
+        
         switch (ShotType)
         {
             case WeaponType.pWG:

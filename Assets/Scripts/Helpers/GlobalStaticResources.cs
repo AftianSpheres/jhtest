@@ -58,11 +58,12 @@ public static class GlobalStaticResources
     public static string p_WeaponGetFanfare = "SFX/ff_wpn";
     public static string p_FlashMat = "FlashMat";
 
-    public static string p_BoomGFX = "GFX/boom";
+    public static string p_BoomGFX = "GFX/World/boom";
     public static int[] i_Boom0 = { 0, 1, 2, 3 };
     public static int[] i_Boom1 = { 4, 5, 6, 7 };
-    public static string p_PlayerWeaponIcons = "GFX/wpnicons";
+    public static string p_PlayerWeaponIcons = "GFX/UI/HUD/wpnicons";
+    public static string p_TabooOverlay_Eyes = "GFX/UI/TabooOverlays/taboo_eyes";
 
-    public static string p_EnergyRecoverGFX = "GFX/energy_recover";
+    public static string p_EnergyRecoverGFX = "GFX/World/energy_recover";
 
 }

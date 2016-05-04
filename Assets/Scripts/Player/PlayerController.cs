@@ -165,28 +165,43 @@ public class PlayerController : MonoBehaviour {
             DiscardDodgeInputs = true;
         }
 
-        //HeldFire1 bool
+        // Taboos
 
-        if (Input.GetKey(world.PlayerDataManager.K_Fire1) == true && wpnManager.SlotAWpn != WeaponType.None)
+        if (wpnManager.Taboo != TabooType.None && wpnManager.TabooReady == true && Input.GetKey(world.PlayerDataManager.K_Fire1) == true && Input.GetKey(world.PlayerDataManager.K_Fire2) == true && 
+            animator.GetBool("HeldFire1") == false && animator.GetBool("HeldFire2") == false)
         {
-            animator.SetBool("HeldFire1", true);
+            wpnManager.TabooCooldownTimer = PlayerWeaponManager.TabooCooldownTime;
+            wpnManager.TabooReady = false;
+            world.TabooOverlay.DisplayTabooGlyph(wpnManager.Taboo);
+            animator.SetBool("CastTaboo", true);
+            wpnManager.InvokeTaboo();
         }
         else
         {
-            animator.SetBool("HeldFire1", false);
+            //HeldFire1 bool
+
+            if (Input.GetKey(world.PlayerDataManager.K_Fire1) == true && wpnManager.SlotAWpn != WeaponType.None)
+            {
+                animator.SetBool("HeldFire1", true);
+            }
+            else
+            {
+                animator.SetBool("HeldFire1", false);
+            }
+
+            //HeldFire2 bool
+
+            if (Input.GetKey(world.PlayerDataManager.K_Fire2) == true && wpnManager.SlotBWpn != WeaponType.None)
+            {
+                animator.SetBool("HeldFire2", true);
+                animator.SetBool("FireSlotB", true);
+            }
+            else
+            {
+                animator.SetBool("HeldFire2", false);
+            }
         }
 
-        //HeldFire2 bool
-
-        if (Input.GetKey(world.PlayerDataManager.K_Fire2) == true && wpnManager.SlotBWpn != WeaponType.None)
-        {
-            animator.SetBool("HeldFire2", true);
-            animator.SetBool("FireSlotB", true);
-        }
-        else
-        {
-            animator.SetBool("HeldFire2", false);
-        }
 
         if (DiscardDodgeInputs == false)
         {

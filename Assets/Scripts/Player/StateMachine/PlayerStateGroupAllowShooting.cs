@@ -14,7 +14,12 @@ public class PlayerStateGroupAllowShooting : StateMachineBehaviour {
 	// OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-	    if (animator.GetBool("HeldFire1") || animator.GetBool("HeldFire2"))
+        if (animator.GetBool("CastTaboo") == true)
+        {
+            animator.Play("Taboo", 0);
+            animator.SetBool("CastTaboo", false);
+        }
+	    else if (animator.GetBool("HeldFire1") || animator.GetBool("HeldFire2"))
         {
             switch (animator.GetInteger("FacingDir"))
             {

@@ -144,6 +144,12 @@ public class WorldController : MonoBehaviour
     {
         get { return minimap; }
     }
+    [SerializeField]
+    private TabooOverlay tabooOverlay;
+    public TabooOverlay TabooOverlay
+    {
+        get { return tabooOverlay; }
+    }
     public RoomController activeRoom;
     public List<PauseableSprite> pauseableSprites;
     public bool paused = false;

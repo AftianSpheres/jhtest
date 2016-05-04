@@ -19,12 +19,14 @@ public class GameStateManager : Manager<GameStateManager>
     public EventFlags_Marina eventFlags_Marina = 0;
     public EventFlags_TestMap eventFlags_TestMap = 0;
     public EventFlags_Valley eventFlags_Valley = 0;
-    public EventFlags_Village eventFlags_Villags = 0;
+    public EventFlags_Village eventFlags_Village = 0;
     public Checkpoints availableCheckpoints = 0;
     public Checkpoints LastCheckpoint;
     public HeldKeyItems heldKeyItems = 0;
     public HeldPassiveItems heldPassiveItems = 0;
+    public HeldTaboos heldTaboos = 0;
     public HeldWeapons heldWeapons = 0;
+    public TabooType activeTaboo = TabooType.None;
     public WeaponType[] activePlayerWeapons = { WeaponType.None, WeaponType.None };
     public Vector3 respawnPosition;
     public uint DeathCounter = 0;
