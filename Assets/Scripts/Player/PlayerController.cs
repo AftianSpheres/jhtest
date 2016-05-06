@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour {
         {
             Hit(other.gameObject.GetComponent<BulletController>());
         }
-        else if (other.CompareTag("Enemy") == true)
+        else if (other.CompareTag("Enemy") == true && other.gameObject.GetComponent<CommonEnemyController>() != null)
         {
             Hit(other.gameObject.GetComponent<CommonEnemyController>());
         }
