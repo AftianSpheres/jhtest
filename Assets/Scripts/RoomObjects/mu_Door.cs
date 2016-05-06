@@ -14,18 +14,6 @@ public enum DoorCondition
 }
 
 /// <summary>
-/// Enum of directions.
-/// To do: refactor other things to use this instead of straight int-to-direction. At least I was consistent, so it shouldn't be too much of a pain.
-/// </summary>
-public enum Direction
-{
-    Down,
-    Up,
-    Left,
-    Right
-}
-
-/// <summary>
 /// Door.
 /// RoomEvent integration for conditions outside of those that are part of the Door class.
 /// </summary>
