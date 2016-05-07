@@ -208,7 +208,7 @@ public class Cartographer : MonoBehaviour
                     {
                         for (int i2 = 0; i2 < room.topSideConnections.Length; i2++)
                         {
-                            if (modifiedX - 1 + i2 >= world.WorldSize_X)
+                            if (modifiedX - hb + i2 >= world.WorldSize_X)
                             {
                                 break;
                             }

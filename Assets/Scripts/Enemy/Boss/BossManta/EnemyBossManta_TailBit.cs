@@ -7,6 +7,7 @@ public class EnemyBossManta_TailBit : MonoBehaviour
     public int distanceFromBody;
     public Queue<Vector3> moveQueue;
     new public BoxCollider2D collider;
+    new public SpriteRenderer renderer;
     Vector3 anchorPoint;
     Vector3 offset;
     Vector3 virtualPosition;
@@ -22,7 +23,7 @@ public class EnemyBossManta_TailBit : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (tailController.master.common.register.Toggled == true)
+        if (tailController.master.common.room.isActiveRoom == true)
         {
             Vector3 spacing;
             if (moveQueue.Count > 0)

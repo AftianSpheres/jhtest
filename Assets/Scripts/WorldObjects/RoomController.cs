@@ -89,7 +89,11 @@ public class RoomController : MonoBehaviour
         }
         for (int i = 0; i < NonEnemyOccupants.Length; i++)
         {
-            NonEnemyOccupants[i].roomObjectRespawnAction.Invoke();
+            if (NonEnemyOccupants[i].roomObjectRespawnAction != null)
+            {
+                NonEnemyOccupants[i].roomObjectRespawnAction();
+
+            }
         }
     }
 
