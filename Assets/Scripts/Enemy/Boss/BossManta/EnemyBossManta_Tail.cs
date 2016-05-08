@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-enum EnemyBossManta_TailMode
+public enum EnemyBossManta_TailMode
 {
     Neutral,
     Sweeping, // 96 at widest point
@@ -13,7 +13,7 @@ enum EnemyBossManta_TailMode
 public class EnemyBossManta_Tail : MonoBehaviour
 {
     public Direction tailDirection;
-    [SerializeField] private EnemyBossManta_TailMode mode;
+    public EnemyBossManta_TailMode mode;
     public EnemyBossManta master;
     public EnemyBossManta_TailBit[] tailBits;
     public Vector3[] anchorPoints;
@@ -45,10 +45,6 @@ public class EnemyBossManta_Tail : MonoBehaviour
             anchorPoints[2] = anchorPoints[1];
             anchorPoints[1] = anchorPoints[0];
             anchorPoints[0] = GetAnchorPoint();
-            if (mode == EnemyBossManta_TailMode.Neutral)
-            {
-                //StartCoroutine(TailSweep(1.5f));
-            }
         }
     }
 

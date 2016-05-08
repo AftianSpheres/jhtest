@@ -5,6 +5,7 @@ public class EnemyBossManta : EnemyModule
 {
     public Direction facingDir;
     public EnemyBossManta_Tail tailController;
+    public bool armorOff = false;
 
 	// Use this for initialization
 	void Start () {
@@ -12,8 +13,12 @@ public class EnemyBossManta : EnemyModule
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update ()
+    {
+	    if (tailController.mode == EnemyBossManta_TailMode.Neutral && facingDir == Direction.Down)
+        {
+            StartCoroutine(tailController.TailSweep(1.5f));
+        }
 	}
 
     public void faceDown ()
@@ -62,5 +67,20 @@ public class EnemyBossManta : EnemyModule
     {
         facingDir = Direction.UpRight;
         tailController.tailDirection = Direction.UpLeft;
+    }
+
+    public void fireScattershot ()
+    {
+
+    }
+
+    public void makeBodyVulnerable ()
+    {
+
+    }
+
+    public void makeBodyInvulnerable ()
+    {
+
     }
 }

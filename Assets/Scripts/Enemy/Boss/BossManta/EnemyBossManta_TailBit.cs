@@ -59,7 +59,12 @@ public class EnemyBossManta_TailBit : MonoBehaviour
                 default:
                     throw new System.Exception("Invalid direction: " + tailController.tailDirection.ToString());
             }
-            anchorPoint = tailController.anchorPoints[distanceFromBody - 1];
+            int i;
+            for (i = 0; i < distanceFromBody; i++)
+            {
+                anchorPoint += tailController.anchorPoints[i];
+            }
+            anchorPoint /= i + 1;
             virtualPosition = anchorPoint + spacing + offset;
             transform.position = new Vector3(Mathf.Round(virtualPosition.x), Mathf.Round(virtualPosition.y), transform.position.z);
         }
