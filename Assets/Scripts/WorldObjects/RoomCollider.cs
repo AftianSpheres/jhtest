@@ -70,6 +70,19 @@ public class RoomCollider : MonoBehaviour
         }
     }
 
+    public Bounds[] allNonObjCollision
+    {
+        get
+        {
+            Bounds[] ret = new Bounds[_fullCollide.Length + _shootthru.Length];
+            int v = 0;
+            _fullCollide.CopyTo(ret, v);
+            v += _fullCollide.Length;
+            _shootthru.CopyTo(ret, v);
+            return ret;
+        }
+    }
+
     [SerializeField]
     private GameObject[] _fullCollide_obj;
     [SerializeField]

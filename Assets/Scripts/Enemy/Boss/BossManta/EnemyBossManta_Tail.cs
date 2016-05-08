@@ -185,7 +185,7 @@ public class EnemyBossManta_Tail : MonoBehaviour
             case Direction.Right:
                 break;
             default:
-                throw new System.Exception("");
+                throw new System.Exception("Can't do tail stab while facing this way!");
         }
         int interceptStage = 0;
         float vx = interceptZones[0].center.x - virtualTailtip.center.x;
