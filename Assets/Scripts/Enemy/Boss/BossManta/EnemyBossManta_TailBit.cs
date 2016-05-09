@@ -66,6 +66,10 @@ public class EnemyBossManta_TailBit : MonoBehaviour
             }
             anchorPoint /= i + 1;
             virtualPosition = anchorPoint + spacing + offset;
+            if (tailController.mode == EnemyBossManta_TailMode.Neutral)
+            {
+                offset = new Vector3(offset.x * 0.75f, offset.y * 0.75f, offset.z);
+            }
             transform.position = new Vector3(Mathf.Round(virtualPosition.x), Mathf.Round(virtualPosition.y), transform.position.z);
         }
 	}

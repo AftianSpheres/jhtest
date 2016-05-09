@@ -11,18 +11,25 @@ public class EnemyBossManta : EnemyModule
     private static int[] EnemyBossMantaAnimatorHashes =
     {
         Animator.StringToHash("Neutral"),
-        Animator.StringToHash("ReadyToFire"),
+        Animator.StringToHash("FireVolley"),
         Animator.StringToHash("TurnClockwise"),
         Animator.StringToHash("TurnAntiClockwise"),
         Animator.StringToHash("Firing"),
         Animator.StringToHash("OpeningHatch"),
-        Animator.StringToHash("ClosingHatch")
+        Animator.StringToHash("ClosingHatch"),
+        Animator.StringToHash("OpenHatch"),
+        Animator.StringToHash("CloseHatch"),
+        Animator.StringToHash("PurgeArmor")
     };
     private int RemainingVolleys = -1;
     private Vector3 virtualPosition;
+    private bool playerOutOfLineOfSight;
+    private bool turnAntiClockwise;
+    private Vector3 move;
+    private float playerDist;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         virtualPosition = transform.position;
 	}
@@ -30,16 +37,40 @@ public class EnemyBossManta : EnemyModule
 	// Update is called once per frame
 	void Update ()
     {
-        float playerDist = Mathf.Abs(common.collider.bounds.center.x - common.room.world.player.collider.bounds.center.x) + Mathf.Abs(common.collider.bounds.center.y - common.room.world.player.collider.bounds.center.y);
-        bool playerOutOfLineOfSight = false;
-        bool turnAntiClockwise = false;
-        Vector3 move = Vector3.zero;
+        if (common.room == common.room.world.activeRoom)
+        {
+            playerDist = Mathf.Abs(common.collider.bounds.center.x - common.room.world.player.collider.bounds.center.x) + Mathf.Abs(common.collider.bounds.center.y - common.room.world.player.collider.bounds.center.y);
+            playerOutOfLineOfSight = false;
+            turnAntiClockwise = false;
+            move = Vector3.zero;
+            _in_getMoveDir();
+            _in_executeAnyTurns();
+            if (facingDir == Direction.Down || facingDir == Direction.Up || facingDir == Direction.Left || facingDir == Direction.Right)
+            {
+                _in_executeAttacks();
+                _in_executeAnyMove();
+            }
+            if (armorOff == false)
+            {
+                _in_manageHatch();
+                _in_manageArmorState();
+            }
+            else if (common.CurrentHP < 1)
+            {
+                startSuicideAttack();
+            }
+            transform.position = ExpensiveAccurateCollision.ShoveOutOfScenery(common.collider, common.room.collision.allNonObjCollision, new Vector3(Mathf.Round(virtualPosition.x), Mathf.Round(virtualPosition.y), transform.position.z));
+        }
+    }
+
+    void _in_getMoveDir ()
+    {
         if (common.animator.GetCurrentAnimatorStateInfo(0).tagHash == EnemyBossMantaAnimatorHashes[0] && (tailController.mode == EnemyBossManta_TailMode.Neutral || tailController.mode == EnemyBossManta_TailMode.Dead))
         {
             switch (facingDir)
             {
                 case Direction.Down:
-                    playerOutOfLineOfSight = (common.room.world.player.collider.bounds.center.y > common.collider.bounds.min.y || common.room.world.player.collider.bounds.center.x < common.collider.bounds.min.x - (playerDist / 4f) || common.room.world.player.collider.bounds.center.x > common.collider.bounds.max.x + (playerDist / 4f));
+                    playerOutOfLineOfSight = (common.room.world.player.collider.bounds.center.y > common.collider.bounds.min.y || common.room.world.player.collider.bounds.center.x + 8 < common.collider.bounds.min.x - (playerDist / 4f) || common.room.world.player.collider.bounds.center.x - 8 > common.collider.bounds.max.x + (playerDist / 4f));
                     if (playerOutOfLineOfSight == true)
                     {
                         turnAntiClockwise = (common.room.world.player.collider.bounds.center.x > common.collider.bounds.center.x);
@@ -50,7 +81,7 @@ public class EnemyBossManta : EnemyModule
                     }
                     break;
                 case Direction.Up:
-                    playerOutOfLineOfSight = (common.room.world.player.collider.bounds.center.y < common.collider.bounds.max.y || common.room.world.player.collider.bounds.center.x < common.collider.bounds.min.x - (playerDist / 4f) || common.room.world.player.collider.bounds.center.x > common.collider.bounds.max.x + (playerDist / 4f));
+                    playerOutOfLineOfSight = (common.room.world.player.collider.bounds.center.y < common.collider.bounds.max.y || common.room.world.player.collider.bounds.center.x + 8 < common.collider.bounds.min.x - (playerDist / 4f) || common.room.world.player.collider.bounds.center.x - 8 > common.collider.bounds.max.x + (playerDist / 4f));
                     if (playerOutOfLineOfSight == true)
                     {
                         turnAntiClockwise = (common.room.world.player.collider.bounds.center.x < common.collider.bounds.center.x);
@@ -61,7 +92,7 @@ public class EnemyBossManta : EnemyModule
                     }
                     break;
                 case Direction.Left:
-                    playerOutOfLineOfSight = (common.room.world.player.collider.bounds.center.x > common.collider.bounds.min.x || common.room.world.player.collider.bounds.center.y < common.collider.bounds.min.y - (playerDist / 4f) || common.room.world.player.collider.bounds.center.y > common.collider.bounds.max.y + (playerDist / 4f));
+                    playerOutOfLineOfSight = (common.room.world.player.collider.bounds.center.x > common.collider.bounds.min.x || common.room.world.player.collider.bounds.center.y + 8 < common.collider.bounds.min.y - (playerDist / 4f) || common.room.world.player.collider.bounds.center.y - 8 > common.collider.bounds.max.y + (playerDist / 4f));
                     if (playerOutOfLineOfSight == true)
                     {
                         turnAntiClockwise = (common.room.world.player.collider.bounds.center.y < common.collider.bounds.center.y);
@@ -72,7 +103,7 @@ public class EnemyBossManta : EnemyModule
                     }
                     break;
                 case Direction.Right:
-                    playerOutOfLineOfSight = (common.room.world.player.collider.bounds.center.x < common.collider.bounds.max.x || common.room.world.player.collider.bounds.center.y < common.collider.bounds.min.y - (playerDist / 4f) || common.room.world.player.collider.bounds.center.y > common.collider.bounds.max.y + (playerDist / 4f));
+                    playerOutOfLineOfSight = (common.room.world.player.collider.bounds.center.x < common.collider.bounds.max.x || common.room.world.player.collider.bounds.center.y + 8 < common.collider.bounds.min.y - (playerDist / 4f) || common.room.world.player.collider.bounds.center.y - 8 > common.collider.bounds.max.y + (playerDist / 4f));
                     if (playerOutOfLineOfSight == true)
                     {
                         turnAntiClockwise = (common.room.world.player.collider.bounds.center.y > common.collider.bounds.center.y);
@@ -84,78 +115,90 @@ public class EnemyBossManta : EnemyModule
                     break;
             }
         }
-        if (armorOff == false)
+    }
+
+    void _in_manageArmorState ()
+    {
+        if (common.CurrentHP < common.CurrentHP / 2)
         {
-            if (common.animator.GetCurrentAnimatorStateInfo(0).tagHash == EnemyBossMantaAnimatorHashes[4] || common.animator.GetCurrentAnimatorStateInfo(0).tagHash == EnemyBossMantaAnimatorHashes[5])
+            purgeArmor();
+        }
+    }
+
+    void _in_manageHatch ()
+    {
+        if (common.animator.GetCurrentAnimatorStateInfo(0).tagHash == EnemyBossMantaAnimatorHashes[4] || common.animator.GetCurrentAnimatorStateInfo(0).tagHash == EnemyBossMantaAnimatorHashes[5])
+        {
+            if (playerOutOfLineOfSight == true || RemainingVolleys < 0)
             {
-                RemainingVolleys--;
-                if (playerOutOfLineOfSight == true || RemainingVolleys < 0)
-                {
-                    closeHatch();
-                }
+                closeHatch();
+                common.animator.ResetTrigger(EnemyBossMantaAnimatorHashes[1]);
             }
-            if (common.CurrentHP < common.CurrentHP / 2)
+            else
             {
-                purgeArmor();
+                common.animator.SetTrigger(EnemyBossMantaAnimatorHashes[1]);
             }
-            if (playerOutOfLineOfSight == true)
+        }
+    }
+
+    void _in_executeAnyTurns ()
+    {
+        if (playerOutOfLineOfSight == true)
+        {
+            if (common.animator.GetCurrentAnimatorStateInfo(0).tagHash == EnemyBossMantaAnimatorHashes[0])
             {
-                if (common.animator.GetCurrentAnimatorStateInfo(0).tagHash == EnemyBossMantaAnimatorHashes[0])
+                if (turnAntiClockwise == true)
                 {
-                    if (turnAntiClockwise == true)
-                    {
-                        common.animator.SetTrigger(EnemyBossMantaAnimatorHashes[3]);
-                    }
-                    else
-                    {
-                        common.animator.SetTrigger(EnemyBossMantaAnimatorHashes[2]);
-                    }
-                }
-            }
-            else if (facingDir == Direction.Down || facingDir == Direction.Up || facingDir == Direction.Left || facingDir == Direction.Right)
-            {
-                if (common.animator.GetCurrentAnimatorStateInfo(0).tagHash == EnemyBossMantaAnimatorHashes[0])
-                {
-                    virtualPosition += move;
-                }
-                if (playerDist > maximumAllowedDistance)
-                {
-                    if (tailController.mode == EnemyBossManta_TailMode.Neutral && Random.Range(0, 90) == 0)
-                    {
-                        StartCoroutine(tailController.TailStab(1 + (4 * ((playerDist - maximumAllowedDistance) / maximumAllowedDistance))));
-                    }
+                    common.animator.SetTrigger(EnemyBossMantaAnimatorHashes[3]);
                 }
                 else
                 {
-                    if (common.animator.GetCurrentAnimatorStateInfo(0).tagHash == EnemyBossMantaAnimatorHashes[0])
-                    {
-                        if (RemainingVolleys < 0 && Random.Range(0, 360) == 0)
-                        {
-                            openHatch();
-                        }
-                    }
-                    if (tailController.mode == EnemyBossManta_TailMode.Neutral && Random.Range(0, 90) == 0)
-                    {
-                        StartCoroutine(tailController.TailSweep(1.5f));
-                    }
+                    common.animator.SetTrigger(EnemyBossMantaAnimatorHashes[2]);
                 }
+            }
+        }
+    }
+
+    void _in_executeAnyMove ()
+    {
+        if (common.animator.GetCurrentAnimatorStateInfo(0).tagHash == EnemyBossMantaAnimatorHashes[0] && (tailController.mode == EnemyBossManta_TailMode.Neutral || tailController.mode == EnemyBossManta_TailMode.Dead))
+        {
+            virtualPosition += move;
+        }
+    }
+
+    void _in_executeAttacks ()
+    {
+        if (playerDist > maximumAllowedDistance)
+        {
+            if (tailController.mode == EnemyBossManta_TailMode.Neutral && Random.Range(0, 90) == 0)
+            {
+                StartCoroutine(tailController.TailStab(1 + (4 * ((playerDist - maximumAllowedDistance) / maximumAllowedDistance))));
+                move = Vector3.zero;
             }
         }
         else
         {
-            if (common.CurrentHP < 1)
+            if (common.animator.GetCurrentAnimatorStateInfo(0).tagHash == EnemyBossMantaAnimatorHashes[0])
             {
-                startSuicideAttack();
+                if (RemainingVolleys < 0 && Random.Range(0, 360) == 0)
+                {
+                    openHatch();
+                    move = Vector3.zero;
+                }
+            }
+            if (tailController.mode == EnemyBossManta_TailMode.Neutral && Random.Range(0, 90) == 0)
+            {
+                StartCoroutine(tailController.TailSweep(1.5f));
+                move = Vector3.zero;
             }
         }
-        Debug.Log(move);
-
-        transform.position = ExpensiveAccurateCollision.ShoveOutOfScenery(common.collider, common.room.collision.allNonObjCollision, new Vector3(Mathf.Round(virtualPosition.x), Mathf.Round(virtualPosition.y), transform.position.z));
-	}
+    }
 
     public void closeHatch ()
     {
-
+        common.animator.SetTrigger(EnemyBossMantaAnimatorHashes[8]);
+        RemainingVolleys = -1;
     }
 
     public void faceDown ()
@@ -208,7 +251,55 @@ public class EnemyBossManta : EnemyModule
 
     public void fireScattershot ()
     {
+        Vector3[] origins = new Vector3[2];
+        switch (facingDir)
+        {
+            case Direction.Down:
+                origins[0] = new Vector3(common.collider.bounds.center.x - 8, common.collider.bounds.center.y, common.collider.bounds.center.z);
+                origins[1] = new Vector3(common.collider.bounds.center.x + 8, common.collider.bounds.center.y, common.collider.bounds.center.z);
+                break;
+            case Direction.Up:
+                origins[0] = new Vector3(common.collider.bounds.center.x - 8, common.collider.bounds.center.y, common.collider.bounds.center.z);
+                origins[1] = new Vector3(common.collider.bounds.center.x + 8, common.collider.bounds.center.y, common.collider.bounds.center.z);
+                break;
+            case Direction.Left:
+                origins[0] = new Vector3(common.collider.bounds.center.x, common.collider.bounds.center.y - 8, common.collider.bounds.center.z);
+                origins[1] = new Vector3(common.collider.bounds.center.x, common.collider.bounds.center.y + 8, common.collider.bounds.center.z);
+                break;
+            case Direction.Right:
+                origins[0] = new Vector3(common.collider.bounds.center.x, common.collider.bounds.center.y - 8, common.collider.bounds.center.z);
+                origins[1] = new Vector3(common.collider.bounds.center.x, common.collider.bounds.center.y + 8, common.collider.bounds.center.z);
+                break;
+            default:
+                throw new System.Exception("Invalid direction for firing: " + facingDir.ToString());
+        }
 
+        Vector3 dest;
+        for (int i = 0; i < 10; i++)
+        {
+            if (i < 2)
+            {
+                dest = common.room.world.player.collider.bounds.center;
+            }
+            else if (i < 4)
+            {
+                dest = new Vector3(common.room.world.player.collider.bounds.center.x - 16, common.room.world.player.collider.bounds.center.y, common.room.world.player.collider.bounds.center.z);
+            }
+            else if (i < 6)
+            {
+                dest = new Vector3(common.room.world.player.collider.bounds.center.x + 16, common.room.world.player.collider.bounds.center.y, common.room.world.player.collider.bounds.center.z);
+            }
+            else if (i < 8)
+            {
+                dest = new Vector3(common.room.world.player.collider.bounds.center.x, common.room.world.player.collider.bounds.center.y - 16, common.room.world.player.collider.bounds.center.z);
+            }
+            else
+            {
+                dest = new Vector3(common.room.world.player.collider.bounds.center.x, common.room.world.player.collider.bounds.center.y + 16, common.room.world.player.collider.bounds.center.z);
+            }
+            common.room.world.EnemyBullets.FireBullet(WeaponType.eGeneric, 2, common.ShotDmg, 3, dest, origins[i % 2], true);
+        }
+        RemainingVolleys--;
     }
 
     public void fireSuicideBeam ()
@@ -218,22 +309,24 @@ public class EnemyBossManta : EnemyModule
 
     public void makeBodyVulnerable ()
     {
-
+        common.Vulnerable = true;
     }
 
     public void makeBodyInvulnerable ()
     {
-
+        common.Vulnerable = false;
     }
 
     public void openHatch ()
     {
-
+        RemainingVolleys = Random.Range(2, 8);
+        common.animator.SetTrigger(EnemyBossMantaAnimatorHashes[7]);
     }
 
     public void purgeArmor ()
     {
-
+        armorOff = true;
+        common.animator.SetTrigger(EnemyBossMantaAnimatorHashes[9]);
     }
 
     public void startSuicideAttack ()

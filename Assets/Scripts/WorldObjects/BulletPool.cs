@@ -42,7 +42,7 @@ public class BulletPool : MonoBehaviour
     /// </summary>
     public void FireBullet(WeaponType shot, float speed, int damage, int weight, Vector3 to, Vector3 from, bool pierce = false, BoxCollider2D homingTarget = default(BoxCollider2D), int homingPrecision = 0, int homingWindow = int.MaxValue)
     {
-        if (world.activeRoom != null)
+        if (world.activeRoom != null && q.Count > 0)
         {
             BulletController bulletController = q.Dequeue();
             bulletController.fs.room = world.activeRoom;

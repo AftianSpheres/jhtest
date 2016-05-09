@@ -20,6 +20,7 @@ public class EnemyBossManta_Tail : MonoBehaviour
     public int tailHP;
     public int tailStartingHP;
     Bounds virtualTailtip;
+    bool OffFrame = false;
 # if UNITY_EDITOR
     Ray r;
     Vector3 v;
@@ -35,7 +36,7 @@ public class EnemyBossManta_Tail : MonoBehaviour
 
     void Update()
     {
-        if (master.common.room.isActiveRoom == true)
+        if (master.common.room.isActiveRoom == true && OffFrame == true)
         {
             anchorPoints[7] = anchorPoints[6];
             anchorPoints[6] = anchorPoints[5];
@@ -45,6 +46,11 @@ public class EnemyBossManta_Tail : MonoBehaviour
             anchorPoints[2] = anchorPoints[1];
             anchorPoints[1] = anchorPoints[0];
             anchorPoints[0] = GetAnchorPoint();
+            OffFrame = false;
+        }
+        else
+        {
+            OffFrame = true;
         }
     }
 
@@ -111,8 +117,24 @@ public class EnemyBossManta_Tail : MonoBehaviour
                 interceptZones[7] = new Bounds(new Vector3(anchorPoints[0].x, anchorPoints[0].y + (virtualTailtip.center.y - anchorPoints[0].y), 0), new Vector3(8, 8, 500)); 
                 break;
             case Direction.Left:
+                interceptZones[0] = new Bounds(new Vector3(anchorPoints[0].x, anchorPoints[0].y - 66, 0), new Vector3(8, 8, 500));
+                interceptZones[1] = new Bounds(new Vector3(anchorPoints[0].x + 42, anchorPoints[0].y - 80, 0), new Vector3(8, 8, 500));
+                interceptZones[2] = new Bounds(new Vector3(anchorPoints[0].x + 78, anchorPoints[0].y - 76, 0), new Vector3(8, 8, 500));
+                interceptZones[3] = new Bounds(new Vector3(anchorPoints[0].x + 96, anchorPoints[0].y, 0), new Vector3(8, 8, 500));
+                interceptZones[4] = new Bounds(new Vector3(anchorPoints[0].x + 78, anchorPoints[0].y + 76, 0), new Vector3(8, 8, 500));
+                interceptZones[5] = new Bounds(new Vector3(anchorPoints[0].x + 42, anchorPoints[0].y + 80, 0), new Vector3(8, 8, 500));
+                interceptZones[6] = new Bounds(new Vector3(anchorPoints[0].x, anchorPoints[0].y + 66, 0), new Vector3(8, 8, 500));
+                interceptZones[7] = new Bounds(new Vector3(anchorPoints[0].x + (virtualTailtip.center.x - anchorPoints[0].x), anchorPoints[0].y, 0), new Vector3(8, 8, 500));
                 break;
             case Direction.Right:
+                interceptZones[0] = new Bounds(new Vector3(anchorPoints[0].x, anchorPoints[0].y - 66, 0), new Vector3(8, 8, 500));
+                interceptZones[1] = new Bounds(new Vector3(anchorPoints[0].x - 42, anchorPoints[0].y - 80, 0), new Vector3(8, 8, 500));
+                interceptZones[2] = new Bounds(new Vector3(anchorPoints[0].x - 78, anchorPoints[0].y - 76, 0), new Vector3(8, 8, 500));
+                interceptZones[3] = new Bounds(new Vector3(anchorPoints[0].x - 96, anchorPoints[0].y, 0), new Vector3(8, 8, 500));
+                interceptZones[4] = new Bounds(new Vector3(anchorPoints[0].x - 78, anchorPoints[0].y + 76, 0), new Vector3(8, 8, 500));
+                interceptZones[5] = new Bounds(new Vector3(anchorPoints[0].x - 42, anchorPoints[0].y + 80, 0), new Vector3(8, 8, 500));
+                interceptZones[6] = new Bounds(new Vector3(anchorPoints[0].x, anchorPoints[0].y + 66, 0), new Vector3(8, 8, 500));
+                interceptZones[7] = new Bounds(new Vector3(anchorPoints[0].x + (virtualTailtip.center.x - anchorPoints[0].x), anchorPoints[0].y, 0), new Vector3(8, 8, 500));
                 break;
             default:
                 throw new System.Exception("");
@@ -137,13 +159,8 @@ public class EnemyBossManta_Tail : MonoBehaviour
                 v = interceptZones[interceptStage].center;
                 r = new Ray(tailBits[tailBits.Length - 1].collider.bounds.center, -1 * virtualTailtipHeading);
 #endif
-                if (interceptZones[interceptStage].Contains(tailBits[tailBits.Length - 1].collider.bounds.center) == true
-                    || (((interceptZones[interceptStage].center.x > anchorPoints[0].x && tailBits[tailBits.Length - 1].collider.bounds.center.x >= interceptZones[interceptStage].center.x)
-                    || (interceptZones[interceptStage].center.x < anchorPoints[0].x && tailBits[tailBits.Length - 1].collider.bounds.center.x <= interceptZones[interceptStage].center.x)
-                    || (interceptZones[interceptStage].center.x == 0))
-                    || ((interceptZones[interceptStage].center.y > anchorPoints[0].y && tailBits[tailBits.Length - 1].collider.bounds.center.y >= interceptZones[interceptStage].center.y)
-                    || (interceptZones[interceptStage].center.y < anchorPoints[0].y && tailBits[tailBits.Length - 1].collider.bounds.center.y <= interceptZones[interceptStage].center.y)
-                    || (interceptZones[interceptStage].center.y == 0))))
+                if (Mathf.Abs(tailBits[tailBits.Length - 1].collider.bounds.center.x + virtualTailtipHeading.x - interceptZones[interceptStage].center.x) > Mathf.Abs(tailBits[tailBits.Length - 1].collider.bounds.center.x - interceptZones[interceptStage].center.x) ||
+                    Mathf.Abs(tailBits[tailBits.Length - 1].collider.bounds.center.y + virtualTailtipHeading.y - interceptZones[interceptStage].center.y) > Mathf.Abs(tailBits[tailBits.Length - 1].collider.bounds.center.y - interceptZones[interceptStage].center.y))
                 {
                     virtualTailtip = new Bounds(tailBits[tailBits.Length - 1].collider.bounds.center, tailBits[tailBits.Length - 1].collider.bounds.size);
                     interceptStage++;
@@ -175,14 +192,20 @@ public class EnemyBossManta_Tail : MonoBehaviour
         switch (tailDirection)
         {
             case Direction.Down:
+                interceptZones[0] = new Bounds(new Vector3(master.common.room.world.player.collider.bounds.center.x, master.common.room.world.player.collider.bounds.center.y + 16, 0), new Vector3(8, 8, 500));
+                interceptZones[1] = new Bounds(new Vector3(anchorPoints[0].x, anchorPoints[0].y + (virtualTailtip.center.y - anchorPoints[0].y), 0), new Vector3(8, 8, 500));
                 break;
             case Direction.Up:
                 interceptZones[0] = new Bounds(new Vector3(master.common.room.world.player.collider.bounds.center.x, master.common.room.world.player.collider.bounds.center.y - 16, 0), new Vector3(8, 8, 500));
                 interceptZones[1] = new Bounds(new Vector3(anchorPoints[0].x, anchorPoints[0].y + (virtualTailtip.center.y - anchorPoints[0].y), 0), new Vector3(8, 8, 500));
                 break;
             case Direction.Left:
+                interceptZones[0] = new Bounds(new Vector3(master.common.room.world.player.collider.bounds.center.x + 16, master.common.room.world.player.collider.bounds.center.y, 0), new Vector3(8, 8, 500));
+                interceptZones[1] = new Bounds(new Vector3(anchorPoints[0].x + (virtualTailtip.center.x - anchorPoints[0].x), anchorPoints[0].y, 0), new Vector3(8, 8, 500));
                 break;
             case Direction.Right:
+                interceptZones[0] = new Bounds(new Vector3(master.common.room.world.player.collider.bounds.center.x - 16, master.common.room.world.player.collider.bounds.center.y, 0), new Vector3(8, 8, 500));
+                interceptZones[1] = new Bounds(new Vector3(anchorPoints[0].x + (virtualTailtip.center.x - anchorPoints[0].x), anchorPoints[0].y, 0), new Vector3(8, 8, 500));
                 break;
             default:
                 throw new System.Exception("Can't do tail stab while facing this way!");
@@ -207,13 +230,8 @@ public class EnemyBossManta_Tail : MonoBehaviour
                 v = interceptZones[interceptStage].center;
                 r = new Ray(tailBits[tailBits.Length - 1].collider.bounds.center, -1 * virtualTailtipHeading);
 #endif
-                if (interceptZones[interceptStage].Contains(tailBits[tailBits.Length - 1].collider.bounds.center) == true
-                    || (((interceptZones[interceptStage].center.x > anchorPoints[0].x && tailBits[tailBits.Length - 1].collider.bounds.center.x >= interceptZones[interceptStage].center.x)
-                    || (interceptZones[interceptStage].center.x < anchorPoints[0].x && tailBits[tailBits.Length - 1].collider.bounds.center.x <= interceptZones[interceptStage].center.x)
-                    || (interceptZones[interceptStage].center.x == 0))
-                    && ((interceptZones[interceptStage].center.y > anchorPoints[0].y && tailBits[tailBits.Length - 1].collider.bounds.center.y >= interceptZones[interceptStage].center.y)
-                    || (interceptZones[interceptStage].center.y < anchorPoints[0].y && tailBits[tailBits.Length - 1].collider.bounds.center.y <= interceptZones[interceptStage].center.y)
-                    || (interceptZones[interceptStage].center.y == 0))))
+                if (Mathf.Abs(tailBits[tailBits.Length - 1].collider.bounds.center.x + virtualTailtipHeading.x - interceptZones[interceptStage].center.x) > Mathf.Abs(tailBits[tailBits.Length - 1].collider.bounds.center.x - interceptZones[interceptStage].center.x) ||
+                    Mathf.Abs(tailBits[tailBits.Length - 1].collider.bounds.center.y + virtualTailtipHeading.y - interceptZones[interceptStage].center.y) > Mathf.Abs(tailBits[tailBits.Length - 1].collider.bounds.center.y - interceptZones[interceptStage].center.y))
                 {
                     virtualTailtip = new Bounds(tailBits[tailBits.Length - 1].collider.bounds.center, tailBits[tailBits.Length - 1].collider.bounds.size);
                     interceptStage++;

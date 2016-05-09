@@ -33,33 +33,36 @@ public class BoomPool : MonoBehaviour
 	
     public void StartBoom (Vector3 center, BoomType type, bool collideable = false, int damage = 0, int duration = 20, int pushbackStrength = 0, GameObject owner = default(GameObject))
     {
-        BoomEffect boomEffect = q.Dequeue();
-        boomEffect.gameObject.SetActive(true);
-        boomEffect.fs.room = world.activeRoom;
-        boomEffect.owner = owner;
-        boomEffect.q = q;
-        Sprite[] allSprites = Resources.LoadAll<Sprite>(GlobalStaticResources.p_BoomGFX);
-        Sprite[] sprites;
-        switch (type)
+        if (world.activeRoom != null && q.Count > 0)
         {
-            case BoomType.SmokePuff:
-                sprites = new Sprite[GlobalStaticResources.i_Boom0.Length];
-                for (int i = 0; i < GlobalStaticResources.i_Boom0.Length; i++)
-                {
-                    sprites[i] = allSprites[GlobalStaticResources.i_Boom0[i]];
-                }
-                break;
-            case BoomType.EnergyThingy:
-                sprites = new Sprite[GlobalStaticResources.i_Boom1.Length];
-                for (int i = 0; i < GlobalStaticResources.i_Boom1.Length; i++)
-                {
-                    sprites[i] = allSprites[GlobalStaticResources.i_Boom1[i]];
-                }
-                break;
-            default:
-                throw new System.Exception("Invalid boom type: " + type);
+            BoomEffect boomEffect = q.Dequeue();
+            boomEffect.gameObject.SetActive(true);
+            boomEffect.fs.room = world.activeRoom;
+            boomEffect.owner = owner;
+            boomEffect.q = q;
+            Sprite[] allSprites = Resources.LoadAll<Sprite>(GlobalStaticResources.p_BoomGFX);
+            Sprite[] sprites;
+            switch (type)
+            {
+                case BoomType.SmokePuff:
+                    sprites = new Sprite[GlobalStaticResources.i_Boom0.Length];
+                    for (int i = 0; i < GlobalStaticResources.i_Boom0.Length; i++)
+                    {
+                        sprites[i] = allSprites[GlobalStaticResources.i_Boom0[i]];
+                    }
+                    break;
+                case BoomType.EnergyThingy:
+                    sprites = new Sprite[GlobalStaticResources.i_Boom1.Length];
+                    for (int i = 0; i < GlobalStaticResources.i_Boom1.Length; i++)
+                    {
+                        sprites[i] = allSprites[GlobalStaticResources.i_Boom1[i]];
+                    }
+                    break;
+                default:
+                    throw new System.Exception("Invalid boom type: " + type);
+            }
+            boomEffect.Boom(collideable, damage, duration, pushbackStrength, sprites);
+            boomEffect.transform.position = new Vector3(center.x - .5f * boomEffect.collider.bounds.extents.x, center.y + .5f * boomEffect.collider.bounds.extents.y, 0);
         }
-        boomEffect.Boom(collideable, damage, duration, pushbackStrength, sprites);
-        boomEffect.transform.position = new Vector3(center.x - .5f * boomEffect.collider.bounds.extents.x, center.y + .5f * boomEffect.collider.bounds.extents.y, 0);
     }
 }
