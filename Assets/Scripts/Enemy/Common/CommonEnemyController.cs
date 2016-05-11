@@ -29,6 +29,7 @@ public class CommonEnemyController : MonoBehaviour
     private int HitFlashCounter;
     private Vector3 StartingPos;
     public Vector3 StartingCenter;
+    private Sprite StartingFrame;
     private int DefaultStateHash;
     public bool isDead = false;
     public bool Vulnerable;
@@ -42,6 +43,7 @@ public class CommonEnemyController : MonoBehaviour
     {
         StartingPos = transform.position;
         StartingCenter = collider.bounds.center;
+        StartingFrame = renderer.sprite;
         DefaultStateHash = animator.GetCurrentAnimatorStateInfo(0).fullPathHash;
 	}
 	
@@ -170,15 +172,15 @@ public class CommonEnemyController : MonoBehaviour
     {
         renderer.enabled = true;
         collider.enabled = true;
-        animator.SetBool("Dead", false);
-        animator.ResetTrigger("HitHeavy");
-        animator.ResetTrigger("HitLight");
+        animator.Rebind();
+        renderer.sprite = StartingFrame;
         isDead = false;
         flicker.skip = false;
         if (room.world.activeRoom != room)
         {
             register.Toggled = false;
         }
+        module.Respawn();
     }
 
     /// <summary>

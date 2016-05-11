@@ -8,7 +8,6 @@ using System.Collections;
 public class PlayerEnergy : MonoBehaviour
 {
     public PlayerController master;
-    private AudioSource BGS0;
     public int Level;
     public int CurrentEnergy;
     public int MaxEnergy;
@@ -22,7 +21,6 @@ public class PlayerEnergy : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        BGS0 = master.world.BGS0;
         MaxEnergy = EnergyPerLevel * Level;
         CurrentEnergy = MaxEnergy;
 	}

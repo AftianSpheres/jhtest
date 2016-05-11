@@ -8,19 +8,25 @@ public class EnemyBossManta_TailBit : MonoBehaviour
     public Queue<Vector3> moveQueue;
     new public BoxCollider2D collider;
     new public SpriteRenderer renderer;
+    public Vector3 originalPosition;
     Vector3 anchorPoint;
     Vector3 offset;
     Vector3 virtualPosition;
 
 
-	// Use this for initialization
-	void Start ()
+    void Start()
+    {
+        originalPosition = transform.position;
+        Reset();
+    }
+
+    public void Reset ()
     {
         offset = Vector3.zero;
         moveQueue = new Queue<Vector3>(9);
+        transform.position = originalPosition;
     }
 	
-	// Update is called once per frame
 	void Update ()
     {
         if (tailController.master.common.room.isActiveRoom == true)

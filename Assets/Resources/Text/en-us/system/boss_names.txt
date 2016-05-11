@@ -1,0 +1,8 @@
+ForestBoss1
+ForestBoss2
+ValleyBoss1
+ValleyBoss2
+Nazaan the Unchanging
+MarinaBoss2
+CircleBoss
+LastBoss

@@ -9,7 +9,6 @@ public class HUDDebug : MonoBehaviour
 {
     public WorldController world;
     public TextMesh textMesh;
-    float LastSecondTime = 0.0f;
     int currentUpdateHit = 0;
 
     /// <summary>
@@ -33,7 +32,6 @@ public class HUDDebug : MonoBehaviour
         if (currentUpdateHit == 60)
         {
             textMesh.text = world.StylisticHacksManager.fps.ToString();
-            LastSecondTime = Time.realtimeSinceStartup;
             currentUpdateHit = 0;
         }
     }

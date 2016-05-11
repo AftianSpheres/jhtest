@@ -17,7 +17,7 @@ public class EnemyModule : MonoBehaviour {
         }
 	}
 
-    public void Respawn ()
+    public virtual void Respawn ()
     {
 
     }

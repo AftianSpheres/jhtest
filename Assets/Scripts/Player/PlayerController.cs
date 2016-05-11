@@ -30,7 +30,6 @@ public static class PlayerStateHashes
 /// </summary>
 [RequireComponent(typeof(PauseableSprite))]
 public class PlayerController : MonoBehaviour {
-    static int DoubleTapFrameWindow = 20; // no. of frames to check for double-tap sequence over...
     private static int[] DodgeAllowedStates = { PlayerStateHashes.PlayerStand_D, PlayerStateHashes.PlayerStand_U, PlayerStateHashes.PlayerStand_L, PlayerStateHashes.PlayerStand_R,
     PlayerStateHashes.PlayerWalk_D, PlayerStateHashes.PlayerWalk_U, PlayerStateHashes.PlayerWalk_L, PlayerStateHashes.PlayerWalk_R };
 
@@ -51,7 +50,6 @@ public class PlayerController : MonoBehaviour {
     public int InvulnTime;
     public int KnockbackFrames;
     private bool DiscardDodgeInputs;
-    private int[] DoubleTapWindows = { 0, 0, 0, 0 };
     public uint[] CurrentWorldCoords = { 0, 0 };
     public uint[] CurrentRoomCoords = { 0, 0 };
     private RoomController lastRoom;
@@ -86,10 +84,6 @@ public class PlayerController : MonoBehaviour {
             CurrentWorldCoords[1] = world.activeRoom.xPosition + chkVal;
             CurrentRoomCoords[1] = chkVal;
             world.Minimap.Refresh();
-        }
-        for (int i = 0; i < DoubleTapWindows.Length; i++)
-        {
-            DoubleTapWindows[i]--;
         }
         if (energy.CurrentEnergy < 1 && animator.GetBool("Dead") == false)
         {
@@ -128,9 +122,23 @@ public class PlayerController : MonoBehaviour {
         {
             Hit(other.gameObject.GetComponent<BulletController>());
         }
-        else if (other.CompareTag("Enemy") == true && other.gameObject.GetComponent<CommonEnemyController>() != null)
+        else if (other.CompareTag("Enemy") == true)
         {
-            Hit(other.gameObject.GetComponent<CommonEnemyController>());
+            if (other.gameObject.GetComponent<CommonEnemyController>() != null)
+            {
+                Hit(other.gameObject.GetComponent<CommonEnemyController>());
+
+            }
+            else
+            {
+                //TO DO: eventually I'mma need to abstract this into a list of "bit" object types and matching paths through their hierarchy to get to CEC
+                Component c = other.gameObject.GetComponent<EnemyBossManta_TailBit>();
+                if (c != null)
+                {
+                    Hit((c as EnemyBossManta_TailBit).tailController.master.common);
+                }
+            } 
+
         }
         else if (other.CompareTag("Boom") == true)
         {
@@ -164,9 +172,7 @@ public class PlayerController : MonoBehaviour {
         {
             DiscardDodgeInputs = true;
         }
-
         // Taboos
-
         if (wpnManager.Taboo != TabooType.None && wpnManager.TabooReady == true && Input.GetKey(world.PlayerDataManager.K_Fire1) == true && Input.GetKey(world.PlayerDataManager.K_Fire2) == true && 
             animator.GetBool("HeldFire1") == false && animator.GetBool("HeldFire2") == false)
         {
@@ -179,7 +185,6 @@ public class PlayerController : MonoBehaviour {
         else
         {
             //HeldFire1 bool
-
             if (Input.GetKey(world.PlayerDataManager.K_Fire1) == true && wpnManager.SlotAWpn != WeaponType.None)
             {
                 animator.SetBool("HeldFire1", true);
@@ -188,9 +193,7 @@ public class PlayerController : MonoBehaviour {
             {
                 animator.SetBool("HeldFire1", false);
             }
-
             //HeldFire2 bool
-
             if (Input.GetKey(world.PlayerDataManager.K_Fire2) == true && wpnManager.SlotBWpn != WeaponType.None)
             {
                 animator.SetBool("HeldFire2", true);
@@ -201,63 +204,56 @@ public class PlayerController : MonoBehaviour {
                 animator.SetBool("HeldFire2", false);
             }
         }
-
-
         if (DiscardDodgeInputs == false)
         {
-            // InputRight/InputLeft triggers
-
-            if (Input.GetKeyDown(world.PlayerDataManager.K_HorizLeft) == true)
+            if (Input.GetKeyDown(world.PlayerDataManager.K_Dodge) == true)
             {
-                if (DoubleTapWindows[(int)Direction.Left] > 0)
+                // InputRight/InputLeft triggers
+                if (Input.GetKey(world.PlayerDataManager.K_HorizLeft) == true)
                 {
-                    animator.SetTrigger("InputLeft");
+                    animator.SetBool("DodgeLeft", true);
+                }
+                else if (Input.GetKey(world.PlayerDataManager.K_HorizRight) == true)
+                {
+                    animator.SetBool("DodgeRight", true);
+                }
+                // InputDown/InputUp triggers
+                if (Input.GetKey(world.PlayerDataManager.K_VertDown) == true)
+                {
+                    animator.SetBool("DodgeDown", true);
+                }
+                else if (Input.GetKey(world.PlayerDataManager.K_VertUp) == true)
+                {
+                    animator.SetBool("DodgeUp", true);
                 }
                 else
                 {
-                    DoubleTapWindows[(int)Direction.Left] = DoubleTapFrameWindow;
+                    switch (facingDir)
+                    {
+                        case Direction.Down:
+                            animator.SetBool("DodgeDown", true);
+                            break;
+                        case Direction.Up:
+                            animator.SetBool("DodgeUp", true);
+                            break;
+                        case Direction.Left:
+                            animator.SetBool("DodgeLeft", true);
+                            break;
+                        case Direction.Right:
+                            animator.SetBool("DodgeRight", true);
+                            break;
+                    }
                 }
             }
-            else if (Input.GetKeyDown(world.PlayerDataManager.K_HorizRight) == true)
+            else
             {
-                if (DoubleTapWindows[(int)Direction.Right] > 0)
-                {
-                    animator.SetTrigger("InputRight");
-                }
-                else
-                {
-                    DoubleTapWindows[(int)Direction.Right] = DoubleTapFrameWindow;
-                }
-            }
-
-            // InputDown/InputUp triggers
-
-            if (Input.GetKeyDown(world.PlayerDataManager.K_VertDown) == true)
-            {
-                if (DoubleTapWindows[(int)Direction.Down] > 0)
-                {
-                    animator.SetTrigger("InputDown");
-                }
-                else
-                {
-                    DoubleTapWindows[(int)Direction.Down] = DoubleTapFrameWindow;
-                }
-            }
-            else if (Input.GetKeyDown(world.PlayerDataManager.K_VertUp) == true)
-            {
-                if (DoubleTapWindows[(int)Direction.Up] > 0)
-                {
-                    animator.SetTrigger("InputUp");
-                }
-                else
-                {
-                    DoubleTapWindows[(int)Direction.Up] = DoubleTapFrameWindow;
-                }
+                animator.SetBool("DodgeDown", false);
+                animator.SetBool("DodgeUp", false);
+                animator.SetBool("DodgeLeft", false);
+                animator.SetBool("DodgeRight", false);
             }
         }
-
         // HeldRight/HeldLeft bools
-
         if (Input.GetKey(world.PlayerDataManager.K_HorizRight) == true)
         {
             animator.SetBool("HeldRight", true);
@@ -273,9 +269,7 @@ public class PlayerController : MonoBehaviour {
             animator.SetBool("HeldRight", false);
             animator.SetBool("HeldLeft", false);
         }
-
         // HeldDown/HeldUp bools
-
         if (Input.GetKey(world.PlayerDataManager.K_VertUp) == true)
         {
             animator.SetBool("HeldUp", true);

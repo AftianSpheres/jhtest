@@ -21,10 +21,12 @@ public class PlayerDataManager : Manager <PlayerDataManager>
     public KeyCode K_VertUp = KeyCode.W;
     public KeyCode K_VertDown = KeyCode.S;
     public KeyCode K_Menu = KeyCode.LeftShift;
+    public KeyCode K_Dodge = KeyCode.Space;
     public KeyCode K_Confirm = KeyCode.E;
     public KeyCode K_Cancel = KeyCode.Q;
     public KeyCode K_Fire1 = KeyCode.Mouse0;
     public KeyCode K_Fire2 = KeyCode.Mouse1;
+
 
 	// Use this for initialization
 	void Start ()

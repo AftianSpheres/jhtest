@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class EnemyBossManta : EnemyModule
 {
@@ -22,6 +22,7 @@ public class EnemyBossManta : EnemyModule
         Animator.StringToHash("PurgeArmor")
     };
     private int RemainingVolleys = -1;
+    private int TurnTimer = 0;
     private Vector3 virtualPosition;
     private bool playerOutOfLineOfSight;
     private bool turnAntiClockwise;
@@ -143,19 +144,27 @@ public class EnemyBossManta : EnemyModule
 
     void _in_executeAnyTurns ()
     {
-        if (playerOutOfLineOfSight == true)
+        if (TurnTimer == 0)
         {
-            if (common.animator.GetCurrentAnimatorStateInfo(0).tagHash == EnemyBossMantaAnimatorHashes[0])
+            if (playerOutOfLineOfSight == true)
             {
-                if (turnAntiClockwise == true)
+                if (common.animator.GetCurrentAnimatorStateInfo(0).tagHash == EnemyBossMantaAnimatorHashes[0])
                 {
-                    common.animator.SetTrigger(EnemyBossMantaAnimatorHashes[3]);
-                }
-                else
-                {
-                    common.animator.SetTrigger(EnemyBossMantaAnimatorHashes[2]);
+                    if (turnAntiClockwise == true)
+                    {
+                        common.animator.SetTrigger(EnemyBossMantaAnimatorHashes[3]);
+                    }
+                    else
+                    {
+                        common.animator.SetTrigger(EnemyBossMantaAnimatorHashes[2]);
+                    }
                 }
             }
+            TurnTimer = 30;
+        }
+        else
+        {
+            TurnTimer--;
         }
     }
 
@@ -283,21 +292,21 @@ public class EnemyBossManta : EnemyModule
             }
             else if (i < 4)
             {
-                dest = new Vector3(common.room.world.player.collider.bounds.center.x - 16, common.room.world.player.collider.bounds.center.y, common.room.world.player.collider.bounds.center.z);
+                dest = new Vector3(common.room.world.player.collider.bounds.center.x - 48, common.room.world.player.collider.bounds.center.y, common.room.world.player.collider.bounds.center.z);
             }
             else if (i < 6)
             {
-                dest = new Vector3(common.room.world.player.collider.bounds.center.x + 16, common.room.world.player.collider.bounds.center.y, common.room.world.player.collider.bounds.center.z);
+                dest = new Vector3(common.room.world.player.collider.bounds.center.x + 48, common.room.world.player.collider.bounds.center.y, common.room.world.player.collider.bounds.center.z);
             }
             else if (i < 8)
             {
-                dest = new Vector3(common.room.world.player.collider.bounds.center.x, common.room.world.player.collider.bounds.center.y - 16, common.room.world.player.collider.bounds.center.z);
+                dest = new Vector3(common.room.world.player.collider.bounds.center.x, common.room.world.player.collider.bounds.center.y - 48, common.room.world.player.collider.bounds.center.z);
             }
             else
             {
-                dest = new Vector3(common.room.world.player.collider.bounds.center.x, common.room.world.player.collider.bounds.center.y + 16, common.room.world.player.collider.bounds.center.z);
+                dest = new Vector3(common.room.world.player.collider.bounds.center.x, common.room.world.player.collider.bounds.center.y + 48, common.room.world.player.collider.bounds.center.z);
             }
-            common.room.world.EnemyBullets.FireBullet(WeaponType.eGeneric, 2, common.ShotDmg, 3, dest, origins[i % 2], true);
+            common.room.world.EnemyBullets.FireBullet(WeaponType.eGeneric, 1, common.ShotDmg, 3, dest, origins[i % 2], true);
         }
         RemainingVolleys--;
     }
@@ -332,5 +341,15 @@ public class EnemyBossManta : EnemyModule
     public void startSuicideAttack ()
     {
 
+    }
+
+    public override void Respawn()
+    {
+        tailController.mode = EnemyBossManta_TailMode.Neutral;
+        tailController.tailHP = tailController.tailStartingHP;
+        for (int i = 0; i < tailController.tailBits.Length; i++)
+        {
+            tailController.tailBits[i].Reset();
+        }
     }
 }
