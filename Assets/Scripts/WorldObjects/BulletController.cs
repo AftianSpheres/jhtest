@@ -130,7 +130,9 @@ public class BulletController : MonoBehaviour
                 Range = 160;
                 snapToThing = world.player.transform.position;
                 break;
-
+            case WeaponType.eGeneric:
+                renderer.sprite = pool.frames[0];
+                break;
             case WeaponType.eMidBoss_Arrow_Vert:
                 renderer.sprite = pool.frames[1];
                 break;

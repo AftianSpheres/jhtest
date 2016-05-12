@@ -88,8 +88,8 @@
     <Compile Include="Assets\Scripts\Enemy\0_Jelly\EnemyJelly.cs" />
     <Compile Include="Assets\Scripts\Enemy\0_Jelly\EnemyJellyFire.cs" />
     <Compile Include="Assets\Scripts\Enemy\0_Jelly\EnemyJellyFloat.cs" />
-    <Compile Include="Assets\Scripts\Enemy\0_Jelly\EnemyJellyHit.cs" />
     <Compile Include="Assets\Scripts\Enemy\0_Jelly\EnemyJellyMove.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Boss\BossContainer.cs" />
     <Compile Include="Assets\Scripts\Enemy\Boss\BossManta\EnemyBossManta.cs" />
     <Compile Include="Assets\Scripts\Enemy\Boss\BossManta\EnemyBossManta_Tail.cs" />
     <Compile Include="Assets\Scripts\Enemy\Boss\BossManta\EnemyBossManta_TailBit.cs" />
@@ -104,6 +104,7 @@
     <Compile Include="Assets\Scripts\Enemy\Common\CommonEnemyInvuln.cs" />
     <Compile Include="Assets\Scripts\Enemy\Common\EnemyModule.cs" />
     <Compile Include="Assets\Scripts\HUD\Cartographer.cs" />
+    <Compile Include="Assets\Scripts\HUD\HUDBossLifebar.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDDebug.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDEnergyBar.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDKeyCounter.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Assets\Scripts\HUD\HUDWeaponIcon.cs" />
     <Compile Include="Assets\Scripts\HUD\TabooOverlay.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\AreaType.cs" />
+    <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\BossType.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\Checkpoints.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\ChestFlags_Circle.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\ChestFlags_Forest.cs" />

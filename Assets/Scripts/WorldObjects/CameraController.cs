@@ -121,7 +121,14 @@ public class CameraController : MonoBehaviour
             if (ForceScroll == 0)
             {
                 world.ChangeRoom(nextRoom);
-                world.ChangeBGM(nextRoom.bgm);
+                if (nextRoom.Boss != null)
+                {
+                    world.ChangeBGM(nextRoom.Boss.bossBGM);
+                }
+                else
+                {
+                    world.ChangeBGM(nextRoom.bgm);
+                }
                 player.Locked = false;
                 PlayerLockedToScroll = false;
                 CurrentRoomPlayerEntryPosition = player.transform.position;

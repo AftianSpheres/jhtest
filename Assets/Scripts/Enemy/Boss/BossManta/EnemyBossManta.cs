@@ -19,7 +19,8 @@ public class EnemyBossManta : EnemyModule
         Animator.StringToHash("ClosingHatch"),
         Animator.StringToHash("OpenHatch"),
         Animator.StringToHash("CloseHatch"),
-        Animator.StringToHash("PurgeArmor")
+        Animator.StringToHash("PurgeArmor"),
+        Animator.StringToHash("FireMissile")
     };
     private int RemainingVolleys = -1;
     private int TurnTimer = 0;
@@ -28,11 +29,14 @@ public class EnemyBossManta : EnemyModule
     private bool turnAntiClockwise;
     private Vector3 move;
     private float playerDist;
+    private Vector3 playerPosBuffer;
+    private bool MissilePrimed;
 
     // Use this for initialization
     void Start ()
     {
         virtualPosition = transform.position;
+        playerPosBuffer = common.room.world.player.collider.bounds.center;
 	}
 	
 	// Update is called once per frame
@@ -66,7 +70,8 @@ public class EnemyBossManta : EnemyModule
 
     void _in_getMoveDir ()
     {
-        if (common.animator.GetCurrentAnimatorStateInfo(0).tagHash == EnemyBossMantaAnimatorHashes[0] && (tailController.mode == EnemyBossManta_TailMode.Neutral || tailController.mode == EnemyBossManta_TailMode.Dead))
+        if ((common.animator.GetCurrentAnimatorStateInfo(0).tagHash == EnemyBossMantaAnimatorHashes[0] || common.animator.GetCurrentAnimatorStateInfo(0).tagHash == EnemyBossMantaAnimatorHashes[4]) 
+            && (tailController.mode == EnemyBossManta_TailMode.Neutral || tailController.mode == EnemyBossManta_TailMode.Dead))
         {
             switch (facingDir)
             {
@@ -190,7 +195,11 @@ public class EnemyBossManta : EnemyModule
         {
             if (common.animator.GetCurrentAnimatorStateInfo(0).tagHash == EnemyBossMantaAnimatorHashes[0])
             {
-                if (RemainingVolleys < 0 && Random.Range(0, 360) == 0)
+                if (MissilePrimed == true)
+                {
+                    fireMissile();
+                }
+                else if (RemainingVolleys < 0 && Random.Range(0, 360) == 0)
                 {
                     openHatch();
                     move = Vector3.zero;
@@ -260,55 +269,100 @@ public class EnemyBossManta : EnemyModule
 
     public void fireScattershot ()
     {
-        Vector3[] origins = new Vector3[2];
+        if (playerOutOfLineOfSight == false)
+        {
+            Vector3[] origins = new Vector3[2];
+            float horizVal = 0;
+            float vertVal = 0;
+            switch (facingDir)
+            {
+                case Direction.Down:
+                    origins[0] = new Vector3(common.collider.bounds.center.x - 12, common.collider.bounds.center.y - 8, common.collider.bounds.center.z - 1);
+                    origins[1] = new Vector3(common.collider.bounds.center.x + 12, common.collider.bounds.center.y - 8, common.collider.bounds.center.z - 1);
+                    horizVal = 48;
+                    break;
+                case Direction.Up:
+                    origins[0] = new Vector3(common.collider.bounds.center.x - 12, common.collider.bounds.center.y + 8, common.collider.bounds.center.z - 1);
+                    origins[1] = new Vector3(common.collider.bounds.center.x + 12, common.collider.bounds.center.y + 8, common.collider.bounds.center.z - 1);
+                    horizVal = 48;
+                    break;
+                case Direction.Left:
+                    origins[0] = new Vector3(common.collider.bounds.center.x - 8, common.collider.bounds.center.y - 12, common.collider.bounds.center.z - 1);
+                    origins[1] = new Vector3(common.collider.bounds.center.x - 8, common.collider.bounds.center.y + 12, common.collider.bounds.center.z - 1);
+                    vertVal = 48;
+                    break;
+                case Direction.Right:
+                    origins[0] = new Vector3(common.collider.bounds.center.x + 8, common.collider.bounds.center.y - 12, common.collider.bounds.center.z - 1);
+                    origins[1] = new Vector3(common.collider.bounds.center.x + 8, common.collider.bounds.center.y + 12, common.collider.bounds.center.z - 1);
+                    vertVal = 48;
+                    break;
+                default:
+                    throw new System.Exception("Invalid direction for firing: " + facingDir.ToString());
+            }
+
+            Vector3 dest;
+            for (int i = 0; i < 10; i++)
+            {
+                if (i < 2)
+                {
+                    dest = playerPosBuffer;
+                }
+                else if (i < 4)
+                {
+                    dest = new Vector3(playerPosBuffer.x - horizVal, playerPosBuffer.y - vertVal, playerPosBuffer.z);
+                }
+                else if (i < 6)
+                {
+                    dest = new Vector3(playerPosBuffer.x + horizVal, playerPosBuffer.y + vertVal, playerPosBuffer.z);
+                }
+                else if (i < 8)
+                {
+                    dest = new Vector3(playerPosBuffer.x - (2 * horizVal), playerPosBuffer.y - (2 * vertVal), playerPosBuffer.z);
+                }
+                else
+                {
+                    dest = new Vector3(playerPosBuffer.x + (2 * horizVal), playerPosBuffer.y + (2 * vertVal), playerPosBuffer.z);
+                }
+                common.room.world.EnemyBullets.FireBullet(WeaponType.eGeneric, 1.75f, common.ShotDmg, 3, dest, origins[i % 2], true);
+            }
+            RemainingVolleys--;
+        }
+        else
+        {
+            MissilePrimed = true;
+            closeHatch();
+        }
+        common.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_FireShotgunSFX));
+    }
+
+    public void fireMissile()
+    {
+        Vector3 origin;
         switch (facingDir)
         {
             case Direction.Down:
-                origins[0] = new Vector3(common.collider.bounds.center.x - 8, common.collider.bounds.center.y, common.collider.bounds.center.z);
-                origins[1] = new Vector3(common.collider.bounds.center.x + 8, common.collider.bounds.center.y, common.collider.bounds.center.z);
+                origin = new Vector3(common.collider.bounds.center.x, common.collider.bounds.center.y - 8, common.collider.bounds.center.z - 1);
+                move += Vector3.up * 8;
                 break;
             case Direction.Up:
-                origins[0] = new Vector3(common.collider.bounds.center.x - 8, common.collider.bounds.center.y, common.collider.bounds.center.z);
-                origins[1] = new Vector3(common.collider.bounds.center.x + 8, common.collider.bounds.center.y, common.collider.bounds.center.z);
+                origin = new Vector3(common.collider.bounds.center.x, common.collider.bounds.center.y + 8, common.collider.bounds.center.z - 1);
+                move += Vector3.down * 8;
                 break;
             case Direction.Left:
-                origins[0] = new Vector3(common.collider.bounds.center.x, common.collider.bounds.center.y - 8, common.collider.bounds.center.z);
-                origins[1] = new Vector3(common.collider.bounds.center.x, common.collider.bounds.center.y + 8, common.collider.bounds.center.z);
+                origin = new Vector3(common.collider.bounds.center.x - 8, common.collider.bounds.center.y, common.collider.bounds.center.z - 1);
+                move += Vector3.right * 8;
                 break;
             case Direction.Right:
-                origins[0] = new Vector3(common.collider.bounds.center.x, common.collider.bounds.center.y - 8, common.collider.bounds.center.z);
-                origins[1] = new Vector3(common.collider.bounds.center.x, common.collider.bounds.center.y + 8, common.collider.bounds.center.z);
+                origin = new Vector3(common.collider.bounds.center.x + 8, common.collider.bounds.center.y, common.collider.bounds.center.z - 1);
+                move += Vector3.left * 8;
                 break;
             default:
                 throw new System.Exception("Invalid direction for firing: " + facingDir.ToString());
         }
-
-        Vector3 dest;
-        for (int i = 0; i < 10; i++)
-        {
-            if (i < 2)
-            {
-                dest = common.room.world.player.collider.bounds.center;
-            }
-            else if (i < 4)
-            {
-                dest = new Vector3(common.room.world.player.collider.bounds.center.x - 48, common.room.world.player.collider.bounds.center.y, common.room.world.player.collider.bounds.center.z);
-            }
-            else if (i < 6)
-            {
-                dest = new Vector3(common.room.world.player.collider.bounds.center.x + 48, common.room.world.player.collider.bounds.center.y, common.room.world.player.collider.bounds.center.z);
-            }
-            else if (i < 8)
-            {
-                dest = new Vector3(common.room.world.player.collider.bounds.center.x, common.room.world.player.collider.bounds.center.y - 48, common.room.world.player.collider.bounds.center.z);
-            }
-            else
-            {
-                dest = new Vector3(common.room.world.player.collider.bounds.center.x, common.room.world.player.collider.bounds.center.y + 48, common.room.world.player.collider.bounds.center.z);
-            }
-            common.room.world.EnemyBullets.FireBullet(WeaponType.eGeneric, 1, common.ShotDmg, 3, dest, origins[i % 2], true);
-        }
-        RemainingVolleys--;
+        Vector3 dest = common.room.world.player.collider.bounds.center;
+        common.room.world.EnemyBullets.FireBullet(WeaponType.eGeneric, 5f, Mathf.RoundToInt(common.ShotDmg * 2.5f), 6, dest, origin, true, common.room.world.player.collider, 4, 128);
+        MissilePrimed = false;
+        common.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_FireShotgunSFX));
     }
 
     public void fireSuicideBeam ()
@@ -330,6 +384,7 @@ public class EnemyBossManta : EnemyModule
     {
         RemainingVolleys = Random.Range(2, 8);
         common.animator.SetTrigger(EnemyBossMantaAnimatorHashes[7]);
+        playerPosBuffer = common.room.world.player.collider.bounds.center;
     }
 
     public void purgeArmor ()

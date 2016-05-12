@@ -10,6 +10,7 @@ public class RoomController : MonoBehaviour
 {
     public WorldController world;
     public AudioClip bgm;
+    public BossContainer Boss;
     public RegisteredSprite[] Enemies;
     public RegisteredSprite[] NonEnemyOccupants;
     public mu_Checkpoint RoomCheckpoint;
