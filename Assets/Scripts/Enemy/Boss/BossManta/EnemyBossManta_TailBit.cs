@@ -79,4 +79,16 @@ public class EnemyBossManta_TailBit : MonoBehaviour
             transform.position = new Vector3(Mathf.Round(virtualPosition.x), Mathf.Round(virtualPosition.y), transform.position.z);
         }
 	}
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("PlayerBullet") == true && tailController.mode != EnemyBossManta_TailMode.Dead)
+        {
+            tailController.Hit(other.GetComponent<BulletController>());
+        }
+        else if (other.CompareTag("Boom") == true && tailController.mode != EnemyBossManta_TailMode.Dead)
+        {
+            tailController.Hit(other.GetComponent<BoomEffect>());
+        }
+    }
 }

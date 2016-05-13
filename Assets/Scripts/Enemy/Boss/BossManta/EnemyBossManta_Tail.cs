@@ -19,6 +19,7 @@ public class EnemyBossManta_Tail : MonoBehaviour
     public Vector3[] anchorPoints;
     public int tailHP;
     public int tailStartingHP;
+    public AudioClip hitSFX;
     Bounds virtualTailtip;
     bool OffFrame = false;
 # if UNITY_EDITOR
@@ -254,6 +255,27 @@ public class EnemyBossManta_Tail : MonoBehaviour
 
         }
         mode = EnemyBossManta_TailMode.Neutral;
+    }
+
+    public void Hit (BulletController bullet)
+    {
+        tailHP -= bullet.Damage;
+        master.common.source.PlayOneShot(hitSFX);
+        for (int i = 0; i < tailBits.Length; i++)
+        {
+            StartCoroutine(GFXHelpers.FlashEffect(tailBits[i].renderer, 30));
+        }
+        bullet.HitTarget();
+    }
+
+    public void Hit(BoomEffect boom)
+    {
+        tailHP -= boom.Damage;
+        master.common.source.PlayOneShot(hitSFX);
+        for (int i = 0; i < tailBits.Length; i++)
+        {
+            StartCoroutine(GFXHelpers.FlashEffect(tailBits[i].renderer, 30));
+        }
     }
 
 #if UNITY_EDITOR

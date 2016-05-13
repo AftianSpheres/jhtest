@@ -235,7 +235,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 475594}
   - 114: {fileID: 11446504}
-  - 82: {fileID: 8259530}
   m_Layer: 0
   m_Name: BossManta
   m_TagString: Untagged
@@ -763,80 +762,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!82 &8259530
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 196324}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!95 &9511026
 Animator:
   serializedVersion: 3
@@ -1072,6 +997,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   tailHP: 0
   tailStartingHP: 0
+  hitSFX: {fileID: 8300000, guid: f38f15754944ff647845149fc2173816, type: 3}
 --- !u!114 &11440922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1308,8 +1234,6 @@ MonoBehaviour:
   HitSFX: {fileID: 8300000, guid: f38f15754944ff647845149fc2173816, type: 3}
   source: {fileID: 8202348}
   renderer: {fileID: 21244218}
-  defaultMat: {fileID: 2100000, guid: 5527276efeeacba40a1bff2dd0a0b32c, type: 2}
-  flashMat: {fileID: 2100000, guid: abbc8e588022c394d9861da9076b7438, type: 2}
   Weight: 300
   Heading: {x: 0, y: 0, z: 0}
   collider: {fileID: 6102212}

@@ -43,8 +43,8 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -105,14 +105,17 @@ MonoBehaviour:
   collider: {fileID: 6184006}
   renderer: {fileID: 21256158}
   boomPool: {fileID: 0}
+  bulletPool: {fileID: 0}
   HomingTarget: {fileID: 0}
   fs: {fileID: 11476536}
   TargetPosition: {x: 0, y: 0, z: 0}
   Heading: {x: 0, y: 0}
   Trail: {x: 0, y: 0}
   ShotType: 100000
+  OriginalTag: 
   PierceScenery: 0
   PierceTargets: 0
+  isExplosive: 0
   Range: 0
   Speed: 0
   Damage: 0
@@ -120,6 +123,7 @@ MonoBehaviour:
   HomingWindow: 0
   Priority: 0
   Weight: 0
+  owner: {fileID: 0}
 --- !u!212 &21256158
 SpriteRenderer:
   m_ObjectHideFlags: 1

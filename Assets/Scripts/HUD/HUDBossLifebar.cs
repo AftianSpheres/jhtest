@@ -27,14 +27,24 @@ public class HUDBossLifebar : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-	    if (boss != world.activeRoom.Boss)
+	    if (world.activeRoom != null && boss != world.activeRoom.Boss)
         {
             boss = world.activeRoom.Boss;
-            textMesh.text = lines[(int)world.activeRoom.Boss.bossType - 1];
-            bg.enabled = true;
-            textMesh.gameObject.SetActive(true);
-            fill.gameObject.SetActive(true);
-            active = true;
+            if (boss != null)
+            {
+                textMesh.text = lines[(int)world.activeRoom.Boss.bossType - 1];
+                bg.enabled = true;
+                textMesh.gameObject.SetActive(true);
+                fill.gameObject.SetActive(true);
+                active = true;
+            }
+            else
+            {
+                active = false;
+                bg.enabled = false;
+                textMesh.gameObject.SetActive(false);
+                fill.gameObject.SetActive(false);
+            }
             HPCached = 0;
         }
         else if (active == true)

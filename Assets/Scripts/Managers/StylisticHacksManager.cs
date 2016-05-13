@@ -14,8 +14,7 @@ public class StylisticHacksManager : Manager<StylisticHacksManager>
     public Queue<FlickerySprite> sprites;
     private AudioSource BGM0;
     public float fps;
-    float LastSecondTime = 0.0f;
-    int currentUpdateHit = 0;
+    private float timeCtr;
 
     // Use this for initialization
     void Start () {
@@ -66,19 +65,21 @@ public class StylisticHacksManager : Manager<StylisticHacksManager>
             }
             if (SpritesOK == false)
             {
-                Application.targetFrameRate = 60 - Mathf.RoundToInt((60f / (sprites.Count)));
+                Application.targetFrameRate = 60 - sprites.Count;
+                if (Application.targetFrameRate < 30)
+                {
+                    Application.targetFrameRate = 30; // below this point the effect isn't really entertaining any more
+                }
             }
             else
             {
                 Application.targetFrameRate = 60;
             }
-            currentUpdateHit++;
-            if (currentUpdateHit == 60)
+            timeCtr+= Time.deltaTime;
+            if (timeCtr > .25f)
             {
-                LastSecondTime = Time.realtimeSinceStartup;
-                currentUpdateHit = 0;
-                fps = Mathf.Round(60 - (60 * (Time.realtimeSinceStartup - LastSecondTime)));
-                BGM0.pitch = fps / 60f;
+                fps = Mathf.Ceil((Application.targetFrameRate) /4f / timeCtr);
+                timeCtr -= .25f;
             }
         }
     }

@@ -15,8 +15,6 @@ public class CommonEnemyController : MonoBehaviour
     public AudioClip HitSFX;
     public AudioSource source;
     new public SpriteRenderer renderer;
-    public Material defaultMat;
-    public Material flashMat;
     public int Weight;
     public Vector3 Heading;
     new public BoxCollider2D collider;
@@ -26,7 +24,6 @@ public class CommonEnemyController : MonoBehaviour
     public int ShotDmg;
     public int InvulnTime;
     public int DamageQueue;
-    private int HitFlashCounter;
     private Vector3 StartingPos;
     public Vector3 StartingCenter;
     private Sprite StartingFrame;
@@ -64,11 +61,6 @@ public class CommonEnemyController : MonoBehaviour
                 {
                     Die();
                 }
-                if (HitFlashCounter < 1)
-                {
-                    renderer.material = defaultMat;
-                }
-                HitFlashCounter -= 1;
             }
             else
             {
@@ -111,8 +103,7 @@ public class CommonEnemyController : MonoBehaviour
             }
             else
             {
-                renderer.material = flashMat;
-                HitFlashCounter = 10;
+                StartCoroutine(GFXHelpers.FlashEffect(renderer, 10));
             }
             bullet.HitTarget();
             DamageQueue += bullet.Damage;
@@ -135,8 +126,7 @@ public class CommonEnemyController : MonoBehaviour
             }
             else
             {
-                renderer.material = flashMat;
-                HitFlashCounter = 10;
+                StartCoroutine(GFXHelpers.FlashEffect(renderer, 10));
             }
             animator.SetTrigger("Hit");
             DamageQueue += boom.Damage;
@@ -158,7 +148,6 @@ public class CommonEnemyController : MonoBehaviour
         CurrentHP = MaxHP;
         transform.position = StartingPos;
         DamageQueue = 0;
-        renderer.material = defaultMat;
         renderer.enabled = false;
         collider.enabled = false;
         isDead = true;

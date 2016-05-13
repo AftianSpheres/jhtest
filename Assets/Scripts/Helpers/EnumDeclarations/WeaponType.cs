@@ -32,6 +32,7 @@ public enum WeaponType
     eGeneric = 100000,
     eMidBoss_Arrow_Vert,
     eMidBoss_Arrow_Horiz,
+    eGenericBomb,
 
     spEnergyRecover = 500000
 }

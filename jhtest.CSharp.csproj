@@ -140,6 +140,7 @@
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\TabooType.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\WeaponType.cs" />
     <Compile Include="Assets\Scripts\Helpers\ExpensiveAccurateCollision.cs" />
+    <Compile Include="Assets\Scripts\Helpers\GFXHelpers.cs" />
     <Compile Include="Assets\Scripts\Helpers\GlobalStaticResources.cs" />
     <Compile Include="Assets\Scripts\Helpers\HammerConstants.cs" />
     <Compile Include="Assets\Scripts\Managers\GameStateManager.cs" />

@@ -27,6 +27,7 @@ public class BulletController : MonoBehaviour
     public string OriginalTag;
     public bool PierceScenery;
     public bool PierceTargets;
+    public bool isExplosive;
     public float Range;
     public float Speed;
     public int Damage;
@@ -34,6 +35,7 @@ public class BulletController : MonoBehaviour
     public int HomingWindow;
     public int Priority;
     public int Weight;
+    public GameObject owner;
 
     /// <summary>
     /// UnityEngine.Update()
@@ -139,6 +141,10 @@ public class BulletController : MonoBehaviour
             case WeaponType.eMidBoss_Arrow_Horiz:
                 renderer.sprite = pool.frames[2];
                 break;
+            case WeaponType.eGenericBomb:
+                renderer.sprite = pool.frames[0];
+                isExplosive = true;
+                break;
             case WeaponType.spEnergyRecover:
                 renderer.sprite = Resources.Load<Sprite>(GlobalStaticResources.p_EnergyRecoverGFX);
                 break;
@@ -150,7 +156,7 @@ public class BulletController : MonoBehaviour
     /// </summary>
     public void HitTarget ()
     {
-        if (PierceScenery == false || (HomingTarget != null && HomingPrecision < 1))
+        if (isExplosive == true || PierceScenery == false || (HomingTarget != null && HomingPrecision < 1))
         {
             Retire();
         }
@@ -180,6 +186,9 @@ public class BulletController : MonoBehaviour
                 break;
             case WeaponType.eGeneric:
                 boomPool.StartBoom(collider.bounds.center, BoomType.EnergyThingy);
+                break;
+            case WeaponType.eGenericBomb:
+                boomPool.StartBoom(collider.bounds.center, BoomType.SmokePuff, true, 50, 20, 16, owner);
                 break;
         }
     }
