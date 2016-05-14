@@ -49,7 +49,7 @@ public class HUDBossLifebar : MonoBehaviour
         }
         else if (active == true)
         {
-            if (world.activeRoom.Boss == null)
+            if (world.activeRoom == null || world.activeRoom.Boss == null)
             {
                 active = false;
                 bg.enabled = false;

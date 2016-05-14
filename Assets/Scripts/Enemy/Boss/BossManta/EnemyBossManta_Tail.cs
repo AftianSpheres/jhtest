@@ -20,6 +20,7 @@ public class EnemyBossManta_Tail : MonoBehaviour
     public int tailHP;
     public int tailStartingHP;
     public AudioClip hitSFX;
+    int tailReviveTimer;
     Bounds virtualTailtip;
     bool OffFrame = false;
 # if UNITY_EDITOR
@@ -52,6 +53,18 @@ public class EnemyBossManta_Tail : MonoBehaviour
         else
         {
             OffFrame = true;
+        }
+        if (tailHP < 1 && mode != EnemyBossManta_TailMode.Dead && mode != EnemyBossManta_TailMode.Locked)
+        {
+            StartCoroutine(TailDie());
+        }
+        if (mode == EnemyBossManta_TailMode.Dead)
+        {
+            tailReviveTimer--;
+            if (tailReviveTimer < 0)
+            {
+                StartCoroutine(TailRevive());
+            }
         }
     }
 
@@ -90,8 +103,69 @@ public class EnemyBossManta_Tail : MonoBehaviour
         return anchorPoint;
     }
 
+    public IEnumerator TailDie()
+    {
+        mode = EnemyBossManta_TailMode.Locked;
+        for (int i = 0; i < tailBits.Length; i++)
+        {
+            yield return null;
+            if (master.common.room.world.paused == true)
+            {
+                yield return null;
+            }
+            master.common.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_ExplosionSFX));
+            master.common.room.world.Booms.StartBoom(new Vector3(tailBits[i].collider.bounds.min.x, tailBits[i].collider.bounds.max.y, tailBits[i].collider.bounds.center.z), BoomType.SmokePuff);
+            yield return null;
+        }
+        mode = EnemyBossManta_TailMode.Dead;
+        for (int i = tailBits.Length - 1; i > -1; i--)
+        {
+            master.common.room.world.Booms.StartBoom(new Vector3(tailBits[i].collider.bounds.max.x, tailBits[i].collider.bounds.min.y, tailBits[i].collider.bounds.center.z), BoomType.SmokePuff);
+            tailBits[i].gameObject.SetActive(false);
+        }
+        tailReviveTimer = Random.Range(600, 1200);
+    }
+
+    public IEnumerator TailRevive()
+    {
+        mode = EnemyBossManta_TailMode.Locked;
+        for (int i = tailBits.Length - 1; i > -1; i--)
+        {
+            yield return null;
+            tailBits[i].Reset();
+            master.common.room.world.Booms.StartBoom(new Vector3(tailBits[i].collider.bounds.max.x, tailBits[i].collider.bounds.min.y, tailBits[i].collider.bounds.center.z), BoomType.EnergyThingy);
+            tailBits[i].gameObject.SetActive(true);
+            Vector3 dest;
+            for (int i2 = 0; i2 < 4; i2++)
+            {
+                if (i2 == 0)
+                {
+                    dest = new Vector3(tailBits[i].collider.bounds.center.x, tailBits[i].collider.bounds.center.y - 1, tailBits[i].collider.bounds.center.z - 1);
+                }
+                else if (i2 == 1)
+                {
+                    dest = new Vector3(tailBits[i].collider.bounds.center.x, tailBits[i].collider.bounds.center.y + 1, tailBits[i].collider.bounds.center.z - 1);
+                }
+                else if (i2 == 2)
+                {
+                    dest = new Vector3(tailBits[i].collider.bounds.center.x - 1, tailBits[i].collider.bounds.center.y, tailBits[i].collider.bounds.center.z - 1);
+                }
+                else
+                {
+                    dest = new Vector3(tailBits[i].collider.bounds.center.x + 1, tailBits[i].collider.bounds.center.y, tailBits[i].collider.bounds.center.z - 1);
+                }
+                master.common.room.world.EnemyBullets.FireBullet(WeaponType.eGeneric, 2, master.common.ShotDmg, 5, tailBits[i].collider.bounds.center, dest, true, master.common.room.world.player.collider, 16, int.MaxValue, master.gameObject);
+            }
+            master.common.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_EnemyFireStrangeBurstSFX));
+            yield return null;
+        }
+        tailHP = tailStartingHP;
+        mode = EnemyBossManta_TailMode.Neutral;
+    }
+
     public IEnumerator TailSweep(float speed)
     {
+        master.common.inMovingAttack = true;
         mode = EnemyBossManta_TailMode.Sweeping;
         Bounds[] interceptZones = new Bounds[8];
         virtualTailtip = new Bounds(tailBits[tailBits.Length - 1].collider.bounds.center, tailBits[tailBits.Length - 1].collider.bounds.size);
@@ -147,6 +221,10 @@ public class EnemyBossManta_Tail : MonoBehaviour
         Vector3 virtualTailtipLastFramePos;
         while (interceptStage < interceptZones.Length)
         {
+            if (master.common.room.world.paused == true)
+            {
+                yield return null;
+            }
             if (master.common.room.isActiveRoom == false)
             {
                 yield return null;
@@ -183,10 +261,12 @@ public class EnemyBossManta_Tail : MonoBehaviour
             }
         }
         mode = EnemyBossManta_TailMode.Neutral;
+        master.common.inMovingAttack = false;
     }
 
     public IEnumerator TailStab(float speed)
     {
+        master.common.inMovingAttack = true;
         mode = EnemyBossManta_TailMode.Stabbing;
         Bounds[] interceptZones = new Bounds[2];
         virtualTailtip = new Bounds(tailBits[tailBits.Length - 1].collider.bounds.center, tailBits[tailBits.Length - 1].collider.bounds.size);
@@ -218,6 +298,10 @@ public class EnemyBossManta_Tail : MonoBehaviour
         Vector3 virtualTailtipLastFramePos;
         while (interceptStage < interceptZones.Length)
         {
+            if (master.common.room.world.paused == true)
+            {
+                yield return null;
+            }
             if (master.common.room.isActiveRoom == false)
             {
                 yield return null;
@@ -255,6 +339,7 @@ public class EnemyBossManta_Tail : MonoBehaviour
 
         }
         mode = EnemyBossManta_TailMode.Neutral;
+        master.common.inMovingAttack = false;
     }
 
     public void Hit (BulletController bullet)

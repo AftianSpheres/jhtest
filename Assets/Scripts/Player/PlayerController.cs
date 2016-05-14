@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private Sprite specialPoseGFX;
     public Direction facingDir;
+    public Bounds whiffBox;
 
 	void Start ()
     {
@@ -303,13 +304,26 @@ public class PlayerController : MonoBehaviour {
         }
         else if (Invincible == false && Locked == false)
         {
-            if (animator.GetBool("DodgeBurst") == false && InvulnTime < 1)
+            if (animator.GetBool("DodgeBurst") == false)
+            {
+                if (InvulnTime < 1)
+                {
+                    bullet.HitTarget();
+                    animator.SetTrigger("Hit");
+                    energy.CurrentEnergy = energy.CurrentEnergy - bullet.Damage;
+                    KnockbackHeading = bullet.Heading;
+                    KnockbackFrames = bullet.Weight;
+                    energy.ChangeMultiplier(-99999);
+                }
+            }
+            else
             {
                 bullet.HitTarget();
-                animator.SetTrigger("Hit");
-                energy.CurrentEnergy = energy.CurrentEnergy - bullet.Damage;
-                KnockbackHeading = bullet.Heading;
-                KnockbackFrames = bullet.Weight;
+                energy.Recover(4 * energy.CurrentMultiplierLevel + 1);
+                energy.ChangeMultiplier(1);
+                source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_CursorUpSFX));
+                GFXHelpers.FlashEffect(renderer, 10);
+                InvulnTime += 30;
             }
         }
     }
@@ -322,12 +336,24 @@ public class PlayerController : MonoBehaviour {
     {
         if (Invincible == false && Locked == false && animator.GetBool("Dead") == false)
         {
-            if (animator.GetBool("DodgeBurst") == false && enemy.CollideDmg > 0 && InvulnTime < 1)
+            if (animator.GetBool("DodgeBurst") == false && enemy.CollideDmg > 0) 
             {
-                animator.SetTrigger("Hit");
-                energy.CurrentEnergy = energy.CurrentEnergy - enemy.CollideDmg;
-                KnockbackHeading = enemy.Heading;
-                KnockbackFrames = enemy.Weight;
+                if (InvulnTime < 1)
+                {
+                    animator.SetTrigger("Hit");
+                    energy.CurrentEnergy = energy.CurrentEnergy - enemy.CollideDmg;
+                    KnockbackHeading = enemy.Heading;
+                    KnockbackFrames = enemy.Weight;
+                    energy.ChangeMultiplier(-99999);
+                }
+            }
+            else if (enemy.inMovingAttack == true)
+            {
+                energy.Recover(4 * energy.CurrentMultiplierLevel + 1);
+                energy.ChangeMultiplier(1);
+                source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_CursorUpSFX));
+                GFXHelpers.FlashEffect(renderer, 10);
+                InvulnTime += 30;
             }
         }
     }

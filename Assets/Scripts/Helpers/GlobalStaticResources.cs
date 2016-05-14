@@ -45,6 +45,8 @@ public static class GlobalStaticResources
 
     public static string p_CursorDownSFX = "SFX/cursor_down";
     public static string p_CursorUpSFX = "SFX/cursor_up";
+    public static string p_EnemyFireStrangeBurstSFX = "SFX/enemy_fire_strangeburst";
+    public static string p_ExplosionSFX = "SFX/explosion";
     public static string p_FireBasicSFX = "SFX/fire_wg";
     public static string p_FireShotgunSFX = "SFX/fire_sg";
     public static string p_FireShadowSFX = "SFX/fire_shd";

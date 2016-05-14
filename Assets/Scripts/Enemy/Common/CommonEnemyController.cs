@@ -32,6 +32,7 @@ public class CommonEnemyController : MonoBehaviour
     public bool Vulnerable;
     public bool Collideable;
     public FlickerySprite flicker;
+    public bool inMovingAttack = false;
 
 
 

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
+using System.Collections;
 
 public class EnemyBossManta : EnemyModule
 {
@@ -44,6 +44,14 @@ public class EnemyBossManta : EnemyModule
     {
         if (common.room == common.room.world.activeRoom)
         {
+            if (tailController.mode == EnemyBossManta_TailMode.Locked)
+            {
+                common.animator.speed = 0;
+            }
+            else
+            {
+                common.animator.speed = 1;
+            }
             playerDist = Mathf.Abs(common.collider.bounds.center.x - common.room.world.player.collider.bounds.center.x) + Mathf.Abs(common.collider.bounds.center.y - common.room.world.player.collider.bounds.center.y);
             playerOutOfLineOfSight = false;
             turnAntiClockwise = false;
@@ -127,6 +135,10 @@ public class EnemyBossManta : EnemyModule
     {
         if (common.CurrentHP < (common.MaxHP / 2f))
         {
+            if (tailController.mode == EnemyBossManta_TailMode.Dead)
+            {
+                StartCoroutine(tailController.TailRevive());
+            }
             purgeArmor();
         }
     }
@@ -187,7 +199,7 @@ public class EnemyBossManta : EnemyModule
         {
             if (tailController.mode == EnemyBossManta_TailMode.Neutral && Random.Range(0, 90) == 0)
             {
-                StartCoroutine(tailController.TailStab(1 + (4 * ((playerDist - maximumAllowedDistance) / maximumAllowedDistance))));
+                StartCoroutine(tailController.TailStab(1 + (2 * ((playerDist - maximumAllowedDistance) / maximumAllowedDistance))));
                 move = Vector3.zero;
             }
         }
@@ -207,7 +219,7 @@ public class EnemyBossManta : EnemyModule
             }
             if (tailController.mode == EnemyBossManta_TailMode.Neutral && Random.Range(0, 90) == 0)
             {
-                StartCoroutine(tailController.TailSweep(1.5f));
+                StartCoroutine(tailController.TailSweep(1f));
                 move = Vector3.zero;
             }
         }
@@ -332,7 +344,7 @@ public class EnemyBossManta : EnemyModule
             MissilePrimed = true;
             closeHatch();
         }
-        common.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_FireShotgunSFX));
+        common.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_EnemyFireStrangeBurstSFX));
     }
 
     public void fireMissile()

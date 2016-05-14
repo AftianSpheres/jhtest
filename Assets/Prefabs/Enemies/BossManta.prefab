@@ -204,7 +204,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &190060
 GameObject:
   m_ObjectHideFlags: 1
@@ -995,8 +995,8 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
-  tailHP: 0
-  tailStartingHP: 0
+  tailHP: 500
+  tailStartingHP: 500
   hitSFX: {fileID: 8300000, guid: f38f15754944ff647845149fc2173816, type: 3}
 --- !u!114 &11440922
 MonoBehaviour:
@@ -1248,6 +1248,7 @@ MonoBehaviour:
   Vulnerable: 0
   Collideable: 0
   flicker: {fileID: 11424980}
+  inMovingAttack: 0
 --- !u!114 &11491328
 MonoBehaviour:
   m_ObjectHideFlags: 1
