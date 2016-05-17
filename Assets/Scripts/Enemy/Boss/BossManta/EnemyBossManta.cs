@@ -8,6 +8,7 @@ public class EnemyBossManta : EnemyModule
     public bool armorOff = false;
     public static int maximumAllowedDistance = 120;
     public float moveSpeed = 0.25f;
+    public BoxCollider sceneryCollider;
     private static int[] EnemyBossMantaAnimatorHashes =
     {
         Animator.StringToHash("Neutral"),
@@ -55,6 +56,42 @@ public class EnemyBossManta : EnemyModule
             playerDist = Mathf.Abs(common.collider.bounds.center.x - common.room.world.player.collider.bounds.center.x) + Mathf.Abs(common.collider.bounds.center.y - common.room.world.player.collider.bounds.center.y);
             playerOutOfLineOfSight = false;
             turnAntiClockwise = false;
+
+            // Welcome to the hackiest shit
+
+            if (sceneryCollider.bounds.Intersects(common.room.world.player.collider.bounds) == true)
+            {
+                float x = 0;
+                float y = 0;
+                if (common.room.world.player.collider.bounds.min.y < sceneryCollider.bounds.max.y && common.room.world.player.collider.bounds.max.y > sceneryCollider.bounds.min.y)
+                {
+                    x = -(common.room.world.player.collider.bounds.max.x - sceneryCollider.bounds.min.x) - 1;
+                    if (-(common.room.world.player.collider.bounds.min.x - sceneryCollider.bounds.max.x) + 1 < Mathf.Abs(x))
+                    {
+                        x = -(common.room.world.player.collider.bounds.min.x - sceneryCollider.bounds.max.x) + 1;
+                    }
+                }
+                if (common.room.world.player.collider.bounds.min.x < sceneryCollider.bounds.max.x && common.room.world.player.collider.bounds.max.x > sceneryCollider.bounds.min.x)
+                {
+                    y = -(common.room.world.player.collider.bounds.max.y - sceneryCollider.bounds.min.y) - 1;
+                    if (-(common.room.world.player.collider.bounds.min.y - sceneryCollider.bounds.max.y) + 1 < Mathf.Abs(y))
+                    {
+                        y = -(common.room.world.player.collider.bounds.min.y - sceneryCollider.bounds.max.y) + 1;
+                    }
+                }
+                if (Mathf.Abs(x) > 0 && Mathf.Abs(y) > Mathf.Abs(x))
+                {
+                    y = 0;
+                }
+                else if (Mathf.Abs(y) > 0 && (Mathf.Abs(x) > Mathf.Abs(y)))
+                {
+                    x = 0;
+                }
+                common.room.world.player.MoveOrBeCrushed(new Vector3(x, y, 0), sceneryCollider.gameObject);
+            }
+
+            // free and clear of the hackiest shit
+
             move = Vector3.zero;
             _in_getMoveDir();
             _in_executeAnyTurns();

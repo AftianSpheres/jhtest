@@ -124,6 +124,40 @@ public class RoomCollider : MonoBehaviour
         return ret;
     }
 
+    public Bounds[] getAllCollisionButSpecificObject (GameObject obj)
+    {
+        Bounds[] ret = new Bounds[_fullCollide.Length + _shootthru.Length + _fullCollide_obj.Length + _shootThru_obj.Length - 1];
+        int v = 0;
+        _fullCollide.CopyTo(ret, v);
+        v += _fullCollide.Length;
+        _shootthru.CopyTo(ret, v);
+        v += _shootthru.Length;
+        for (int i = 0; i < _fullCollide_obj.Length; i++)
+        {
+            if (_fullCollide_obj[i] != obj)
+            {
+                ret[v + i] = _fullCollide_obj[i].GetComponent<BoxCollider>().bounds;
+            }
+            else
+            {
+                v--;
+            }
+        }
+        v += _fullCollide_obj.Length;
+        for (int i = 0; i < _shootThru_obj.Length; i++)
+        {
+            if (_shootThru_obj[i] != obj)
+            {
+                ret[v + i] = _shootThru_obj[i].GetComponent<BoxCollider>().bounds;
+            }
+            else
+            {
+                v--;
+            }
+        }
+        return ret;
+    }
+
 
 #if UNITY_EDITOR
     void OnDrawGizmosSelected()

@@ -395,6 +395,21 @@ public class PlayerController : MonoBehaviour {
         renderer.sprite = specialPoseGFX;
     }
 
+    public void MoveOrBeCrushed (Vector3 heading, GameObject crusher)
+    {
+        Bounds[] collision = world.activeRoom.collision.getAllCollisionButSpecificObject(crusher);
+        Debug.Log(heading);
+        ExpensiveAccurateCollision.CollideWithScenery(animator, collision, heading, collider);
+        for (int i = 0; i < world.activeRoom.collision.allCollision.Length; i++)
+        {
+            if (collider.bounds.Intersects(world.activeRoom.collision.allCollision[i]) == true)
+            {
+                Die();
+                break;
+            }
+        } 
+    }
+    
     /// <summary>
     /// Respawns player.
     /// </summary>

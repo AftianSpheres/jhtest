@@ -947,6 +947,7 @@ MonoBehaviour:
   tailController: {fileID: 11438902}
   armorOff: 0
   moveSpeed: 0.33333334
+  sceneryCollider: {fileID: 6550984}
 --- !u!114 &11436952
 MonoBehaviour:
   m_ObjectHideFlags: 1
