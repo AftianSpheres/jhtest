@@ -248,7 +248,12 @@ public class EnemyBossManta : EnemyModule
                 {
                     fireMissile();
                 }
-                else if (RemainingVolleys < 0 && Random.Range(0, 360) == 0)
+                int chanceToOpenFire = 0;
+                if (tailController.mode == EnemyBossManta_TailMode.Dead)
+                {
+                    chanceToOpenFire = 80;
+                }
+                else if (RemainingVolleys < 0 && Random.Range(0, 360) <= chanceToOpenFire)
                 {
                     openHatch();
                     move = Vector3.zero;
