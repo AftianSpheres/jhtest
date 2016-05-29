@@ -398,7 +398,6 @@ public class PlayerController : MonoBehaviour {
     public void MoveOrBeCrushed (Vector3 heading, GameObject crusher)
     {
         Bounds[] collision = world.activeRoom.collision.getAllCollisionButSpecificObject(crusher);
-        Debug.Log(heading);
         ExpensiveAccurateCollision.CollideWithScenery(animator, collision, heading, collider);
         for (int i = 0; i < world.activeRoom.collision.allCollision.Length; i++)
         {

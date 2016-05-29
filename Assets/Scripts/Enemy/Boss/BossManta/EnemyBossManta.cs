@@ -7,7 +7,7 @@ public class EnemyBossManta : EnemyModule
     public EnemyBossManta_Tail tailController;
     public bool armorOff = false;
     public static int maximumAllowedDistance = 120;
-    public float moveSpeed = 0.25f;
+    public float moveSpeed;
     public BoxCollider sceneryCollider;
     private static int[] EnemyBossMantaAnimatorHashes =
     {
@@ -21,7 +21,8 @@ public class EnemyBossManta : EnemyModule
         Animator.StringToHash("OpenHatch"),
         Animator.StringToHash("CloseHatch"),
         Animator.StringToHash("PurgeArmor"),
-        Animator.StringToHash("FireMissile")
+        Animator.StringToHash("FireMissile"),
+        Animator.StringToHash("InCharge")
     };
     private int RemainingVolleys = -1;
     private int TurnTimer = 0;
@@ -166,6 +167,117 @@ public class EnemyBossManta : EnemyModule
                     break;
             }
         }
+        else if (common.animator.GetBool(EnemyBossMantaAnimatorHashes[11]) == true)
+        {
+            // get trajectory closest to player...
+            float x = (common.room.world.player.collider.bounds.center.x - common.collider.bounds.center.x);
+            float y = (common.room.world.player.collider.bounds.center.y - common.collider.bounds.center.y);
+            float adj = Mathf.Abs(x) + Mathf.Abs(y);
+            x /= adj;
+            y /= adj;
+            x *= moveSpeed * 2;
+            y *= moveSpeed * 2;
+            switch (facingDir)
+            {
+                case Direction.Down:
+                    if (x > Mathf.Abs(y) * 2)
+                    {
+                        playerOutOfLineOfSight = true;
+                        turnAntiClockwise = true;
+                    }
+                    else if (x < -Mathf.Abs(y) * 2)
+                    {
+                        playerOutOfLineOfSight = true;
+                        turnAntiClockwise = false;
+                    }
+                    break;
+                case Direction.Up:
+                    if (x > Mathf.Abs(y) * 2)
+                    {
+                        playerOutOfLineOfSight = true;
+                        turnAntiClockwise = false;
+                    }
+                    else if (x < -Mathf.Abs(y) * 2)
+                    {
+                        playerOutOfLineOfSight = true;
+                        turnAntiClockwise = true;
+                    }
+                    break;
+                case Direction.Left:
+                    if (y > Mathf.Abs(x) * 2)
+                    {
+                        playerOutOfLineOfSight = true;
+                        turnAntiClockwise = false;
+                    }
+                    else if (y < -Mathf.Abs(x) * 2)
+                    {
+                        playerOutOfLineOfSight = true;
+                        turnAntiClockwise = true;
+                    }
+                    break;
+                case Direction.Right:
+                    if (y > Mathf.Abs(x) * 2)
+                    {
+                        playerOutOfLineOfSight = true;
+                        turnAntiClockwise = true;
+                    }
+                    else if (y < -Mathf.Abs(x) * 2)
+                    {
+                        playerOutOfLineOfSight = true;
+                        turnAntiClockwise = false;
+                    }
+                    break;
+                case Direction.DownLeft:
+                    if (y > Mathf.Abs(x) * 2)
+                    {
+                        playerOutOfLineOfSight = true;
+                        turnAntiClockwise = false;
+                    }
+                    else if (x < -Mathf.Abs(y) * 2)
+                    {
+                        playerOutOfLineOfSight = true;
+                        turnAntiClockwise = true;
+                    }
+                    break;
+                case Direction.DownRight:
+                    if (y > Mathf.Abs(x) * 2)
+                    {
+                        playerOutOfLineOfSight = true;
+                        turnAntiClockwise = true;
+                    }
+                    else if (x > Mathf.Abs(y) * 2)
+                    {
+                        playerOutOfLineOfSight = true;
+                        turnAntiClockwise = false;
+                    }
+                    break;
+                case Direction.UpLeft:
+                    if (y < -Mathf.Abs(x) * 2)
+                    {
+                        playerOutOfLineOfSight = true;
+                        turnAntiClockwise = true;
+                    }
+                    else if (x > Mathf.Abs(y) * 2)
+                    {
+                        playerOutOfLineOfSight = true;
+                        turnAntiClockwise = false;
+                    }
+                    break;
+                case Direction.UpRight:
+                    if (y < -Mathf.Abs(x) * 2)
+                    {
+                        playerOutOfLineOfSight = true;
+                        turnAntiClockwise = false;
+                    }
+                    else if (x < -Mathf.Abs(y) * 2)
+                    {
+                        playerOutOfLineOfSight = true;
+                        turnAntiClockwise = true;
+                    }
+                    break;
+            }
+            move = new Vector3(x, y, 0);
+        }
     }
 
     void _in_manageArmorState ()
@@ -224,7 +336,8 @@ public class EnemyBossManta : EnemyModule
 
     void _in_executeAnyMove ()
     {
-        if (common.animator.GetCurrentAnimatorStateInfo(0).tagHash == EnemyBossMantaAnimatorHashes[0] && (tailController.mode == EnemyBossManta_TailMode.Neutral || tailController.mode == EnemyBossManta_TailMode.Dead))
+        if ((common.animator.GetCurrentAnimatorStateInfo(0).tagHash == EnemyBossMantaAnimatorHashes[0] && (tailController.mode == EnemyBossManta_TailMode.Neutral || tailController.mode == EnemyBossManta_TailMode.Dead)) ||
+            (common.animator.GetBool(EnemyBossMantaAnimatorHashes[11]) == true))
         {
             virtualPosition += move;
         }
@@ -444,6 +557,7 @@ public class EnemyBossManta : EnemyModule
     public void purgeArmor ()
     {
         armorOff = true;
+        moveSpeed *= 2;
         common.animator.SetTrigger(EnemyBossMantaAnimatorHashes[9]);
     }
 
