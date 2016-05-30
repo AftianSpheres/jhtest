@@ -146,7 +146,7 @@ public class BulletController : MonoBehaviour
                 isExplosive = true;
                 break;
             case WeaponType.spEnergyRecover:
-                renderer.sprite = Resources.Load<Sprite>(GlobalStaticResources.p_EnergyRecoverGFX);
+                renderer.sprite = Resources.Load<Sprite>(GlobalStaticResourcePaths.p_EnergyRecoverGFX);
                 break;
         }
     }

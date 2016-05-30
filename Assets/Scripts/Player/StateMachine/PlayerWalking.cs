@@ -32,13 +32,6 @@ public class PlayerWalking : StateMachineBehaviour
         Vector3 PosMod = new Vector3(0, 0, 0);
         int FrameCtr = animator.GetInteger("FrameCtr");
         animator.SetInteger("FrameCtr", FrameCtr + 1);
-        if (FrameCtr < animator.GetInteger("WalkingStartupLagFrames"))
-        {
-            if (FrameCtr % 2 != 0)
-            {
-                OffFrame = true;
-            }
-        }
         if (OffFrame == false)
         {
             if (animator.GetBool("HeldDown") == true)

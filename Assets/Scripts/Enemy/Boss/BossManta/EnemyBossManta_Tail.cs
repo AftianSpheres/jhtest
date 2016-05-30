@@ -113,7 +113,7 @@ public class EnemyBossManta_Tail : MonoBehaviour
             {
                 yield return null;
             }
-            master.common.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_ExplosionSFX));
+            master.common.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_ExplosionSFX));
             master.common.room.world.Booms.StartBoom(new Vector3(tailBits[i].collider.bounds.min.x, tailBits[i].collider.bounds.max.y, tailBits[i].collider.bounds.center.z), BoomType.SmokePuff);
             yield return null;
         }
@@ -156,7 +156,7 @@ public class EnemyBossManta_Tail : MonoBehaviour
                 }
                 master.common.room.world.EnemyBullets.FireBullet(WeaponType.eGeneric, 2, master.common.ShotDmg, 5, tailBits[i].collider.bounds.center, dest, true, master.common.room.world.player.collider, 16, int.MaxValue, master.gameObject);
             }
-            master.common.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_EnemyFireStrangeBurstSFX));
+            master.common.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_EnemyFireStrangeBurstSFX));
             yield return null;
         }
         tailHP = tailStartingHP;

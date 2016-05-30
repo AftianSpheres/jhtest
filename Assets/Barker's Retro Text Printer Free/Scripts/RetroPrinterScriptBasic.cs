@@ -97,11 +97,11 @@ public class RetroPrinterScriptBasic : MonoBehaviour {
                     {
                         if (world.BGS0.isPlaying == true)
                         {
-                            source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_TextPrintSFX), 0.25f);
+                            source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_TextPrintSFX), 0.25f);
                         }
                         else
                         {
-                            source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_TextPrintSFX), 1f);
+                            source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_TextPrintSFX), 1f);
                         }
                     }
                     while (i2 < CharsPerFrame && i + i2 < line.Length)

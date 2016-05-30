@@ -1,0 +1,43 @@
+The Great Testcase
+The Deeper Testcase
+Keris Village
+Forbidden Stone Circle
+Necromancer's Hut
+Village reserved 03
+Village reserved 04
+Village reserved 05
+Village reserved 06
+Village reserved 07
+Village reserved 08
+Village reserved 09
+Sylvan Frontier
+Rootline Caverns
+Promontory Wall
+Forest reserved 03
+Forest reserved 04
+Forest reserved 05
+Forest reserved 06
+Forest reserved 07
+Forest reserved 08
+Forest reserved 09
+Valley of Solomon
+Valley Necropolis
+Lost Seminary
+Valley reserved 03
+Valley reserved 04
+Valley reserved 05
+Valley reserved 06
+Valley reserved 07
+Valley reserved 08
+Valley reserved 09
+Old Sankhar Marina
+Sankhar Clockwork Tower
+Clockwork Tower Ascent
+Ys, City of Glass
+Marina reserved 04
+Marina reserved 05
+Marina reserved 06
+Marina reserved 07
+Marina reserved 08
+Marina reserved 09
+Mandala of Ker-Is

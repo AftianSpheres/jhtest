@@ -40,22 +40,22 @@ public class BoomPool : MonoBehaviour
             boomEffect.fs.room = world.activeRoom;
             boomEffect.owner = owner;
             boomEffect.q = q;
-            Sprite[] allSprites = Resources.LoadAll<Sprite>(GlobalStaticResources.p_BoomGFX);
+            Sprite[] allSprites = Resources.LoadAll<Sprite>(GlobalStaticResourcePaths.p_BoomGFX);
             Sprite[] sprites;
             switch (type)
             {
                 case BoomType.SmokePuff:
-                    sprites = new Sprite[GlobalStaticResources.i_Boom0.Length];
-                    for (int i = 0; i < GlobalStaticResources.i_Boom0.Length; i++)
+                    sprites = new Sprite[GlobalStaticResourcePaths.i_Boom0.Length];
+                    for (int i = 0; i < GlobalStaticResourcePaths.i_Boom0.Length; i++)
                     {
-                        sprites[i] = allSprites[GlobalStaticResources.i_Boom0[i]];
+                        sprites[i] = allSprites[GlobalStaticResourcePaths.i_Boom0[i]];
                     }
                     break;
                 case BoomType.EnergyThingy:
-                    sprites = new Sprite[GlobalStaticResources.i_Boom1.Length];
-                    for (int i = 0; i < GlobalStaticResources.i_Boom1.Length; i++)
+                    sprites = new Sprite[GlobalStaticResourcePaths.i_Boom1.Length];
+                    for (int i = 0; i < GlobalStaticResourcePaths.i_Boom1.Length; i++)
                     {
-                        sprites[i] = allSprites[GlobalStaticResources.i_Boom1[i]];
+                        sprites[i] = allSprites[GlobalStaticResourcePaths.i_Boom1[i]];
                     }
                     break;
                 default:

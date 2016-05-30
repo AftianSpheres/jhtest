@@ -29,7 +29,7 @@ public class TabooOverlay : MonoBehaviour
         switch(taboo)
         {
             case TabooType.Eyes:
-                frames = Resources.LoadAll<Sprite>(GlobalStaticResources.p_TabooOverlay_Eyes);
+                frames = Resources.LoadAll<Sprite>(GlobalStaticResourcePaths.p_TabooOverlay_Eyes);
                 break;
             default:
                 throw new System.Exception("Taboo overlay received invalid taboo of value: " + taboo.ToString());

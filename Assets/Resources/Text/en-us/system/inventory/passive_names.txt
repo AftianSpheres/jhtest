@@ -1,0 +1,13 @@
+Memory Fragmant
+Glass King's Brand
+Old Glass Key
+DashThingyTemp
+DodgeBoostTemp
+DodgeFireTemp
+SecretSensorTemp
+WaveriderTemp
+FlightTemp
+TabooRegeneratorTemp
+ForestStoneTemp
+ValleyStoneTemp
+MarinaStoneTemp

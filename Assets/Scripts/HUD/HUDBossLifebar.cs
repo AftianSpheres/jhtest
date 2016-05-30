@@ -17,7 +17,7 @@ public class HUDBossLifebar : MonoBehaviour
 	void Awake ()
     {
         len = fill.transform.localScale.x;
-        lines = Resources.Load<TextAsset>(GlobalStaticResources.p_boss_names).ToString().Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+        lines = Resources.Load<TextAsset>(GlobalStaticResourcePaths.p_boss_names).ToString().Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
         active = false;
         bg.enabled = false;
         textMesh.gameObject.SetActive(false);

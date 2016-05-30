@@ -193,7 +193,7 @@ public class mu_Door : MonoBehaviour
                                         {
                                             room.world.GameStateManager.areaKeys[(int)room.world.Area]--;
                                             Unlock();
-                                            source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_KeySFX));
+                                            source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_KeySFX));
                                         }
                                     }
                                     break;
@@ -206,7 +206,7 @@ public class mu_Door : MonoBehaviour
                                         {
                                             room.world.GameStateManager.areaKeys[(int)room.world.Area]--;
                                             Unlock();
-                                            source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_KeySFX));
+                                            source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_KeySFX));
                                         }
                                     }
                                     break;
@@ -219,7 +219,7 @@ public class mu_Door : MonoBehaviour
                                         {
                                             room.world.GameStateManager.areaKeys[(int)room.world.Area]--;
                                             Unlock();
-                                            source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_KeySFX));
+                                            source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_KeySFX));
                                         }
                                     }
                                     break;
@@ -232,7 +232,7 @@ public class mu_Door : MonoBehaviour
                                         {
                                             room.world.GameStateManager.areaKeys[(int)room.world.Area]--;
                                             Unlock();
-                                            source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_KeySFX));
+                                            source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_KeySFX));
                                         }
                                     }
                                     break;

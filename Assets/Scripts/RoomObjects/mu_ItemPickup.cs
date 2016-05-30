@@ -67,11 +67,11 @@ public class mu_ItemPickup : MonoBehaviour
         {
             case PickupType.Weapon:
                 room.world.player.wpnManager.AddWeapon(weaponType);
-                text = Resources.Load<TextAsset>(GlobalStaticResources.p_wpn_descs[(int)weaponType]);
+                text = Resources.Load<TextAsset>(GlobalStaticResourcePaths.p_wpn_shortdescs[(int)weaponType]);
                 room.world.player.DoSpecialPose();
                 room.world.BGM0.Stop();
                 stoppedBGM = true;
-                room.world.BGS0.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_WeaponGetFanfare));
+                room.world.BGS0.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_WeaponGetFanfare));
                 break;
             case PickupType.PassiveItem:
                 throw new System.NotImplementedException();
@@ -84,7 +84,7 @@ public class mu_ItemPickup : MonoBehaviour
                 {
                     throw new System.Exception("Tried to pick up an area key, but WorldController.Area is defined as None!");
                 }
-                room.world.BGS0.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_KeySFX));
+                room.world.BGS0.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_KeySFX));
                 break;
             case PickupType.KeyItem:
                 throw new System.NotImplementedException();

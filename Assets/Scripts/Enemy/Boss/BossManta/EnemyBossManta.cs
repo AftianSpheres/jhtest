@@ -499,7 +499,7 @@ public class EnemyBossManta : EnemyModule
             MissilePrimed = true;
             closeHatch();
         }
-        common.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_EnemyFireStrangeBurstSFX));
+        common.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_EnemyFireStrangeBurstSFX));
     }
 
     public void fireMissile()
@@ -529,7 +529,7 @@ public class EnemyBossManta : EnemyModule
         Vector3 dest = common.room.world.player.collider.bounds.center;
         common.room.world.EnemyBullets.FireBullet(WeaponType.eGenericBomb, 5f, Mathf.RoundToInt(common.ShotDmg * 2.5f), 6, dest, origin, true, common.room.world.player.collider, 4, 128, gameObject);
         MissilePrimed = false;
-        common.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_FireShadowSFX));
+        common.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_FireShadowSFX));
     }
 
     public void fireSuicideBeam ()

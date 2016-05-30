@@ -1,0 +1,28 @@
+...You inspect the central stone, but nothing happens.
+
+It looks like a piece is missing from this monolith.
+
+...You realize that you have a stone fragment that might fit.
+Try fitting the stone fragment to the monolith?
+
+...You try to fit the fragment to the broken part of the monolith...
+
+...It fits! ...The fragment affixes itself to the monolith.
+
+...No good. Maybe it'll fit a different monolith...
+
+...Maybe it's not a good idea to mess with these monoliths.
+
+The monolith stands tall. It feels faintly warm to the touch.
+
+...As you slip the fragment into the monolith, you feel an unearthly sensation.
+
+The monolith is radiating an unnatural power.
+
+When you touch the central stone, your hand slips through. You could probably step through this stone, if you wanted to try...
+
+...Thinking better of it, you back away from the stone. As you do so, you somehow feel a sense of longing emanate from it.
+
+The monolith has taken a twisted form. It's no longer warm to the touch.
+
+The central stone has taken a twisted form. You touch it, but your hand doesn't go through.

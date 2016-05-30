@@ -33,7 +33,7 @@ public class WeaponSelect : MonoBehaviour
     /// </summary>
 	void Awake ()
     {
-        WpnIcons = Resources.LoadAll<Sprite>(GlobalStaticResources.p_PlayerWeaponIcons);
+        WpnIcons = Resources.LoadAll<Sprite>(GlobalStaticResourcePaths.p_PlayerWeaponIcons);
 
         wpnManager = menuSystem.world.player.wpnManager;
         slotASelection = new SpriteRenderer[HammerConstants.NumberOfWeapons + 1];
@@ -99,12 +99,12 @@ public class WeaponSelect : MonoBehaviour
                 if (Input.GetKeyDown(menuSystem.world.PlayerDataManager.K_VertUp) == true)
                 {
                     SwitchActiveSlot();
-                    menuSystem.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_CursorUpSFX));
+                    menuSystem.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_CursorUpSFX));
                 }
                 else if (Input.GetKeyDown(menuSystem.world.PlayerDataManager.K_VertDown) == true)
                 {
                     SwitchActiveSlot();
-                    menuSystem.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_CursorDownSFX));
+                    menuSystem.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_CursorDownSFX));
                 }
             }
             if ((ActiveSlotIsSlotB == false && wpnCount_a > 1) || (wpnManager.SlotBWpn != WeaponType.None && wpnCount_b > 1))
@@ -112,12 +112,12 @@ public class WeaponSelect : MonoBehaviour
                 if (Input.GetKeyDown(menuSystem.world.PlayerDataManager.K_HorizLeft) == true)
                 {
                     ScrollWpnSelection(true, ActiveSlotIsSlotB);
-                    menuSystem.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_CursorDownSFX));
+                    menuSystem.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_CursorDownSFX));
                 }
                 else if (Input.GetKeyDown(menuSystem.world.PlayerDataManager.K_HorizRight) == true)
                 {
                     ScrollWpnSelection(false, ActiveSlotIsSlotB);
-                    menuSystem.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_CursorUpSFX));
+                    menuSystem.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_CursorUpSFX));
                 }
             }
         }
@@ -144,11 +144,11 @@ public class WeaponSelect : MonoBehaviour
         menuSystem.menuCloseAction = Close;
         if (ActiveSlotIsSlotB == false)
         {
-            textbox.Play(GlobalStaticResources.loadTextResource(GlobalStaticResources.p_wpn_descs[index_a]));
+            textbox.Play(GlobalStaticResourcePaths.loadTextResource(GlobalStaticResourcePaths.p_wpn_shortdescs[index_a]));
         }
         else if (wpnManager.SlotBWpn != WeaponType.None && ActiveSlotIsSlotB == true)
         {
-            textbox.Play(GlobalStaticResources.loadTextResource(GlobalStaticResources.p_wpn_descs[index_b]));
+            textbox.Play(GlobalStaticResourcePaths.loadTextResource(GlobalStaticResourcePaths.p_wpn_shortdescs[index_b]));
         }
     }
 
@@ -283,12 +283,12 @@ public class WeaponSelect : MonoBehaviour
         if (slotB == false)
         {
             _in_ScrollWpnSelection(ref v, ref index_a, ref index_b, ref slotASelection);
-            textbox.Play(GlobalStaticResources.loadTextResource(GlobalStaticResources.p_wpn_descs[index_a]));
+            textbox.Play(GlobalStaticResourcePaths.loadTextResource(GlobalStaticResourcePaths.p_wpn_shortdescs[index_a]));
         }
         else
         {
             _in_ScrollWpnSelection(ref v, ref index_b, ref index_a, ref slotBSelection);
-            textbox.Play(GlobalStaticResources.loadTextResource(GlobalStaticResources.p_wpn_descs[index_b]));
+            textbox.Play(GlobalStaticResourcePaths.loadTextResource(GlobalStaticResourcePaths.p_wpn_shortdescs[index_b]));
 
         }
     }
@@ -327,14 +327,14 @@ public class WeaponSelect : MonoBehaviour
             ActiveSlotIsSlotB = true;
             cursorSprite.sprite = cursorFrames[1];
             cursorSprite.transform.localPosition = lowerCursorPos;
-            textbox.Play(GlobalStaticResources.loadTextResource(GlobalStaticResources.p_wpn_descs[index_b]));
+            textbox.Play(GlobalStaticResourcePaths.loadTextResource(GlobalStaticResourcePaths.p_wpn_shortdescs[index_b]));
         }
         else
         {
             ActiveSlotIsSlotB = false;
             cursorSprite.sprite = cursorFrames[0];
             cursorSprite.transform.localPosition = upperCursorPos;
-            textbox.Play(GlobalStaticResources.loadTextResource(GlobalStaticResources.p_wpn_descs[index_a]));
+            textbox.Play(GlobalStaticResourcePaths.loadTextResource(GlobalStaticResourcePaths.p_wpn_shortdescs[index_a]));
         }
     }
 

@@ -1,0 +1,10 @@
+EyesTabooTemp
+FireTabooTemp
+LifeTabooTemp
+WindTabooTemp
+WaterTabooTemp
+MechTabooTemp
+WarTabooTemp
+DeathTabooTemp
+IceTabooTemp
+TimeTabooTemp

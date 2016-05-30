@@ -7,7 +7,11 @@ public class PlayerDodging : StateMachineBehaviour
     private Bounds[] roomColliders;
     private Collider2D collider;
     private PlayerController controller;
+    private static int basicDodgeFrameLength = 24;
+    private static int dodgeBoostLength = 12;
+    private int dodgeBonus;
     bool DirReleased;
+    int FrameCtr;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -15,7 +19,16 @@ public class PlayerDodging : StateMachineBehaviour
         controller = animator.gameObject.GetComponent<PlayerController>();
         roomColliders = controller.world.activeRoom.collision.allCollision;
         collider = animator.GetComponent<Collider2D>();
-        controller.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_PlayerRollSFX));
+        controller.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_PlayerRollSFX));
+        FrameCtr = 0;
+        if ((controller.world.GameStateManager.heldPassiveItems & HeldPassiveItems.DodgeBooster) == HeldPassiveItems.DodgeBooster)
+        {
+            dodgeBonus = dodgeBoostLength;
+        }
+        else
+        {
+            dodgeBonus = 0;
+        }
 
     }
 
@@ -25,9 +38,10 @@ public class PlayerDodging : StateMachineBehaviour
     //}
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-    //
-    //}
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        FrameCtr++;
+    }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -39,7 +53,7 @@ public class PlayerDodging : StateMachineBehaviour
     override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Vector3 PosMod = new Vector3(0, 0, 0);
-        if (animator.GetBool("DodgeBurst") == true)
+        if (animator.GetBool("DodgeBurst") == true && ((FrameCtr > dodgeBoostLength / 3f && FrameCtr <= 2 * ((dodgeBoostLength + dodgeBonus) / 3f)) || FrameCtr % 2 == 0))
         {
             if (animator.GetCurrentAnimatorStateInfo(0).IsTag("FaceDown"))
             {
@@ -61,11 +75,14 @@ public class PlayerDodging : StateMachineBehaviour
                 if (animator.GetBool("HeldDown") == true)
                 {
                     PosMod = PosMod + new Vector3(0, -1, 0);
-                    animator.speed = 1.0f;
+                    if (FrameCtr >= basicDodgeFrameLength + dodgeBonus)
+                    {
+                        animator.SetBool("DodgeBurst", false);
+                    }
                 }
-                else
+                else if (FrameCtr >= basicDodgeFrameLength * (2 / 3))
                 {
-                    animator.speed = 1.1f;
+                    animator.SetBool("DodgeBurst", false);
                 }
             }
             else if (animator.GetCurrentAnimatorStateInfo(0).IsTag("FaceUp"))
@@ -88,11 +105,14 @@ public class PlayerDodging : StateMachineBehaviour
                 if (animator.GetBool("HeldUp") == true)
                 {
                     PosMod = PosMod + new Vector3(0, 1, 0);
-                    animator.speed = 1.0f;
+                    if (FrameCtr >= basicDodgeFrameLength + dodgeBonus)
+                    {
+                        animator.SetBool("DodgeBurst", false);
+                    }
                 }
-                else
+                else if (FrameCtr >= basicDodgeFrameLength * (2 / 3))
                 {
-                    animator.speed = 1.1f;
+                    animator.SetBool("DodgeBurst", false);
                 }
             }
             else if (animator.GetCurrentAnimatorStateInfo(0).IsTag("FaceLeft"))
@@ -115,11 +135,14 @@ public class PlayerDodging : StateMachineBehaviour
                 if (animator.GetBool("HeldLeft") == true)
                 {
                     PosMod = PosMod + new Vector3(-1, 0, 0);
-                    animator.speed = 1.0f;
+                    if (FrameCtr >= basicDodgeFrameLength + dodgeBonus)
+                    {
+                        animator.SetBool("DodgeBurst", false);
+                    }
                 }
-                else
+                else if (FrameCtr >= basicDodgeFrameLength * (2/3))
                 {
-                    animator.speed = 1.1f;
+                    animator.SetBool("DodgeBurst", false);
                 }
             }
             else if (animator.GetCurrentAnimatorStateInfo(0).IsTag("FaceRight"))
@@ -142,11 +165,14 @@ public class PlayerDodging : StateMachineBehaviour
                 if (animator.GetBool("HeldRight") == true)
                 {
                     PosMod = PosMod + new Vector3(1, 0, 0);
-                    animator.speed = 1.0f;
+                    if (FrameCtr >= basicDodgeFrameLength + dodgeBonus)
+                    {
+                        animator.SetBool("DodgeBurst", false);
+                    }
                 }
-                else
+                else if (FrameCtr >= basicDodgeFrameLength * (2f / 3))
                 {
-                    animator.speed = 1.1f;
+                    animator.SetBool("DodgeBurst", false);
                 }
             }
         }

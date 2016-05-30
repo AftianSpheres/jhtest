@@ -13,8 +13,8 @@ public class HUDSubregionNamePopup : MonoBehaviour
 	
     void Awake ()
     {
-        clip = Resources.Load<AudioClip>(GlobalStaticResources.p_SubregionPopupFanfare);
-        lines = Resources.Load<TextAsset>(GlobalStaticResources.p_subregion_names).ToString().Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+        clip = Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_SubregionPopupFanfare);
+        lines = Resources.Load<TextAsset>(GlobalStaticResourcePaths.p_subregion_names).ToString().Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
     }
 
 	// Update is called once per frame

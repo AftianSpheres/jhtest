@@ -168,6 +168,10 @@ public class PlayerController : MonoBehaviour {
         if (DodgeAllowedStates.Contains(animator.GetCurrentAnimatorStateInfo(0).fullPathHash))
         {
             DiscardDodgeInputs = false;
+            if (animator.GetBool("DodgeBurst") == true)
+            {
+                animator.SetBool("DodgeBurst", false);
+            }
         }
         else
         {
@@ -321,7 +325,7 @@ public class PlayerController : MonoBehaviour {
                 bullet.HitTarget();
                 energy.Recover(4 * energy.CurrentMultiplierLevel + 1);
                 energy.ChangeMultiplier(1);
-                source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_CursorUpSFX));
+                source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_CursorUpSFX));
                 GFXHelpers.FlashEffect(renderer, 10);
                 InvulnTime += 30;
             }
@@ -351,7 +355,7 @@ public class PlayerController : MonoBehaviour {
             {
                 energy.Recover(4 * energy.CurrentMultiplierLevel + 1);
                 energy.ChangeMultiplier(1);
-                source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResources.p_CursorUpSFX));
+                source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_CursorUpSFX));
                 GFXHelpers.FlashEffect(renderer, 10);
                 InvulnTime += 30;
             }
@@ -423,14 +427,7 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     public void SetAnimatorDodgeBurst ()
     {
-        if (animator.GetBool("DodgeBurst") == true)
-        {
-            animator.SetBool("DodgeBurst", false);
-        }
-        else
-        {
-            animator.SetBool("DodgeBurst", true);
-        }       
+        animator.SetBool("DodgeBurst", true);
     }
 
     /// <summary>
