@@ -20,7 +20,6 @@ public class PlayerDodging : StateMachineBehaviour
         roomColliders = controller.world.activeRoom.collision.allCollision;
         collider = animator.GetComponent<Collider2D>();
         controller.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_PlayerRollSFX));
-        FrameCtr = 0;
         if ((controller.world.GameStateManager.heldPassiveItems & HeldPassiveItems.DodgeBooster) == HeldPassiveItems.DodgeBooster)
         {
             dodgeBonus = dodgeBoostLength;
@@ -29,6 +28,8 @@ public class PlayerDodging : StateMachineBehaviour
         {
             dodgeBonus = 0;
         }
+        FrameCtr = 0;
+
 
     }
 

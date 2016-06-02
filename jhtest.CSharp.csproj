@@ -160,6 +160,7 @@
     <Compile Include="Assets\Scripts\Player\StateMachine\PlayerShootShadow.cs" />
     <Compile Include="Assets\Scripts\Player\StateMachine\PlayerShootShotgun.cs" />
     <Compile Include="Assets\Scripts\Player\StateMachine\PlayerShootWeenieGun.cs" />
+    <Compile Include="Assets\Scripts\Player\StateMachine\PlayerSlide.cs" />
     <Compile Include="Assets\Scripts\Player\StateMachine\PlayerStateGroupAllowDodging.cs" />
     <Compile Include="Assets\Scripts\Player\StateMachine\PlayerStateGroupAllowShooting.cs" />
     <Compile Include="Assets\Scripts\Player\StateMachine\PlayerUpdateFacing.cs" />
