@@ -13,169 +13,175 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: HeldFire1
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: HeldFire2
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: HeldDown
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: HeldUp
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: HeldLeft
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: HeldRight
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Hit
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: DodgeBurst
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: FiringAllowed
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: MoveSpeed
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 1
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: WalkingStartupLagFrames
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 4
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: SlotAWpn
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: -1
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: SlotBWpn
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: -1
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: FacingDir
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: FireSlotB
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: FrameCtr
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: HaltFrames
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: FireRoundDone
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Shooting
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Cooldown
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Die
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Dead
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: CastTaboo
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: DodgeDown
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: DodgeLeft
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: DodgeRight
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: DodgeUp
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
+  - m_Name: DodgeAnimsSpeedMulti
+    m_Type: 1
+    m_DefaultFloat: 1
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -222,6 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd0a0331e2a08546aee758d3a52470c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slideInterval: 2
 --- !u!114 &11412166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -310,6 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd0a0331e2a08546aee758d3a52470c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slideInterval: 2
 --- !u!114 &11435132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -332,6 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd0a0331e2a08546aee758d3a52470c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slideInterval: 2
 --- !u!114 &11443568
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -442,6 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd0a0331e2a08546aee758d3a52470c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slideInterval: 2
 --- !u!114 &11473150
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -3022,12 +3032,12 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 7400000, guid: e038fbdf25da36e4cbb8c79d1dde2fc9, type: 2}
   m_Tag: FaceDown
-  m_SpeedParameter: 
+  m_SpeedParameter: DodgeAnimsSpeedMulti
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
 --- !u!1102 &110242626
@@ -3047,12 +3057,12 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 7400000, guid: e98fb1af873e60542b321484e352ccd8, type: 2}
   m_Tag: FaceUp
-  m_SpeedParameter: 
+  m_SpeedParameter: DodgeAnimsSpeedMulti
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
 --- !u!1102 &110243546
@@ -3072,12 +3082,12 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 11aaea09a0602cb4e850c62326055d57, type: 2}
   m_Tag: FaceRight
-  m_SpeedParameter: 
+  m_SpeedParameter: DodgeAnimsSpeedMulti
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
 --- !u!1102 &110247370
@@ -3097,12 +3107,12 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 1ec03deb430006f4b9e6c737da042158, type: 2}
   m_Tag: FaceLeft
-  m_SpeedParameter: 
+  m_SpeedParameter: DodgeAnimsSpeedMulti
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
 --- !u!1102 &110257654
@@ -3122,12 +3132,12 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 7400000, guid: a6b0f645e86254544b1ff1124e85c372, type: 2}
   m_Tag: FaceLeft
-  m_SpeedParameter: 
+  m_SpeedParameter: DodgeAnimsSpeedMulti
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
 --- !u!1102 &110259324
@@ -3198,12 +3208,12 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 6fe27b0064b912b449a48bb5991d1b18, type: 2}
   m_Tag: FaceDown
-  m_SpeedParameter: 
+  m_SpeedParameter: DodgeAnimsSpeedMulti
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
 --- !u!1102 &110267700
@@ -3341,12 +3351,12 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 5a681db0276624c4aa814d9e425edc03, type: 2}
   m_Tag: FaceRight
-  m_SpeedParameter: 
+  m_SpeedParameter: DodgeAnimsSpeedMulti
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
 --- !u!1102 &110298478
@@ -3366,12 +3376,12 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 7400000, guid: d94b68af3bd88dc4ab5d0260cf6a2ed7, type: 2}
   m_Tag: FaceUp
-  m_SpeedParameter: 
+  m_SpeedParameter: DodgeAnimsSpeedMulti
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
 --- !u!1102 &110298608
