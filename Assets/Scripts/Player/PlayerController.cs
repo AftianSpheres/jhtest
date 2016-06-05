@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour {
     public Animator animator;
     public AudioSource source;
     public FlickerySprite fs;
+    public Hurtbox dodgeHurtbox;
     public PlayerBulletOrigin bulletOrigin;
     public PlayerEnergy energy;
     public PlayerWeaponManager wpnManager;
@@ -49,6 +50,7 @@ public class PlayerController : MonoBehaviour {
     public bool Locked;
     public int InvulnTime;
     public int KnockbackFrames;
+    public int DodgeHurtboxBaseDamage;
     private bool DiscardDodgeInputs;
     public uint[] CurrentWorldCoords = { 0, 0 };
     public uint[] CurrentRoomCoords = { 0, 0 };
@@ -66,6 +68,64 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Backslash))
+        {
+            if (Invincible == true)
+            {
+                Invincible = false;
+                Debug.Log("No longer invincible");
+            }
+            else
+            {
+                Invincible = true;
+                Debug.Log("Invincible");
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            world.GameStateManager.heldPassiveItems ^= HeldPassiveItems.DashThingy;
+            Debug.Log("Toggled dash whatsit WHICH IS UNIMPLEMENTED");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            world.GameStateManager.heldPassiveItems ^= HeldPassiveItems.DodgeBooster;
+            Debug.Log("Toggled dodge booster");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            world.GameStateManager.heldPassiveItems ^= HeldPassiveItems.DodgeAttack;
+            Debug.Log("Toggled dodge attack");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            world.GameStateManager.heldPassiveItems ^= HeldPassiveItems.SecretSensor;
+            Debug.Log("Toggled secret sensor WHICH IS UNIMPLEMENTED");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            world.GameStateManager.heldPassiveItems ^= HeldPassiveItems.AutoscrollRider;
+            Debug.Log("Toggled autoscroll floor rider whatsit WHICH IS EXTRA UNIMPLEMENTED like I don't even know how those rooms work yet");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            world.GameStateManager.heldPassiveItems ^= HeldPassiveItems.RedBull;
+            Debug.Log("Toggled flight whatsit WHICH IS UNIMPLEMENTED");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            world.GameStateManager.heldPassiveItems ^= HeldPassiveItems.TabooRegenUpThingy;
+            Debug.Log("Toggled taboo regen booster");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            Debug.Log("reserved function");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            Debug.Log("reserved function");
+        }
+#endif
         uint chkVal;
         if (world.activeRoom != null && (lastRoom != world.activeRoom || world.activeRoom.BigRoomCellSize.x > 0 || world.activeRoom.BigRoomCellSize.y > 0))
         {
@@ -178,7 +238,7 @@ public class PlayerController : MonoBehaviour {
             DiscardDodgeInputs = true;
         }
         // Taboos
-        if (wpnManager.Taboo != TabooType.None && wpnManager.TabooReady == true && Input.GetKey(world.PlayerDataManager.K_Fire1) == true && Input.GetKey(world.PlayerDataManager.K_Fire2) == true && 
+        if (wpnManager.Taboo != TabooType.None && wpnManager.TabooReady == true && world.HardwareInterfaceManager.Fire1.Pressed == true && world.HardwareInterfaceManager.Fire2.Pressed == true && 
             animator.GetBool("HeldFire1") == false && animator.GetBool("HeldFire2") == false)
         {
             wpnManager.TabooCooldownTimer = PlayerWeaponManager.TabooCooldownTime;
@@ -190,7 +250,7 @@ public class PlayerController : MonoBehaviour {
         else
         {
             //HeldFire1 bool
-            if (Input.GetKey(world.PlayerDataManager.K_Fire1) == true && wpnManager.SlotAWpn != WeaponType.None)
+            if (world.HardwareInterfaceManager.Fire1.Pressed == true && wpnManager.SlotAWpn != WeaponType.None)
             {
                 animator.SetBool("HeldFire1", true);
             }
@@ -199,7 +259,7 @@ public class PlayerController : MonoBehaviour {
                 animator.SetBool("HeldFire1", false);
             }
             //HeldFire2 bool
-            if (Input.GetKey(world.PlayerDataManager.K_Fire2) == true && wpnManager.SlotBWpn != WeaponType.None)
+            if (world.HardwareInterfaceManager.Fire2.Pressed == true && wpnManager.SlotBWpn != WeaponType.None)
             {
                 animator.SetBool("HeldFire2", true);
                 animator.SetBool("FireSlotB", true);
@@ -211,23 +271,23 @@ public class PlayerController : MonoBehaviour {
         }
         if (DiscardDodgeInputs == false)
         {
-            if (Input.GetKeyDown(world.PlayerDataManager.K_Dodge) == true)
+            if (world.HardwareInterfaceManager.Dodge.BtnDown == true)
             {
                 // InputRight/InputLeft triggers
-                if (Input.GetKey(world.PlayerDataManager.K_HorizLeft) == true)
+                if (world.HardwareInterfaceManager.Left.Pressed == true)
                 {
                     animator.SetBool("DodgeLeft", true);
                 }
-                else if (Input.GetKey(world.PlayerDataManager.K_HorizRight) == true)
+                else if (world.HardwareInterfaceManager.Right.Pressed == true)
                 {
                     animator.SetBool("DodgeRight", true);
                 }
                 // InputDown/InputUp triggers
-                if (Input.GetKey(world.PlayerDataManager.K_VertDown) == true)
+                if (world.HardwareInterfaceManager.Down.Pressed == true)
                 {
                     animator.SetBool("DodgeDown", true);
                 }
-                else if (Input.GetKey(world.PlayerDataManager.K_VertUp) == true)
+                else if (world.HardwareInterfaceManager.Up.Pressed == true)
                 {
                     animator.SetBool("DodgeUp", true);
                 }
@@ -259,12 +319,12 @@ public class PlayerController : MonoBehaviour {
             }
         }
         // HeldRight/HeldLeft bools
-        if (Input.GetKey(world.PlayerDataManager.K_HorizRight) == true)
+        if (world.HardwareInterfaceManager.Right.Pressed == true)
         {
             animator.SetBool("HeldRight", true);
             animator.SetBool("HeldLeft", false);
         }
-        else if (Input.GetKey(world.PlayerDataManager.K_HorizLeft) == true)
+        else if (world.HardwareInterfaceManager.Left.Pressed == true)
         {
             animator.SetBool("HeldRight", false);
             animator.SetBool("HeldLeft", true);
@@ -275,12 +335,12 @@ public class PlayerController : MonoBehaviour {
             animator.SetBool("HeldLeft", false);
         }
         // HeldDown/HeldUp bools
-        if (Input.GetKey(world.PlayerDataManager.K_VertUp) == true)
+        if (world.HardwareInterfaceManager.Up.Pressed == true)
         {
             animator.SetBool("HeldUp", true);
             animator.SetBool("HeldDown", false);
         }
-        else if (Input.GetKey(world.PlayerDataManager.K_VertDown) == true)
+        else if (world.HardwareInterfaceManager.Down.Pressed == true)
         {
             animator.SetBool("HeldUp", false);
             animator.SetBool("HeldDown", true);
@@ -340,7 +400,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (Invincible == false && Locked == false && animator.GetBool("Dead") == false)
         {
-            if (animator.GetBool("DodgeBurst") == false && enemy.CollideDmg > 0) 
+            if (animator.GetBool("DodgeBurst") == false && enemy.CollideDmg > 0)
             {
                 if (InvulnTime < 1)
                 {
@@ -351,13 +411,21 @@ public class PlayerController : MonoBehaviour {
                     energy.ChangeMultiplier(-99999);
                 }
             }
-            else if (enemy.inMovingAttack == true)
+            else
             {
-                energy.Recover(4 * energy.CurrentMultiplierLevel + 1);
-                energy.ChangeMultiplier(1);
-                source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_CursorUpSFX));
-                GFXHelpers.FlashEffect(renderer, 10);
-                InvulnTime += 30;
+                if ((world.GameStateManager.heldPassiveItems & HeldPassiveItems.DodgeAttack) == HeldPassiveItems.DodgeAttack)
+                {
+                    dodgeHurtbox.Damage = energy.Level * DodgeHurtboxBaseDamage;
+                    dodgeHurtbox.Hurt(enemy);
+                }
+                if (enemy.inMovingAttack == true)
+                {
+                    energy.Recover(4 * energy.CurrentMultiplierLevel + 1);
+                    energy.ChangeMultiplier(1);
+                    source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_CursorUpSFX));
+                    GFXHelpers.FlashEffect(renderer, 10);
+                    InvulnTime += 30;
+                }
             }
         }
     }

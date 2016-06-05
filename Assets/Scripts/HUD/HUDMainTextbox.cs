@@ -27,7 +27,7 @@ public class HUDMainTextbox : MonoBehaviour
     {
         if (Active == true)
         {
-            if (Input.GetKeyDown(world.PlayerDataManager.K_Confirm) == true && Printer.finishedTextBlock == true)
+            if (world.HardwareInterfaceManager.Confirm.BtnDown == true && Printer.finishedTextBlock == true)
             {
                 if (TextSeries.Count == 0)
                 {

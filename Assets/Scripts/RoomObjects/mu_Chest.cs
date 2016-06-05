@@ -32,7 +32,7 @@ public class mu_Chest : MonoBehaviour
         if (open == false)
         {
             renderer.sprite = frames[0];
-            if (room.world.player.Locked == false && room.world.player.facingDir == directionToOpen && boundsToOpen.Intersects(room.world.player.collider.bounds) && Input.GetKeyDown(room.world.PlayerDataManager.K_Confirm) == true)
+            if (room.world.player.Locked == false && room.world.player.facingDir == directionToOpen && boundsToOpen.Intersects(room.world.player.collider.bounds) && room.world.HardwareInterfaceManager.Confirm.BtnDown == true)
             {
                 StartCoroutine(Open());
             }

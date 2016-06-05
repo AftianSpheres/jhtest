@@ -107,10 +107,10 @@ public class WorldController : MonoBehaviour
     }
 
     [SerializeField]
-    private PlayerDataManager playerDataManager;
-    public PlayerDataManager PlayerDataManager
+    private HardwareInterfaceManager hardwareInterfaceManager;
+    public HardwareInterfaceManager HardwareInterfaceManager
     {
-        get { return playerDataManager; }
+        get { return hardwareInterfaceManager; }
     }
 
     [SerializeField]
@@ -171,7 +171,7 @@ public class WorldController : MonoBehaviour
         {
             gameStateManager = GameObject.Find("Universe/GameStateManager").GetComponent<GameStateManager>();
             gameStateManager.world = this;
-            playerDataManager = GameObject.Find("Universe/PlayerDataManager").GetComponent<PlayerDataManager>();
+            hardwareInterfaceManager = GameObject.Find("Universe/HardwareInterfaceManager").GetComponent<HardwareInterfaceManager>();
             stylisticHacksManager = GameObject.Find("Universe/StylisticHacksManager").GetComponent<StylisticHacksManager>();
         }
     }
@@ -189,7 +189,7 @@ public class WorldController : MonoBehaviour
                     transform.GetChild(i).gameObject.SetActive(true);
                 }
                 gameStateManager = GameObject.Find("Universe/GameStateManager").GetComponent<GameStateManager>();
-                playerDataManager = GameObject.Find("Universe/PlayerDataManager").GetComponent<PlayerDataManager>();
+                hardwareInterfaceManager = GameObject.Find("Universe/HardwareInterfaceManager").GetComponent<HardwareInterfaceManager>();
             }
         }
         else

@@ -90,18 +90,18 @@ public class WeaponSelect : MonoBehaviour
         }
         if (open == true && menuSystem.menuActive == true)
         {
-            if (Input.GetKeyDown(menuSystem.world.PlayerDataManager.K_Menu) == true || Input.GetKeyDown(menuSystem.world.PlayerDataManager.K_Cancel) == true)
+            if (menuSystem.world.HardwareInterfaceManager.Menu.BtnDown == true || menuSystem.world.HardwareInterfaceManager.Cancel.BtnDown == true)
             {
                 menuSystem.ChangeMode(MenuSystemMode.None);
             }
             else if (wpnManager.SlotAWpn != WeaponType.None && wpnManager.SlotBWpn != WeaponType.None)
             {
-                if (Input.GetKeyDown(menuSystem.world.PlayerDataManager.K_VertUp) == true)
+                if (menuSystem.world.HardwareInterfaceManager.Up.BtnDown == true)
                 {
                     SwitchActiveSlot();
                     menuSystem.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_CursorUpSFX));
                 }
-                else if (Input.GetKeyDown(menuSystem.world.PlayerDataManager.K_VertDown) == true)
+                else if (menuSystem.world.HardwareInterfaceManager.Down.BtnDown == true)
                 {
                     SwitchActiveSlot();
                     menuSystem.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_CursorDownSFX));
@@ -109,12 +109,12 @@ public class WeaponSelect : MonoBehaviour
             }
             if ((ActiveSlotIsSlotB == false && wpnCount_a > 1) || (wpnManager.SlotBWpn != WeaponType.None && wpnCount_b > 1))
             {
-                if (Input.GetKeyDown(menuSystem.world.PlayerDataManager.K_HorizLeft) == true)
+                if (menuSystem.world.HardwareInterfaceManager.Left.BtnDown == true)
                 {
                     ScrollWpnSelection(true, ActiveSlotIsSlotB);
                     menuSystem.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_CursorDownSFX));
                 }
-                else if (Input.GetKeyDown(menuSystem.world.PlayerDataManager.K_HorizRight) == true)
+                else if (menuSystem.world.HardwareInterfaceManager.Right.BtnDown == true)
                 {
                     ScrollWpnSelection(false, ActiveSlotIsSlotB);
                     menuSystem.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_CursorUpSFX));

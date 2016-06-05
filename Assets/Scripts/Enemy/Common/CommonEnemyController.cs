@@ -136,6 +136,28 @@ public class CommonEnemyController : MonoBehaviour
     }
 
     /// <summary>
+    /// Hits an enemy with the generic hurtbox passed as argument.
+    /// </summary>
+    public void Hit(Hurtbox hurtbox)
+    {
+        if (animator.GetInteger("InvulnTime") >= 0)
+        {
+            if (hurtbox.stunThings == true)
+            {
+                animator.SetTrigger("HitHeavy");
+                TriggerInvuln();
+            }
+            else
+            {
+                StartCoroutine(GFXHelpers.FlashEffect(renderer, 10));
+            }
+            DamageQueue += hurtbox.Damage;
+            source.PlayOneShot(HitSFX);
+        }
+
+    }
+
+    /// <summary>
     /// ...also kills an enemy?
     /// This should, uh, probably be refactored to something sane.
     /// This is the final "finish the animation, we dead dead" part, though.

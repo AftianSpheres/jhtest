@@ -31,16 +31,16 @@ public class PlayerSlide : StateMachineBehaviour
             switch (dir)
             {
                 case Direction.Down:
-                    PosMod = _in_SlideInDir(Vector3.down, Input.GetKey(master.world.PlayerDataManager.K_VertUp), true);
+                    PosMod = _in_SlideInDir(Vector3.down, master.world.HardwareInterfaceManager.Down.Pressed, true);
                     break;
                 case Direction.Up:
-                    PosMod = _in_SlideInDir(Vector3.up, Input.GetKey(master.world.PlayerDataManager.K_VertDown), true);
+                    PosMod = _in_SlideInDir(Vector3.up, master.world.HardwareInterfaceManager.Up.Pressed, true);
                     break;
                 case Direction.Left:
-                    PosMod = _in_SlideInDir(Vector3.left, Input.GetKey(master.world.PlayerDataManager.K_HorizRight), false);
+                    PosMod = _in_SlideInDir(Vector3.left, master.world.HardwareInterfaceManager.Left.Pressed, false);
                     break;
                 case Direction.Right:
-                    PosMod = _in_SlideInDir(Vector3.right, Input.GetKey(master.world.PlayerDataManager.K_HorizLeft), false);
+                    PosMod = _in_SlideInDir(Vector3.right, master.world.HardwareInterfaceManager.Right.Pressed, false);
                     break;
             }
             ExpensiveAccurateCollision.CollideWithScenery(animator, roomColliders, PosMod, collider);
@@ -55,22 +55,22 @@ public class PlayerSlide : StateMachineBehaviour
         }
         else if (moveVertically == true)
         {
-            if (Input.GetKey(master.world.PlayerDataManager.K_HorizLeft) == true)
+            if (master.world.HardwareInterfaceManager.Left.Pressed == true)
             {
                 baseVector += Vector3.left;
             }
-            else if (Input.GetKey(master.world.PlayerDataManager.K_HorizRight) == true)
+            else if (master.world.HardwareInterfaceManager.Right.Pressed == true)
             {
                 baseVector += Vector3.right;
             }
         }
         else
         {
-            if (Input.GetKey(master.world.PlayerDataManager.K_VertDown) == true)
+            if (master.world.HardwareInterfaceManager.Down.Pressed == true)
             {
                 baseVector += Vector3.down;
             }
-            else if (Input.GetKey(master.world.PlayerDataManager.K_VertUp) == true)
+            else if (master.world.HardwareInterfaceManager.Up.Pressed == true)
             {
                 baseVector += Vector3.up;
             }

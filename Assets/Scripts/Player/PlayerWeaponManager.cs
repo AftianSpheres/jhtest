@@ -64,6 +64,10 @@ public class PlayerWeaponManager : MonoBehaviour
         if (TabooReady == false)
         {
             TabooCooldownTimer--;
+            if ((master.world.GameStateManager.heldPassiveItems & HeldPassiveItems.TabooRegenUpThingy) == HeldPassiveItems.TabooRegenUpThingy)
+            {
+                TabooCooldownTimer--;
+            }
             if (TabooCooldownTimer <= 0)
             {
                 TabooReady = true;

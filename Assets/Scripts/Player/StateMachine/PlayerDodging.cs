@@ -26,6 +26,14 @@ public class PlayerDodging : StateMachineBehaviour
             dodgeBonus = 0;
             animator.SetFloat("DodgeAnimsSpeedMulti", 1f);
         }
+        if ((controller.world.GameStateManager.heldPassiveItems & HeldPassiveItems.DodgeAttack) == HeldPassiveItems.DodgeAttack)
+        {
+            animator.SetBool("DodgeIsFireball", true);
+        }
+        else
+        {
+            animator.SetBool("DodgeIsFireball", false);
+        }
         FrameCtr = 0;
     }
 

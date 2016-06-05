@@ -143,8 +143,9 @@
     <Compile Include="Assets\Scripts\Helpers\GFXHelpers.cs" />
     <Compile Include="Assets\Scripts\Helpers\GlobalStaticResourcePaths.cs" />
     <Compile Include="Assets\Scripts\Helpers\HammerConstants.cs" />
+    <Compile Include="Assets\Scripts\Helpers\VirtualButton.cs" />
     <Compile Include="Assets\Scripts\Managers\GameStateManager.cs" />
-    <Compile Include="Assets\Scripts\Managers\PlayerDataManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\HardwareInterfaceManager.cs" />
     <Compile Include="Assets\Scripts\Managers\StylisticHacksManager.cs" />
     <Compile Include="Assets\Scripts\Menus\MenuSystem.cs" />
     <Compile Include="Assets\Scripts\Menus\WeaponSelect.cs" />
@@ -168,6 +169,7 @@
     <Compile Include="Assets\Scripts\RoomObjects\FlagManagers\mufm_Chest_TestMap.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\FlagManagers\mufm_Event_TestMap.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\FlagManagers\mufm_Generic.cs" />
+    <Compile Include="Assets\Scripts\RoomObjects\Hurtbox.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\RegisteredSprite.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_Checkpoint.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_Chest.cs" />

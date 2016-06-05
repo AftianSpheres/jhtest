@@ -12,7 +12,6 @@ public class StylisticHacksManager : Manager<StylisticHacksManager>
     public WorldController world;
     public static uint SpritesAllowedOnScreen = 40;
     public Queue<FlickerySprite> sprites;
-    private AudioSource BGM0;
     public float fps;
     private float timeCtr;
 
@@ -37,7 +36,6 @@ public class StylisticHacksManager : Manager<StylisticHacksManager>
             if (worldobj != null)
             {
                 world = worldobj.GetComponent<WorldController>();
-                BGM0 = world.BGM0;
             }
         }
         else
