@@ -180,6 +180,7 @@
     <Compile Include="Assets\Scripts\RoomObjects\mu_ItemPickup.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_RoomEvent.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_Warp.cs" />
+    <Compile Include="Assets\Scripts\TitleBG.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\BoomEffect.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\BoomPool.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\BulletController.cs" />
@@ -191,6 +192,7 @@
     <Compile Include="Assets\Scripts\WorldObjects\RoomController.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\RoomPriorityMap.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\WorldController.cs" />
+    <Compile Include="Assets\TitleScreen.cs" />
     <Compile Include="Assets\Universe\Example\MyManager.cs" />
     <Compile Include="Assets\Universe\Scripts\Manager.cs" />
     <Compile Include="Assets\Universe\Scripts\ManagerBase.cs" />
