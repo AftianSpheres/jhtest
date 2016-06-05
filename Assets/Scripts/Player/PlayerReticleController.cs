@@ -22,7 +22,7 @@ public class PlayerReticleController : MonoBehaviour
 	void Start ()
     {
         mainCamera = world.mainCamera;
-        virtualPosition = transform.position;
+        virtualPosition = transform.localPosition;
 	}
 	
 	// Update is called once per frame
@@ -39,49 +39,31 @@ public class PlayerReticleController : MonoBehaviour
         if (world.HardwareInterfaceManager.usingRightStick == false)
         {
             adjX = virtualPosition.x + Input.GetAxis("MouseX");
-            if (mainCamera.WorldToViewportPoint(new Vector3((adjX + HalfSizeOfReticleSprite), 0, 0)).x < 0)
-            {
-                adjX = mainCamera.ViewportToWorldPoint(Vector3.zero).x - HalfSizeOfReticleSprite;
-            }
-            else if (mainCamera.WorldToViewportPoint(new Vector3((adjX + HalfSizeOfReticleSprite), 0, 0)).x > 1)
-            {
-                adjX = mainCamera.ViewportToWorldPoint(Vector3.one).x - HalfSizeOfReticleSprite;
-            }
             adjY = virtualPosition.y + Input.GetAxis("MouseY");
-            if (mainCamera.WorldToViewportPoint(new Vector3(0, (adjY - HalfSizeOfReticleSprite), 0)).y < 0)
-            {
-                adjY = mainCamera.ViewportToWorldPoint(Vector3.zero).y + HalfSizeOfReticleSprite;
-            }
-            else if (mainCamera.WorldToViewportPoint(new Vector3(0, (adjY - HalfSizeOfReticleSprite + 16), 0)).y > 1)
-            {
-                adjY = mainCamera.ViewportToWorldPoint(Vector3.one).y + HalfSizeOfReticleSprite - 16;
-            }
-            virtualPosition = new Vector3(adjX, adjY, virtualPosition.z);
-            transform.position = new Vector3((float)Math.Round(adjX, 0, MidpointRounding.AwayFromZero), (float)Math.Round(adjY, 0, MidpointRounding.AwayFromZero), transform.position.z);
         }
         else
         {
             adjX = virtualPosition.x + (2 * Input.GetAxis(HardwareInterfaceManager.RightStickXes[world.HardwareInterfaceManager.GamepadIndex]));
-            if (mainCamera.WorldToViewportPoint(new Vector3((adjX + HalfSizeOfReticleSprite), 0, 0)).x < 0)
-            {
-                adjX = mainCamera.ViewportToWorldPoint(Vector3.zero).x - HalfSizeOfReticleSprite;
-            }
-            else if (mainCamera.WorldToViewportPoint(new Vector3((adjX + HalfSizeOfReticleSprite), 0, 0)).x > 1)
-            {
-                adjX = mainCamera.ViewportToWorldPoint(Vector3.one).x - HalfSizeOfReticleSprite;
-            }
-            adjY = virtualPosition.y + 2 * (Input.GetAxis(HardwareInterfaceManager.RightStickYs[world.HardwareInterfaceManager.GamepadIndex]));
-            if (mainCamera.WorldToViewportPoint(new Vector3(0, (adjY - HalfSizeOfReticleSprite), 0)).y < 0)
-            {
-                adjY = mainCamera.ViewportToWorldPoint(Vector3.zero).y + HalfSizeOfReticleSprite;
-            }
-            else if (mainCamera.WorldToViewportPoint(new Vector3(0, (adjY - HalfSizeOfReticleSprite + 16), 0)).y > 1)
-            {
-                adjY = mainCamera.ViewportToWorldPoint(Vector3.one).y + HalfSizeOfReticleSprite - 16;
-            }
-            virtualPosition = new Vector3(adjX, adjY, virtualPosition.z);
-            transform.position = new Vector3((float)Math.Round(adjX, 0, MidpointRounding.AwayFromZero), (float)Math.Round(adjY, 0, MidpointRounding.AwayFromZero), transform.position.z);
+            adjY = virtualPosition.y + (2 * Input.GetAxis(HardwareInterfaceManager.RightStickYs[world.HardwareInterfaceManager.GamepadIndex]));
         }
+        if (adjX < -(HammerConstants.LogicalResolution_Horizontal / 2) - HalfSizeOfReticleSprite)
+        {
+            adjX = -(HammerConstants.LogicalResolution_Horizontal / 2) - HalfSizeOfReticleSprite;
+        }
+        else if (adjX > (HammerConstants.LogicalResolution_Horizontal / 2) - HalfSizeOfReticleSprite)
+        {
+            adjX = (HammerConstants.LogicalResolution_Horizontal / 2) - HalfSizeOfReticleSprite;
+        }
+        if (adjY < -(HammerConstants.LogicalResolution_Vertical / 2) + HalfSizeOfReticleSprite)
+        {
+            adjY = -(HammerConstants.LogicalResolution_Vertical / 2) + HalfSizeOfReticleSprite;
+        }
+        else if (adjY > (HammerConstants.LogicalResolution_Vertical / 2) + HalfSizeOfReticleSprite - HammerConstants.HeightOfHUD)
+        {
+            adjY = (HammerConstants.LogicalResolution_Vertical / 2) + HalfSizeOfReticleSprite - HammerConstants.HeightOfHUD;
+        }
+        virtualPosition = new Vector3(adjX, adjY, virtualPosition.z);
+        transform.localPosition = new Vector3((float)Math.Round(adjX, 0, MidpointRounding.AwayFromZero), (float)Math.Round(adjY, 0, MidpointRounding.AwayFromZero), transform.localPosition.z);
     }
 
     /// <summary>
