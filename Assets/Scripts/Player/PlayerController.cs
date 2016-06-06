@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-#if UNITY_EDITOR
+#if (DEVELOPMENT_BUILD || UNITY_EDITOR)
         if (Input.GetKeyDown(KeyCode.Backslash))
         {
             if (Invincible == true)

@@ -5,10 +5,18 @@ using System.Collections;
 public class TitleScreen : MonoBehaviour
 {
     public AudioSource BGM;
+    public AudioSource source;
+    public AudioClip clip;
     public GameObject curtain;
+    public GameObject titleMenu;
+    public Renderer TextRenderer;
+    public TextMesh pressStartText;
+    public int TextFlashInterval;
+    public bool preMenu = true;
     private bool inTransitionFromTitle = false;
-    private HardwareInterfaceManager hardwareInterfaceManager;
+    public HardwareInterfaceManager hardwareInterfaceManager;
     private float origVolume;
+    private int ctr;
 
 	// Use this for initialization
 	void Start ()
@@ -32,9 +40,36 @@ public class TitleScreen : MonoBehaviour
                 hardwareInterfaceManager = hwIMobj.GetComponent<HardwareInterfaceManager>();
             }
         }
-	    else if (hardwareInterfaceManager.Menu.BtnDown == true)
+	    else if (preMenu == true)
         {
-            StartCoroutine(TransitionFromTitle(2));
+            ctr++;
+            if (ctr >= TextFlashInterval)
+            {
+                TextRenderer.enabled = !TextRenderer.enabled;
+                ctr = 0;
+            }
+            if (hardwareInterfaceManager.Menu.BtnDown == true)
+            {
+                preMenu = false;
+                source.PlayOneShot(clip);
+                titleMenu.SetActive(true);
+            }
+#if (DEVELOPMENT_BUILD || UNITY_EDITOR)
+            else if (hardwareInterfaceManager.Fire1.BtnDown == true) // debug start
+            {
+                StartCoroutine(TransitionFromTitle(2));
+                ctr = int.MinValue;
+                TextRenderer.enabled = true;
+                pressStartText.text = "Going to\ntest map";
+                preMenu = false;
+                source.PlayOneShot(clip);
+            }
+#endif
+        }
+        else
+        {
+            ctr = TextFlashInterval;
+            TextRenderer.enabled = false;
         }
 	}
 
@@ -44,7 +79,6 @@ public class TitleScreen : MonoBehaviour
         while (i < 90)
         {
             BGM.volume = origVolume * ((90f - i) / 90f);
-            Debug.Log(BGM.volume);
             if (i >= 45)
             {
                 curtain.SetActive(true);

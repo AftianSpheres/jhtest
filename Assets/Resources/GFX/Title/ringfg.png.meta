@@ -1,0 +1,108 @@
+fileFormatVersion: 2
+guid: 6369e693e274dc242a67a97f7f35b956
+timeCreated: 1465207788
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: ringfg_2
+    21300002: ringfg_3
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -2
+  maxTextureSize: 256
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 1
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 1
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: ringfg_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 48
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -39}
+        - {x: 17, y: -48}
+        - {x: 50, y: -48}
+        - {x: 49, y: -45}
+        - {x: 10, y: -24}
+        - {x: 2, y: -24}
+        - {x: 0, y: -25}
+      - - {x: 24, y: 0}
+        - {x: 25, y: -3}
+        - {x: 54, y: -19}
+        - {x: 62, y: -19}
+        - {x: 64, y: -18}
+        - {x: 64, y: -4}
+        - {x: 57, y: 0}
+    - name: ringfg_3
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 64
+        height: 48
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -39}
+        - {x: 17, y: -48}
+        - {x: 50, y: -48}
+        - {x: 49, y: -45}
+        - {x: 10, y: -24}
+        - {x: 2, y: -24}
+        - {x: 0, y: -25}
+      - - {x: 25, y: 0}
+        - {x: 26, y: -3}
+        - {x: 56, y: -19}
+        - {x: 64, y: -19}
+        - {x: 64, y: -3}
+        - {x: 58, y: 0}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
