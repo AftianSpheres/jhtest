@@ -12,6 +12,7 @@ public static class GlobalStaticResourcePaths
     public static Func<String, TextAsset> loadTextResource = Resources.Load<TextAsset>;
     public static string p_boss_names = "Text/" + HammerConstants.LocalizationPrefix + "/system/boss_names";
     public static string p_subregion_names = "Text/" + HammerConstants.LocalizationPrefix + "/system/world/subregions";
+    public static string p_windowed_resolutions = "Text/" + HammerConstants.LocalizationPrefix + "/system/windowed_resolutions";
     public static string p_wpn_names = "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn_names";
     public static string[] p_wpn_shortdescs =
     {

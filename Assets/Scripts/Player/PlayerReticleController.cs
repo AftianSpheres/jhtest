@@ -8,7 +8,6 @@ using System.Collections;
 public class PlayerReticleController : MonoBehaviour
 {
     public WorldController world;
-    private Camera mainCamera;
     new public SpriteRenderer renderer;
     public Sprite OpenSprite;
     public Sprite ClosedSprite;
@@ -21,7 +20,6 @@ public class PlayerReticleController : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        mainCamera = world.mainCamera;
         virtualPosition = transform.localPosition;
 	}
 	

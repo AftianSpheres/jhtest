@@ -7,6 +7,7 @@ public class TitleScreen : MonoBehaviour
     public AudioSource BGM;
     public AudioSource source;
     public AudioClip clip;
+    public ScrollingLayer[] fgScrolls;
     public GameObject curtain;
     public GameObject titleMenu;
     public Renderer TextRenderer;
@@ -42,29 +43,32 @@ public class TitleScreen : MonoBehaviour
         }
 	    else if (preMenu == true)
         {
-            ctr++;
-            if (ctr >= TextFlashInterval)
+            if (inTransitionFromTitle == false)
             {
-                TextRenderer.enabled = !TextRenderer.enabled;
-                ctr = 0;
-            }
-            if (hardwareInterfaceManager.Menu.BtnDown == true)
-            {
-                preMenu = false;
-                source.PlayOneShot(clip);
-                titleMenu.SetActive(true);
-            }
+                ctr++;
+                if (ctr >= TextFlashInterval)
+                {
+                    TextRenderer.enabled = !TextRenderer.enabled;
+                    ctr = 0;
+                }
+                if (hardwareInterfaceManager.Menu.BtnDown == true)
+                {
+                    preMenu = false;
+                    source.PlayOneShot(clip);
+                    titleMenu.SetActive(true);
+                }
 #if (DEVELOPMENT_BUILD || UNITY_EDITOR)
-            else if (hardwareInterfaceManager.Fire1.BtnDown == true) // debug start
-            {
-                StartCoroutine(TransitionFromTitle(2));
-                ctr = int.MinValue;
-                TextRenderer.enabled = true;
-                pressStartText.text = "Going to\ntest map";
-                preMenu = false;
-                source.PlayOneShot(clip);
-            }
+                else if (hardwareInterfaceManager.Fire1.BtnDown == true) // debug start
+                {
+                    StartCoroutine(TransitionFromTitle(2));
+                    ctr = int.MinValue;
+                    TextRenderer.enabled = true;
+                    pressStartText.text = "Going to\ntest map";
+                    preMenu = false;
+                    source.PlayOneShot(clip);
+                }
 #endif
+            }
         }
         else
         {
@@ -75,9 +79,15 @@ public class TitleScreen : MonoBehaviour
 
     IEnumerator TransitionFromTitle (int sceneID)
     {
+        inTransitionFromTitle = true;
         int i = 0;
         while (i < 90)
         {
+            if (i % 10 == 0)
+            {
+                fgScrolls[0].scrollingSpeed *= 2;
+                fgScrolls[1].scrollingSpeed *= 2;
+            }
             BGM.volume = origVolume * ((90f - i) / 90f);
             if (i >= 45)
             {

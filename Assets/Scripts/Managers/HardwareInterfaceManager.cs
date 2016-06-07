@@ -9,7 +9,14 @@ public enum WindowedResolutionMultiplier
     x4, // 640x572
     x5, // 800x716
     x6, // 960x860
-    x8, // 1280x1148
+    x7, // 1120x1008
+    x8, // 1280x1152
+    x9, // 1440x1296
+    x10, // 1600x1440
+    x11, // 1760x1584
+    x12, // 1920x1728
+    x13, // 2080x1872
+    x14, // 2240x2016
 }
 
 public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
@@ -56,14 +63,14 @@ public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
     private KeyCode K_Cancel = KeyCode.Joystick1Button1;
     private KeyCode K_Fire1 = KeyCode.Joystick1Button5;
     private KeyCode K_Fire2 = KeyCode.Mouse1;
-    public bool DisplayFullscreen = false;
     public bool usingDPadAxes = true;
     public bool usingLeftStick = false;
     public bool usingRightStick = true;
     public bool leftTriggerDodge = true;
     public bool rightTriggerFire2 = true;
     public int GamepadIndex = 0;
-    public WindowedResolutionMultiplier WindowedRes = WindowedResolutionMultiplier.x2;
+    public Resolution fullscreenRes;
+    public WindowedResolutionMultiplier WindowedRes = WindowedResolutionMultiplier.x4;
     public VirtualButton Left;
     public VirtualButton Right;
     public VirtualButton Up;
@@ -77,7 +84,21 @@ public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
 
     void Awake ()
     {
-        RefreshVirtualButtons();      
+        fullscreenRes = GetRecommendedFullscreenResolution();
+        RefreshVirtualButtons();
+    }
+
+    public Resolution GetRecommendedFullscreenResolution ()
+    {
+        Resolution scrRes = Screen.currentResolution;
+        for (int i = 0; i < Screen.resolutions.Length; i++)
+        {
+            if (Screen.resolutions[i].height % HammerConstants.LogicalResolution_Vertical == 0)
+            {
+                scrRes = Screen.resolutions[i];
+            }
+        }
+        return scrRes;
     }
 
     void RefreshVirtualButtons ()
@@ -122,6 +143,29 @@ public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
         else
         {
             Fire2 = new VirtualButton(K_Fire2);
+        }
+    }
+
+    public void RefreshFullscreenRes(Resolution newRes)
+    {
+        fullscreenRes = newRes;
+        Screen.SetResolution(fullscreenRes.width, fullscreenRes.height, true, 60);
+    }
+
+    public void RefreshWindow()
+    {
+        Screen.SetResolution(HammerConstants.LogicalResolution_Horizontal * (int)(WindowedRes + 1), HammerConstants.LogicalResolution_Vertical * (int)(WindowedRes + 1), false, 60);
+    }
+
+    public void ToggleFullScreen()
+    {
+        if (Screen.fullScreen == false)
+        {
+            Screen.SetResolution(fullscreenRes.width, fullscreenRes.height, true, 60);
+        }
+        else
+        {
+            RefreshWindow();
         }
     }
 

@@ -11,19 +11,10 @@ public class ScrollingLayer : MonoBehaviour
     public int scrollingSpeed;
     int i;
     private int ctr;
-    private int res;
 
     void Start()
     {
         originalTransform = transform.position;
-        if (scrollVertical == true)
-        {
-            res = HammerConstants.LogicalResolution_Vertical;
-        }
-        else
-        {
-            res = HammerConstants.LogicalResolution_Horizontal;
-        }
     }
 
 	// Update is called once per frame
