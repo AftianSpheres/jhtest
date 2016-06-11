@@ -148,6 +148,7 @@
     <Compile Include="Assets\Scripts\Managers\HardwareInterfaceManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerSettingsManager.cs" />
     <Compile Include="Assets\Scripts\Managers\StylisticHacksManager.cs" />
+    <Compile Include="Assets\Scripts\Menus\ControlConfigMenu.cs" />
     <Compile Include="Assets\Scripts\Menus\MenuSystem.cs" />
     <Compile Include="Assets\Scripts\Menus\OptionsMenu.cs" />
     <Compile Include="Assets\Scripts\Menus\OptionsMenuResLabel.cs" />

@@ -38,19 +38,24 @@ public class PlayerSettingsManager : Manager<PlayerSettingsManager>
     public KeyCode controlPrefs_KBMQuickTaboo;
 
     public bool controlPrefs_GamepadDPadIsMappedToAxis = false;
-    public string controlPrefs_GamepadDPadAxis; // lack of sensitivity here not an issue, dón't add it - remember, this is digital
-    public float controlPrefs_GamepadDPadAxisDeadZone;
-    public bool controlPrefs_GamepadDPadAxisInvertX;
-    public bool controlPrefs_GamepadDPadAxisInvertY;
+    public string controlPrefs_GamepadDPadXAxis;
+    public float controlPrefs_GamepadDPadXAxisDeadZone;
+    public bool controlPrefs_GamepadDPadXAxisInverted;
+    public string controlPrefs_GamepadDPadYAxis; // lack of sensitivity here not an issue, dón't add it - remember, this is digital
+    public float controlPrefs_GamepadDPadYAxisDeadZone;
+    public bool controlPrefs_GamepadDPadYAxisInverted;
     public KeyCode controlPrefs_GamepadUp;
     public KeyCode controlPrefs_GamepadDown;
     public KeyCode controlPrefs_GamepadLeft;
     public KeyCode controlPrefs_GamepadRight;
-    public string controlPrefs_GamepadAimAxis;
-    public float controlPrefs_GamepadAimAxisSensitivity;
-    public float controlPrefs_GamepadAimAxisDeadZone;
-    public bool controlPrefs_GamepadAimAxisInvertX;
-    public bool controlPrefs_GamepadAimAxisInvertY;
+    public string controlPrefs_GamepadAimXAxis;
+    public float controlPrefs_GamepadAimXAxisSensitivity;
+    public float controlPrefs_GamepadAimXAxisDeadZone;
+    public bool controlPrefs_GamepadAimXAxisInverted;
+    public string controlPrefs_GamepadAimYAxis;
+    public float controlPrefs_GamepadAimYAxisSensitivity;
+    public float controlPrefs_GamepadAimYAxisDeadZone;
+    public bool controlPrefs_GamepadAimYAxisInverted;
     public KeyCode controlPrefs_GamepadConfirm;
     public KeyCode controlPrefs_GamepadCancel;
     public KeyCode controlPrefs_GamepadMenu;
