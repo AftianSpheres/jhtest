@@ -2,26 +2,14 @@
 using System;
 using System.Collections;
 
-enum ControlInputType
-{
-    None,
-    Up,
-    Down,
-    Left,
-    Right,
-    Confirm,
-    Cancel,
-    Dodge,
-    Menu,
-    Fire1,
-    Fire2,
-    QuickTaboo
-}
-
 public class ControlConfigMenu : MonoBehaviour
 {
+    public bool open;
+    private bool waitingForInput;
+    private ControlInputType waitingInputType;
     private HardwareInterfaceManager hwInterfaceManager;
     private PlayerSettingsManager playerSettingsManager;
+    private ControlPrefs oldControlPrefs;
 
 	// Use this for initialization
 	void Start () {
@@ -31,16 +19,33 @@ public class ControlConfigMenu : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        // if we hit confirm on a button, we wait for input
-        // while waiting for input: CheckAxes() checkKeys() every frame
+        if (waitingForInput == true)
+        {
+            CheckKeys(waitingInputType, (playerSettingsManager.controlPrefs.setControlMode == ControlModeType.Gamepad || playerSettingsManager.controlPrefs.setControlMode == ControlModeType.Gamepad_Mouse_Hybrid), 0);
+        }
 	}
+
+    void Close (bool revert = false)
+    {
+        if (revert == true)
+        {
+            playerSettingsManager.controlPrefs = oldControlPrefs;
+        }
+        open = false;
+    }
+
+    public void Open ()
+    {
+        open = true;
+        oldControlPrefs = playerSettingsManager.controlPrefs;
+    }
 
     void CheckAxes ()
     {
 
     }
 
-    bool CheckKeys (ControlInputType control, bool isGamepadButton, bool isAxis, int gamepadIndex)
+    bool CheckKeys (ControlInputType control, bool isGamepadButton, int gamepadIndex)
     {
         Array keyCodes = Enum.GetValues(typeof(KeyCode));
         for (int i = 0; i < keyCodes.Length; i++)
@@ -55,75 +60,75 @@ public class ControlConfigMenu : MonoBehaviour
 
     bool RegisterInput (ControlInputType control, KeyCode keyCode, bool isGamepadButton, bool isAxis, int gamepadIndex, string axisName = "")
     {
-        if (isGamepadButton == true && (playerSettingsManager.setControlMode == ControlMode.Gamepad || playerSettingsManager.setControlMode == ControlMode.Gamepad_Mouse_Hybrid))
+        if (isGamepadButton == true && (playerSettingsManager.controlPrefs.setControlMode == ControlModeType.Gamepad || playerSettingsManager.controlPrefs.setControlMode == ControlModeType.Gamepad_Mouse_Hybrid))
         {
             if (isAxis == true)
             {
                 switch (control)
                 {
                     case ControlInputType.Up:
-                        playerSettingsManager.controlPrefs_GamepadDPadYAxis = axisName;
-                        playerSettingsManager.controlPrefs_GamepadDPadIsMappedToAxis = true;
+                        playerSettingsManager.controlPrefs.GamepadDPadYAxis = axisName;
+                        playerSettingsManager.controlPrefs.GamepadDPadIsMappedToAxis = true;
                         if (Input.GetAxis(axisName) < 0)
                         {
-                            playerSettingsManager.controlPrefs_GamepadDPadYAxisInverted = true;
+                            playerSettingsManager.controlPrefs.GamepadDPadYAxisInverted = true;
                         }
                         else
                         {
-                            playerSettingsManager.controlPrefs_GamepadDPadYAxisInverted = false;
+                            playerSettingsManager.controlPrefs.GamepadDPadYAxisInverted = false;
                         }
                         break;
                     case ControlInputType.Down:
-                        playerSettingsManager.controlPrefs_GamepadDPadYAxis = axisName;
-                        playerSettingsManager.controlPrefs_GamepadDPadIsMappedToAxis = true;
+                        playerSettingsManager.controlPrefs.GamepadDPadYAxis = axisName;
+                        playerSettingsManager.controlPrefs.GamepadDPadIsMappedToAxis = true;
                         if (Input.GetAxis(axisName) > 0)
                         {
-                            playerSettingsManager.controlPrefs_GamepadDPadYAxisInverted = true;
+                            playerSettingsManager.controlPrefs.GamepadDPadYAxisInverted = true;
                         }
                         else
                         {
-                            playerSettingsManager.controlPrefs_GamepadDPadYAxisInverted = false;
+                            playerSettingsManager.controlPrefs.GamepadDPadYAxisInverted = false;
                         }
                         break;
                     case ControlInputType.Left:
-                        playerSettingsManager.controlPrefs_GamepadDPadXAxis = axisName;
-                        playerSettingsManager.controlPrefs_GamepadDPadIsMappedToAxis = true;
+                        playerSettingsManager.controlPrefs.GamepadDPadXAxis = axisName;
+                        playerSettingsManager.controlPrefs.GamepadDPadIsMappedToAxis = true;
                         if (Input.GetAxis(axisName) > 0)
                         {
-                            playerSettingsManager.controlPrefs_GamepadDPadXAxisInverted = true;
+                            playerSettingsManager.controlPrefs.GamepadDPadXAxisInverted = true;
                         }
                         else
                         {
-                            playerSettingsManager.controlPrefs_GamepadDPadXAxisInverted = false;
+                            playerSettingsManager.controlPrefs.GamepadDPadXAxisInverted = false;
                         }
                         break;
                     case ControlInputType.Right:
-                        playerSettingsManager.controlPrefs_GamepadDPadXAxis = axisName;
-                        playerSettingsManager.controlPrefs_GamepadDPadIsMappedToAxis = true;
+                        playerSettingsManager.controlPrefs.GamepadDPadXAxis = axisName;
+                        playerSettingsManager.controlPrefs.GamepadDPadIsMappedToAxis = true;
                         if (Input.GetAxis(axisName) < 0)
                         {
-                            playerSettingsManager.controlPrefs_GamepadDPadXAxisInverted = true;
+                            playerSettingsManager.controlPrefs.GamepadDPadXAxisInverted = true;
                         }
                         else
                         {
-                            playerSettingsManager.controlPrefs_GamepadDPadXAxisInverted = false;
+                            playerSettingsManager.controlPrefs.GamepadDPadXAxisInverted = false;
                         }
                         break;
                     case ControlInputType.Fire1:
-                        playerSettingsManager.controlPrefs_GamepadFire1Axis = axisName;
-                        playerSettingsManager.controlPrefs_GamepadFire1IsMappedToAxis = true;
+                        playerSettingsManager.controlPrefs.GamepadFire1Axis = axisName;
+                        playerSettingsManager.controlPrefs.GamepadFire1IsMappedToAxis = true;
                         break;
                     case ControlInputType.Fire2:
-                        playerSettingsManager.controlPrefs_GamepadFire2Axis = axisName;
-                        playerSettingsManager.controlPrefs_GamepadFire2IsMappedToAxis = true;
+                        playerSettingsManager.controlPrefs.GamepadFire2Axis = axisName;
+                        playerSettingsManager.controlPrefs.GamepadFire2IsMappedToAxis = true;
                         break;
                     case ControlInputType.Dodge:
-                        playerSettingsManager.controlPrefs_GamepadDodgeAxis = axisName;
-                        playerSettingsManager.controlPrefs_GamepadDodgeIsMappedToAxis = true;
+                        playerSettingsManager.controlPrefs.GamepadDodgeAxis = axisName;
+                        playerSettingsManager.controlPrefs.GamepadDodgeIsMappedToAxis = true;
                         break;
                     case ControlInputType.QuickTaboo:
-                        playerSettingsManager.controlPrefs_GamepadQuickTabooAxis = axisName;
-                        playerSettingsManager.controlPrefs_GamepadQuickTabooIsMappedToAxis = true;
+                        playerSettingsManager.controlPrefs.GamepadQuickTabooAxis = axisName;
+                        playerSettingsManager.controlPrefs.GamepadQuickTabooIsMappedToAxis = true;
                         break;
                     default:
                         return false;
@@ -134,45 +139,45 @@ public class ControlConfigMenu : MonoBehaviour
                 switch (control)
                 {
                     case ControlInputType.Up:
-                        playerSettingsManager.controlPrefs_GamepadUp = keyCode;
-                        playerSettingsManager.controlPrefs_GamepadDPadIsMappedToAxis = false;
+                        playerSettingsManager.controlPrefs.GamepadUp = keyCode;
+                        playerSettingsManager.controlPrefs.GamepadDPadIsMappedToAxis = false;
                         break;
                     case ControlInputType.Down:
-                        playerSettingsManager.controlPrefs_GamepadDown = keyCode;
-                        playerSettingsManager.controlPrefs_GamepadDPadIsMappedToAxis = false;
+                        playerSettingsManager.controlPrefs.GamepadDown = keyCode;
+                        playerSettingsManager.controlPrefs.GamepadDPadIsMappedToAxis = false;
                         break;
                     case ControlInputType.Left:
-                        playerSettingsManager.controlPrefs_GamepadLeft = keyCode;
-                        playerSettingsManager.controlPrefs_GamepadDPadIsMappedToAxis = false;
+                        playerSettingsManager.controlPrefs.GamepadLeft = keyCode;
+                        playerSettingsManager.controlPrefs.GamepadDPadIsMappedToAxis = false;
                         break;
                     case ControlInputType.Right:
-                        playerSettingsManager.controlPrefs_GamepadRight = keyCode;
-                        playerSettingsManager.controlPrefs_GamepadDPadIsMappedToAxis = false;
+                        playerSettingsManager.controlPrefs.GamepadRight = keyCode;
+                        playerSettingsManager.controlPrefs.GamepadDPadIsMappedToAxis = false;
                         break;
                     case ControlInputType.Confirm:
-                        playerSettingsManager.controlPrefs_GamepadConfirm = keyCode;
+                        playerSettingsManager.controlPrefs.GamepadConfirm = keyCode;
                         break;
                     case ControlInputType.Cancel:
-                        playerSettingsManager.controlPrefs_GamepadCancel = keyCode;
+                        playerSettingsManager.controlPrefs.GamepadCancel = keyCode;
                         break;
                     case ControlInputType.Dodge:
-                        playerSettingsManager.controlPrefs_GamepadDodge = keyCode;
-                        playerSettingsManager.controlPrefs_GamepadDodgeIsMappedToAxis = false;
+                        playerSettingsManager.controlPrefs.GamepadDodge = keyCode;
+                        playerSettingsManager.controlPrefs.GamepadDodgeIsMappedToAxis = false;
                         break;
                     case ControlInputType.Menu:
-                        playerSettingsManager.controlPrefs_GamepadMenu = keyCode;
+                        playerSettingsManager.controlPrefs.GamepadMenu = keyCode;
                         break;
                     case ControlInputType.Fire1:
-                        playerSettingsManager.controlPrefs_GamepadFire1 = keyCode;
-                        playerSettingsManager.controlPrefs_GamepadFire1IsMappedToAxis = false;
+                        playerSettingsManager.controlPrefs.GamepadFire1 = keyCode;
+                        playerSettingsManager.controlPrefs.GamepadFire1IsMappedToAxis = false;
                         break;
                     case ControlInputType.Fire2:
-                        playerSettingsManager.controlPrefs_GamepadFire2 = keyCode;
-                        playerSettingsManager.controlPrefs_GamepadFire2IsMappedToAxis = false;
+                        playerSettingsManager.controlPrefs.GamepadFire2 = keyCode;
+                        playerSettingsManager.controlPrefs.GamepadFire2IsMappedToAxis = false;
                         break;
                     case ControlInputType.QuickTaboo:
-                        playerSettingsManager.controlPrefs_GamepadQuickTaboo = keyCode;
-                        playerSettingsManager.controlPrefs_GamepadQuickTabooIsMappedToAxis = false;
+                        playerSettingsManager.controlPrefs.GamepadQuickTaboo = keyCode;
+                        playerSettingsManager.controlPrefs.GamepadQuickTabooIsMappedToAxis = false;
                         break;
                     default:
                         return false;
@@ -180,7 +185,7 @@ public class ControlConfigMenu : MonoBehaviour
             }
             return true;
         }
-        else if (isGamepadButton == false && (playerSettingsManager.setControlMode == ControlMode.Mouse_Keyboard || playerSettingsManager.setControlMode == ControlMode.Gamepad_Mouse_Hybrid))
+        else if (isGamepadButton == false && (playerSettingsManager.controlPrefs.setControlMode == ControlModeType.Mouse_Keyboard || playerSettingsManager.controlPrefs.setControlMode == ControlModeType.Gamepad_Mouse_Hybrid))
         {
             return true;
         }

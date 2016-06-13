@@ -114,6 +114,7 @@
     <Compile Include="Assets\Scripts\HUD\HUDTabooIcon.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDWeaponIcon.cs" />
     <Compile Include="Assets\Scripts\HUD\TabooOverlay.cs" />
+    <Compile Include="Assets\Scripts\Helpers\ControlPrefs.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\AreaType.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\BossType.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\Checkpoints.cs" />
@@ -123,6 +124,8 @@
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\ChestFlags_TestMap.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\ChestFlags_Valley.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\ChestFlags_Village.cs" />
+    <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\ControlInputType.cs" />
+    <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\ControlModeType.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\Direction.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\EventFlags_Circle.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\EventFlags_Forest.cs" />
@@ -144,6 +147,7 @@
     <Compile Include="Assets\Scripts\Helpers\GlobalStaticResourcePaths.cs" />
     <Compile Include="Assets\Scripts\Helpers\HammerConstants.cs" />
     <Compile Include="Assets\Scripts\Helpers\VirtualButton.cs" />
+    <Compile Include="Assets\Scripts\Helpers\VirtualStick.cs" />
     <Compile Include="Assets\Scripts\Managers\GameStateManager.cs" />
     <Compile Include="Assets\Scripts\Managers\HardwareInterfaceManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerSettingsManager.cs" />

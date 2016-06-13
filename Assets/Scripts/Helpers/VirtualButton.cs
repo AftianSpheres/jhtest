@@ -9,7 +9,6 @@ public class VirtualButton
     {
         get
         {
-            Update();
             return _isKeyDown;
         }
     }
@@ -17,7 +16,6 @@ public class VirtualButton
     {
         get
         {
-            Update();
             return _isKeyUp;
         }
     }
@@ -25,7 +23,6 @@ public class VirtualButton
     {
         get
         {
-            Update();
             return (_isPressed);
         }
     }
@@ -47,7 +44,7 @@ public class VirtualButton
         isNegative = _isNegative;
     }
 
-    private void Update()
+    public void Update()
     {
         if (isAxis == true)
         {

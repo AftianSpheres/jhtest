@@ -37,10 +37,10 @@ public class OptionsMenuResLabel : MonoBehaviour
         else
         {
             if (Screen.fullScreen != fullscreenBoolBuffer || hardwareInterfaceManager.fullscreenRes.width != fullscreenResBuffer.width || hardwareInterfaceManager.fullscreenRes.height != fullscreenResBuffer.height ||
-                hardwareInterfaceManager.WindowedRes != windowedResBuffer)
+                hardwareInterfaceManager.windowedRes != windowedResBuffer)
             {
                 fullscreenBoolBuffer = Screen.fullScreen;
-                windowedResBuffer = hardwareInterfaceManager.WindowedRes;
+                windowedResBuffer = hardwareInterfaceManager.windowedRes;
                 fullscreenResBuffer = hardwareInterfaceManager.fullscreenRes;
                 if (Screen.fullScreen == true)
                 {
@@ -48,7 +48,7 @@ public class OptionsMenuResLabel : MonoBehaviour
                 }
                 else
                 {
-                    textMesh.text = lines[(int)hardwareInterfaceManager.WindowedRes];
+                    textMesh.text = lines[(int)hardwareInterfaceManager.windowedRes];
                 }
             }
         }

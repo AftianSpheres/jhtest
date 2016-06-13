@@ -41,8 +41,8 @@ public class PlayerReticleController : MonoBehaviour
         }
         else
         {
-            adjX = virtualPosition.x + (2 * Input.GetAxis(HardwareInterfaceManager.RightStickXes[world.HardwareInterfaceManager.GamepadIndex]));
-            adjY = virtualPosition.y + (2 * Input.GetAxis(HardwareInterfaceManager.RightStickYs[world.HardwareInterfaceManager.GamepadIndex]));
+            adjX = virtualPosition.x + (world.HardwareInterfaceManager.RightStick.x);
+            adjY = virtualPosition.y + (world.HardwareInterfaceManager.RightStick.y);
         }
         if (adjX < -(HammerConstants.LogicalResolution_Horizontal / 2) - HalfSizeOfReticleSprite)
         {

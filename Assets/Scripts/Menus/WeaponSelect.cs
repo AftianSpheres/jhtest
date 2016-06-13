@@ -28,6 +28,7 @@ public class WeaponSelect : MonoBehaviour
     public RetroPrinterScriptBasic textbox;
     private Sprite[] WpnIcons;
 
+
     /// <summary>
     /// MonoBehaviour.Awake()
     /// </summary>

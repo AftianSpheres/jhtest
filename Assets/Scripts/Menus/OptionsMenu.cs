@@ -69,7 +69,7 @@ public class OptionsMenu : MonoBehaviour
             ctr = 0;
             musicVolumeBuffer = playerSettingsManager.MusicVolume;
             sfxVolumeBuffer = playerSettingsManager.SFXVolume;
-            windowedResBuffer = hardwareInterfaceManager.WindowedRes;
+            windowedResBuffer = hardwareInterfaceManager.windowedRes;
             fullscreenResBuffer = hardwareInterfaceManager.fullscreenRes;
             fullscreenBoolBuffer = Screen.fullScreen;
             for (int i = 0; i < Screen.resolutions.Length; i++)
@@ -314,7 +314,7 @@ public class OptionsMenu : MonoBehaviour
                 else if (hardwareInterfaceManager.Confirm.BtnDown == true)
                 {
                     source.PlayOneShot(selectionOK);
-                    hardwareInterfaceManager.WindowedRes = windowedResBuffer;
+                    hardwareInterfaceManager.windowedRes = windowedResBuffer;
                     if (fullscreenBoolBuffer == true)
                     {
                         hardwareInterfaceManager.RefreshFullscreenRes(fullscreenResBuffer);
@@ -347,7 +347,6 @@ public class OptionsMenu : MonoBehaviour
 
     void _in_MateWithManagers ()
     {
-        Debug.Log("");
         GameObject hwInterfaceManagerObj = GameObject.Find("Universe/HardwareInterfaceManager");
         if (hwInterfaceManagerObj != null)
         {
@@ -362,10 +361,10 @@ public class OptionsMenu : MonoBehaviour
         {
             if (Screen.fullScreen == false)
             {
-                if (hardwareInterfaceManager.WindowedRes > WindowedResolutionMultiplier.x1)
+                if (hardwareInterfaceManager.windowedRes > WindowedResolutionMultiplier.x1)
                 {
                     source.PlayOneShot(selectionOK);
-                    hardwareInterfaceManager.WindowedRes--;
+                    hardwareInterfaceManager.windowedRes--;
                     hardwareInterfaceManager.RefreshWindow();
                     ctr = 8;
                 }
@@ -397,12 +396,12 @@ public class OptionsMenu : MonoBehaviour
         {
             if (Screen.fullScreen == false)
             {
-                if (hardwareInterfaceManager.WindowedRes < WindowedResolutionMultiplier.x14 && 
-                    (HammerConstants.LogicalResolution_Horizontal * (int)hardwareInterfaceManager.WindowedRes + 1) < Screen.currentResolution.width &&
-                    (HammerConstants.LogicalResolution_Vertical * (int)hardwareInterfaceManager.WindowedRes + 1) < Screen.currentResolution.height)
+                if (hardwareInterfaceManager.windowedRes < WindowedResolutionMultiplier.x14 && 
+                    (HammerConstants.LogicalResolution_Horizontal * (int)hardwareInterfaceManager.windowedRes + 1) < Screen.currentResolution.width &&
+                    (HammerConstants.LogicalResolution_Vertical * (int)hardwareInterfaceManager.windowedRes + 1) < Screen.currentResolution.height)
                 {
                     source.PlayOneShot(selectionOK);
-                    hardwareInterfaceManager.WindowedRes++;
+                    hardwareInterfaceManager.windowedRes++;
                     hardwareInterfaceManager.RefreshWindow();
                     ctr = 8;
                 }
