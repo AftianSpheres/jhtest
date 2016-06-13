@@ -85,6 +85,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Barker&apos;s Retro Text Printer Free\Scripts\RetroPrinterScriptBasic.cs" />
+    <Compile Include="Assets\Scripts\BitsNBobs\ScrollingLayer.cs" />
+    <Compile Include="Assets\Scripts\BitsNBobs\SimpleTextLocalizer.cs" />
     <Compile Include="Assets\Scripts\Enemy\0_Jelly\EnemyJelly.cs" />
     <Compile Include="Assets\Scripts\Enemy\0_Jelly\EnemyJellyFire.cs" />
     <Compile Include="Assets\Scripts\Enemy\0_Jelly\EnemyJellyFloat.cs" />
@@ -148,6 +150,7 @@
     <Compile Include="Assets\Scripts\Helpers\HammerConstants.cs" />
     <Compile Include="Assets\Scripts\Helpers\VirtualButton.cs" />
     <Compile Include="Assets\Scripts\Helpers\VirtualStick.cs" />
+    <Compile Include="Assets\Scripts\Managers\GameSaveManager.cs" />
     <Compile Include="Assets\Scripts\Managers\GameStateManager.cs" />
     <Compile Include="Assets\Scripts\Managers\HardwareInterfaceManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerSettingsManager.cs" />
@@ -201,7 +204,6 @@
     <Compile Include="Assets\Scripts\WorldObjects\RoomCollider.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\RoomController.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\RoomPriorityMap.cs" />
-    <Compile Include="Assets\Scripts\WorldObjects\ScrollingLayer.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\WorldController.cs" />
     <Compile Include="Assets\Universe\Example\MyManager.cs" />
     <Compile Include="Assets\Universe\Scripts\Manager.cs" />
@@ -246,6 +248,7 @@
     <None Include="Assets\Resources\Text\en-us\system\inventory\wpn23_short.txt" />
     <None Include="Assets\Resources\Text\en-us\system\inventory\wpn24_short.txt" />
     <None Include="Assets\Resources\Text\en-us\system\inventory\wpn_names.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\main.txt" />
     <None Include="Assets\Resources\Text\en-us\system\windowed_resolutions.txt" />
     <None Include="Assets\Resources\Text\en-us\system\world\areas.txt" />
     <None Include="Assets\Resources\Text\en-us\system\world\subregion00.txt" />

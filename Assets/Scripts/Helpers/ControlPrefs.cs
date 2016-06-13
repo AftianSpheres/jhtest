@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 /// <summary>
 /// Horrible bloated struct that contains player's control settings.
 /// We use this to pass those as a unit, because there's a shitload of variables here.
 /// </summary>
+[Serializable]
 public struct ControlPrefs
 {
     public ControlModeType setControlMode;

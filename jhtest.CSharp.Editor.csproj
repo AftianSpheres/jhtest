@@ -198,6 +198,7 @@
     <None Include="Assets\Resources\Text\en-us\system\inventory\wpn23_short.txt" />
     <None Include="Assets\Resources\Text\en-us\system\inventory\wpn24_short.txt" />
     <None Include="Assets\Resources\Text\en-us\system\inventory\wpn_names.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\main.txt" />
     <None Include="Assets\Resources\Text\en-us\system\windowed_resolutions.txt" />
     <None Include="Assets\Resources\Text\en-us\system\world\areas.txt" />
     <None Include="Assets\Resources\Text\en-us\system\world\subregion00.txt" />

@@ -1,0 +1,16 @@
+Ver. 0.1a
+Press Start/Enter
+New Game
+Continue
+Options
+Extras
+Quit
+Fullscreen
+Windowed
+Resolution
+Configure Controls
+Music Volume
+SFX Volume
+Confirm
+Cancel
+Defaults

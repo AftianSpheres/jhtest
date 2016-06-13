@@ -97,6 +97,7 @@ GameObject:
   - 23: {fileID: 68379647}
   - 102: {fileID: 68379646}
   - 82: {fileID: 68379648}
+  - 114: {fileID: 68379649}
   m_Layer: 0
   m_Name: PreMenu
   m_TagString: Untagged
@@ -261,6 +262,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &68379649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 68379643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676db92d88cc02e448bcdb6d95867f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 68379646}
+  resourcePath: system/main
+  lineIndex: 1
 --- !u!1 &80893011
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,6 +348,7 @@ GameObject:
   - 4: {fileID: 152809500}
   - 23: {fileID: 152809502}
   - 102: {fileID: 152809501}
+  - 114: {fileID: 152809503}
   m_Layer: 0
   m_Name: Quit
   m_TagString: Untagged
@@ -401,6 +417,20 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &152809503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 152809499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676db92d88cc02e448bcdb6d95867f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 152809501}
+  resourcePath: system/main
+  lineIndex: 6
 --- !u!1 &157754022
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,6 +821,7 @@ GameObject:
   - 4: {fileID: 239569380}
   - 23: {fileID: 239569382}
   - 102: {fileID: 239569381}
+  - 114: {fileID: 239569383}
   m_Layer: 0
   m_Name: New Game
   m_TagString: Untagged
@@ -857,6 +888,20 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &239569383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 239569379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676db92d88cc02e448bcdb6d95867f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 239569381}
+  resourcePath: system/main
+  lineIndex: 2
 --- !u!1 &313107713
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,6 +1153,7 @@ GameObject:
   - 4: {fileID: 399306059}
   - 23: {fileID: 399306061}
   - 102: {fileID: 399306060}
+  - 114: {fileID: 399306062}
   m_Layer: 0
   m_Name: Windowed
   m_TagString: Untagged
@@ -1174,6 +1220,20 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &399306062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 399306058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676db92d88cc02e448bcdb6d95867f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 399306060}
+  resourcePath: system/main
+  lineIndex: 8
 --- !u!1 &414567086
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,6 +1378,7 @@ GameObject:
   - 4: {fileID: 459631634}
   - 23: {fileID: 459631636}
   - 102: {fileID: 459631635}
+  - 114: {fileID: 459631637}
   m_Layer: 0
   m_Name: Extras
   m_TagString: Untagged
@@ -1386,6 +1447,20 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &459631637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 459631633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676db92d88cc02e448bcdb6d95867f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 459631635}
+  resourcePath: system/main
+  lineIndex: 5
 --- !u!1 &518768894
 GameObject:
   m_ObjectHideFlags: 0
@@ -1472,6 +1547,7 @@ GameObject:
   - 4: {fileID: 563874286}
   - 23: {fileID: 563874288}
   - 102: {fileID: 563874287}
+  - 114: {fileID: 563874289}
   m_Layer: 0
   m_Name: Fullscreen
   m_TagString: Untagged
@@ -1538,6 +1614,20 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &563874289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 563874285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676db92d88cc02e448bcdb6d95867f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 563874287}
+  resourcePath: system/main
+  lineIndex: 7
 --- !u!1 &630171112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1548,6 +1638,7 @@ GameObject:
   - 4: {fileID: 630171113}
   - 23: {fileID: 630171115}
   - 102: {fileID: 630171114}
+  - 114: {fileID: 630171116}
   m_Layer: 0
   m_Name: ControlConfig
   m_TagString: Untagged
@@ -1614,6 +1705,20 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &630171116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 630171112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676db92d88cc02e448bcdb6d95867f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 630171114}
+  resourcePath: system/main
+  lineIndex: 10
 --- !u!1 &688698389
 GameObject:
   m_ObjectHideFlags: 0
@@ -1624,6 +1729,7 @@ GameObject:
   - 4: {fileID: 688698390}
   - 23: {fileID: 688698392}
   - 102: {fileID: 688698391}
+  - 114: {fileID: 688698393}
   m_Layer: 0
   m_Name: MusicVolume
   m_TagString: Untagged
@@ -1690,6 +1796,20 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &688698393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 688698389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676db92d88cc02e448bcdb6d95867f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 688698391}
+  resourcePath: system/main
+  lineIndex: 11
 --- !u!1 &691726027
 GameObject:
   m_ObjectHideFlags: 0
@@ -2076,6 +2196,7 @@ GameObject:
   - 4: {fileID: 778577892}
   - 23: {fileID: 778577894}
   - 102: {fileID: 778577893}
+  - 114: {fileID: 778577895}
   m_Layer: 0
   m_Name: Cancel
   m_TagString: Untagged
@@ -2142,6 +2263,20 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &778577895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 778577891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676db92d88cc02e448bcdb6d95867f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 778577893}
+  resourcePath: system/main
+  lineIndex: 14
 --- !u!1 &788878302
 GameObject:
   m_ObjectHideFlags: 0
@@ -2206,8 +2341,9 @@ GameObject:
   - 4: {fileID: 809338889}
   - 23: {fileID: 809338888}
   - 102: {fileID: 809338887}
+  - 114: {fileID: 809338890}
   m_Layer: 0
-  m_Name: LogoType
+  m_Name: Version
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2220,14 +2356,12 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 809338886}
-  m_Text: 'Your stupid titles!
-
-    Stupid! Stupid!'
+  m_Text: v.1.2.3.456a
   m_OffsetZ: 0
   m_CharacterSize: 10
   m_LineSpacing: 1
-  m_Anchor: 1
-  m_Alignment: 1
+  m_Anchor: 0
+  m_Alignment: 0
   m_TabSize: 4
   m_FontSize: 0
   m_FontStyle: 0
@@ -2269,11 +2403,25 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 809338886}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -202, y: -72, z: -20}
+  m_LocalPosition: {x: -239, y: -69, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!114 &809338890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 809338886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676db92d88cc02e448bcdb6d95867f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 809338887}
+  resourcePath: system/main
+  lineIndex: 0
 --- !u!1 &923330751
 GameObject:
   m_ObjectHideFlags: 0
@@ -3633,6 +3781,7 @@ GameObject:
   - 4: {fileID: 1452158695}
   - 23: {fileID: 1452158697}
   - 102: {fileID: 1452158696}
+  - 114: {fileID: 1452158698}
   m_Layer: 0
   m_Name: Confirm
   m_TagString: Untagged
@@ -3699,6 +3848,20 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &1452158698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1452158694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676db92d88cc02e448bcdb6d95867f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 1452158696}
+  resourcePath: system/main
+  lineIndex: 13
 --- !u!1 &1452972176
 GameObject:
   m_ObjectHideFlags: 0
@@ -3785,6 +3948,7 @@ GameObject:
   - 4: {fileID: 1518891458}
   - 23: {fileID: 1518891460}
   - 102: {fileID: 1518891459}
+  - 114: {fileID: 1518891461}
   m_Layer: 0
   m_Name: Continue
   m_TagString: Untagged
@@ -3853,6 +4017,20 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &1518891461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1518891457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676db92d88cc02e448bcdb6d95867f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 1518891459}
+  resourcePath: system/main
+  lineIndex: 3
 --- !u!1 &1580359466
 GameObject:
   m_ObjectHideFlags: 0
@@ -3863,6 +4041,7 @@ GameObject:
   - 4: {fileID: 1580359467}
   - 23: {fileID: 1580359469}
   - 102: {fileID: 1580359468}
+  - 114: {fileID: 1580359470}
   m_Layer: 0
   m_Name: Resolution
   m_TagString: Untagged
@@ -3929,6 +4108,20 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &1580359470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1580359466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676db92d88cc02e448bcdb6d95867f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 1580359468}
+  resourcePath: system/main
+  lineIndex: 9
 --- !u!1 &1595294302
 GameObject:
   m_ObjectHideFlags: 0
@@ -3939,6 +4132,7 @@ GameObject:
   - 4: {fileID: 1595294303}
   - 23: {fileID: 1595294305}
   - 102: {fileID: 1595294304}
+  - 114: {fileID: 1595294306}
   m_Layer: 0
   m_Name: Options
   m_TagString: Untagged
@@ -4005,6 +4199,20 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &1595294306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1595294302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676db92d88cc02e448bcdb6d95867f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 1595294304}
+  resourcePath: system/main
+  lineIndex: 4
 --- !u!1 &1689892854
 GameObject:
   m_ObjectHideFlags: 0
@@ -4015,6 +4223,7 @@ GameObject:
   - 4: {fileID: 1689892855}
   - 23: {fileID: 1689892857}
   - 102: {fileID: 1689892856}
+  - 114: {fileID: 1689892858}
   m_Layer: 0
   m_Name: Defaults
   m_TagString: Untagged
@@ -4081,6 +4290,20 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &1689892858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1689892854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676db92d88cc02e448bcdb6d95867f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 1689892856}
+  resourcePath: system/main
+  lineIndex: 15
 --- !u!1 &1894109463
 GameObject:
   m_ObjectHideFlags: 0
@@ -4091,6 +4314,7 @@ GameObject:
   - 4: {fileID: 1894109464}
   - 23: {fileID: 1894109466}
   - 102: {fileID: 1894109465}
+  - 114: {fileID: 1894109467}
   m_Layer: 0
   m_Name: SFXVolume
   m_TagString: Untagged
@@ -4157,6 +4381,20 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &1894109467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1894109463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676db92d88cc02e448bcdb6d95867f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 1894109465}
+  resourcePath: system/main
+  lineIndex: 12
 --- !u!1 &1896967277
 GameObject:
   m_ObjectHideFlags: 0
