@@ -96,10 +96,10 @@ public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
     {
         if (usingDPadAxes == true)
         {
-            Left = new VirtualButton(dPadXAxisName, true);
-            Right = new VirtualButton(dPadXAxisName, false);
-            Up = new VirtualButton(dPadYAxisName, false);
-            Down = new VirtualButton(dPadYAxisName, true);
+            Left = new VirtualButton(dPadXAxisName, true, 0, -1);
+            Right = new VirtualButton(dPadXAxisName, false, 0, 1);
+            Up = new VirtualButton(dPadYAxisName, false, 0, 1);
+            Down = new VirtualButton(dPadYAxisName, true, 0, -1);
         }
         else
         {
@@ -109,9 +109,9 @@ public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
             Down = new VirtualButton(K_VertDown);
         }
         Menu = new VirtualButton(K_Menu);
-        if (controlPrefs.GamepadDodgeIsMappedToAxis == true && controlPrefs.setControlMode == ControlModeType.Gamepad || (controlPrefs.setControlMode == ControlModeType.Gamepad_Mouse_Hybrid && controlPrefs.inHybridDodgeIsOnMouse == false))
+        if (controlPrefs.GamepadDodgeIsMappedToAxis == true && (controlPrefs.setControlMode == ControlModeType.Gamepad || (controlPrefs.setControlMode == ControlModeType.Gamepad_Mouse_Hybrid && controlPrefs.inHybridDodgeIsOnMouse == false)))
         {
-            Dodge = new VirtualButton(controlPrefs.GamepadDodgeAxis, false);
+            Dodge = new VirtualButton(controlPrefs.GamepadDodgeAxis, false, controlPrefs.GamepadDodgeAxisMin, controlPrefs.GamepadDodgeAxisMax);
         }
         else
         {
@@ -119,25 +119,25 @@ public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
         }
         Confirm = new VirtualButton(K_Confirm);
         Cancel = new VirtualButton(K_Cancel);
-        if (controlPrefs.GamepadFire1IsMappedToAxis == true && controlPrefs.setControlMode == ControlModeType.Gamepad || (controlPrefs.setControlMode == ControlModeType.Gamepad_Mouse_Hybrid && controlPrefs.inHybridFire1IsOnMouse == false))
+        if (controlPrefs.GamepadFire1IsMappedToAxis == true && (controlPrefs.setControlMode == ControlModeType.Gamepad || (controlPrefs.setControlMode == ControlModeType.Gamepad_Mouse_Hybrid && controlPrefs.inHybridFire1IsOnMouse == false)))
         {
-            Fire1 = new VirtualButton(controlPrefs.GamepadFire1Axis, false);
+            Fire1 = new VirtualButton(controlPrefs.GamepadFire1Axis, false, controlPrefs.GamepadFire1AxisMin, controlPrefs.GamepadFire1AxisMax);
         }
         else
         {
             Fire1 = new VirtualButton(K_Fire1);
         }
-        if (controlPrefs.GamepadFire2IsMappedToAxis == true && controlPrefs.setControlMode == ControlModeType.Gamepad || (controlPrefs.setControlMode == ControlModeType.Gamepad_Mouse_Hybrid && controlPrefs.inHybridFire2IsOnMouse == false))
+        if (controlPrefs.GamepadFire2IsMappedToAxis == true && (controlPrefs.setControlMode == ControlModeType.Gamepad || (controlPrefs.setControlMode == ControlModeType.Gamepad_Mouse_Hybrid && controlPrefs.inHybridFire2IsOnMouse == false)))
         {
-            Fire2 = new VirtualButton(controlPrefs.GamepadFire2Axis, false);
+            Fire2 = new VirtualButton(controlPrefs.GamepadFire2Axis, false, controlPrefs.GamepadFire2AxisMin, controlPrefs.GamepadFire2AxisMax);
         }
         else
         {
             Fire2 = new VirtualButton(K_Fire2);
         }
-        if (controlPrefs.GamepadQuickTabooIsMappedToAxis == true && controlPrefs.setControlMode == ControlModeType.Gamepad || (controlPrefs.setControlMode == ControlModeType.Gamepad_Mouse_Hybrid && controlPrefs.inHybridQuickTabooIsOnMouse == false))
+        if (controlPrefs.GamepadQuickTabooIsMappedToAxis == true && (controlPrefs.setControlMode == ControlModeType.Gamepad || (controlPrefs.setControlMode == ControlModeType.Gamepad_Mouse_Hybrid && controlPrefs.inHybridQuickTabooIsOnMouse == false)))
         {
-            QuickTaboo = new VirtualButton(controlPrefs.GamepadQuickTabooAxis, false);
+            QuickTaboo = new VirtualButton(controlPrefs.GamepadQuickTabooAxis, false, controlPrefs.GamepadQuickTabooAxisMin, controlPrefs.GamepadQuickTabooAxisMax);
         }
         else
         {
@@ -222,13 +222,16 @@ public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
                 K_Cancel = controlPrefs.GamepadCancel;
             }
         }
-        else if (controlPrefs.setControlMode == ControlModeType.Mouse_Keyboard || controlPrefs.setControlMode == ControlModeType.Gamepad_Mouse_Hybrid)
+        if (controlPrefs.setControlMode == ControlModeType.Mouse_Keyboard || controlPrefs.setControlMode == ControlModeType.Gamepad_Mouse_Hybrid)
         {
-            K_VertDown = controlPrefs.KBMDown;
-            K_VertUp = controlPrefs.KBMUp;
-            K_HorizLeft = controlPrefs.KBMLeft;
-            K_HorizRight = controlPrefs.KBMRight;
-            usingDPadAxes = false;
+            if (controlPrefs.setControlMode != ControlModeType.Gamepad_Mouse_Hybrid)
+            {
+                K_VertDown = controlPrefs.KBMDown;
+                K_VertUp = controlPrefs.KBMUp;
+                K_HorizLeft = controlPrefs.KBMLeft;
+                K_HorizRight = controlPrefs.KBMRight;
+                usingDPadAxes = false;
+            }
             usingRightStick = false;
             if (controlPrefs.inHybridFire1IsOnMouse == true || controlPrefs.setControlMode == ControlModeType.Mouse_Keyboard)
             {
@@ -258,10 +261,6 @@ public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
             {
                 K_Cancel = controlPrefs.KBMCancel;
             }
-        }
-        else
-        {
-            throw new System.Exception("Bad control mode type: " + controlPrefs.setControlMode.ToString());
         }
     }
 

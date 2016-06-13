@@ -5,6 +5,8 @@ public class VirtualButton
     private bool _isKeyDown;
     private bool _isKeyUp;
     private bool _isPressed;
+    private float min;
+    private float max;
     public bool BtnDown
     {
         get
@@ -37,7 +39,7 @@ public class VirtualButton
         isAxis = false;
     }
 
-    public VirtualButton(string _axis, bool _isNegative)
+    public VirtualButton(string _axis, bool _isNegative, float _min, float _max)
     {
         axis = _axis;
         isAxis = true;
@@ -48,7 +50,7 @@ public class VirtualButton
     {
         if (isAxis == true)
         {
-            if ((isNegative == true && Input.GetAxis(axis) < 0) || (isNegative == false && Input.GetAxis(axis) > 0))
+            if ((isNegative == true && Input.GetAxis(axis) < min) || (isNegative == false && Input.GetAxis(axis) > min))
             {
                 if (_isPressed == false)
                 {

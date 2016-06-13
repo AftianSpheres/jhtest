@@ -77,7 +77,7 @@ public struct ControlPrefs
         {
             throw new System.Exception("The ControlPrefs constructor is a shitty hack! Don't call it if you don't actually want it to set the defaults, man! Come on!");
         }
-        setControlMode = ControlModeType.Mouse_Keyboard;
+        setControlMode = ControlModeType.Gamepad;
         MouseSensitivity = 1.0f;
         MouseInvertX = false;
         MouseInvertY = false;
@@ -93,10 +93,10 @@ public struct ControlPrefs
         KBDodge = KeyCode.Space;
         KBMQuickTaboo = KeyCode.Mouse2;
         GamepadDPadIsMappedToAxis = true;
-        GamepadDPadXAxis = "joy1-1";
+        GamepadDPadXAxis = "joy1-6";
         GamepadDPadXAxisDeadZone = 0;
         GamepadDPadXAxisInverted = false;
-        GamepadDPadYAxis = "joy1-2";
+        GamepadDPadYAxis = "joy1-7";
         GamepadDPadYAxisDeadZone = 0;
         GamepadDPadYAxisInverted = false;
         GamepadUp = KeyCode.None;
@@ -106,11 +106,11 @@ public struct ControlPrefs
         GamepadAimXAxis = "joy1-4";
         GamepadAimXAxisSensitivity = 2f;
         GamepadAimXAxisDeadZone = 0.2f;
-        GamepadAimXAxisInverted = false;
+        GamepadAimXAxisInverted = true;
         GamepadAimYAxis = "joy1-5";
         GamepadAimYAxisSensitivity = 2f;
         GamepadAimYAxisDeadZone = 0.2f;
-        GamepadAimYAxisInverted = false;
+        GamepadAimYAxisInverted = true;
         GamepadConfirm = KeyCode.Joystick1Button0;
         inHybridConfirmIsOnMouse = false;
         GamepadCancel = KeyCode.Joystick1Button1;
