@@ -8,6 +8,20 @@ using UnityEngine;
 [Serializable]
 public struct ControlPrefs
 {
+    public static string[] axisNames =
+    {
+        "joy1-1",
+        "joy1-2",
+        "joy1-3",
+        "joy1-4",
+        "joy1-5",
+        "joy1-6",
+        "joy1-7",
+        "joy1-8",
+        "joy1-9",
+        "joy1-10"
+    };
+
     public ControlModeType setControlMode;
     public float MouseSensitivity;
     public bool MouseInvertX;
