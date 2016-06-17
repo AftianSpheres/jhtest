@@ -10,7 +10,7 @@ public static class HammerConstants
     public static int LogicalResolution_Vertical = 144;
     public static int SizeOfOneTile = 16;
     public static int HeightOfHUD = 16;
-    public static int NumberOfAreas = 6; // test map/village/marina/valley/forest/circle
+    public static int NumberOfAreas = 7; // test map/village/marina/valley/forest/circle/tutorial
     public static int NumberOfWeapons = 25;
 
     public static string LocalizationPrefix = "en-us";

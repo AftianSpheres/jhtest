@@ -79,7 +79,9 @@ public sealed class Universe : MonoBehaviour
 
         Deserialize(this);
         initialized = true;
-        SceneManager.LoadScene(1);
+#if !UNITY_EDITOR
+        SceneManager.LoadScene(1); // HACKY PIECE OF SHIT - gets us out of the Universe scene if we're starting in standalone. 
+#endif
     }
 
     /// <summary>

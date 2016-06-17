@@ -13,6 +13,7 @@ public class GameStateManager : Manager<GameStateManager>
     public ChestFlags_TestMap chestFlags_TestMap = 0;
     public ChestFlags_Valley chestFlags_Valley = 0;
     public ChestFlags_Village chestFlags_Village = 0;
+    public ChestFlags_Oubliette chestFlags_Oubliette = 0;
     public EventFlags_Circle eventFlags_Circle = 0;
     public EventFlags_Forest eventFlags_Forest = 0;
     public EventFlags_Global eventFlags_Global = 0;
@@ -20,6 +21,7 @@ public class GameStateManager : Manager<GameStateManager>
     public EventFlags_TestMap eventFlags_TestMap = 0;
     public EventFlags_Valley eventFlags_Valley = 0;
     public EventFlags_Village eventFlags_Village = 0;
+    public EventFlags_Oubliette eventFlags_Oubliette = 0;
     public Checkpoints availableCheckpoints = 0;
     public Checkpoints LastCheckpoint;
     public HeldPassiveItems heldPassiveItems = 0;

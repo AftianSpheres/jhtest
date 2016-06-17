@@ -9,5 +9,6 @@ public enum AreaType
     Forest,
     Valley,
     Marina,
-    Circle
+    Circle,
+    Tutorial
 }

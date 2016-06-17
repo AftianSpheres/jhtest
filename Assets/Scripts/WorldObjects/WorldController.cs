@@ -139,12 +139,6 @@ public class WorldController : MonoBehaviour
         get { return area; }
     }
     [SerializeField]
-    private Cartographer minimap;
-    public Cartographer Minimap
-    {
-        get { return minimap; }
-    }
-    [SerializeField]
     private TabooOverlay tabooOverlay;
     public TabooOverlay TabooOverlay
     {

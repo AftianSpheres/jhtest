@@ -37,8 +37,8 @@ public class VirtualStick
             _x = 0;
             _y = 0;
         }
-        _x *= 2 * sensitivity * Mathf.Abs(_x / sensitivity);
-        _y *= 2 * sensitivity * Mathf.Abs(_y / sensitivity);
+        _x *= sensitivity * sensitivity * Mathf.Abs(_x / sensitivity);
+        _y *= sensitivity * sensitivity * Mathf.Abs(_y / sensitivity);
         if (invertX == true)
         {
             _x *= -1;
@@ -57,7 +57,6 @@ public class VirtualStick
         sensitivity = _sensitivity;
         invertX = _invertX;
         invertY = _invertY;
-        Debug.Log(deadZone);
     }
 
 }

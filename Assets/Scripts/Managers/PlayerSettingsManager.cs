@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using System.IO;
 using System.Xml;
 using System.Collections;
 
@@ -20,15 +21,66 @@ public class PlayerSettingsManager : Manager<PlayerSettingsManager>
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update ()
+    {
+	    if (hardwareInterfaceManager == null)
+        {
+            GameObject hardwareInterfaceManagerObj = GameObject.Find("Universe/HardwareInterfaceManager");
+            if (hardwareInterfaceManagerObj != null)
+            {
+                hardwareInterfaceManager = hardwareInterfaceManagerObj.GetComponent<HardwareInterfaceManager>();
+                FileToManager();
+            }
+        }
 	}
 
-    void TextFileToManager ()
+    /// <summary>
+    /// Loads settings from hammer.cfg.
+    /// TO DO: have this get controls, too.
+    /// </summary>
+    void FileToManager ()
     {
         XmlDocument doc = new XmlDocument();
-        doc.Load(configFilePath);
-        if (doc.SelectSingleNode("PlayerSettings/MusicVolume") != null) 
+        try
+        {
+            doc.Load(configFilePath);
+        }
+        catch (FileNotFoundException) // config file doesn't exist - this is normal on first run
+        {
+            FileStream f = File.Open(configFilePath, FileMode.CreateNew);
+            f.Close();
+            //ManagerToFile()
+        }
+        catch (XmlException) // config file exists but is malformed
+        {
+            Debug.Log("hammer.cfg is malformed. The game can start, but default configuration values will be used. Debug this!");
+            //ManagerToFile()
+        }
+        _in_LoadMusicVolume(doc);
+        _in_LoadSFXVolume(doc);
+        _in_LoadVideoSettings(doc);
+        _in_LoadControlSettings(doc);
+    }
+
+    void _in_LoadControlSettings(XmlDocument doc)
+    {
+        if (doc.SelectSingleNode("ControlSettings/ControlMode") != null)
+        {
+            int res;
+            if (int.TryParse(doc.SelectSingleNode("PlayerSettings/ControlMode").Value,  out res) == false || res < 0 || res > (int)ControlModeType.Gamepad_Mouse_Hybrid)
+            {
+                controlPrefs.setControlMode = ControlModeType.Mouse_Keyboard;
+            }
+            else
+            {
+                controlPrefs.setControlMode = (ControlModeType) res;
+            }
+        }
+    }
+
+    void _in_LoadMusicVolume(XmlDocument doc)
+    {
+        if (doc.SelectSingleNode("PlayerSettings/MusicVolume") != null)
         {
             if (float.TryParse(doc.SelectSingleNode("PlayerSettings/MusicVolume").Value, out MusicVolume) == false)
             {
@@ -47,6 +99,10 @@ public class PlayerSettingsManager : Manager<PlayerSettingsManager>
         {
             MusicVolume = 1f;
         }
+    }
+
+    void _in_LoadSFXVolume(XmlDocument doc)
+    {
         if (doc.SelectSingleNode("PlayerSettings/SFXVolume") != null)
         {
             if (float.TryParse(doc.SelectSingleNode("PlayerSettings/SFXVolume").Value, out SFXVolume) == false)
@@ -66,6 +122,10 @@ public class PlayerSettingsManager : Manager<PlayerSettingsManager>
         {
             MusicVolume = 1f;
         }
+    }
+
+    void _in_LoadVideoSettings(XmlDocument doc)
+    {
         bool foundGoodResolution = false;
         if (doc.SelectSingleNode("PlayerSettings/isFullscreen") != null)
         {

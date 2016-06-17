@@ -43,5 +43,7 @@
     Marina_reserved_07,
     Marina_reserved_08,
     Marina_reserved_09,
-    Circle_dungeon
+    Circle_dungeon,
+    Oubliette_main,
+    Oubliette_entrance
 }

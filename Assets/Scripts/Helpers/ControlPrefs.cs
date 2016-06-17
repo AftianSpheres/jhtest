@@ -106,11 +106,11 @@ public struct ControlPrefs
         GamepadLeft = KeyCode.None;
         GamepadRight = KeyCode.None;
         GamepadAimXAxis = "joy1-4";
-        GamepadAimXAxisSensitivity = 2f;
+        GamepadAimXAxisSensitivity = 2.5f;
         GamepadAimXAxisDeadZone = 0.2f;
         GamepadAimXAxisInverted = true;
         GamepadAimYAxis = "joy1-5";
-        GamepadAimYAxisSensitivity = 2f;
+        GamepadAimYAxisSensitivity = 2.5f;
         GamepadAimYAxisDeadZone = 0.2f;
         GamepadAimYAxisInverted = true;
         GamepadConfirm = KeyCode.Joystick1Button0;

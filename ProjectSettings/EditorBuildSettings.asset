@@ -10,4 +10,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/title.unity
   - enabled: 1
-    path: Assets/Scenes/first.unity
+    path: Assets/Scenes/test_map.unity

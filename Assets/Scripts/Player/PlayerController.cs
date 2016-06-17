@@ -144,7 +144,6 @@ public class PlayerController : MonoBehaviour {
             }
             CurrentWorldCoords[1] = world.activeRoom.xPosition + chkVal;
             CurrentRoomCoords[1] = chkVal;
-            world.Minimap.Refresh();
         }
         if (energy.CurrentEnergy < 1 && animator.GetBool("Dead") == false)
         {
