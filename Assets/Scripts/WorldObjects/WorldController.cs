@@ -183,7 +183,14 @@ public class WorldController : MonoBehaviour
                     transform.GetChild(i).gameObject.SetActive(true);
                 }
                 gameStateManager = GameObject.Find("Universe/GameStateManager").GetComponent<GameStateManager>();
+                gameStateManager.world = this;
                 hardwareInterfaceManager = GameObject.Find("Universe/HardwareInterfaceManager").GetComponent<HardwareInterfaceManager>();
+                stylisticHacksManager = GameObject.Find("Universe/StylisticHacksManager").GetComponent<StylisticHacksManager>();
+#if UNITY_EDITOR
+                // ok, so: there's a weird bug that breaks the camera on editor load. I think it's something to do with Universe but hell if I know what. This is a bandaid.
+                cameraController.gameObject.SetActive(false);
+                cameraController.gameObject.SetActive(true);
+#endif
             }
         }
         else

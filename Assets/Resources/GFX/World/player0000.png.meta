@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: f92fdf3e3ff6d5149840e06447e066e1
-timeCreated: 1465104250
+timeCreated: 1466309201
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -49,6 +49,10 @@ TextureImporter:
     21300084: player0000_1
     21300086: player0000_2
     21300088: player0000_3
+    21300090: player0000_hitD
+    21300092: player0000_hitR
+    21300094: player0000_hitU
+    21300096: player0000_hitL
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -583,6 +587,50 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 137
+        y: 189
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: player0000_hitD
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 240
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: player0000_hitR
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 223
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: player0000_hitU
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 206
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: player0000_hitL
+      rect:
+        serializedVersion: 2
+        x: 154
         y: 189
         width: 16
         height: 16

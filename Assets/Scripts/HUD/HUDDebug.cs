@@ -28,12 +28,14 @@ public class HUDDebug : MonoBehaviour
     /// </summary>
     void Update()
     {
-        currentUpdateHit++;
-        if (currentUpdateHit == 60)
+        if (world.StylisticHacksManager != null)
         {
-            textMesh.text = world.StylisticHacksManager.fps.ToString();
-            currentUpdateHit = 0;
+            currentUpdateHit++;
+            if (currentUpdateHit == 60)
+            {
+                textMesh.text = world.StylisticHacksManager.fps.ToString();
+                currentUpdateHit = 0;
+            }
         }
     }
-
 }

@@ -44,6 +44,8 @@ public class PlayerController : MonoBehaviour {
     public PlayerEnergy energy;
     public PlayerWeaponManager wpnManager;
     public Vector3 KnockbackHeading;
+    public AudioClip hitSFX;
+    public AudioClip regainSFX;
     public bool DontWarp;
     public bool IgnoreCollision;
     public bool Invincible;
@@ -59,6 +61,7 @@ public class PlayerController : MonoBehaviour {
     private Sprite specialPoseGFX;
     public Direction facingDir;
     public Bounds whiffBox;
+    public bool hasBeenHit = false;
 
 	void Start ()
     {
@@ -365,7 +368,7 @@ public class PlayerController : MonoBehaviour {
             bullet.HitTarget();
             energy.Recover(100);
         }
-        else if (Invincible == false && Locked == false)
+        else if (Invincible == false && Locked == false && hasBeenHit == false)
         {
             if (animator.GetBool("DodgeBurst") == false)
             {
@@ -377,6 +380,8 @@ public class PlayerController : MonoBehaviour {
                     KnockbackHeading = bullet.Heading;
                     KnockbackFrames = bullet.Weight;
                     energy.ChangeMultiplier(-99999);
+                    source.PlayOneShot(hitSFX);
+                    hasBeenHit = true;
                 }
             }
             else
@@ -384,9 +389,8 @@ public class PlayerController : MonoBehaviour {
                 bullet.HitTarget();
                 energy.Recover(4 * energy.CurrentMultiplierLevel + 1);
                 energy.ChangeMultiplier(1);
-                source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_CursorUpSFX));
-                GFXHelpers.FlashEffect(renderer, 10);
-                InvulnTime += 30;
+                source.PlayOneShot(regainSFX);
+                StartHitFlash();
             }
         }
     }
@@ -397,7 +401,7 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     void Hit(CommonEnemyController enemy)
     {
-        if (Invincible == false && Locked == false && animator.GetBool("Dead") == false)
+        if (Invincible == false && Locked == false && animator.GetBool("Dead") == false && hasBeenHit == false)
         {
             if (animator.GetBool("DodgeBurst") == false && enemy.CollideDmg > 0)
             {
@@ -408,6 +412,8 @@ public class PlayerController : MonoBehaviour {
                     KnockbackHeading = enemy.Heading;
                     KnockbackFrames = enemy.Weight;
                     energy.ChangeMultiplier(-99999);
+                    source.PlayOneShot(hitSFX);
+                    hasBeenHit = true;
                 }
             }
             else
@@ -421,9 +427,8 @@ public class PlayerController : MonoBehaviour {
                 {
                     energy.Recover(4 * energy.CurrentMultiplierLevel + 1);
                     energy.ChangeMultiplier(1);
-                    source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_CursorUpSFX));
-                    GFXHelpers.FlashEffect(renderer, 10);
-                    InvulnTime += 30;
+                    source.PlayOneShot(regainSFX);
+                    StartHitFlash();
                 }
             }
         }
@@ -434,12 +439,15 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     void Hit(BoomEffect boom)
     {
-        if (Invincible == false && Locked == false && boom.owner != gameObject && animator.GetBool("Dead") == false)
+        if (Invincible == false && Locked == false && boom.owner != gameObject && animator.GetBool("Dead") == false && hasBeenHit == false)
         {
             if (animator.GetBool("DodgeBurst") == false && boom.Collideable == true && InvulnTime < 1)
             {
                 animator.SetTrigger("Hit");
                 energy.CurrentEnergy = energy.CurrentEnergy - boom.Damage;
+                energy.ChangeMultiplier(-99999);
+                source.PlayOneShot(hitSFX);
+                hasBeenHit = true;
                 if (boom.collider.bounds.center.y > collider.bounds.center.y)
                 {
                     KnockbackHeading = Vector2.down * boom.PushbackStrength;
@@ -487,6 +495,7 @@ public class PlayerController : MonoBehaviour {
     {
         world.GameStateManager.RespawnPlayer();
         animator.ResetTrigger("Hit");
+        hasBeenHit = false;
     }
 
     /// <summary>
@@ -511,5 +520,11 @@ public class PlayerController : MonoBehaviour {
             animator.SetBool("Braking", true);
         }
 
+    }
+
+    public void StartHitFlash ()
+    {
+        StartCoroutine(GFXHelpers.FlashEffect(renderer, 15));
+        InvulnTime += 30;
     }
 }
