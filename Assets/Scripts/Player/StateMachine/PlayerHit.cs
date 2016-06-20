@@ -11,6 +11,15 @@ public class PlayerHit : StateMachineBehaviour {
         animator.SetBool("DodgeBurst", false);
     }
 
+    public override void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if (controller.KnockbackFrames > 0)
+        {
+            ExpensiveAccurateCollision.CollideWithScenery(animator, controller.world.activeRoom.collision.allCollision, controller.KnockbackHeading, controller.collider);
+            controller.KnockbackFrames--;
+        }
+    }
+
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         controller.hasBeenHit = false;

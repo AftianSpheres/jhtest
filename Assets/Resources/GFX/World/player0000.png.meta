@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: f92fdf3e3ff6d5149840e06447e066e1
-timeCreated: 1466309201
+timeCreated: 1466367190
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -53,6 +53,7 @@ TextureImporter:
     21300092: player0000_hitR
     21300094: player0000_hitU
     21300096: player0000_hitL
+    21300098: player0000_shadow
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -634,6 +635,17 @@ TextureImporter:
         y: 189
         width: 16
         height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: player0000_shadow
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 173
+        width: 10
+        height: 6
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}

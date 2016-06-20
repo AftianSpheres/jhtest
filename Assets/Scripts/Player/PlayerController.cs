@@ -62,6 +62,8 @@ public class PlayerController : MonoBehaviour {
     public Direction facingDir;
     public Bounds whiffBox;
     public bool hasBeenHit = false;
+    public GameObject shadow;
+    public bool isNeutral = true;
 
 	void Start ()
     {
@@ -72,6 +74,7 @@ public class PlayerController : MonoBehaviour {
     void Update ()
     {
 #if (DEVELOPMENT_BUILD || UNITY_EDITOR)
+        #region DEBUGTRASH
         if (Input.GetKeyDown(KeyCode.Backslash))
         {
             if (Invincible == true)
@@ -128,6 +131,7 @@ public class PlayerController : MonoBehaviour {
         {
             Debug.Log("reserved function");
         }
+        #endregion
 #endif
         uint chkVal;
         if (world.activeRoom != null && (lastRoom != world.activeRoom || world.activeRoom.BigRoomCellSize.x > 0 || world.activeRoom.BigRoomCellSize.y > 0))
@@ -157,6 +161,7 @@ public class PlayerController : MonoBehaviour {
             if (Locked == false)
             {
                 facingDir = (Direction)animator.GetInteger("FacingDir");
+                isNeutral = DodgeAllowedStates.Contains(animator.GetCurrentAnimatorStateInfo(0).fullPathHash);
                 HandleInputs();
                 if (DontWarp == true)
                 {
@@ -227,7 +232,7 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     void HandleInputs()
     {
-        if (DodgeAllowedStates.Contains(animator.GetCurrentAnimatorStateInfo(0).fullPathHash))
+        if (isNeutral == true)
         {
             DiscardDodgeInputs = false;
             if (animator.GetBool("DodgeBurst") == true)
