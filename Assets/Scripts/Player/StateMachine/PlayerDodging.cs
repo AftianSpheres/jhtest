@@ -43,9 +43,9 @@ public class PlayerDodging : StateMachineBehaviour
         Vector3 PosMod = new Vector3(0, 0, 0);
         if (FrameCtr >= basicDodgeFrameLength + dodgeBonus)
         {
-            animator.SetBool("DodgeBurst", false);
+            animator.SetBool(PlayerAnimatorHashes.triggerDodgeBurst, false);
         }
-        else if (animator.GetBool("DodgeBurst") == true && (FrameCtr % 2 == 0 || FrameCtr * 2 < basicDodgeFrameLength + dodgeBonus))
+        else if (animator.GetBool(PlayerAnimatorHashes.triggerDodgeBurst) == true && (FrameCtr % 2 == 0 || FrameCtr * 2 < basicDodgeFrameLength + dodgeBonus))
         {
             if (animator.GetCurrentAnimatorStateInfo(0).IsTag("FaceDown"))
             {
@@ -75,7 +75,7 @@ public class PlayerDodging : StateMachineBehaviour
         }
         else if (FrameCtr >= basicDodgeFrameLength)
         {
-            animator.SetBool("DodgeBurst", false); // you can cancel dodges early if you have the dodge booster, so you're never forced into a longer animation because you're holding it
+            animator.SetBool(PlayerAnimatorHashes.triggerDodgeBurst, false); // you can cancel dodges early if you have the dodge booster, so you're never forced into a longer animation because you're holding it
         }
         if (moveVertically == true)
         {

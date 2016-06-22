@@ -33,7 +33,7 @@ public class GameStateManager : Manager<GameStateManager>
     public uint DeathCounter = 0;
     public uint PlayerLevel = 0;
     public int[] areaKeys = new int[HammerConstants.NumberOfAreas];
-    public int levelLoadPlayerAnimHash = PlayerStateHashes.PlayerStand_D;
+    public int levelLoadPlayerAnimHash = PlayerAnimatorHashes.PlayerStand_D;
     public float levelLoadPlayerAnimTime = 0f;
     public uint[] respawnRoomCoords = new uint[2];
     public int respawnLevelIndex = 0;
@@ -77,7 +77,7 @@ public class GameStateManager : Manager<GameStateManager>
         if (SceneManager.GetActiveScene().buildIndex != respawnLevelIndex)
         {
             world = default(WorldController);
-            levelLoadPlayerAnimHash = PlayerStateHashes.Dead;
+            levelLoadPlayerAnimHash = PlayerAnimatorHashes.Dead;
             levelLoadPlayerAnimTime = 1.0f;
             SceneManager.LoadScene(respawnLevelIndex, LoadSceneMode.Single);
         }
@@ -101,7 +101,7 @@ public class GameStateManager : Manager<GameStateManager>
         }
         world.player.transform.position = respawnPosition;
         world.player.energy.Recover(100);
-        world.player.animator.Play(PlayerStateHashes.PlayerStand_D);
+        world.player.animator.Play(PlayerAnimatorHashes.PlayerStand_D);
         world.player.animator.SetBool("Dead", false);
     }
 }

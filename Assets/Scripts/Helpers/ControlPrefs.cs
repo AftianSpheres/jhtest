@@ -19,13 +19,14 @@ public struct ControlPrefs
         "joy1-7",
         "joy1-8",
         "joy1-9",
-        "joy1-10"
+        "joy1-10",
     };
 
     public ControlModeType setControlMode;
     public float MouseSensitivity;
     public bool MouseInvertX;
     public bool MouseInvertY;
+    public uint GamepadIndex;
     public KeyCode KBMUp;
     public KeyCode KBMDown;
     public KeyCode KBMLeft;
@@ -97,6 +98,7 @@ public struct ControlPrefs
         MouseSensitivity = 1.0f;
         MouseInvertX = false;
         MouseInvertY = false;
+        GamepadIndex = 0;
         KBMUp = KeyCode.W;
         KBMDown = KeyCode.S;
         KBMLeft = KeyCode.A;

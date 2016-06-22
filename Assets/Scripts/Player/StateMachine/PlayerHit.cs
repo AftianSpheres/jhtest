@@ -8,7 +8,7 @@ public class PlayerHit : StateMachineBehaviour {
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         controller = animator.gameObject.GetComponent<PlayerController>();
-        animator.SetBool("DodgeBurst", false);
+        animator.SetBool(PlayerAnimatorHashes.triggerDodgeBurst, false);
     }
 
     public override void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

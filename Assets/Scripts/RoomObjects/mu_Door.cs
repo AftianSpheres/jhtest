@@ -134,7 +134,7 @@ public class mu_Door : MonoBehaviour
                                 case Direction.Down:
                                     if (boundsToOpen.Contains(new Vector3(player.collider.bounds.min.x, player.collider.bounds.max.y, player.collider.bounds.center.z)) == true
                                     && boundsToOpen.Contains(new Vector3(player.collider.bounds.max.x, player.collider.bounds.max.y, player.collider.bounds.center.z)) == true
-                                    && player.animator.GetCurrentAnimatorStateInfo(0).fullPathHash == PlayerStateHashes.PlayerWalk_U)
+                                    && player.animator.GetCurrentAnimatorStateInfo(0).fullPathHash == PlayerAnimatorHashes.PlayerWalk_U)
                                     {
                                         counter++;
                                     }
@@ -146,7 +146,7 @@ public class mu_Door : MonoBehaviour
                                 case Direction.Up:
                                     if (boundsToOpen.Contains(new Vector3(player.collider.bounds.min.x, player.collider.bounds.min.y, player.collider.bounds.center.z)) == true
                                     && boundsToOpen.Contains(new Vector3(player.collider.bounds.max.x, player.collider.bounds.min.y, player.collider.bounds.center.z)) == true
-                                    && player.animator.GetCurrentAnimatorStateInfo(0).fullPathHash == PlayerStateHashes.PlayerWalk_D)
+                                    && player.animator.GetCurrentAnimatorStateInfo(0).fullPathHash == PlayerAnimatorHashes.PlayerWalk_D)
                                     {
                                         counter++;
                                     }
@@ -158,7 +158,7 @@ public class mu_Door : MonoBehaviour
                                 case Direction.Left:
                                     if (boundsToOpen.Contains(new Vector3(player.collider.bounds.max.x, player.collider.bounds.min.y, player.collider.bounds.center.z)) == true
                                     && boundsToOpen.Contains(new Vector3(player.collider.bounds.max.x, player.collider.bounds.max.y, player.collider.bounds.center.z)) == true
-                                    && player.animator.GetCurrentAnimatorStateInfo(0).fullPathHash == PlayerStateHashes.PlayerWalk_R)
+                                    && player.animator.GetCurrentAnimatorStateInfo(0).fullPathHash == PlayerAnimatorHashes.PlayerWalk_R)
                                     {
                                         counter++;
                                     }
@@ -170,7 +170,7 @@ public class mu_Door : MonoBehaviour
                                 case Direction.Right:
                                     if (boundsToOpen.Contains(new Vector3(player.collider.bounds.min.x, player.collider.bounds.min.y, player.collider.bounds.center.z)) == true
                                     && boundsToOpen.Contains(new Vector3(player.collider.bounds.min.x, player.collider.bounds.max.y, player.collider.bounds.center.z)) == true
-                                    && player.animator.GetCurrentAnimatorStateInfo(0).fullPathHash == PlayerStateHashes.PlayerWalk_L)
+                                    && player.animator.GetCurrentAnimatorStateInfo(0).fullPathHash == PlayerAnimatorHashes.PlayerWalk_L)
                                     {
                                         counter++;
                                     }
@@ -187,7 +187,7 @@ public class mu_Door : MonoBehaviour
                                 case Direction.Down:
                                     if (boundsToOpen.Contains(new Vector3(player.collider.bounds.min.x, player.collider.bounds.max.y, player.collider.bounds.center.z)) == true
                                     && boundsToOpen.Contains(new Vector3(player.collider.bounds.max.x, player.collider.bounds.max.y, player.collider.bounds.center.z)) == true
-                                    && player.animator.GetCurrentAnimatorStateInfo(0).fullPathHash == PlayerStateHashes.PlayerWalk_U)
+                                    && player.animator.GetCurrentAnimatorStateInfo(0).fullPathHash == PlayerAnimatorHashes.PlayerWalk_U)
                                     {
                                         if (room.world.GameStateManager.areaKeys[(int)room.world.Area] > 0)
                                         {
@@ -200,7 +200,7 @@ public class mu_Door : MonoBehaviour
                                 case Direction.Up:
                                     if (boundsToOpen.Contains(new Vector3(player.collider.bounds.min.x, player.collider.bounds.min.y, player.collider.bounds.center.z)) == true
                                     && boundsToOpen.Contains(new Vector3(player.collider.bounds.max.x, player.collider.bounds.min.y, player.collider.bounds.center.z)) == true
-                                    && player.animator.GetCurrentAnimatorStateInfo(0).fullPathHash == PlayerStateHashes.PlayerWalk_D)
+                                    && player.animator.GetCurrentAnimatorStateInfo(0).fullPathHash == PlayerAnimatorHashes.PlayerWalk_D)
                                     {
                                         if (room.world.GameStateManager.areaKeys[(int)room.world.Area] > 0)
                                         {
@@ -213,7 +213,7 @@ public class mu_Door : MonoBehaviour
                                 case Direction.Left:
                                     if (boundsToOpen.Contains(new Vector3(player.collider.bounds.max.x, player.collider.bounds.min.y, player.collider.bounds.center.z)) == true
                                     && boundsToOpen.Contains(new Vector3(player.collider.bounds.max.x, player.collider.bounds.max.y, player.collider.bounds.center.z)) == true
-                                    && player.animator.GetCurrentAnimatorStateInfo(0).fullPathHash == PlayerStateHashes.PlayerWalk_R)
+                                    && player.animator.GetCurrentAnimatorStateInfo(0).fullPathHash == PlayerAnimatorHashes.PlayerWalk_R)
                                     {
                                         if (room.world.GameStateManager.areaKeys[(int)room.world.Area] > 0)
                                         {
@@ -226,7 +226,7 @@ public class mu_Door : MonoBehaviour
                                 case Direction.Right:
                                     if (boundsToOpen.Contains(new Vector3(player.collider.bounds.min.x, player.collider.bounds.min.y, player.collider.bounds.center.z)) == true
                                     && boundsToOpen.Contains(new Vector3(player.collider.bounds.min.x, player.collider.bounds.max.y, player.collider.bounds.center.z)) == true
-                                    && player.animator.GetCurrentAnimatorStateInfo(0).fullPathHash == PlayerStateHashes.PlayerWalk_L)
+                                    && player.animator.GetCurrentAnimatorStateInfo(0).fullPathHash == PlayerAnimatorHashes.PlayerWalk_L)
                                     {
                                         if (room.world.GameStateManager.areaKeys[(int)room.world.Area] > 0)
                                         {
@@ -293,19 +293,19 @@ public class mu_Door : MonoBehaviour
         switch (direction)
         {
             case Direction.Down:
-                player.animator.Play(PlayerStateHashes.CutsceneWalk_U);
+                player.animator.Play(PlayerAnimatorHashes.CutsceneWalk_U);
                 PosMod = Vector3.up;
                 break;
             case Direction.Up:
-                player.animator.Play(PlayerStateHashes.CutsceneWalk_D);
+                player.animator.Play(PlayerAnimatorHashes.CutsceneWalk_D);
                 PosMod = Vector3.down;
                 break;
             case Direction.Left:
-                player.animator.Play(PlayerStateHashes.CutsceneWalk_R);
+                player.animator.Play(PlayerAnimatorHashes.CutsceneWalk_R);
                 PosMod = Vector3.right;
                 break;
             case Direction.Right:
-                player.animator.Play(PlayerStateHashes.CutsceneWalk_L);
+                player.animator.Play(PlayerAnimatorHashes.CutsceneWalk_L);
                 PosMod = Vector3.left;
                 break;
         }
@@ -322,16 +322,16 @@ public class mu_Door : MonoBehaviour
         switch (direction)
         {
             case Direction.Down:
-                player.animator.Play(PlayerStateHashes.PlayerStand_U);
+                player.animator.Play(PlayerAnimatorHashes.PlayerStand_U);
                 break;
             case Direction.Up:
-                player.animator.Play(PlayerStateHashes.PlayerStand_D);
+                player.animator.Play(PlayerAnimatorHashes.PlayerStand_D);
                 break;
             case Direction.Left:
-                player.animator.Play(PlayerStateHashes.PlayerStand_R);
+                player.animator.Play(PlayerAnimatorHashes.PlayerStand_R);
                 break;
             case Direction.Right:
-                player.animator.Play(PlayerStateHashes.PlayerStand_L);
+                player.animator.Play(PlayerAnimatorHashes.PlayerStand_L);
                 break;
         }
         transitionInProgress = false;

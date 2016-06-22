@@ -6,7 +6,7 @@ using System.Collections.Generic;
 /// <summary>
 /// Static class containing hashes for player animator states.
 /// </summary>
-public static class PlayerStateHashes
+public static class PlayerAnimatorHashes
 {
     public static int PlayerStand_D = Animator.StringToHash("Base Layer.Neutral.Standing.PlayerStand_D");
     public static int PlayerStand_U = Animator.StringToHash("Base Layer.Neutral.Standing.PlayerStand_U");
@@ -21,6 +21,17 @@ public static class PlayerStateHashes
     public static int CutsceneWalk_L = Animator.StringToHash("Base Layer.Neutral.Walking.CutsceneWalk_L");
     public static int CutsceneWalk_R = Animator.StringToHash("Base Layer.Neutral.Walking.CutsceneWalk_R");
     public static int Dead = Animator.StringToHash("Base Layer.Dead");
+    public static int paramDead = Animator.StringToHash("Dead");
+    public static int paramFacingDir = Animator.StringToHash("FacingDir");
+    public static int paramHeldFire1 = Animator.StringToHash("HeldFire1");
+    public static int paramHeldFire2 = Animator.StringToHash("HeldFire2");
+    public static int paramHeldRight = Animator.StringToHash("HeldRight");
+    public static int paramHeldLeft = Animator.StringToHash("HeldLeft");
+    public static int paramHeldDown = Animator.StringToHash("HeldDown");
+    public static int paramHeldUp = Animator.StringToHash("HeldUp");
+    public static int triggerDie = Animator.StringToHash("Die");
+    public static int triggerDodgeBurst = Animator.StringToHash("DodgeBurst");
+
 
 }
 
@@ -30,8 +41,8 @@ public static class PlayerStateHashes
 /// </summary>
 [RequireComponent(typeof(PauseableSprite))]
 public class PlayerController : MonoBehaviour {
-    private static int[] DodgeAllowedStates = { PlayerStateHashes.PlayerStand_D, PlayerStateHashes.PlayerStand_U, PlayerStateHashes.PlayerStand_L, PlayerStateHashes.PlayerStand_R,
-    PlayerStateHashes.PlayerWalk_D, PlayerStateHashes.PlayerWalk_U, PlayerStateHashes.PlayerWalk_L, PlayerStateHashes.PlayerWalk_R };
+    private static int[] DodgeAllowedStates = { PlayerAnimatorHashes.PlayerStand_D, PlayerAnimatorHashes.PlayerStand_U, PlayerAnimatorHashes.PlayerStand_L, PlayerAnimatorHashes.PlayerStand_R,
+    PlayerAnimatorHashes.PlayerWalk_D, PlayerAnimatorHashes.PlayerWalk_U, PlayerAnimatorHashes.PlayerWalk_L, PlayerAnimatorHashes.PlayerWalk_R };
 
     public WorldController world;
     new public BoxCollider2D collider;
@@ -152,7 +163,7 @@ public class PlayerController : MonoBehaviour {
             CurrentWorldCoords[1] = world.activeRoom.xPosition + chkVal;
             CurrentRoomCoords[1] = chkVal;
         }
-        if (energy.CurrentEnergy < 1 && animator.GetBool("Dead") == false)
+        if (energy.CurrentEnergy < 1 && animator.GetBool(PlayerAnimatorHashes.paramDead) == false)
         {
             Die();
         }
@@ -160,7 +171,7 @@ public class PlayerController : MonoBehaviour {
         {
             if (Locked == false)
             {
-                facingDir = (Direction)animator.GetInteger("FacingDir");
+                facingDir = (Direction)animator.GetInteger(PlayerAnimatorHashes.paramFacingDir);
                 isNeutral = DodgeAllowedStates.Contains(animator.GetCurrentAnimatorStateInfo(0).fullPathHash);
                 HandleInputs();
                 if (DontWarp == true)
@@ -170,12 +181,12 @@ public class PlayerController : MonoBehaviour {
             }
             else
             {
-                animator.SetBool("HeldFire1", false);
-                animator.SetBool("HeldFire2", false);
-                animator.SetBool("HeldRight", false);
-                animator.SetBool("HeldLeft", false);
-                animator.SetBool("HeldDown", false);
-                animator.SetBool("HeldUp", false);
+                animator.SetBool(PlayerAnimatorHashes.paramHeldFire1, false);
+                animator.SetBool(PlayerAnimatorHashes.paramHeldFire2, false);
+                animator.SetBool(PlayerAnimatorHashes.paramHeldRight, false);
+                animator.SetBool(PlayerAnimatorHashes.paramHeldLeft, false);
+                animator.SetBool(PlayerAnimatorHashes.paramHeldDown, false);
+                animator.SetBool(PlayerAnimatorHashes.paramHeldUp, false);
             }
         }
         if (InvulnTime > 0)
@@ -223,8 +234,8 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     void Die ()
     {
-        animator.SetBool("Dead", true);
-        animator.SetTrigger("Die");
+        animator.SetBool(PlayerAnimatorHashes.paramDead, true);
+        animator.SetTrigger(PlayerAnimatorHashes.triggerDie);
     }
 
     /// <summary>
@@ -235,9 +246,9 @@ public class PlayerController : MonoBehaviour {
         if (isNeutral == true)
         {
             DiscardDodgeInputs = false;
-            if (animator.GetBool("DodgeBurst") == true)
+            if (animator.GetBool(PlayerAnimatorHashes.triggerDodgeBurst) == true)
             {
-                animator.SetBool("DodgeBurst", false);
+                animator.SetBool(PlayerAnimatorHashes.triggerDodgeBurst, false);
             }
         }
         else
@@ -375,7 +386,7 @@ public class PlayerController : MonoBehaviour {
         }
         else if (Invincible == false && Locked == false && hasBeenHit == false)
         {
-            if (animator.GetBool("DodgeBurst") == false)
+            if (animator.GetBool(PlayerAnimatorHashes.triggerDodgeBurst) == false)
             {
                 if (InvulnTime < 1)
                 {
@@ -408,7 +419,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (Invincible == false && Locked == false && animator.GetBool("Dead") == false && hasBeenHit == false)
         {
-            if (animator.GetBool("DodgeBurst") == false && enemy.CollideDmg > 0)
+            if (animator.GetBool(PlayerAnimatorHashes.triggerDodgeBurst) == false && enemy.CollideDmg > 0)
             {
                 if (InvulnTime < 1)
                 {
@@ -446,7 +457,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (Invincible == false && Locked == false && boom.owner != gameObject && animator.GetBool("Dead") == false && hasBeenHit == false)
         {
-            if (animator.GetBool("DodgeBurst") == false && boom.Collideable == true && InvulnTime < 1)
+            if (animator.GetBool(PlayerAnimatorHashes.triggerDodgeBurst) == false && boom.Collideable == true && InvulnTime < 1)
             {
                 animator.SetTrigger("Hit");
                 energy.CurrentEnergy = energy.CurrentEnergy - boom.Damage;
@@ -508,7 +519,7 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     public void SetAnimatorDodgeBurst ()
     {
-        animator.SetBool("DodgeBurst", true);
+        animator.SetBool(PlayerAnimatorHashes.triggerDodgeBurst, true);
     }
 
     /// <summary>

@@ -19,7 +19,7 @@ public class mu_Warp : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-	    if (bounds.Contains(room.world.player.collider.bounds.center) == true && room.world.player.animator.GetBool("DodgeBurst") == false)
+	    if (bounds.Contains(room.world.player.collider.bounds.center) == true && room.world.player.animator.GetBool(PlayerAnimatorHashes.triggerDodgeBurst) == false)
         {
             if (Used == false)
             {
