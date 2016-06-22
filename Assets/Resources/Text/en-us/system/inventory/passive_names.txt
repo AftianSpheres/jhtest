@@ -1,13 +1,13 @@
 Memory Fragmant
 Glass King's Brand
 Old Glass Key
-DashThingyTemp
-DodgeBoostTemp
-DodgeFireTemp
-SecretSensorTemp
-WaveriderTemp
-FlightTemp
-TabooRegeneratorTemp
-ForestStoneTemp
-ValleyStoneTemp
-MarinaStoneTemp
+Messenger's Anklet
+Centrifugal Anklet
+Febrile Lump
+Seeing Bell
+Sentinel's Mask
+Winged Charm
+Spirit Anchor
+Restless Shard
+Lifeless Shard
+Timeless Shard

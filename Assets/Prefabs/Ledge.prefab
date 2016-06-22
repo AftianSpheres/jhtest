@@ -1,29 +1,29 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &138442
+--- !u!1 &192280
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 488330}
-  - 114: {fileID: 11481642}
-  - 82: {fileID: 8287938}
-  - 114: {fileID: 11411334}
+  - 4: {fileID: 406564}
+  - 114: {fileID: 11455026}
+  - 82: {fileID: 8257184}
+  - 114: {fileID: 11444558}
   m_Layer: 0
-  m_Name: Warp
+  m_Name: Ledge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &488330
+--- !u!4 &406564
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138442}
+  m_GameObject: {fileID: 192280}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,19 +31,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!82 &8287938
+--- !u!82 &8257184
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138442}
+  m_GameObject: {fileID: 192280}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 0.5
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -105,38 +105,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &11411334
+--- !u!114 &11444558
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138442}
+  m_GameObject: {fileID: 192280}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82d2f371a2ef5f34fbe774abfc0c6939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isMusic: 0
-  source: {fileID: 8287938}
---- !u!114 &11481642
+  source: {fileID: 8257184}
+--- !u!114 &11455026
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138442}
+  m_GameObject: {fileID: 192280}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e50c9655dcc7aac41a437dedbe0218df, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a3d86eee50ca3e44844319b406dab85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   room: {fileID: 0}
-  DestinationRoom: {fileID: 0}
-  clip: {fileID: 8300000, guid: d88bfc6a0d312f4479f60632afc9ad67, type: 3}
-  source: {fileID: 8287938}
   bounds:
-    m_Center: {x: 216, y: -16, z: 250}
-    m_Extent: {x: 6, y: 6, z: 500}
-  DestinationEntryPoint: 0
+    m_Center: {x: 464, y: 256, z: 0}
+    m_Extent: {x: 14, y: 9, z: 500}
+  direction: 0
+  dropSFX: {fileID: 8300000, guid: a4fc30e56ea08ab4b827c41381ea7981, type: 3}
+  source: {fileID: 8257184}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -146,5 +145,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 138442}
+  m_RootGameObject: {fileID: 192280}
   m_IsPrefabParent: 1

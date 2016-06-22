@@ -13,6 +13,7 @@ GameObject:
   - 65: {fileID: 6520934}
   - 82: {fileID: 8232198}
   - 114: {fileID: 11479780}
+  - 114: {fileID: 11492034}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -29,6 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 80, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -140,6 +142,7 @@ MonoBehaviour:
   clip: {fileID: 8300000, guid: 04c02059b63f840449d89754cea310ac, type: 3}
   source: {fileID: 8232198}
   condition: 0
+  postUnlockCondition: 0
   specialCondition: {fileID: 0}
   direction: 3
   open: 0
@@ -147,6 +150,7 @@ MonoBehaviour:
   boundsToOpen:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
+  Flag: {fileID: 0}
 --- !u!114 &11479780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -158,6 +162,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 907ea04a7b9882346a24097e4ea653b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11492034
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82d2f371a2ef5f34fbe774abfc0c6939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMusic: 0
+  source: {fileID: 8232198}
 --- !u!212 &21201718
 SpriteRenderer:
   m_ObjectHideFlags: 1

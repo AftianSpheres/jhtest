@@ -18,6 +18,7 @@ GameObject:
   - 82: {fileID: 8211702}
   - 114: {fileID: 11417496}
   - 114: {fileID: 11444180}
+  - 114: {fileID: 11467360}
   m_Layer: 0
   m_Name: 0_Jelly
   m_TagString: Enemy
@@ -34,6 +35,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 30, y: 1, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -210,6 +212,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 907ea04a7b9882346a24097e4ea653b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11467360
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82d2f371a2ef5f34fbe774abfc0c6939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMusic: 0
+  source: {fileID: 8211702}
 --- !u!114 &11499936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -228,8 +243,6 @@ MonoBehaviour:
   HitSFX: {fileID: 8300000, guid: d88bfc6a0d312f4479f60632afc9ad67, type: 3}
   source: {fileID: 8211702}
   renderer: {fileID: 21291264}
-  defaultMat: {fileID: 2100000, guid: 5527276efeeacba40a1bff2dd0a0b32c, type: 2}
-  flashMat: {fileID: 2100000, guid: abbc8e588022c394d9861da9076b7438, type: 2}
   Weight: 3
   Heading: {x: 0, y: 0, z: 0}
   collider: {fileID: 6146088}
@@ -244,6 +257,7 @@ MonoBehaviour:
   Vulnerable: 1
   Collideable: 1
   flicker: {fileID: 11409086}
+  inMovingAttack: 0
 --- !u!212 &21291264
 SpriteRenderer:
   m_ObjectHideFlags: 1

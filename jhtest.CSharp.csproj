@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Barker&apos;s Retro Text Printer Free\Scripts\RetroPrinterScriptBasic.cs" />
+    <Compile Include="Assets\Scripts\BitsNBobs\AudioSourceCompanion.cs" />
     <Compile Include="Assets\Scripts\BitsNBobs\ScrollingLayer.cs" />
     <Compile Include="Assets\Scripts\BitsNBobs\SimpleTextLocalizer.cs" />
     <Compile Include="Assets\Scripts\Enemy\0_Jelly\EnemyJelly.cs" />

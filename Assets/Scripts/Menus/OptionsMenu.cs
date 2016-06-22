@@ -29,14 +29,16 @@ public class OptionsMenu : MonoBehaviour
     public AudioSource source;
     public bool suspended;
     public GameObject settingsConfirmationPrompt;
+    public TextMesh musicVolumeValueText;
+    public TextMesh sfxVolumeValueText;
     private int ResolutionIndex;
     private static int screenSettingsRevertTime = 600;
     private ConfirmCancelDefaultSelection confirmCancelDefaults;
     private OptionsMenuSelections selection;
     private int screenSettingsTimer;
     private int ctr;
-    private float musicVolumeBuffer;
-    private float sfxVolumeBuffer;
+    private float musicVolumeBuffer = float.MaxValue;
+    private float sfxVolumeBuffer = float.MaxValue;
     private bool ready;
     private bool fullscreenBoolBuffer;
     private WindowedResolutionMultiplier windowedResBuffer;
@@ -45,6 +47,7 @@ public class OptionsMenu : MonoBehaviour
     private Resolution lastFullscreenRes;
     private HardwareInterfaceManager hardwareInterfaceManager;
     private PlayerSettingsManager playerSettingsManager;
+    private static int delayBetweenCursorMoves = 12;
 
 	// Use this for initialization
 	void Start ()
@@ -88,6 +91,16 @@ public class OptionsMenu : MonoBehaviour
             {
                 ctr--;
             }
+            if (musicVolumeBuffer != playerSettingsManager.MusicVolume)
+            {
+                musicVolumeValueText.text = Mathf.RoundToInt(playerSettingsManager.MusicVolume * 10).ToString();
+                musicVolumeBuffer = playerSettingsManager.MusicVolume;
+            }
+            if (sfxVolumeBuffer != playerSettingsManager.SFXVolume)
+            {
+                sfxVolumeValueText.text = Mathf.RoundToInt(playerSettingsManager.SFXVolume * 10).ToString();
+                sfxVolumeBuffer = playerSettingsManager.SFXVolume;
+            }
             switch (selection)
             {
                 case OptionsMenuSelections.FullscreenWindowed:
@@ -103,7 +116,7 @@ public class OptionsMenu : MonoBehaviour
                     if (hardwareInterfaceManager.Down.Pressed == true && ctr <= 0)
                     {
                         selection = OptionsMenuSelections.Resolution;
-                        ctr = 8;
+                        ctr = delayBetweenCursorMoves;
                         source.PlayOneShot(cursorDown);
                     }
                     else if (hardwareInterfaceManager.Left.BtnDown == true || hardwareInterfaceManager.Right.BtnDown == true)
@@ -124,13 +137,13 @@ public class OptionsMenu : MonoBehaviour
                     if (hardwareInterfaceManager.Down.Pressed == true && ctr <= 0)
                     {
                         selection = OptionsMenuSelections.ControlConfig;
-                        ctr = 8;
+                        ctr = delayBetweenCursorMoves;
                         source.PlayOneShot(cursorDown);
                     }
                     if (hardwareInterfaceManager.Up.Pressed == true && ctr <= 0)
                     {
                         selection = OptionsMenuSelections.FullscreenWindowed;
-                        ctr = 8;
+                        ctr = delayBetweenCursorMoves;
                         source.PlayOneShot(cursorUp);
                     }
                     else if (ctr <= 0)
@@ -143,13 +156,13 @@ public class OptionsMenu : MonoBehaviour
                     if (hardwareInterfaceManager.Down.Pressed == true && ctr <= 0)
                     {
                         selection = OptionsMenuSelections.MusicVolume;
-                        ctr = 8;
+                        ctr = delayBetweenCursorMoves;
                         source.PlayOneShot(cursorDown);
                     }
                     if (hardwareInterfaceManager.Up.Pressed == true && ctr <= 0)
                     {
                         selection = OptionsMenuSelections.Resolution;
-                        ctr = 8;
+                        ctr = delayBetweenCursorMoves;
                         source.PlayOneShot(cursorUp);
                     }
                     else if (hardwareInterfaceManager.Confirm.BtnDown == true)
@@ -162,13 +175,13 @@ public class OptionsMenu : MonoBehaviour
                     if (hardwareInterfaceManager.Down.Pressed == true && ctr <= 0)
                     {
                         selection = OptionsMenuSelections.SFXVolume;
-                        ctr = 8;
+                        ctr = delayBetweenCursorMoves;
                         source.PlayOneShot(cursorDown);
                     }
                     if (hardwareInterfaceManager.Up.Pressed == true && ctr <= 0)
                     {
                         selection = OptionsMenuSelections.ControlConfig;
-                        ctr = 8;
+                        ctr = delayBetweenCursorMoves;
                         source.PlayOneShot(cursorUp);
                     }
                     else if (ctr <= 0)
@@ -179,7 +192,7 @@ public class OptionsMenu : MonoBehaviour
                             {
                                 playerSettingsManager.MusicVolume -= 0.1f;
                                 source.PlayOneShot(cursorDown);
-                                ctr = 8;
+                                ctr = delayBetweenCursorMoves;
                             }
                             else
                             {
@@ -192,7 +205,7 @@ public class OptionsMenu : MonoBehaviour
                             {
                                 playerSettingsManager.MusicVolume += 0.1f;
                                 source.PlayOneShot(cursorUp);
-                                ctr = 8;
+                                ctr = delayBetweenCursorMoves;
                             }
                             else
                             {
@@ -206,13 +219,13 @@ public class OptionsMenu : MonoBehaviour
                     if (hardwareInterfaceManager.Down.Pressed == true && ctr <= 0)
                     {
                         selection = OptionsMenuSelections.ConfirmCancelDefaults;
-                        ctr = 8;
+                        ctr = delayBetweenCursorMoves;
                         source.PlayOneShot(cursorDown);
                     }
                     if (hardwareInterfaceManager.Up.Pressed == true && ctr <= 0)
                     {
                         selection = OptionsMenuSelections.MusicVolume;
-                        ctr = 8;
+                        ctr = delayBetweenCursorMoves;
                         source.PlayOneShot(cursorUp);
                     }
                     else if (ctr <= 0)
@@ -223,7 +236,7 @@ public class OptionsMenu : MonoBehaviour
                             {
                                 playerSettingsManager.SFXVolume -= 0.1f;
                                 source.PlayOneShot(cursorDown);
-                                ctr = 8;
+                                ctr = delayBetweenCursorMoves;
                             }
                             else
                             {
@@ -236,7 +249,7 @@ public class OptionsMenu : MonoBehaviour
                             {
                                 playerSettingsManager.SFXVolume += 0.1f;
                                 source.PlayOneShot(cursorUp);
-                                ctr = 8;
+                                ctr = delayBetweenCursorMoves;
                             }
                             else
                             {
@@ -283,65 +296,74 @@ public class OptionsMenu : MonoBehaviour
 
     void _in_ConfirmCancelDefaults ()
     {
-        switch (confirmCancelDefaults)
+        if (hardwareInterfaceManager.Up.BtnDown == true)
         {
-            case ConfirmCancelDefaultSelection.Confirm:
-                cursor.transform.localPosition = mainCursorCoords[6];
-                if (hardwareInterfaceManager.Right.BtnDown == true)
-                {
-                    confirmCancelDefaults = ConfirmCancelDefaultSelection.Cancel;
-                    source.PlayOneShot(cursorUp);
-                }
-                else if (hardwareInterfaceManager.Confirm.BtnDown == true)
-                {
-                    source.PlayOneShot(selectionOK);
-                    ready = false;
-                    gameObject.SetActive(false);
-                }
-                break;
-            case ConfirmCancelDefaultSelection.Cancel:
-                cursor.transform.localPosition = mainCursorCoords[7];
-                if (hardwareInterfaceManager.Right.BtnDown == true)
-                {
-                    confirmCancelDefaults = ConfirmCancelDefaultSelection.Defaults;
-                    source.PlayOneShot(cursorUp);
-                }
-                else if (hardwareInterfaceManager.Left.BtnDown == true)
-                {
-                    confirmCancelDefaults = ConfirmCancelDefaultSelection.Confirm;
-                    source.PlayOneShot(cursorDown);
-                }
-                else if (hardwareInterfaceManager.Confirm.BtnDown == true)
-                {
-                    source.PlayOneShot(selectionOK);
-                    hardwareInterfaceManager.windowedRes = windowedResBuffer;
-                    if (fullscreenBoolBuffer == true)
+            selection = OptionsMenuSelections.SFXVolume;
+            ctr = delayBetweenCursorMoves;
+            source.PlayOneShot(cursorUp);
+        }
+        else
+        {
+            switch (confirmCancelDefaults)
+            {
+                case ConfirmCancelDefaultSelection.Confirm:
+                    cursor.transform.localPosition = mainCursorCoords[6];
+                    if (hardwareInterfaceManager.Right.BtnDown == true)
                     {
-                        hardwareInterfaceManager.RefreshFullscreenRes(fullscreenResBuffer);
+                        confirmCancelDefaults = ConfirmCancelDefaultSelection.Cancel;
+                        source.PlayOneShot(cursorUp);
                     }
-                    else
+                    else if (hardwareInterfaceManager.Confirm.BtnDown == true)
                     {
-                        hardwareInterfaceManager.fullscreenRes = fullscreenResBuffer;
-                        hardwareInterfaceManager.RefreshWindow();
+                        source.PlayOneShot(selectionOK);
+                        ready = false;
+                        gameObject.SetActive(false);
                     }
-                    playerSettingsManager.MusicVolume = musicVolumeBuffer;
-                    playerSettingsManager.SFXVolume = sfxVolumeBuffer;
-                    ready = false;
-                    gameObject.SetActive(false);
-                }
-                break;
-            case ConfirmCancelDefaultSelection.Defaults:
-                cursor.transform.localPosition = mainCursorCoords[8];
-                if (hardwareInterfaceManager.Left.BtnDown == true)
-                {
-                    confirmCancelDefaults = ConfirmCancelDefaultSelection.Cancel;
-                    source.PlayOneShot(cursorDown);
-                }
-                else if (hardwareInterfaceManager.Confirm.BtnDown == true)
-                {
-                    source.PlayOneShot(selectionForbidden);
-                }
-                break;
+                    break;
+                case ConfirmCancelDefaultSelection.Cancel:
+                    cursor.transform.localPosition = mainCursorCoords[7];
+                    if (hardwareInterfaceManager.Right.BtnDown == true)
+                    {
+                        confirmCancelDefaults = ConfirmCancelDefaultSelection.Defaults;
+                        source.PlayOneShot(cursorUp);
+                    }
+                    else if (hardwareInterfaceManager.Left.BtnDown == true)
+                    {
+                        confirmCancelDefaults = ConfirmCancelDefaultSelection.Confirm;
+                        source.PlayOneShot(cursorDown);
+                    }
+                    else if (hardwareInterfaceManager.Confirm.BtnDown == true)
+                    {
+                        source.PlayOneShot(selectionOK);
+                        hardwareInterfaceManager.windowedRes = windowedResBuffer;
+                        if (fullscreenBoolBuffer == true)
+                        {
+                            hardwareInterfaceManager.RefreshFullscreenRes(fullscreenResBuffer);
+                        }
+                        else
+                        {
+                            hardwareInterfaceManager.fullscreenRes = fullscreenResBuffer;
+                            hardwareInterfaceManager.RefreshWindow();
+                        }
+                        playerSettingsManager.MusicVolume = musicVolumeBuffer;
+                        playerSettingsManager.SFXVolume = sfxVolumeBuffer;
+                        ready = false;
+                        gameObject.SetActive(false);
+                    }
+                    break;
+                case ConfirmCancelDefaultSelection.Defaults:
+                    cursor.transform.localPosition = mainCursorCoords[8];
+                    if (hardwareInterfaceManager.Left.BtnDown == true)
+                    {
+                        confirmCancelDefaults = ConfirmCancelDefaultSelection.Cancel;
+                        source.PlayOneShot(cursorDown);
+                    }
+                    else if (hardwareInterfaceManager.Confirm.BtnDown == true)
+                    {
+                        source.PlayOneShot(selectionForbidden);
+                    }
+                    break;
+            }
         }
     }
 
@@ -366,7 +388,7 @@ public class OptionsMenu : MonoBehaviour
                     source.PlayOneShot(selectionOK);
                     hardwareInterfaceManager.windowedRes--;
                     hardwareInterfaceManager.RefreshWindow();
-                    ctr = 8;
+                    ctr = delayBetweenCursorMoves;
                 }
                 else
                 {
@@ -403,7 +425,7 @@ public class OptionsMenu : MonoBehaviour
                     source.PlayOneShot(selectionOK);
                     hardwareInterfaceManager.windowedRes++;
                     hardwareInterfaceManager.RefreshWindow();
-                    ctr = 8;
+                    ctr = delayBetweenCursorMoves;
                 }
                 else
                 {
