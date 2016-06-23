@@ -3116,6 +3116,7 @@ MonoBehaviour:
   settingsConfirmationPrompt: {fileID: 2111787656}
   musicVolumeValueText: {fileID: 420984817}
   sfxVolumeValueText: {fileID: 938409697}
+  countdownValueText: {fileID: 1688074322}
 --- !u!82 &1179583141
 AudioSource:
   m_ObjectHideFlags: 0

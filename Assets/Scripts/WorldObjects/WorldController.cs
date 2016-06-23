@@ -233,7 +233,6 @@ public class WorldController : MonoBehaviour
             if (bgm != null)
             {
                 _BGM0.clip = bgm;
-                _BGM0.Play();
                 _BGM0.time = TimeBuffer;
             }
             else

@@ -32,6 +32,7 @@ public class HUDSubregionNamePopup : MonoBehaviour
 
     IEnumerator DisplaySubregionName ()
     {
+        world.BGM0.Stop();
         subregion = world.activeRoom.Subregion;
         world.BGM0.volume = 0.33f;
         world.BGS0.PlayOneShot(clip);
@@ -55,5 +56,6 @@ public class HUDSubregionNamePopup : MonoBehaviour
             world.BGM0.volume = i;
         }
         world.BGM0.volume = 1.0f;
+        world.BGM0.Play();
     }
 }

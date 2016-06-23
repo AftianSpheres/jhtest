@@ -211,6 +211,7 @@ public class CameraController : MonoBehaviour
         {
             world.ChangeBGM(default(AudioClip));
         }
+        RoomController lastRoom = world.activeRoom;
         world.activeRoom = default(RoomController);
         player.Locked = true;
         rect.center = new Vector2(room.bounds.center.x, room.bounds.center.y);
@@ -233,6 +234,10 @@ public class CameraController : MonoBehaviour
         player.Locked = false;
         world.ChangeRoom(nextRoom);
         world.ChangeBGM(nextRoom.bgm);
+        if (nextRoom.Subregion == lastRoom.Subregion)
+        {
+            world.BGM0.Play(); // if we change subregions, wait until the popup closes
+        }
     }
 
     /// <summary>

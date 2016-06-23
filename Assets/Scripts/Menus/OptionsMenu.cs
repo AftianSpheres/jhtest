@@ -31,7 +31,8 @@ public class OptionsMenu : MonoBehaviour
     public GameObject settingsConfirmationPrompt;
     public TextMesh musicVolumeValueText;
     public TextMesh sfxVolumeValueText;
-    private int ResolutionIndex;
+    public TextMesh countdownValueText;
+    private int ResolutionIndex = -1;
     private static int screenSettingsRevertTime = 600;
     private ConfirmCancelDefaultSelection confirmCancelDefaults;
     private OptionsMenuSelections selection;
@@ -270,6 +271,11 @@ public class OptionsMenu : MonoBehaviour
         else if (suspended == true)
         {
             screenSettingsTimer--;
+            int countdownSeconds = Mathf.CeilToInt((float)screenSettingsTimer / 60f);
+            if (countdownSeconds < int.Parse(countdownValueText.text))
+            {
+                countdownValueText.text = countdownSeconds.ToString();
+            }
             if (hardwareInterfaceManager.Confirm.Pressed == true)
             {
                 suspended = false;
@@ -437,7 +443,7 @@ public class OptionsMenu : MonoBehaviour
             }
             else
             {
-                if (ResolutionIndex < Screen.resolutions.Length)
+                if (ResolutionIndex < Screen.resolutions.Length - 1)
                 {
                     ResolutionIndex++;
                     lastFullscreenRes = hardwareInterfaceManager.fullscreenRes;
