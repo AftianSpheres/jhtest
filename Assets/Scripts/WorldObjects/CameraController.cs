@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
     private PlayerController player;
     public Rect rect;
     public bool PlayerLockedToScroll;
-    private RoomController nextRoom;
+    public RoomController nextRoom;
     private bool ScrollVertical = false;
     private int ForceScroll;
     private int SecondaryForceScroll = 0;

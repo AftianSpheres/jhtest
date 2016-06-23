@@ -36,8 +36,8 @@ public class PlayerReticleController : MonoBehaviour
         }
         if (world.HardwareInterfaceManager.usingRightStick == false)
         {
-            adjX = virtualPosition.x + Input.GetAxis("MouseX");
-            adjY = virtualPosition.y + Input.GetAxis("MouseY");
+            adjX = virtualPosition.x + Input.GetAxis("mouse x");
+            adjY = virtualPosition.y + Input.GetAxis("mouse y");
         }
         else
         {

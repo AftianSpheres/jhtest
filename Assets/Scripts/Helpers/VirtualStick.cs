@@ -1,12 +1,15 @@
 using UnityEngine;
+using InControl;
 
 public class VirtualStick
 {
-    private bool isDigital;
+    private InputControlType xcontrolType;
+    private InputControlType ycontrolType;
+    private InputControl xcontrol;
+    private InputControl ycontrol;
+    private InputDevice device;
     private float _x;
     private float _y;
-    private string xAxisName;
-    private string yAxisName;
     private float deadZone;
     private float sensitivity;
     private bool invertX;
@@ -30,8 +33,12 @@ public class VirtualStick
 
     public void Update()
     {
-        _x = Input.GetAxis(xAxisName);
-        _y = Input.GetAxis(yAxisName);
+        if (InputManager.ActiveDevice != device)
+        {
+            device = InputManager.ActiveDevice;
+        }
+        _x = device.GetControl(xcontrolType).Value;
+        _y = device.GetControl(ycontrolType).Value;
         if (Mathf.Abs(_x) + Mathf.Abs(_y) < deadZone)
         {
             _x = 0;
@@ -49,14 +56,15 @@ public class VirtualStick
         }
     }
 
-    public VirtualStick(string _xAxisName, string _yAxisName, float _deadZone, float _sensitivity, bool _invertX, bool _invertY)
+    public VirtualStick(InputControlType _xcontrol, InputControlType _ycontrol, float _deadZone, float _sensitivity, bool _invertX, bool _invertY)
     {
-        xAxisName = _xAxisName;
-        yAxisName = _yAxisName;
+        xcontrolType = _xcontrol;
+        ycontrolType = _ycontrol;
         deadZone = _deadZone;
         sensitivity = _sensitivity;
         invertX = _invertX;
         invertY = _invertY;
+        device = InputManager.ActiveDevice;
     }
 
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using InControl;
 
 /// <summary>
 /// Horrible bloated struct that contains player's control settings.
@@ -39,62 +40,47 @@ public struct ControlPrefs
     public KeyCode KBDodge;
     public KeyCode KBMQuickTaboo;
     public bool GamepadDPadIsMappedToAxis;
-    public string GamepadDPadXAxis;
-    public float GamepadDPadXAxisDeadZone;
+    public InputControlType GamepadDPadXAxis;
+    public float GamepadDPadDeadZone;
     public bool GamepadDPadXAxisInverted;
-    public string GamepadDPadYAxis; // lack of sensitivity here not an issue, dón't add it - remember, this is digital
-    public float GamepadDPadYAxisDeadZone;
+    public InputControlType GamepadDPadYAxis; // lack of sensitivity here not an issue, dón't add it - remember, this is digital
     public bool GamepadDPadYAxisInverted;
-    public KeyCode GamepadUp;
-    public KeyCode GamepadDown;
-    public KeyCode GamepadLeft;
-    public KeyCode GamepadRight;
-    public string GamepadAimXAxis;
-    public float GamepadAimXAxisSensitivity;
-    public float GamepadAimXAxisDeadZone;
+    public InputControlType GamepadUp;
+    public InputControlType GamepadDown;
+    public InputControlType GamepadLeft;
+    public InputControlType GamepadRight;
+    public InputControlType GamepadAimXAxis;
+    public float GamepadAimSensitivity;
+    public float GamepadAimDeadZone;
     public bool GamepadAimXAxisInverted;
-    public string GamepadAimYAxis;
-    public float GamepadAimYAxisSensitivity;
-    public float GamepadAimYAxisDeadZone;
+    public InputControlType GamepadAimYAxis;
     public bool GamepadAimYAxisInverted;
-    public KeyCode GamepadConfirm;
+    public InputControlType GamepadConfirm;
     public bool inHybridConfirmIsOnMouse;
-    public KeyCode GamepadCancel;
+    public InputControlType GamepadCancel;
     public bool inHybridCancelIsOnMouse;
-    public KeyCode GamepadMenu;
+    public InputControlType GamepadMenu;
     public bool inHybridMenuIsOnMouse;
     public bool inHybridFire1IsOnMouse;
-    public bool GamepadFire1IsMappedToAxis;
-    public string GamepadFire1Axis;
     public float GamepadFire1AxisMin;
     public float GamepadFire1AxisMax;
-    public KeyCode GamepadFire1;
+    public InputControlType GamepadFire1;
     public bool inHybridFire2IsOnMouse;
-    public bool GamepadFire2IsMappedToAxis;
-    public string GamepadFire2Axis;
     public float GamepadFire2AxisMin;
     public float GamepadFire2AxisMax;
-    public KeyCode GamepadFire2;
+    public InputControlType GamepadFire2;
     public bool inHybridDodgeIsOnMouse;
-    public bool GamepadDodgeIsMappedToAxis;
-    public string GamepadDodgeAxis;
     public float GamepadDodgeAxisMin;
     public float GamepadDodgeAxisMax;
-    public KeyCode GamepadDodge;
+    public InputControlType GamepadDodge;
     public bool inHybridQuickTabooIsOnMouse;
-    public bool GamepadQuickTabooIsMappedToAxis;
-    public string GamepadQuickTabooAxis;
     public float GamepadQuickTabooAxisMin;
     public float GamepadQuickTabooAxisMax;
-    public KeyCode GamepadQuickTaboo;
+    public InputControlType GamepadQuickTaboo;
 
-    public ControlPrefs(bool get_defaults)
+    public ControlPrefs(ControlModeType mode)
     {
-        if (get_defaults == false)
-        {
-            throw new System.Exception("The ControlPrefs constructor is a shitty hack! Don't call it if you don't actually want it to set the defaults, man! Come on!");
-        }
-        setControlMode = ControlModeType.Gamepad;
+        setControlMode = mode;
         MouseSensitivity = 1.0f;
         MouseInvertX = false;
         MouseInvertY = false;
@@ -110,54 +96,43 @@ public struct ControlPrefs
         KBMFire2 = KeyCode.Mouse1;
         KBDodge = KeyCode.Space;
         KBMQuickTaboo = KeyCode.Mouse2;
-        GamepadDPadIsMappedToAxis = true;
-        GamepadDPadXAxis = "joy1-6";
-        GamepadDPadXAxisDeadZone = 0;
+        GamepadDPadIsMappedToAxis = false;
+        GamepadDPadXAxis = InputControlType.LeftStickX;
+        GamepadDPadDeadZone = 0;
         GamepadDPadXAxisInverted = false;
-        GamepadDPadYAxis = "joy1-7";
-        GamepadDPadYAxisDeadZone = 0;
+        GamepadDPadYAxis = InputControlType.LeftStickY;
         GamepadDPadYAxisInverted = false;
-        GamepadUp = KeyCode.None;
-        GamepadDown = KeyCode.None;
-        GamepadLeft = KeyCode.None;
-        GamepadRight = KeyCode.None;
-        GamepadAimXAxis = "joy1-4";
-        GamepadAimXAxisSensitivity = 2.5f;
-        GamepadAimXAxisDeadZone = 0.2f;
+        GamepadUp = InputControlType.DPadUp;
+        GamepadDown = InputControlType.DPadDown;
+        GamepadLeft = InputControlType.DPadLeft;
+        GamepadRight = InputControlType.DPadRight;
+        GamepadAimXAxis = InputControlType.RightStickX;
+        GamepadAimSensitivity = 2.5f;
+        GamepadAimDeadZone = 0.2f;
         GamepadAimXAxisInverted = true;
-        GamepadAimYAxis = "joy1-5";
-        GamepadAimYAxisSensitivity = 2.5f;
-        GamepadAimYAxisDeadZone = 0.2f;
+        GamepadAimYAxis = InputControlType.RightStickY;
         GamepadAimYAxisInverted = true;
-        GamepadConfirm = KeyCode.Joystick1Button0;
+        GamepadConfirm = InputControlType.Action1;
         inHybridConfirmIsOnMouse = false;
-        GamepadCancel = KeyCode.Joystick1Button1;
+        GamepadCancel = InputControlType.Action2;
         inHybridCancelIsOnMouse = false;
-        GamepadMenu = KeyCode.Joystick1Button7;
+        GamepadMenu = InputControlType.Start;
         inHybridMenuIsOnMouse = false;
         inHybridFire1IsOnMouse = true;
-        GamepadFire1IsMappedToAxis = false;
-        GamepadFire1Axis = "";
         GamepadFire1AxisMin = 0.0f;
         GamepadFire1AxisMax = 1.0f;
-        GamepadFire1 = KeyCode.Joystick1Button5;
+        GamepadFire1 = InputControlType.RightBumper;
         inHybridFire2IsOnMouse = true;
-        GamepadFire2IsMappedToAxis = true;
-        GamepadFire2Axis = "joy1-10";
         GamepadFire2AxisMin = 0.1f;
         GamepadFire2AxisMax = 1.0f;
-        GamepadFire2 = KeyCode.None;
+        GamepadFire2 = InputControlType.RightTrigger;
         inHybridDodgeIsOnMouse = false;
-        GamepadDodgeIsMappedToAxis = false;
-        GamepadDodgeAxis = "";
         GamepadDodgeAxisMin = 0.0f;
         GamepadDodgeAxisMax = 1.0f;
-        GamepadDodge = KeyCode.Joystick1Button4;
+        GamepadDodge = InputControlType.LeftBumper;
         inHybridQuickTabooIsOnMouse = false;
-        GamepadQuickTabooIsMappedToAxis = true;
-        GamepadQuickTabooAxis = "joy1-9";
         GamepadQuickTabooAxisMin = 0.1f;
         GamepadQuickTabooAxisMax = 1.0f;
-        GamepadQuickTaboo = KeyCode.None;
+        GamepadQuickTaboo = InputControlType.LeftTrigger;
     }
 }

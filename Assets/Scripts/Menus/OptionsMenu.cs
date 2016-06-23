@@ -50,13 +50,17 @@ public class OptionsMenu : MonoBehaviour
     private static int delayBetweenCursorMoves = 12;
 
 	// Use this for initialization
-	void Start ()
+	void Awake ()
     {
         GameObject hwInterfaceManagerObj = GameObject.Find("Universe/HardwareInterfaceManager");
         if (hwInterfaceManagerObj != null)
         {
             _in_MateWithManagers();
         }
+        musicVolumeValueText.text = Mathf.RoundToInt(playerSettingsManager.MusicVolume * 10).ToString();
+        musicVolumeBuffer = playerSettingsManager.MusicVolume;
+        sfxVolumeValueText.text = Mathf.RoundToInt(playerSettingsManager.SFXVolume * 10).ToString();
+        sfxVolumeBuffer = playerSettingsManager.SFXVolume;
     }
 	
 	// Update is called once per frame
@@ -70,8 +74,6 @@ public class OptionsMenu : MonoBehaviour
         {
             selection = OptionsMenuSelections.FullscreenWindowed;
             ctr = 0;
-            musicVolumeBuffer = playerSettingsManager.MusicVolume;
-            sfxVolumeBuffer = playerSettingsManager.SFXVolume;
             windowedResBuffer = hardwareInterfaceManager.windowedRes;
             fullscreenResBuffer = hardwareInterfaceManager.fullscreenRes;
             fullscreenBoolBuffer = Screen.fullScreen;
@@ -317,6 +319,7 @@ public class OptionsMenu : MonoBehaviour
                     {
                         source.PlayOneShot(selectionOK);
                         ready = false;
+                        playerSettingsManager.SaveToPlayerPrefs();
                         gameObject.SetActive(false);
                     }
                     break;

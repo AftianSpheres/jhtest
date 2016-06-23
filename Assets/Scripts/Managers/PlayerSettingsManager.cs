@@ -14,9 +14,22 @@ public class PlayerSettingsManager : Manager<PlayerSettingsManager>
 	// Use this for initialization
 	void Awake ()
     {
-        controlPrefs = new ControlPrefs(true);
+        controlPrefs = new ControlPrefs(ControlModeType.Gamepad);
+        LoadFromPlayerPrefs();
 	}
 	
+    void LoadFromPlayerPrefs()
+    {
+        MusicVolume = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
+        SFXVolume = PlayerPrefs.GetFloat("SFXVolume", 1.0f);
+    }
+
+    public void SaveToPlayerPrefs()
+    {
+        PlayerPrefs.SetFloat("MusicVolume", MusicVolume);
+        PlayerPrefs.SetFloat("SFXVolume", SFXVolume);
+    }
+
 	// Update is called once per frame
 	void Update ()
     {

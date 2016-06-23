@@ -10,3 +10,5 @@ Third-party inclusions:
 Universe (https://www.assetstore.unity3d.com/en/#!/content/24227)
 
 UnityTileSet (https://github.com/mizipzor/UnityTileMap)
+
+InControl 1.4.4 (the old-ass open-source one, because I'm broke) (https://github.com/pbhogan/InControl)

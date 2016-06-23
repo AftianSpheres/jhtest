@@ -58,12 +58,6 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
@@ -130,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Barker&apos;s Retro Text Printer Free\readme.txt" />
+    <None Include="Assets\InControl\README\README.txt" />
     <None Include="Assets\Resources\SpritesColorFlash.shader" />
     <None Include="Assets\Resources\SpritesEZ.shader" />
     <None Include="Assets\Resources\Text\en-us\area_village\circle_text.txt" />

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using InControl;
 
 public class VirtualButton
 {
@@ -28,60 +29,89 @@ public class VirtualButton
             return (_isPressed);
         }
     }
-    private bool isAxis;
+    private bool isInControl;
     private bool isNegative;
-    private KeyCode key;
-    private string axis;
+    private KeyCode _key;
+    private InputDevice device;
+    private InputControl _control;
 
-    public VirtualButton(KeyCode _key)
+    public VirtualButton(KeyCode key)
     {
-        key = _key;
-        isAxis = false;
+        isInControl = false;
+        _key = key;
     }
 
-    public VirtualButton(string _axis, bool _isNegative, float _min, float _max)
+    public VirtualButton(InputControlType control)
     {
-        axis = _axis;
-        isAxis = true;
-        isNegative = _isNegative;
+        isInControl = true;
+        device = InputManager.ActiveDevice;
+        _control = device.GetControl(control);
     }
 
     public void Update()
     {
-        if (isAxis == true)
+        if (isInControl == true)
         {
-            if ((isNegative == true && Input.GetAxis(axis) < min) || (isNegative == false && Input.GetAxis(axis) > min))
+            if (InputManager.ActiveDevice != device)
             {
-                if (_isPressed == false)
+                device = InputManager.ActiveDevice;
+            }
+            if (_control.IsButton == false)
+            {
+                if ((isNegative == true && _control.Value < min) || (isNegative == false && _control.Value > min))
                 {
-                    _isKeyDown = true;
-                    _isKeyUp = false;
+                    if (_isPressed == false)
+                    {
+                        _isKeyDown = true;
+                        _isKeyUp = false;
+                    }
+                    else
+                    {
+                        _isKeyDown = false;
+                    }
+                    _isPressed = true;
                 }
                 else
                 {
-                    _isKeyDown = false;
+                    if (_isPressed == true)
+                    {
+                        _isKeyUp = true;
+                        _isKeyDown = false;
+                    }
+                    else
+                    {
+                        _isKeyUp = false;
+                    }
+                    _isPressed = false;
                 }
-                _isPressed = true;
             }
             else
             {
-                if (_isPressed == true)
+                if (_isKeyDown == true)
                 {
-                    _isKeyUp = true;
                     _isKeyDown = false;
                 }
-                else
+                else if (_isPressed == false && _control.IsPressed == true)
+                {
+                    _isKeyDown = true;
+                }
+                if (_isKeyUp == true)
                 {
                     _isKeyUp = false;
                 }
-                _isPressed = false;
+                else if (_isPressed == true && _control.IsPressed == false)
+                {
+                    _isKeyUp = true;
+                }
+                _isPressed = _control.IsPressed;
             }
         }
         else
         {
-            _isKeyDown = Input.GetKeyDown(key);
-            _isKeyUp = Input.GetKeyUp(key);
-            _isPressed = Input.GetKey(key);
+            _isKeyDown = Input.GetKeyDown(_key);
+            _isKeyUp = Input.GetKeyUp(_key);
+            _isPressed = Input.GetKey(_key);
         }
+
     }
 }
