@@ -8,19 +8,17 @@ public class FXLayer : MonoBehaviour
     public SpriteRenderer[] gfxElements;
     public ScrollingLayer scrollingLayer;
     public CameraController cameraController;
+    public AudioClip bgs;
+    public float clipVolume;
     private bool active = false;
 	
 	// Update is called once per frame
 	void Update ()
     {
         active = false;
-	    for (int i = 0; i < applicableRooms.Length; i++)
+        if ((world.activeRoom.fx == this && cameraController.PlayerLockedToScroll == false) || (cameraController.nextRoom.fx == this && cameraController.lastRoom.fx == this))
         {
-            if (applicableRooms[i] == world.activeRoom || (world.activeRoom == null && applicableRooms[i] == cameraController.nextRoom))
-            {
-                active = true;
-                break;
-            }
+            active = true;
         }
         if (active == false && gfxElements[0].enabled == true)
         {
@@ -29,6 +27,9 @@ public class FXLayer : MonoBehaviour
                 gfxElements[i].enabled = false;
             }
             scrollingLayer.enabled = false;
+            world.BGS0.clip = default(AudioClip);
+            world.BGS0.Stop();
+            world.BGS0.volume /= clipVolume;
         }
         else if (active == true && gfxElements[0].enabled == false)
         {
@@ -37,6 +38,9 @@ public class FXLayer : MonoBehaviour
                 gfxElements[i].enabled = true;
             }
             scrollingLayer.enabled = true;
+            world.BGS0.clip = bgs;
+            world.BGS0.volume *= clipVolume;
+            world.BGS0.Play();
         }
 	}
 }

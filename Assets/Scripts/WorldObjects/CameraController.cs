@@ -13,6 +13,7 @@ public class CameraController : MonoBehaviour
     private PlayerController player;
     public Rect rect;
     public bool PlayerLockedToScroll;
+    public RoomController lastRoom;
     public RoomController nextRoom;
     private bool ScrollVertical = false;
     private int ForceScroll;
@@ -211,7 +212,7 @@ public class CameraController : MonoBehaviour
         {
             world.ChangeBGM(default(AudioClip));
         }
-        RoomController lastRoom = world.activeRoom;
+        lastRoom = world.activeRoom;
         world.activeRoom = default(RoomController);
         player.Locked = true;
         rect.center = new Vector2(room.bounds.center.x, room.bounds.center.y);
@@ -246,6 +247,7 @@ public class CameraController : MonoBehaviour
     /// <param name="direction">0-3; down/up/left/right; throws an exception if out of range</param>
     public void ScrollAndChangeScreen(int direction)
     {
+        lastRoom = world.activeRoom;
         if (ForceScroll != 0)
         {
             throw new System.Exception("Can't start another screen scroll during last one!");

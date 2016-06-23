@@ -3,14 +3,18 @@ using System.Collections;
 
 public class ScrollingLayer : MonoBehaviour
 {
-    public Vector3 scrollVector;
-    public bool scrollVertical;
-    public int scrollInterval;
-    private Vector3 originalTransform;
+    public bool alternateScrollingRatePossible;
+    public int alternateScrollMulti = 1;
+    public int alternateScrollOdds = 0;
     public int loopDistance;
+    public int scrollInterval;
     public int scrollingSpeed;
-    int i;
+    public Vector3 scrollVector;
+    public Vector2 alternateScrollMultiVector;
+    private bool useAlternateScrolling = false;
     private int ctr;
+    private int i;
+    private Vector3 originalTransform;
 
     void Start()
     {
@@ -26,8 +30,7 @@ public class ScrollingLayer : MonoBehaviour
             i += scrollingSpeed;
             if (i >= loopDistance)
             {
-                transform.position = originalTransform;
-                i = 0;
+                ResetScrolling();
             }
             else
             {
@@ -37,6 +40,33 @@ public class ScrollingLayer : MonoBehaviour
         else
         {
             ctr++;
+        }
+    }
+
+    void ResetScrolling ()
+    {
+        transform.position = originalTransform;
+        i = 0;
+        bool switchThisTime = false;
+        if (Random.Range(0, alternateScrollOdds) == 0) 
+        {
+            useAlternateScrolling = !useAlternateScrolling;
+            switchThisTime = true;
+        }
+        if (alternateScrollingRatePossible == true && switchThisTime == true)
+        {
+            if (useAlternateScrolling == true)
+            {
+                scrollingSpeed *= alternateScrollMulti;
+                scrollVector = new Vector3(scrollVector.x * alternateScrollMultiVector.x, scrollVector.y * alternateScrollMultiVector.y, scrollVector.z);
+                loopDistance *= alternateScrollMulti;
+            }
+            else
+            {
+                scrollingSpeed /= alternateScrollMulti;
+                scrollVector = new Vector3(scrollVector.x / alternateScrollMultiVector.x, scrollVector.y / alternateScrollMultiVector.y, scrollVector.z);
+                loopDistance /= alternateScrollMulti;
+            }
         }
     }
 }

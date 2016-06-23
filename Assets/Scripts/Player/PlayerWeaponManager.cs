@@ -24,8 +24,8 @@ public class PlayerWeaponManager : MonoBehaviour
         {
         0, // weenie gun
         0, // wgII
-        25, // shotgun
-        33, // shadow
+        15, // shotgun
+        10, // shadow
         10, // flamethrower
         3 // icicle
         };

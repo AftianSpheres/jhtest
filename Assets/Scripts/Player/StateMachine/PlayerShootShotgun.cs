@@ -10,6 +10,7 @@ public class PlayerShootShotgun : StateMachineBehaviour
     private Collider2D collider;
     private AudioSource source;
     private AudioClip sfx;
+    private static int firingDelay = 60;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -37,17 +38,17 @@ public class PlayerShootShotgun : StateMachineBehaviour
         if (active == true)
         {
             FrameCtr = animator.GetInteger("FrameCtr");
-            if (FrameCtr % 90 == 0 || (animator.GetBool("Shooting") == false && animator.GetInteger("Cooldown") <= -1))
+            if (FrameCtr % firingDelay == 0 || (animator.GetBool("Shooting") == false && animator.GetInteger("Cooldown") <= -1))
             {
                 if ((animator.GetBool("HeldFire1") == true && animator.GetBool("FireSlotB") == false) || (animator.GetBool("HeldFire2") == true && animator.GetBool("FireSlotB") == true))
                 {
                     if (wpnManager.master.energy.CheckIfCanFireWpn(PlayerWeaponManager.ShotEnergyCosts[(int)WeaponType.pShotgun]) == true)
                     {
                         wpnManager.FireBullet(WeaponType.pShotgun);
-                        animator.SetInteger("HaltFrames", 30);
+                        animator.SetInteger("HaltFrames", 10);
                         source.PlayOneShot(sfx, 0.5f);
                         animator.SetBool("Shooting", true);
-                        animator.SetInteger("Cooldown", 90);
+                        animator.SetInteger("Cooldown", firingDelay);
                         Vector3 PosMod;
                         switch (animator.GetInteger("FacingDir"))
                         {

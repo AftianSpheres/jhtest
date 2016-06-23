@@ -18,6 +18,7 @@ public class RoomController : MonoBehaviour
     public RoomPriorityMap priorityMap;
     public SubregionType Subregion;
     public Bounds bounds;
+    public FXLayer fx;
     public Vector2 BigRoomCellSize;
     public uint xPosition;
     public uint yPosition;

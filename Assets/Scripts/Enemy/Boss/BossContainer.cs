@@ -19,6 +19,7 @@ public class BossContainer : MonoBehaviour
         {
             world.GameStateManager.eventFlags_Global |= bossFlag;
             world.ChangeBGM(world.activeRoom.bgm);
+            world.BGM0.Play();
             Destroy(gameObject);
         }
     }
