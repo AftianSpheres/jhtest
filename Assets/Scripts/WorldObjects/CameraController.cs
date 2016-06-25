@@ -130,6 +130,10 @@ public class CameraController : MonoBehaviour
                 {
                     world.ChangeBGM(nextRoom.bgm);
                 }
+                if (nextRoom.Subregion == lastRoom.Subregion)
+                {
+                    world.BGM0.Play(); // if we change subregions, wait until the popup closes
+                }
                 player.Locked = false;
                 PlayerLockedToScroll = false;
                 CurrentRoomPlayerEntryPosition = player.transform.position;
