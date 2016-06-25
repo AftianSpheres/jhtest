@@ -19,7 +19,7 @@ public class InventoryMenu : MonoBehaviour
     public SpriteRenderer spr_SentinelsMask;
     public SpriteRenderer spr_WingedCharm;
     public SpriteRenderer cursorSprite;
-    public HeldPassiveItems selection = HeldPassiveItems.ForestMonolithChunk;
+    public HeldPassiveItems selection = HeldPassiveItems.None;
     public bool open = false;
     static Vector3 cursorOffset = new Vector3(2, -24, -0.1f);
     public AudioClip cursorSFX;
@@ -33,6 +33,10 @@ public class InventoryMenu : MonoBehaviour
     void Update ()
     {
         _in_UpdateCursorPosition();
+        if (cursorSprite.enabled != (selection != HeldPassiveItems.None))
+        {
+            cursorSprite.enabled = (selection != HeldPassiveItems.None);
+        }
         if (open == true && menuSystem.menuActive == true)
         {
             if (lastSelected != selection)
@@ -59,46 +63,114 @@ public class InventoryMenu : MonoBehaviour
         }
     }
 
-    void _in_UpdateCursorPosition()
+
+
+    public void Close ()
     {
-        switch (selection)
+        textbox.Stop();
+        gameObject.SetActive(false);
+    }
+    
+    void FindInitialCursorPos ()
+    {
+        if (spr_SeeingBell.enabled == true)
         {
-            case HeldPassiveItems.ForestMonolithChunk:
-                cursorSprite.transform.position = spr_Monolith0.transform.position + cursorOffset;
-                break;
-            case HeldPassiveItems.ValleyMonolithChunk:
-                cursorSprite.transform.position = spr_Monolith1.transform.position + cursorOffset;
-                break;
-            case HeldPassiveItems.MarinaMonolithChunk:
-                cursorSprite.transform.position = spr_Monolith2.transform.position + cursorOffset;
-                break;
-            case HeldPassiveItems.WorldChangeToken:
-                cursorSprite.transform.position = spr_GlassBrand.transform.position + cursorOffset;
-                break;
-            case HeldPassiveItems.EndgameKey:
-                cursorSprite.transform.position = spr_GlassKey.transform.position + cursorOffset;
-                break;
-            case HeldPassiveItems.DashThingy:
-                cursorSprite.transform.position = spr_DashAnklet.transform.position + cursorOffset;
-                break;
-            case HeldPassiveItems.DodgeBooster:
-                cursorSprite.transform.position = spr_RollAnklet.transform.position + cursorOffset;
-                break;
-            case HeldPassiveItems.DodgeAttack:
-                cursorSprite.transform.position = spr_HotRock.transform.position + cursorOffset;
-                break;
-            case HeldPassiveItems.SecretSensor:
-                cursorSprite.transform.position = spr_SeeingBell.transform.position + cursorOffset;
-                break;
-            case HeldPassiveItems.TabooRegenUpThingy:
-                cursorSprite.transform.position = spr_SpiritAnchor.transform.position + cursorOffset;
-                break;
-            case HeldPassiveItems.AutoscrollRider:
-                cursorSprite.transform.position = spr_SentinelsMask.transform.position + cursorOffset;
-                break;
-            case HeldPassiveItems.RedBull:
-                cursorSprite.transform.position = spr_WingedCharm.transform.position + cursorOffset;
-                break;
+            selection = HeldPassiveItems.SecretSensor;
+        }
+        else if (spr_DashAnklet.enabled == true)
+        {
+            selection = HeldPassiveItems.DashThingy;
+        }
+        else if (spr_SentinelsMask.enabled == true)
+        {
+            selection = HeldPassiveItems.AutoscrollRider;
+        }
+        else if (spr_HotRock.enabled == true)
+        {
+            selection = HeldPassiveItems.DodgeAttack;
+        }
+        else if (spr_WingedCharm.enabled == true)
+        {
+            selection = HeldPassiveItems.RedBull;
+        }
+        else if (spr_RollAnklet.enabled == true)
+        {
+            selection = HeldPassiveItems.DodgeBooster;
+        }
+        else if (spr_SpiritAnchor.enabled == true)
+        {
+            selection = HeldPassiveItems.TabooRegenUpThingy;
+        }
+        else if (spr_GlassBrand.enabled == true)
+        {
+            selection = HeldPassiveItems.WorldChangeToken;
+        }
+        else if (spr_GlassKey.enabled == true)
+        {
+            selection = HeldPassiveItems.EndgameKey;
+        }
+        else if (spr_Monolith0.enabled == true)
+        {
+            selection = HeldPassiveItems.ForestMonolithChunk;
+        }
+        else if (spr_Monolith1.enabled == true)
+        {
+            selection = HeldPassiveItems.MarinaMonolithChunk;
+        }
+        else if (spr_Monolith2.enabled == true)
+        {
+            selection = HeldPassiveItems.ValleyMonolithChunk;
+        }
+        else
+        {
+            selection = HeldPassiveItems.None;
+        }
+    }
+
+    public void Open ()
+    {
+        FindInitialCursorPos();
+        open = true;
+        menuSystem.menuCloseAction = Close;
+        RefreshTextbox();
+    }
+
+    public void PreOpen ()
+    {
+        lastSelected = selection;
+        gameStateManager = GameStateManager.Instance;
+        _in_ToggleSprite(spr_Monolith0, HeldPassiveItems.ForestMonolithChunk);
+        _in_ToggleSprite(spr_Monolith1, HeldPassiveItems.ValleyMonolithChunk);
+        _in_ToggleSprite(spr_Monolith2, HeldPassiveItems.MarinaMonolithChunk);
+        _in_ToggleSprite(spr_GlassBrand, HeldPassiveItems.WorldChangeToken);
+        _in_ToggleSprite(spr_GlassKey, HeldPassiveItems.EndgameKey);
+        _in_ToggleSprite(spr_DashAnklet, HeldPassiveItems.DashThingy);
+        _in_ToggleSprite(spr_RollAnklet, HeldPassiveItems.DodgeBooster);
+        _in_ToggleSprite(spr_HotRock, HeldPassiveItems.DodgeAttack);
+        _in_ToggleSprite(spr_SeeingBell, HeldPassiveItems.SecretSensor);
+        _in_ToggleSprite(spr_SpiritAnchor, HeldPassiveItems.TabooRegenUpThingy);
+        _in_ToggleSprite(spr_SentinelsMask, HeldPassiveItems.AutoscrollRider);
+        _in_ToggleSprite(spr_WingedCharm, HeldPassiveItems.RedBull);
+        if (spr_GlassBrand.enabled == true || spr_GlassKey.enabled == true)
+        {
+            spr_Monolith0.enabled = false; // progression should make it impossible to have items from both sets of key items at the same time, but if you do, the monoliths don't appear in this menu so as to not break shit
+            spr_Monolith1.enabled = false;
+            spr_Monolith2.enabled = false;
+        }
+    }
+
+    void RefreshTextbox()
+    {
+        if (selection != HeldPassiveItems.None)
+        {
+            int adjusted = (int)selection;
+            int i = 0;
+            while (adjusted > 1)
+            {
+                adjusted = adjusted >> 1;
+                i++;
+            }
+            textbox.Play(Resources.Load<TextAsset>(GlobalStaticResourcePaths.p_passive_descs[i]));
         }
     }
 
@@ -241,7 +313,7 @@ public class InventoryMenu : MonoBehaviour
         }
     }
 
-    void _in_MoveCursorLeft (int entryPoint)
+    void _in_MoveCursorLeft(int entryPoint)
     {
         if (spr_SpiritAnchor.enabled == true && entryPoint < 1)
         {
@@ -280,7 +352,7 @@ public class InventoryMenu : MonoBehaviour
         }
     }
 
-    void _in_MoveCursorRight (int entryPoint)
+    void _in_MoveCursorRight(int entryPoint)
     {
         if (spr_SeeingBell.enabled == true && entryPoint < 1)
         {
@@ -347,56 +419,6 @@ public class InventoryMenu : MonoBehaviour
         }
     }
 
-    void RefreshTextbox()
-    {
-        int adjusted = (int)selection;
-        int i = 0;
-        while (adjusted > 1)
-        {
-            adjusted = adjusted >> 1;
-            i++;
-        }
-        textbox.Play(Resources.Load<TextAsset>(GlobalStaticResourcePaths.p_passive_descs[i]));
-    }
-
-    public void Close ()
-    {
-        textbox.Stop();
-        gameObject.SetActive(false);
-    }
-    
-    public void Open ()
-    {
-        open = true;
-        menuSystem.menuCloseAction = Close;
-    }
-
-    public void PreOpen ()
-    {
-        lastSelected = selection;
-        RefreshTextbox();
-        gameStateManager = GameStateManager.Instance;
-        _in_ToggleSprite(spr_Monolith0, HeldPassiveItems.ForestMonolithChunk);
-        _in_ToggleSprite(spr_Monolith1, HeldPassiveItems.ValleyMonolithChunk);
-        _in_ToggleSprite(spr_Monolith2, HeldPassiveItems.MarinaMonolithChunk);
-        _in_ToggleSprite(spr_GlassBrand, HeldPassiveItems.WorldChangeToken);
-        _in_ToggleSprite(spr_GlassKey, HeldPassiveItems.EndgameKey);
-        _in_ToggleSprite(spr_DashAnklet, HeldPassiveItems.DashThingy);
-        _in_ToggleSprite(spr_RollAnklet, HeldPassiveItems.DodgeBooster);
-        _in_ToggleSprite(spr_HotRock, HeldPassiveItems.DodgeAttack);
-        _in_ToggleSprite(spr_SeeingBell, HeldPassiveItems.SecretSensor);
-        _in_ToggleSprite(spr_SpiritAnchor, HeldPassiveItems.TabooRegenUpThingy);
-        _in_ToggleSprite(spr_SentinelsMask, HeldPassiveItems.AutoscrollRider);
-        _in_ToggleSprite(spr_WingedCharm, HeldPassiveItems.RedBull);
-        if (spr_GlassBrand.enabled == true || spr_GlassKey.enabled == true)
-        {
-            spr_Monolith0.enabled = false; // progression should make it impossible to have items from both sets of key items at the same time, but if you do, the monoliths don't appear in this menu so as to not break shit
-            spr_Monolith1.enabled = false;
-            spr_Monolith2.enabled = false;
-        }
-
-    }
-
     void _in_ToggleSprite(SpriteRenderer sprite, HeldPassiveItems item)
     {
         if ((gameStateManager.heldPassiveItems & item) == item)
@@ -408,4 +430,49 @@ public class InventoryMenu : MonoBehaviour
             sprite.enabled = false;
         }
     }
+
+    void _in_UpdateCursorPosition()
+    {
+        switch (selection)
+        {
+            case HeldPassiveItems.ForestMonolithChunk:
+                cursorSprite.transform.position = spr_Monolith0.transform.position + cursorOffset;
+                break;
+            case HeldPassiveItems.ValleyMonolithChunk:
+                cursorSprite.transform.position = spr_Monolith1.transform.position + cursorOffset;
+                break;
+            case HeldPassiveItems.MarinaMonolithChunk:
+                cursorSprite.transform.position = spr_Monolith2.transform.position + cursorOffset;
+                break;
+            case HeldPassiveItems.WorldChangeToken:
+                cursorSprite.transform.position = spr_GlassBrand.transform.position + cursorOffset;
+                break;
+            case HeldPassiveItems.EndgameKey:
+                cursorSprite.transform.position = spr_GlassKey.transform.position + cursorOffset;
+                break;
+            case HeldPassiveItems.DashThingy:
+                cursorSprite.transform.position = spr_DashAnklet.transform.position + cursorOffset;
+                break;
+            case HeldPassiveItems.DodgeBooster:
+                cursorSprite.transform.position = spr_RollAnklet.transform.position + cursorOffset;
+                break;
+            case HeldPassiveItems.DodgeAttack:
+                cursorSprite.transform.position = spr_HotRock.transform.position + cursorOffset;
+                break;
+            case HeldPassiveItems.SecretSensor:
+                cursorSprite.transform.position = spr_SeeingBell.transform.position + cursorOffset;
+                break;
+            case HeldPassiveItems.TabooRegenUpThingy:
+                cursorSprite.transform.position = spr_SpiritAnchor.transform.position + cursorOffset;
+                break;
+            case HeldPassiveItems.AutoscrollRider:
+                cursorSprite.transform.position = spr_SentinelsMask.transform.position + cursorOffset;
+                break;
+            case HeldPassiveItems.RedBull:
+                cursorSprite.transform.position = spr_WingedCharm.transform.position + cursorOffset;
+                break;
+        }
+    }
+
+
 }
