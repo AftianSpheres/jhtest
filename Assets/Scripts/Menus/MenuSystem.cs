@@ -8,7 +8,9 @@ using System.Collections;
 public enum MenuSystemMode
 {
     None,
-    WeaponSelect
+    WeaponSelect,
+    Inventory,
+    Meta
 }
 
 /// <summary>
@@ -16,28 +18,67 @@ public enum MenuSystemMode
 /// </summary>
 public class MenuSystem : MonoBehaviour {
     public WorldController world;
-    public Action menuPreOpenAction;
     public Action menuOpenAction;
     public Action menuCloseAction;
     public AudioSource source;
+    public AudioClip menuOpenClip;
+    public AudioClip menuCloseClip;
+    public AudioClip menuForbiddenClip;
     public GameObject TargetingReticle;
     public MenuSystemMode mode;
-    public WeaponSelect WpnSelectMenu;
+    public InventoryMenu inventoryMenu;
+    public MetaMenu metaMenu;
+    public WeaponMenu weaponSelectMenu;
     public bool menuActive;
+    private bool inTransition;
+    private MenuSystemMode lastOpenMenu = MenuSystemMode.Inventory;
 
     /// <summary>
     /// MonoBehaviour.Update()
     /// </summary>
     void Update ()
     {
-        switch (mode)
+        if (inTransition == false)
         {
-            case MenuSystemMode.None: // not in menu
-                if (world.HardwareInterfaceManager.Menu.BtnDown == true && world.player.Locked == false && world.paused == false)
-                {
-                    ChangeMode(MenuSystemMode.WeaponSelect);
-                }
-                break;
+            switch (mode)
+            {
+                case MenuSystemMode.None: // not in menu
+                    if (world.HardwareInterfaceManager.Menu.BtnDown == true && world.player.Locked == false && world.paused == false)
+                    {
+                        ChangeMode(lastOpenMenu);
+                    }
+                    break;
+                case MenuSystemMode.WeaponSelect:
+                    if (world.HardwareInterfaceManager.RightBumper.BtnDown == true)
+                    {
+                        ChangeMode(MenuSystemMode.Inventory);
+                    }
+                    else if (world.HardwareInterfaceManager.LeftBumper.BtnDown == true)
+                    {
+                        ChangeMode(MenuSystemMode.Meta);
+                    }
+                    break;
+                case MenuSystemMode.Inventory:
+                    if (world.HardwareInterfaceManager.RightBumper.BtnDown == true)
+                    {
+                        ChangeMode(MenuSystemMode.Meta);
+                    }
+                    else if (world.HardwareInterfaceManager.LeftBumper.BtnDown == true)
+                    {
+                        ChangeMode(MenuSystemMode.WeaponSelect);
+                    }
+                    break;
+                case MenuSystemMode.Meta:
+                    if (world.HardwareInterfaceManager.RightBumper.BtnDown == true)
+                    {
+                        ChangeMode(MenuSystemMode.WeaponSelect);
+                    }
+                    else if (world.HardwareInterfaceManager.LeftBumper.BtnDown == true)
+                    {
+                        ChangeMode(MenuSystemMode.Inventory);
+                    }
+                    break;
+            }
         }
     }
 
@@ -55,12 +96,59 @@ public class MenuSystem : MonoBehaviour {
             case MenuSystemMode.WeaponSelect:
                 if (world.player.wpnManager.SlotAWpn != WeaponType.None) // this menu can't be opened without at least one weapon
                 {
-                    menuPreOpenAction = WpnSelectMenu.PreOpen;
-                    menuOpenAction = WpnSelectMenu.Open;
-                    WpnSelectMenu.gameObject.SetActive(true);
+                    inventoryMenu.open = false;
+                    metaMenu.open = false;
+                    menuOpenAction = weaponSelectMenu.Open;
+                    weaponSelectMenu.gameObject.SetActive(true);
                     TargetingReticle.SetActive(false);
+                    if (mode == MenuSystemMode.None)
+                    {
+                        mode = MenuSystemMode.WeaponSelect;
+                        StartCoroutine(ScrollMenusIntoFrame());
+                    }
+                    else
+                    {
+                        mode = MenuSystemMode.WeaponSelect;
+                        ScrollMenusSideways();
+                    }
+                }
+                else
+                {
+                    source.PlayOneShot(menuForbiddenClip);
+                }
+                break;
+            case MenuSystemMode.Inventory:
+                weaponSelectMenu.open = false;
+                metaMenu.open = false;
+                menuOpenAction = inventoryMenu.Open;
+                inventoryMenu.gameObject.SetActive(true);
+                TargetingReticle.SetActive(false);
+                if (mode == MenuSystemMode.None)
+                {
+                    mode = MenuSystemMode.Inventory;
                     StartCoroutine(ScrollMenusIntoFrame());
-                    mode = MenuSystemMode.WeaponSelect;
+                }
+                else
+                {
+                    mode = MenuSystemMode.Inventory;
+                    ScrollMenusSideways();
+                }
+                break;
+            case MenuSystemMode.Meta:
+                weaponSelectMenu.open = false;
+                inventoryMenu.open = false;
+                menuOpenAction = metaMenu.Open;
+                metaMenu.gameObject.SetActive(true);
+                TargetingReticle.SetActive(false);
+                if (mode == MenuSystemMode.None)
+                {
+                    mode = MenuSystemMode.Meta;
+                    StartCoroutine(ScrollMenusIntoFrame());
+                }
+                else
+                {
+                    mode = MenuSystemMode.Meta;
+                    ScrollMenusSideways();
                 }
                 break;
             default:
@@ -68,13 +156,40 @@ public class MenuSystem : MonoBehaviour {
         }
     }
 
+    public void ScrollMenusSideways ()
+    {
+        inTransition = true;
+        source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_MenuOpenSFX));
+        switch (mode)
+        {
+            case MenuSystemMode.WeaponSelect:
+                inventoryMenu.gameObject.SetActive(false);
+                metaMenu.gameObject.SetActive(false);
+                break;
+            case MenuSystemMode.Inventory:
+                weaponSelectMenu.gameObject.SetActive(false);
+                metaMenu.gameObject.SetActive(false);
+                break;
+            case MenuSystemMode.Meta:
+                weaponSelectMenu.gameObject.SetActive(false);
+                inventoryMenu.gameObject.SetActive(false);
+                break;
+        }
+        menuOpenAction();
+        inTransition = false;
+        lastOpenMenu = mode;
+    }
+
     /// <summary>
     /// Coroutine: scrolls menus into frame from "under" HUD bar.
     /// </summary>
     public IEnumerator ScrollMenusIntoFrame ()
     {
+        inTransition = true;
         world.Pause();
-        menuPreOpenAction();
+        weaponSelectMenu.PreOpen();
+        inventoryMenu.PreOpen();
+        metaMenu.PreOpen();
         source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_MenuOpenSFX));
         while (transform.localPosition.y != 0)
         {
@@ -84,6 +199,7 @@ public class MenuSystem : MonoBehaviour {
 
         menuActive = true;
         menuOpenAction();
+        inTransition = false;
     }
 
     /// <summary>
@@ -91,6 +207,7 @@ public class MenuSystem : MonoBehaviour {
     /// </summary>
     public IEnumerator ScrollMenusOutOfFrame (bool withHUD = true)
     {
+        inTransition = true;
         menuActive = false;
         int v = 0;
         if (withHUD == true)
@@ -105,13 +222,13 @@ public class MenuSystem : MonoBehaviour {
         }
         TargetingReticle.SetActive(true);
         mode = MenuSystemMode.None;
-        menuPreOpenAction = default(Action);
         if (menuCloseAction != null)
         {
             menuCloseAction();
             menuCloseAction = default(Action);
         }
         world.Unpause();
+        inTransition = false;
     }
 
 }

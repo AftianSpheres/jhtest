@@ -23,8 +23,10 @@ public struct ControlPrefs
     public KeyCode KBMMenu;
     public KeyCode KBMFire1;
     public KeyCode KBMFire2;
-    public KeyCode KBDodge;
+    public KeyCode KBMDodge;
     public KeyCode KBMQuickTaboo;
+    public KeyCode KBMBumpLeft;
+    public KeyCode KBMBumpRight;
     public bool GamepadDPadIsMappedToAxis;
     public InputControlType GamepadDPadXAxis;
     public float GamepadDPadDeadZone;
@@ -80,8 +82,10 @@ public struct ControlPrefs
         KBMMenu = KeyCode.LeftShift;
         KBMFire1 = KeyCode.Mouse0;
         KBMFire2 = KeyCode.Mouse1;
-        KBDodge = KeyCode.Space;
+        KBMDodge = KeyCode.Space;
         KBMQuickTaboo = KeyCode.Mouse2;
+        KBMBumpLeft = KeyCode.Z;
+        KBMBumpRight = KeyCode.C;
         GamepadDPadIsMappedToAxis = false;
         GamepadDPadXAxis = InputControlType.LeftStickX;
         GamepadDPadDeadZone = 0;

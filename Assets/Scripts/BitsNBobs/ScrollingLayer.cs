@@ -11,6 +11,7 @@ public class ScrollingLayer : MonoBehaviour
     public int scrollingSpeed;
     public Vector3 scrollVector;
     public Vector2 alternateScrollMultiVector;
+    public AudioSource associatedAudioSource;
     private bool useAlternateScrolling = false;
     private int ctr;
     private int i;
@@ -60,12 +61,20 @@ public class ScrollingLayer : MonoBehaviour
                 scrollingSpeed *= alternateScrollMulti;
                 scrollVector = new Vector3(scrollVector.x * alternateScrollMultiVector.x, scrollVector.y * alternateScrollMultiVector.y, scrollVector.z);
                 loopDistance *= alternateScrollMulti;
+                if (associatedAudioSource != null)
+                {
+                    associatedAudioSource.pitch *= alternateScrollMulti;
+                }
             }
             else
             {
                 scrollingSpeed /= alternateScrollMulti;
                 scrollVector = new Vector3(scrollVector.x / alternateScrollMultiVector.x, scrollVector.y / alternateScrollMultiVector.y, scrollVector.z);
                 loopDistance /= alternateScrollMulti;
+                if (associatedAudioSource != null)
+                {
+                    associatedAudioSource.pitch /= alternateScrollMulti;
+                }
             }
         }
     }

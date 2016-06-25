@@ -33,6 +33,8 @@ public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
     public VirtualButton Cancel;
     public VirtualButton Fire1;
     public VirtualButton Fire2;
+    public VirtualButton LeftBumper;
+    public VirtualButton RightBumper;
     public VirtualButton QuickTaboo;
     public VirtualStick RightStick;
     public WindowedResolutionMultiplier windowedRes = WindowedResolutionMultiplier.x4;
@@ -98,9 +100,9 @@ public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
             Confirm = new VirtualButton(controlPrefs.GamepadConfirm);
             Cancel = new VirtualButton(controlPrefs.GamepadCancel);
             Menu = new VirtualButton(controlPrefs.GamepadMenu);
-            Fire1 = new VirtualButton(controlPrefs.GamepadFire1);
+            Fire1 = RightBumper = new VirtualButton(controlPrefs.GamepadFire1);
             Fire2 = new VirtualButton(controlPrefs.GamepadFire2);
-            Dodge = new VirtualButton(controlPrefs.GamepadDodge);
+            Dodge = LeftBumper = new VirtualButton(controlPrefs.GamepadDodge);
             QuickTaboo = new VirtualButton(controlPrefs.GamepadQuickTaboo);
             RightStick = new VirtualStick(controlPrefs.GamepadAimXAxis, controlPrefs.GamepadAimYAxis, 
             controlPrefs.GamepadAimDeadZone, controlPrefs.GamepadAimSensitivity, controlPrefs.GamepadAimXAxisInverted, controlPrefs.GamepadAimYAxisInverted);
@@ -116,8 +118,10 @@ public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
             Menu = new VirtualButton(controlPrefs.KBMMenu);
             Fire1 = new VirtualButton(controlPrefs.KBMFire1);
             Fire2 = new VirtualButton(controlPrefs.KBMFire2);
-            Dodge = new VirtualButton(controlPrefs.KBDodge);
+            Dodge = new VirtualButton(controlPrefs.KBMDodge);
             QuickTaboo = new VirtualButton(controlPrefs.KBMQuickTaboo);
+            LeftBumper = new VirtualButton(controlPrefs.KBMBumpLeft);
+            RightBumper = new VirtualButton(controlPrefs.KBMBumpRight);
 
         }
     }

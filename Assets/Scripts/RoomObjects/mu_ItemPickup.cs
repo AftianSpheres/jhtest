@@ -9,6 +9,7 @@ public class mu_ItemPickup : MonoBehaviour
     public RoomController room;
     public PickupType pickupType;
     public WeaponType weaponType;
+    public AudioSource source;
     public mufm_Generic Flag;
     public int displayLifespan;
     private bool isOverhead;
@@ -67,11 +68,11 @@ public class mu_ItemPickup : MonoBehaviour
         {
             case PickupType.Weapon:
                 room.world.player.wpnManager.AddWeapon(weaponType);
-                text = Resources.Load<TextAsset>(GlobalStaticResourcePaths.p_wpn_shortdescs[(int)weaponType]);
+                text = Resources.Load<TextAsset>(GlobalStaticResourcePaths.p_wpn_descs[(int)weaponType]);
                 room.world.player.DoSpecialPose();
                 room.world.BGM0.Stop();
                 stoppedBGM = true;
-                room.world.BGS0.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_WeaponGetFanfare));
+                source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_WeaponGetFanfare));
                 break;
             case PickupType.PassiveItem:
                 throw new System.NotImplementedException();

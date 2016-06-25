@@ -11,38 +11,54 @@ public static class GlobalStaticResourcePaths
 {
     public static Func<String, TextAsset> loadTextResource = Resources.Load<TextAsset>;
     public static string p_boss_names = "Text/" + HammerConstants.LocalizationPrefix + "/system/boss_names";
+    public static string p_passive_names = "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/passive_names";
+    public static string[] p_passive_descs =
+{
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/passive00",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/passive01",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/passive02",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/passive03",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/passive04",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/passive05",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/passive06",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/passive07",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/passive08",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/passive09",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/passive10",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/passive11",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/passive12",
+    };
     public static string p_subregion_names = "Text/" + HammerConstants.LocalizationPrefix + "/system/world/subregions";
     public static string p_windowed_resolutions = "Text/" + HammerConstants.LocalizationPrefix + "/system/windowed_resolutions";
     public static string p_wpn_names = "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn_names";
-    public static string[] p_wpn_shortdescs =
+    public static string[] p_wpn_descs =
     {
-        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn00_short",
-        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn01_short",
-        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn02_short",
-        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn03_short",
-        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn04_short",
-        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn05_short",
-        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn06_short",
-        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn07_short",
-        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn08_short",
-        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn09_short",
-        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn10_short",
-        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn11_short",
-        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn12_short",
-        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn13_short",
-        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn14_short",
-        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn15_short",
-        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn16_short",
-        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn17_short",
-        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn18_short",
-        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn19_short",
-        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn20_short",
-        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn21_short",
-        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn22_short",
-        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn23_short",
-        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn24_short",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn00",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn01",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn02",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn03",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn04",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn05",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn06",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn07",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn08",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn09",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn10",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn11",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn12",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn13",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn14",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn15",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn16",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn17",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn18",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn19",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn20",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn21",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn22",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn23",
+        "Text/" + HammerConstants.LocalizationPrefix + "/system/inventory/wpn24",
     };
-
 
     public static string p_CursorDownSFX = "SFX/cursor_down";
     public static string p_CursorUpSFX = "SFX/cursor_up";

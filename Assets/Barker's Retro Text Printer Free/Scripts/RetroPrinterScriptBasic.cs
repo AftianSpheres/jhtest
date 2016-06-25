@@ -140,7 +140,14 @@ public class RetroPrinterScriptBasic : MonoBehaviour {
             FullText.RemoveAt(i);
         }
 		running = true;
-		StartCoroutine( UpdateText() );
+        if (gameObject.activeInHierarchy == true)
+        {
+            StartCoroutine(UpdateText());
+        }
+        else
+        {
+            Stop();
+        }
 	}
 	
 	public void Stop()
