@@ -10,8 +10,10 @@ public class TitleScreen : MonoBehaviour
     public ScrollingLayer[] fgScrolls;
     public GameObject curtain;
     public GameObject titleMenu;
+    public GameObject logoType;
     public Renderer TextRenderer;
     public TextMesh pressStartText;
+    public TitleLogo titleLogo;
     public int TextFlashInterval;
     public bool preMenu = true;
     private bool inTransitionFromTitle = false;
@@ -33,6 +35,14 @@ public class TitleScreen : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        if (titleMenu.activeInHierarchy == true)
+        {
+            logoType.SetActive(false);
+        }
+        else if (titleLogo.animDone == true)
+        {
+            logoType.SetActive(true);
+        }
         if (hardwareInterfaceManager == null)
         {
             GameObject hwIMobj = GameObject.Find("Universe/HardwareInterfaceManager");
@@ -41,7 +51,7 @@ public class TitleScreen : MonoBehaviour
                 hardwareInterfaceManager = hwIMobj.GetComponent<HardwareInterfaceManager>();
             }
         }
-	    else if (preMenu == true)
+	    else if (preMenu == true && titleLogo.animDone == true)
         {
             if (inTransitionFromTitle == false)
             {

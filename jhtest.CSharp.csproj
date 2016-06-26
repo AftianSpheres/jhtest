@@ -309,6 +309,7 @@
     <Compile Include="Assets\Scripts\WorldObjects\RoomController.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\RoomPriorityMap.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\WorldController.cs" />
+    <Compile Include="Assets\TitleLogo.cs" />
     <Compile Include="Assets\Universe\Example\MyManager.cs" />
     <Compile Include="Assets\Universe\Scripts\Manager.cs" />
     <Compile Include="Assets\Universe\Scripts\ManagerBase.cs" />

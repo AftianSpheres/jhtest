@@ -97,7 +97,7 @@ public struct ControlPrefs
         GamepadLeft = InputControlType.DPadLeft;
         GamepadRight = InputControlType.DPadRight;
         GamepadAimXAxis = InputControlType.RightStickX;
-        GamepadAimSensitivity = 2.5f;
+        GamepadAimSensitivity = 3f;
         GamepadAimDeadZone = 0.2f;
         GamepadAimXAxisInverted = false;
         GamepadAimYAxis = InputControlType.RightStickY;

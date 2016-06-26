@@ -1,0 +1,212 @@
+fileFormatVersion: 2
+guid: 27d11baa85a01cf43ac04962d364a521
+timeCreated: 1466978283
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: title_logo_0
+    21300002: title_logo_1
+    21300004: title_logo_2
+    21300006: title_logo_3
+    21300008: title_logo_4
+    21300010: title_logo_5
+    21300012: title_logo_6
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -2
+  maxTextureSize: 512
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 1
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: title_logo_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 175
+        width: 66
+        height: 66
+      alignment: 9
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 0}
+        - {x: 0, y: -5}
+        - {x: 0, y: -52}
+        - {x: 5, y: -66}
+        - {x: 57, y: -66}
+        - {x: 66, y: -54}
+        - {x: 66, y: -3}
+        - {x: 58, y: 0}
+    - name: title_logo_1
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 176
+        width: 66
+        height: 66
+      alignment: 9
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 4, y: 0}
+        - {x: 0, y: -11}
+        - {x: 0, y: -61}
+        - {x: 7, y: -66}
+        - {x: 63, y: -66}
+        - {x: 66, y: -57}
+        - {x: 66, y: -6}
+        - {x: 54, y: 0}
+    - name: title_logo_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 175
+        width: 66
+        height: 66
+      alignment: 9
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12, y: 0}
+        - {x: 0, y: -11}
+        - {x: 0, y: -56}
+        - {x: 8, y: -66}
+        - {x: 51, y: -66}
+        - {x: 66, y: -60}
+        - {x: 66, y: -18}
+        - {x: 54, y: 0}
+    - name: title_logo_3
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 63
+        width: 66
+        height: 66
+      alignment: 9
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 0}
+        - {x: 0, y: -5}
+        - {x: 0, y: -52}
+        - {x: 5, y: -66}
+        - {x: 57, y: -66}
+        - {x: 66, y: -54}
+        - {x: 66, y: -3}
+        - {x: 58, y: 0}
+    - name: title_logo_4
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 63
+        width: 66
+        height: 66
+      alignment: 9
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 0}
+        - {x: 0, y: -5}
+        - {x: 0, y: -52}
+        - {x: 5, y: -66}
+        - {x: 57, y: -66}
+        - {x: 66, y: -54}
+        - {x: 66, y: -3}
+        - {x: 58, y: 0}
+    - name: title_logo_5
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 63
+        width: 66
+        height: 66
+      alignment: 9
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 0}
+        - {x: 0, y: -5}
+        - {x: 0, y: -52}
+        - {x: 5, y: -66}
+        - {x: 57, y: -66}
+        - {x: 66, y: -54}
+        - {x: 66, y: -3}
+        - {x: 58, y: 0}
+    - name: title_logo_6
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 7
+        width: 166
+        height: 39
+      alignment: 9
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 100, y: -37}
+        - {x: 102, y: -39}
+        - {x: 129, y: -39}
+        - {x: 129, y: -34}
+        - {x: 166, y: -23}
+        - {x: 166, y: -17}
+        - {x: 163, y: -16}
+        - {x: 150, y: 0}
+        - {x: 66, y: 0}
+        - {x: 65, y: -2}
+        - {x: 65, y: -6}
+        - {x: 69, y: -10}
+        - {x: 64, y: -6}
+        - {x: 64, y: 0}
+        - {x: 17, y: 0}
+        - {x: 0, y: -16}
+        - {x: 0, y: -22}
+        - {x: 3, y: -23}
+        - {x: 32, y: -39}
+        - {x: 95, y: -39}
+        - {x: 102, y: -31}
+        - {x: 101, y: -31}
+        - {x: 100, y: -34}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
