@@ -121,16 +121,17 @@ public class CameraController : MonoBehaviour
             }
             if (ForceScroll == 0)
             {
+                bool changedBGM;
                 world.ChangeRoom(nextRoom);
                 if (nextRoom.Boss != null)
                 {
-                    world.ChangeBGM(nextRoom.Boss.bossBGM);
+                    changedBGM = world.ChangeBGM(nextRoom.Boss.bossBGM);
                 }
                 else
                 {
-                    world.ChangeBGM(nextRoom.bgm);
+                    changedBGM = world.ChangeBGM(nextRoom.bgm);
                 }
-                if (nextRoom.Subregion == lastRoom.Subregion)
+                if (nextRoom.Subregion == lastRoom.Subregion && changedBGM == true)
                 {
                     world.BGM0.Play(); // if we change subregions, wait until the popup closes
                 }
@@ -238,8 +239,8 @@ public class CameraController : MonoBehaviour
         world.Curtain.SetActive(false);
         player.Locked = false;
         world.ChangeRoom(nextRoom);
-        world.ChangeBGM(nextRoom.bgm);
-        if (nextRoom.Subregion == lastRoom.Subregion)
+        bool changedBGM = world.ChangeBGM(nextRoom.bgm);
+        if (nextRoom.Subregion == lastRoom.Subregion && changedBGM == true)
         {
             world.BGM0.Play(); // if we change subregions, wait until the popup closes
         }

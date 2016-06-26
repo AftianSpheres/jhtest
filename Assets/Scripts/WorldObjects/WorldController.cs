@@ -225,8 +225,9 @@ public class WorldController : MonoBehaviour
     /// Stops the current BGM track, then plays the AudioClip passed to it.
     /// If arg == null evaluates as true, just stops the BGM. (no BGM)
     /// </summary>
-    public void ChangeBGM(AudioClip bgm)
+    public bool ChangeBGM(AudioClip bgm)
     {
+        bool changedBGM = false;
         if (_BGM0.clip != bgm)
         {
             _BGM0.Stop();
@@ -239,7 +240,9 @@ public class WorldController : MonoBehaviour
             {
                 _BGM0.clip = default(AudioClip);
             }
+            changedBGM = true;
         }
+        return changedBGM;
     }
 
     /// <summary>

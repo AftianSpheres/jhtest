@@ -22,6 +22,7 @@ public class RetroPrinterScriptBasic : MonoBehaviour {
 	#region Public fields
 
 	public GameObject ObjectToUpdate = null;
+    public TextMesh secondaryUpdateTextMesh;
 	
 	public float LetterInterval = 0.1f;
 	public float EndLineWait = 0.0f;
@@ -166,5 +167,9 @@ public class RetroPrinterScriptBasic : MonoBehaviour {
 	private void UpdateProperty()
 	{
         textComponent.text = mainText;
+        if (secondaryUpdateTextMesh != null)
+        {
+            secondaryUpdateTextMesh.text = mainText;
+        }
 	}
 }

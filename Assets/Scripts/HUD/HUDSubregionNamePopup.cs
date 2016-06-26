@@ -7,11 +7,15 @@ public class HUDSubregionNamePopup : MonoBehaviour
     public WorldController world;
     public TextMesh textMesh;
     new public MeshRenderer renderer;
-    public SpriteRenderer bgRenderer;
+    public TextMesh bgText;
+    public MeshRenderer bgRenderer;
+    public TextMesh aliasText;
+    public MeshRenderer aliasRenderer;
     private SubregionType subregion = SubregionType.None;
     private Vector3 bgPos;
     private string[] lines;
     private AudioClip clip;
+    public AudioSource source;
 	
     void Awake ()
     {
@@ -35,26 +39,18 @@ public class HUDSubregionNamePopup : MonoBehaviour
         world.BGM0.Stop();
         subregion = world.activeRoom.Subregion;
         world.BGM0.volume = 0.33f;
-        world.BGS0.PlayOneShot(clip);
+        source.PlayOneShot(clip);
         renderer.enabled = true;
         bgRenderer.enabled = true;
-        textMesh.text = lines[(int)subregion];
-        bgRenderer.transform.localScale = ((textMesh.text.Length - 1) * Vector3.right) + (Vector3.one);
-        bgRenderer.transform.localPosition = bgPos + (Vector3.left * (4 * bgRenderer.transform.localScale.x)); 
+        aliasRenderer.enabled = true;
+        textMesh.text = bgText.text = aliasText.text = lines[(int)subregion];
         for (int i = 0; i < 180; i++)
         {
             yield return null;
         }
         renderer.enabled = false;
         bgRenderer.enabled = false;
-        for (float i = 0.33f; i <= 1.0f; i+= .11f)
-        {
-            if (i == .99)
-            {
-                i = 1f;
-            }
-            world.BGM0.volume = i;
-        }
+        aliasRenderer.enabled = false;
         world.BGM0.volume = 1.0f;
         world.BGM0.Play();
     }

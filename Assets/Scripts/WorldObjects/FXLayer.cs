@@ -16,7 +16,7 @@ public class FXLayer : MonoBehaviour
 	void Update ()
     {
         active = false;
-        if ((world.activeRoom.fx == this && cameraController.PlayerLockedToScroll == false) || (cameraController.nextRoom.fx == this && cameraController.lastRoom.fx == this))
+        if ((world.activeRoom != null && world.activeRoom.fx == this && cameraController.PlayerLockedToScroll == false) || (cameraController.nextRoom.fx == this && cameraController.lastRoom.fx == this))
         {
             active = true;
         }
