@@ -6,8 +6,32 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/universe.unity
+    path: Assets/Scenes/universeBootstrapScene.unity
   - enabled: 1
-    path: Assets/Scenes/title.unity
+    path: Assets/Scenes/titleScene.unity
   - enabled: 1
-    path: Assets/Scenes/test_map.unity
+    path: Assets/Scenes/Levels/lv0_test.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/lv0_tutorial.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/lv0_village.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/lv1_village.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/lv0_forest.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/lv1_forest.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/lv0_valley.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/lv1_valley.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/lv0_marina.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/lv1_marina.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/lv0_mandala.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/lv0_tower.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/lv0_city.unity

@@ -11,5 +11,7 @@ public enum EventFlags_Global
     MarinaBoss1Dead = 1 << 4,
     MarinaBoss2Dead = 1 << 5,
     CircleBossDead =  1 << 6,
-    MidgameWorldChanges = 1 << 7
+    MidgameWorldChanges = 1 << 7,
+    TowerTopBossDead = 1 << 8,
+    FinalBossDead = 1 << 9
 }

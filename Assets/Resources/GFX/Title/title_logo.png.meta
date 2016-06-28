@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 27d11baa85a01cf43ac04962d364a521
-timeCreated: 1466978283
+timeCreated: 1466993950
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -60,117 +60,117 @@ TextureImporter:
     - name: title_logo_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 175
-        width: 66
-        height: 66
+        x: 14
+        y: 174
+        width: 68
+        height: 68
       alignment: 9
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 3, y: 0}
-        - {x: 0, y: -5}
-        - {x: 0, y: -52}
-        - {x: 5, y: -66}
-        - {x: 57, y: -66}
-        - {x: 66, y: -54}
-        - {x: 66, y: -3}
-        - {x: 58, y: 0}
+      - - {x: 9, y: 0}
+        - {x: 0, y: -16}
+        - {x: 0, y: -57}
+        - {x: 13, y: -68}
+        - {x: 54, y: -68}
+        - {x: 68, y: -58}
+        - {x: 68, y: -15}
+        - {x: 62, y: 0}
     - name: title_logo_1
       rect:
         serializedVersion: 2
-        x: 143
-        y: 176
-        width: 66
-        height: 66
+        x: 142
+        y: 174
+        width: 68
+        height: 68
       alignment: 9
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 4, y: 0}
-        - {x: 0, y: -11}
-        - {x: 0, y: -61}
-        - {x: 7, y: -66}
-        - {x: 63, y: -66}
-        - {x: 66, y: -57}
-        - {x: 66, y: -6}
-        - {x: 54, y: 0}
+      - - {x: 9, y: 0}
+        - {x: 0, y: -16}
+        - {x: 0, y: -57}
+        - {x: 13, y: -68}
+        - {x: 54, y: -68}
+        - {x: 68, y: -58}
+        - {x: 68, y: -15}
+        - {x: 62, y: 0}
     - name: title_logo_2
       rect:
         serializedVersion: 2
-        x: 256
-        y: 175
-        width: 66
-        height: 66
+        x: 254
+        y: 174
+        width: 68
+        height: 68
       alignment: 9
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 12, y: 0}
-        - {x: 0, y: -11}
-        - {x: 0, y: -56}
-        - {x: 8, y: -66}
-        - {x: 51, y: -66}
-        - {x: 66, y: -60}
-        - {x: 66, y: -18}
-        - {x: 54, y: 0}
+      - - {x: 9, y: 0}
+        - {x: 0, y: -16}
+        - {x: 0, y: -57}
+        - {x: 13, y: -68}
+        - {x: 54, y: -68}
+        - {x: 68, y: -58}
+        - {x: 68, y: -15}
+        - {x: 62, y: 0}
     - name: title_logo_3
       rect:
         serializedVersion: 2
-        x: 15
-        y: 63
-        width: 66
-        height: 66
+        x: 14
+        y: 62
+        width: 68
+        height: 68
       alignment: 9
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 3, y: 0}
-        - {x: 0, y: -5}
-        - {x: 0, y: -52}
-        - {x: 5, y: -66}
-        - {x: 57, y: -66}
-        - {x: 66, y: -54}
-        - {x: 66, y: -3}
-        - {x: 58, y: 0}
+      - - {x: 9, y: 0}
+        - {x: 0, y: -16}
+        - {x: 0, y: -57}
+        - {x: 13, y: -68}
+        - {x: 54, y: -68}
+        - {x: 68, y: -58}
+        - {x: 68, y: -15}
+        - {x: 62, y: 0}
     - name: title_logo_4
       rect:
         serializedVersion: 2
-        x: 143
-        y: 63
-        width: 66
-        height: 66
+        x: 142
+        y: 62
+        width: 68
+        height: 68
       alignment: 9
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 3, y: 0}
-        - {x: 0, y: -5}
-        - {x: 0, y: -52}
-        - {x: 5, y: -66}
-        - {x: 57, y: -66}
-        - {x: 66, y: -54}
-        - {x: 66, y: -3}
-        - {x: 58, y: 0}
+      - - {x: 9, y: 0}
+        - {x: 0, y: -16}
+        - {x: 0, y: -57}
+        - {x: 13, y: -68}
+        - {x: 54, y: -68}
+        - {x: 68, y: -58}
+        - {x: 68, y: -15}
+        - {x: 62, y: 0}
     - name: title_logo_5
       rect:
         serializedVersion: 2
-        x: 255
-        y: 63
-        width: 66
-        height: 66
+        x: 254
+        y: 62
+        width: 68
+        height: 68
       alignment: 9
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 3, y: 0}
-        - {x: 0, y: -5}
-        - {x: 0, y: -52}
-        - {x: 5, y: -66}
-        - {x: 57, y: -66}
-        - {x: 66, y: -54}
-        - {x: 66, y: -3}
-        - {x: 58, y: 0}
+      - - {x: 2, y: 0}
+        - {x: 0, y: -3}
+        - {x: 0, y: -64}
+        - {x: 10, y: -68}
+        - {x: 64, y: -68}
+        - {x: 68, y: -63}
+        - {x: 68, y: -16}
+        - {x: 62, y: 0}
     - name: title_logo_6
       rect:
         serializedVersion: 2

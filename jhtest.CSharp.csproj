@@ -253,6 +253,7 @@
     <Compile Include="Assets\Scripts\Managers\GameSaveManager.cs" />
     <Compile Include="Assets\Scripts\Managers\GameStateManager.cs" />
     <Compile Include="Assets\Scripts\Managers\HardwareInterfaceManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\LevelLoadManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerSettingsManager.cs" />
     <Compile Include="Assets\Scripts\Managers\StylisticHacksManager.cs" />
     <Compile Include="Assets\Scripts\Menus\ControlConfigMenu.cs" />
@@ -261,6 +262,7 @@
     <Compile Include="Assets\Scripts\Menus\MetaMenu.cs" />
     <Compile Include="Assets\Scripts\Menus\OptionsMenu.cs" />
     <Compile Include="Assets\Scripts\Menus\OptionsMenuResLabel.cs" />
+    <Compile Include="Assets\Scripts\Menus\TitleLogo.cs" />
     <Compile Include="Assets\Scripts\Menus\TitleMenu.cs" />
     <Compile Include="Assets\Scripts\Menus\TitleScreen.cs" />
     <Compile Include="Assets\Scripts\Menus\WeaponMenu.cs" />
@@ -309,7 +311,6 @@
     <Compile Include="Assets\Scripts\WorldObjects\RoomController.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\RoomPriorityMap.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\WorldController.cs" />
-    <Compile Include="Assets\TitleLogo.cs" />
     <Compile Include="Assets\Universe\Example\MyManager.cs" />
     <Compile Include="Assets\Universe\Scripts\Manager.cs" />
     <Compile Include="Assets\Universe\Scripts\ManagerBase.cs" />
@@ -366,20 +367,6 @@
     <None Include="Assets\Resources\Text\en-us\system\inventory\wpn_names.txt" />
     <None Include="Assets\Resources\Text\en-us\system\main.txt" />
     <None Include="Assets\Resources\Text\en-us\system\windowed_resolutions.txt" />
-    <None Include="Assets\Resources\Text\en-us\system\world\areas.txt" />
-    <None Include="Assets\Resources\Text\en-us\system\world\subregion00.txt" />
-    <None Include="Assets\Resources\Text\en-us\system\world\subregion01.txt" />
-    <None Include="Assets\Resources\Text\en-us\system\world\subregion02.txt" />
-    <None Include="Assets\Resources\Text\en-us\system\world\subregion03.txt" />
-    <None Include="Assets\Resources\Text\en-us\system\world\subregion03a.txt" />
-    <None Include="Assets\Resources\Text\en-us\system\world\subregion04.txt" />
-    <None Include="Assets\Resources\Text\en-us\system\world\subregion05.txt" />
-    <None Include="Assets\Resources\Text\en-us\system\world\subregion06.txt" />
-    <None Include="Assets\Resources\Text\en-us\system\world\subregion07.txt" />
-    <None Include="Assets\Resources\Text\en-us\system\world\subregion08.txt" />
-    <None Include="Assets\Resources\Text\en-us\system\world\subregion09.txt" />
-    <None Include="Assets\Resources\Text\en-us\system\world\subregion10.txt" />
-    <None Include="Assets\Resources\Text\en-us\system\world\subregion11.txt" />
     <None Include="Assets\Resources\Text\en-us\system\world\subregions.txt" />
     <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />

@@ -1,8 +1,10 @@
-ForestBoss1
-ForestBoss2
-ValleyBoss1
-ValleyBoss2
-Nazaan the Unchanging
-MarinaBoss2
-CircleBoss
-LastBoss
+Flame-Seared Sage
+Beast-rider Gabriel
+Bird-machine
+Infected Madman
+Dark Knight Samael
+Tower Guard Unit
+Lead-Glass Golem
+Baetyl Nightmares
+Perimeter Defense System
+Azrael, the Transfigured

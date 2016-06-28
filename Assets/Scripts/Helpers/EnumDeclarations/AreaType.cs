@@ -10,5 +10,7 @@ public enum AreaType
     Valley,
     Marina,
     Circle,
-    Tutorial
+    Tutorial,
+    ClockworkTowerAscent,
+    YsCityOfGlass
 }
