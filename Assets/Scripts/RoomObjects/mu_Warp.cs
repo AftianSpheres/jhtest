@@ -29,7 +29,7 @@ public class mu_Warp : MonoBehaviour
                     if (warpToOtherMap == false)
                     {
                         room.world.player.transform.position = new Vector3(DestinationRoom.bounds.min.x + DestinationRoom.EntryPoints[DestinationEntryPoint].x,
-                            DestinationRoom.bounds.min.y + HammerConstants.SizeOfOneTile + DestinationRoom.EntryPoints[DestinationEntryPoint].y, room.world.player.transform.position.z);
+                            DestinationRoom.bounds.min.y + (HammerConstants.SizeOfOneTile * 1.5f) + DestinationRoom.EntryPoints[DestinationEntryPoint].y, room.world.player.transform.position.z);
                         StartCoroutine(room.world.cameraController.InstantChangeScreen(DestinationRoom, 30));
                     }
                     else if (destinationLevel > AreaType.None)

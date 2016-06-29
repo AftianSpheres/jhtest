@@ -77,7 +77,7 @@ public class LevelLoadManager : Manager<LevelLoadManager>
         RoomController DestinationRoom = world.rooms[roomCoords[0], roomCoords[1]];
         world.player.DontWarp = true;
         world.player.transform.position = new Vector3(DestinationRoom.bounds.min.x + DestinationRoom.EntryPoints[EntryPointIndex].x,
-            DestinationRoom.bounds.min.y + HammerConstants.SizeOfOneTile + DestinationRoom.EntryPoints[EntryPointIndex].y, world.player.transform.position.z);
+            DestinationRoom.bounds.min.y + (HammerConstants.SizeOfOneTile * 1.5f) + DestinationRoom.EntryPoints[EntryPointIndex].y, world.player.transform.position.z);
         Debug.Log("Loaded scene: " + SceneManager.GetActiveScene().name);
         StartCoroutine(world.cameraController.InstantChangeScreen(DestinationRoom, 30));
 

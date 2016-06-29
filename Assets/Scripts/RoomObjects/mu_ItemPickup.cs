@@ -49,7 +49,7 @@ public class mu_ItemPickup : MonoBehaviour
         else if (displayLifespan > 0)
         {
             displayLifespan--;
-            transform.position = room.world.player.transform.position + (Vector3.up * 16);
+            transform.position = room.world.player.transform.position + (Vector3.up * 8);
         }
         else
         {
@@ -100,7 +100,7 @@ public class mu_ItemPickup : MonoBehaviour
         {
             room.world.MainTextbox.StartPrinting(text);
         }
-        transform.position = room.world.player.transform.position + (Vector3.up * 16);
+        transform.position = room.world.player.transform.position + (Vector3.up * 8);
         isOverhead = true;
     }
 }
