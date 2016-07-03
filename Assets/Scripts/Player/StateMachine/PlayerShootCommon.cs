@@ -3,7 +3,6 @@ using System;
 using System.Collections;
 public class PlayerShootCommon : StateMachineBehaviour
 {
-
     private PlayerController player;
     private GameObject reticle;
 
@@ -21,8 +20,6 @@ public class PlayerShootCommon : StateMachineBehaviour
 	// OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
-
         int FrameCtr = animator.GetInteger("FrameCtr");
         int HaltFrames = animator.GetInteger("HaltFrames");
         animator.SetInteger("FrameCtr", FrameCtr + 1);

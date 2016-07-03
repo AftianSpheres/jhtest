@@ -315,6 +315,7 @@
     <Compile Include="Assets\Universe\Scripts\Manager.cs" />
     <Compile Include="Assets\Universe\Scripts\ManagerBase.cs" />
     <Compile Include="Assets\Universe\Scripts\Universe.cs" />
+    <Compile Include="Assets\mu_UnrollingTiles.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Barker&apos;s Retro Text Printer Free\readme.txt" />

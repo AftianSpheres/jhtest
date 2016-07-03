@@ -8,5 +8,6 @@ public enum EventFlags_TestMap
     Rm0x1WGObtained = 1 << 1,
     BossDead = 1 << 2,
     BossDropShadowObtained = 1 << 3,
-    Rm0x1NorthDoorOpen = 1 << 4
+    Rm0x1NorthDoorOpen = 1 << 4,
+    ShittyDemoLadder = 1 << 5
 }
