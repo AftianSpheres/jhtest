@@ -6,6 +6,7 @@ using System.Collections;
 /// </summary>
 [RequireComponent (typeof(RegisteredSprite))]
 [RequireComponent (typeof(PauseableSprite))]
+[RequireComponent (typeof(SpriteMover))]
 public class CommonEnemyController : MonoBehaviour
 {
     public RoomController room;
@@ -14,6 +15,7 @@ public class CommonEnemyController : MonoBehaviour
     public Animator animator;
     public AudioClip HitSFX;
     public AudioSource source;
+    public SpriteMover mover;
     new public SpriteRenderer renderer;
     public int Weight;
     public Vector3 Heading;

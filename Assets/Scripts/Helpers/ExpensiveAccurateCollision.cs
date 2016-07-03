@@ -4,60 +4,93 @@ using System.Collections;
 
 public static class ExpensiveAccurateCollision
 {
-    public static bool CollideWithScenery(Animator animator, Bounds[] roomColliders, Vector3 PosMod, Collider2D Collider)
+    /// <summary>
+    /// Collides a sprite with scenery colliders.
+    /// Less horrible after some refactoring; still kinda gnarly.
+    /// </summary>
+    public static bool CollideWithScenery(SpriteMover mover, Bounds[] roomColliders, Vector3 PosMod, Collider2D Collider, bool ignoreCollision = false)
     {
-        if (animator.gameObject.GetComponent<PlayerController>() != null && animator.gameObject.GetComponent<PlayerController>().IgnoreCollision == true)
-        {
-            animator.transform.position += PosMod;
-            return false;
-        }
-        Vector3 KnownGood = animator.transform.position;
-        bool Collided = false;
         bool ret = false;
-        float ax = PosMod.x / Math.Abs(PosMod.x);
-        float ay = PosMod.y / Math.Abs(PosMod.y);
-        for (int i = 1; i < Math.Abs(PosMod.y) + 1; i++)
+        if (ignoreCollision == true)
         {
-            animator.transform.position = new Vector3(animator.transform.position.x, animator.transform.position.y + (i * ay), animator.transform.position.z);
-            for (int i2 = 0; i2 < roomColliders.Length; i2++)
-            {
-                if (roomColliders[i2] != default(Bounds) && Collider.bounds.Intersects(roomColliders[i2]))
-                {
-                    Collided = true;
-                }
-            }
-            if (Collided == false)
-            {
-                KnownGood = animator.transform.position;
-            }
+            mover.heading += PosMod;
         }
-        ret = Collided;
-        Collided = false;
-        animator.transform.position = KnownGood;
-        for (int i = 1; i < Math.Abs(PosMod.x) + 1; i++)
+        else
         {
-            animator.transform.position = new Vector3(animator.transform.position.x + (i * ax), animator.transform.position.y, animator.transform.position.z);
-            for (int i2 = 0; i2 < roomColliders.Length; i2++)
-            {
-                if (roomColliders[i2] != default(Bounds) && Collider.bounds.Intersects(roomColliders[i2]))
-                {
-                    Collided = true;
-                }
-            }
-            if (Collided == false)
-            {
-                KnownGood = animator.transform.position;
-            }
-        }
-        if (ret == false)
-        {
+            Vector3 KnownGood = mover.virtualPosition;
+            Vector3 prospectivePos = mover.virtualPosition;
+            Bounds newCollider = new Bounds();
+            bool Collided = false;
+            float ax = PosMod.x / Mathf.Floor(Math.Abs(PosMod.x));
+            float ay = PosMod.y / Mathf.Floor(Math.Abs(PosMod.y));
+            _in_CollideWithScenery_phase1(ref Collided, ref newCollider, ref roomColliders, ref KnownGood, ref prospectivePos, PosMod.y, ay, 0, 1, Collider, mover);
             ret = Collided;
+            Collided = false;
+            prospectivePos = KnownGood;
+            _in_CollideWithScenery_phase1(ref Collided, ref newCollider, ref roomColliders, ref KnownGood, ref prospectivePos, PosMod.x, ax, 1, 0, Collider, mover);
+            if (ret == false)
+            {
+                ret = Collided;
+            }
+            Collided = false;
+            mover.heading += (KnownGood - mover.virtualPosition);
+            Vector3 scrapHeading = new Vector3(PosMod.x - (int)PosMod.x, PosMod.y - (int)PosMod.y, 0);
+            ax = 0;
+            if (scrapHeading.x != 0)
+            {
+                ax = scrapHeading.x / Mathf.Abs(scrapHeading.x);
+            }
+            ay = 0;
+            if (scrapHeading.y != 0)
+            {
+                ay = scrapHeading.y / Mathf.Abs(scrapHeading.y);
+            }
+            Vector3 testHeading = new Vector3(ax, ay, 0);
+            _in_CollideWithScenery_phase2(ref Collided, ref newCollider, ref roomColliders, ref KnownGood, ref scrapHeading, ref testHeading, 0, scrapHeading.y, testHeading.x, 0, Collider, mover);
+            _in_CollideWithScenery_phase2(ref Collided, ref newCollider, ref roomColliders, ref KnownGood, ref scrapHeading, ref testHeading, scrapHeading.x, 0, 0, scrapHeading.y, Collider, mover);
+            mover.heading += scrapHeading;
+            
         }
-        animator.transform.position = KnownGood;
         return ret;
     }
 
+    private static void _in_CollideWithScenery_phase1 (ref bool Collided, ref Bounds newCollider, ref Bounds[] roomColliders, ref Vector3 KnownGood, ref Vector3 prospectivePos, float dist, float a, float xmulti, float ymulti, Collider2D Collider, SpriteMover mover)
+    {
+        Vector3 v = KnownGood;
+        for (int i = 1; i < Mathf.Floor(Math.Abs(dist)) + 1; i++)
+        {
+            prospectivePos = new Vector3(KnownGood.x + (i * a * xmulti), KnownGood.y + (i * a * ymulti), mover.transform.position.z);
+            newCollider = new Bounds(new Vector3(Collider.bounds.center.x + (i * a * xmulti), Collider.bounds.center.y + (i * a * ymulti), Collider.bounds.center.z), Collider.bounds.size);
+            for (int i2 = 0; i2 < roomColliders.Length; i2++)
+            {
+                if (roomColliders[i2] != default(Bounds) && newCollider.Intersects(roomColliders[i2]))
+                {
+                    Collided = true;
+                }
+            }
+            if (Collided == false)
+            {
+                v = prospectivePos;
+            }
+        }
+        KnownGood = v;
+    }
 
+    private static void _in_CollideWithScenery_phase2 (ref bool Collided, ref Bounds newCollider, ref Bounds[] roomColliders, ref Vector3 KnownGood, ref Vector3 scrapHeading, ref Vector3 testHeading, float ax, float ay, float vx, float vy, Collider2D Collider, SpriteMover mover)
+    {
+        newCollider = new Bounds(new Vector3(Collider.bounds.center.x + (KnownGood.x - mover.virtualPosition.x) + vx, Collider.bounds.center.y + (KnownGood.y - mover.virtualPosition.y) + vy, Collider.bounds.center.z), Collider.bounds.size);
+        for (int i = 0; i < roomColliders.Length; i++)
+        {
+            if (roomColliders[i] != default(Bounds) && newCollider.Intersects(roomColliders[i]))
+            {
+                Collided = true;
+            }
+        }
+        if (Collided == true)
+        {
+            scrapHeading = new Vector3(ax, ay, 0);
+        }
+    }
 
     public static Vector3 ShoveOutOfScenery (Collider2D collider, Bounds[] roomColliders, Vector3 newPos)
     {

@@ -124,6 +124,7 @@ GameObject:
   - 50: {fileID: 5076868}
   - 114: {fileID: 11424980}
   - 114: {fileID: 11475246}
+  - 114: {fileID: 11463844}
   m_Layer: 0
   m_Name: MainBody
   m_TagString: Enemy
@@ -1177,6 +1178,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 907ea04a7b9882346a24097e4ea653b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11463844
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0826823266c152645bbda48958b33523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heading: {x: 0, y: 0, z: 0}
+  virtualPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &11464132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1260,6 +1274,7 @@ MonoBehaviour:
   animator: {fileID: 9511026}
   HitSFX: {fileID: 8300000, guid: f38f15754944ff647845149fc2173816, type: 3}
   source: {fileID: 8202348}
+  mover: {fileID: 11463844}
   renderer: {fileID: 21244218}
   Weight: 300
   Heading: {x: 0, y: 0, z: 0}

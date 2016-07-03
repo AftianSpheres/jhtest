@@ -87,8 +87,6 @@ public class mu_ItemPickup : MonoBehaviour
                 }
                 room.world.BGS0.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_KeySFX));
                 break;
-            case PickupType.KeyItem:
-                throw new System.NotImplementedException();
             default:
                 throw new System.Exception("Pickup " + gameObject.name + " is of invalid type " + pickupType);
         }

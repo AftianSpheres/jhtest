@@ -7,6 +7,7 @@ public class PlayerWalking : StateMachineBehaviour
     private bool OffFrame = false;
     private Bounds[] roomColliders;
     private Collider2D collider;
+    private PlayerController controller;
 
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -14,6 +15,7 @@ public class PlayerWalking : StateMachineBehaviour
         roomColliders = animator.gameObject.GetComponent<PlayerController>().world.activeRoom.collision.allCollision;
         collider = animator.GetComponent<Collider2D>();
         animator.SetInteger("FrameCtr", 0); // housekeeping: any state that uses FrameCtr needs to clean it up in OnStateEnter
+        controller = animator.gameObject.GetComponent<PlayerController>();
 	}
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -38,7 +40,7 @@ public class PlayerWalking : StateMachineBehaviour
             {
                 if (animator.GetBool("HeldLeft") == true)
                 {
-                    PosMod = new Vector3(-1 * animator.GetInteger("MoveSpeed"), -1 * animator.GetInteger("MoveSpeed"), 0);
+                    PosMod = new Vector3(-1, -1, 0);
                     if (FrameCtr % 2 != 0)
                     {
                         OffFrame = true;
@@ -46,7 +48,7 @@ public class PlayerWalking : StateMachineBehaviour
                 }
                 else if (animator.GetBool("HeldRight") == true)
                 {
-                    PosMod = new Vector3(animator.GetInteger("MoveSpeed"), -1 * animator.GetInteger("MoveSpeed"), 0);
+                    PosMod = new Vector3(1, -1, 0);
                     if (FrameCtr % 2 != 0)
                     {
                         OffFrame = true;
@@ -54,14 +56,14 @@ public class PlayerWalking : StateMachineBehaviour
                 }
                 else
                 {
-                    PosMod = new Vector3(0, -1 * animator.GetInteger("MoveSpeed"), 0);
+                    PosMod = new Vector3(0, -1, 0);
                 }
             }
             else if (animator.GetBool("HeldUp") == true)
             {
                 if (animator.GetBool("HeldLeft") == true)
                 {
-                    PosMod = new Vector3(-1 * animator.GetInteger("MoveSpeed"), animator.GetInteger("MoveSpeed"), 0);
+                    PosMod = new Vector3(-1, 1, 0);
                     if (FrameCtr % 2 != 0)
                     {
                         OffFrame = true;
@@ -69,7 +71,7 @@ public class PlayerWalking : StateMachineBehaviour
                 }
                 else if (animator.GetBool("HeldRight") == true)
                 {
-                    PosMod = new Vector3(animator.GetInteger("MoveSpeed"), animator.GetInteger("MoveSpeed"), 0);
+                    PosMod = new Vector3(1, 1, 0);
                     if (FrameCtr % 2 != 0)
                     {
                         OffFrame = true;
@@ -77,23 +79,24 @@ public class PlayerWalking : StateMachineBehaviour
                 }
                 else
                 {
-                    PosMod = new Vector3(0, animator.GetInteger("MoveSpeed"), 0);
+                    PosMod = new Vector3(0, 1, 0);
                 }
             }
             else if (animator.GetBool("HeldLeft") == true)
             {
-                PosMod = new Vector3(-1 * animator.GetInteger("MoveSpeed"), 0, 0);
+                PosMod = new Vector3(-1, 0, 0);
             }
             else if (animator.GetBool("HeldRight") == true)
             {
-                PosMod = new Vector3(animator.GetInteger("MoveSpeed"), 0, 0);
+                PosMod = new Vector3(1, 0, 0);
             }
         }
         else
         {
             OffFrame = false;
         }
-        ExpensiveAccurateCollision.CollideWithScenery(animator, roomColliders, PosMod, collider);
+        PosMod *= (animator.GetFloat(PlayerAnimatorHashes.paramMoveSpeed) * animator.GetFloat(PlayerAnimatorHashes.paramInternalMoveSpeedMulti) * animator.GetFloat(PlayerAnimatorHashes.paramExternalMoveSpeedMulti));
+        ExpensiveAccurateCollision.CollideWithScenery(controller.mover, roomColliders, PosMod, collider);
 
 	}
 

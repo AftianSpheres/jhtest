@@ -99,6 +99,8 @@ public class GameStateManager : Manager<GameStateManager>
         {
             yield return null;
         }
+        world.player.mover.virtualPosition = respawnPosition;
+        world.player.mover.heading = Vector3.zero;
         world.player.transform.position = respawnPosition;
         world.player.energy.Recover(100);
         world.player.animator.Play(PlayerAnimatorHashes.PlayerStand_D);

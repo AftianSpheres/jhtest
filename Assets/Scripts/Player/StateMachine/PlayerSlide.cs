@@ -67,7 +67,7 @@ public class PlayerSlide : StateMachineBehaviour
                         PosMod = _in_SlideInDir(Vector3.right, master.world.HardwareInterfaceManager.Right.Pressed, false);
                         break;
                 }
-                ExpensiveAccurateCollision.CollideWithScenery(animator, roomColliders, PosMod, collider);
+                ExpensiveAccurateCollision.CollideWithScenery(master.mover, roomColliders, PosMod, collider);
             }
         }
     }

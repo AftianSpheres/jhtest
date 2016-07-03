@@ -78,6 +78,8 @@ public class LevelLoadManager : Manager<LevelLoadManager>
         world.player.DontWarp = true;
         world.player.transform.position = new Vector3(DestinationRoom.bounds.min.x + DestinationRoom.EntryPoints[EntryPointIndex].x,
             DestinationRoom.bounds.min.y + (HammerConstants.SizeOfOneTile * 1.5f) + DestinationRoom.EntryPoints[EntryPointIndex].y, world.player.transform.position.z);
+        world.player.mover.virtualPosition = world.player.transform.position;
+        world.player.mover.heading = Vector3.zero;
         Debug.Log("Loaded scene: " + SceneManager.GetActiveScene().name);
         StartCoroutine(world.cameraController.InstantChangeScreen(DestinationRoom, 30));
 

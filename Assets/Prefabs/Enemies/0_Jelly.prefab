@@ -19,6 +19,7 @@ GameObject:
   - 114: {fileID: 11417496}
   - 114: {fileID: 11444180}
   - 114: {fileID: 11467360}
+  - 114: {fileID: 11480092}
   m_Layer: 0
   m_Name: 0_Jelly
   m_TagString: Enemy
@@ -225,6 +226,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMusic: 0
   source: {fileID: 8211702}
+--- !u!114 &11480092
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0826823266c152645bbda48958b33523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heading: {x: 0, y: 0, z: 0}
+  virtualPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &11499936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -242,6 +256,7 @@ MonoBehaviour:
   animator: {fileID: 9569220}
   HitSFX: {fileID: 8300000, guid: d88bfc6a0d312f4479f60632afc9ad67, type: 3}
   source: {fileID: 8211702}
+  mover: {fileID: 11480092}
   renderer: {fileID: 21291264}
   Weight: 3
   Heading: {x: 0, y: 0, z: 0}

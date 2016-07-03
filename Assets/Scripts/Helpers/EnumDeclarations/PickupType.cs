@@ -5,6 +5,5 @@ public enum PickupType
 {
     Weapon,
     PassiveItem,
-    AreaKey,
-    KeyItem
+    AreaKey
 }

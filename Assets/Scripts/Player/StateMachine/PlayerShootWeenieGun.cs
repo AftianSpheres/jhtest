@@ -82,19 +82,19 @@ public class PlayerShootWeenieGun : StateMachineBehaviour
                     {
                         if (FrameCtr % 4 == 0)
                         {
-                            PosMod = new Vector3(-1 * animator.GetInteger("MoveSpeed"), -1 * animator.GetInteger("MoveSpeed"), 0);
+                            PosMod = new Vector3(-1, -1, 0);
                         }
                     }
                     else if (animator.GetBool("HeldRight") == true)
                     {
                         if (FrameCtr % 4 == 0)
                         {
-                            PosMod = new Vector3(animator.GetInteger("MoveSpeed"), -1 * animator.GetInteger("MoveSpeed"), 0);
+                            PosMod = new Vector3(1, -1, 0);
                         }
                     }
                     else
                     {
-                        PosMod = new Vector3(0, -1 * animator.GetInteger("MoveSpeed"), 0);
+                        PosMod = new Vector3(0, -1, 0);
                     }
                 }
                 else if (animator.GetBool("HeldUp") == true)
@@ -103,31 +103,32 @@ public class PlayerShootWeenieGun : StateMachineBehaviour
                     {
                         if (FrameCtr % 4 == 0)
                         {
-                            PosMod = new Vector3(-1 * animator.GetInteger("MoveSpeed"), animator.GetInteger("MoveSpeed"), 0);
+                            PosMod = new Vector3(-1, 1, 0);
                         }
                     }
                     else if (animator.GetBool("HeldRight") == true)
                     {
                         if (FrameCtr % 4 == 0)
                         {
-                            PosMod = new Vector3(animator.GetInteger("MoveSpeed"), animator.GetInteger("MoveSpeed"), 0);
+                            PosMod = new Vector3(1, 1, 0);
                         }           
                     }
                     else
                     {
-                        PosMod = new Vector3(0, animator.GetInteger("MoveSpeed"), 0);
+                        PosMod = new Vector3(0, 1, 0);
                     }
                 }
                 else if (animator.GetBool("HeldLeft") == true)
                 {
-                    PosMod = new Vector3(-1 * animator.GetInteger("MoveSpeed"), 0, 0);
+                    PosMod = new Vector3(-1, 0, 0);
                 }
                 else if (animator.GetBool("HeldRight") == true)
                 {
-                    PosMod = new Vector3(animator.GetInteger("MoveSpeed"), 0, 0);
+                    PosMod = new Vector3(1, 0, 0);
                 }
             }
-            ExpensiveAccurateCollision.CollideWithScenery(animator, roomColliders, PosMod, collider);
+            PosMod *= (animator.GetFloat(PlayerAnimatorHashes.paramMoveSpeed) * animator.GetFloat(PlayerAnimatorHashes.paramInternalMoveSpeedMulti) * animator.GetFloat(PlayerAnimatorHashes.paramExternalMoveSpeedMulti));
+            ExpensiveAccurateCollision.CollideWithScenery(wpnManager.master.mover, roomColliders, PosMod, collider);
         }
            
    }

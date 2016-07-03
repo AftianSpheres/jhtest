@@ -64,7 +64,8 @@ public class PlayerDodging : StateMachineBehaviour
                 PosMod = _in_RollInDirection(Vector3.right, animator, animator.GetBool("HeldRight"), false);
             }
         }
-        ExpensiveAccurateCollision.CollideWithScenery(animator, roomColliders, PosMod, collider);
+        PosMod *= (animator.GetFloat(PlayerAnimatorHashes.paramMoveSpeed) * animator.GetFloat(PlayerAnimatorHashes.paramInternalMoveSpeedMulti) * animator.GetFloat(PlayerAnimatorHashes.paramExternalMoveSpeedMulti));
+        ExpensiveAccurateCollision.CollideWithScenery(controller.mover, roomColliders, PosMod, collider);
     }
 
     private Vector3 _in_RollInDirection (Vector3 baseVector, Animator animator, bool input, bool moveVertically)

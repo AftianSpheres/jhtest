@@ -95,6 +95,8 @@ public class mu_Ledge : MonoBehaviour
         inDrop = true;
         room.world.player.Locked = true;
         source.PlayOneShot(dropSFX);
+        room.world.player.mover.virtualPosition = room.world.player.mover.transform.position;
+        room.world.player.mover.heading = Vector3.zero;
         room.world.player.transform.position += Vector3.up * 8;
         if (direction == Direction.Left || direction == Direction.Right)
         {

@@ -287,6 +287,8 @@ public class mu_Door : MonoBehaviour
     /// </summary>
     IEnumerator DrawPlayerThrough ()
     {
+        player.mover.virtualPosition = player.transform.position;
+        player.mover.heading = Vector3.zero;
         transitionInProgress = true;
         mirror.transitionInProgress = true;
         Vector3 PosMod = Vector3.zero;

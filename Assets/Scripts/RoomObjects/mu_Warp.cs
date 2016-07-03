@@ -26,6 +26,8 @@ public class mu_Warp : MonoBehaviour
                 if (room.world.player.DontWarp == false)
                 {
                     room.world.player.DontWarp = true;
+                    room.world.player.mover.virtualPosition = room.world.player.transform.position;
+                    room.world.player.mover.heading = Vector3.zero;
                     if (warpToOtherMap == false)
                     {
                         room.world.player.transform.position = new Vector3(DestinationRoom.bounds.min.x + DestinationRoom.EntryPoints[DestinationEntryPoint].x,

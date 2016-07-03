@@ -31,8 +31,9 @@ public static class PlayerAnimatorHashes
     public static int paramHeldUp = Animator.StringToHash("HeldUp");
     public static int triggerDie = Animator.StringToHash("Die");
     public static int triggerDodgeBurst = Animator.StringToHash("DodgeBurst");
-
-
+    public static int paramExternalMoveSpeedMulti = Animator.StringToHash("ExternalMoveSpeedMulti");
+    public static int paramInternalMoveSpeedMulti = Animator.StringToHash("InternalMoveSpeedMulti");
+    public static int paramMoveSpeed = Animator.StringToHash("MoveSpeed");
 }
 
 /// <summary>
@@ -75,6 +76,7 @@ public class PlayerController : MonoBehaviour {
     public bool hasBeenHit = false;
     public GameObject shadow;
     public bool isNeutral = true;
+    public SpriteMover mover;
 
 	void Start ()
     {
@@ -493,7 +495,7 @@ public class PlayerController : MonoBehaviour {
     public void MoveOrBeCrushed (Vector3 heading, GameObject crusher)
     {
         Bounds[] collision = world.activeRoom.collision.getAllCollisionButSpecificObject(crusher);
-        ExpensiveAccurateCollision.CollideWithScenery(animator, collision, heading, collider);
+        ExpensiveAccurateCollision.CollideWithScenery(mover, collision, heading, collider);
         for (int i = 0; i < world.activeRoom.collision.allCollision.Length; i++)
         {
             if (collider.bounds.Intersects(world.activeRoom.collision.allCollision[i]) == true)

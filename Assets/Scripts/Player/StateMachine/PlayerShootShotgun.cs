@@ -67,7 +67,7 @@ public class PlayerShootShotgun : StateMachineBehaviour
                             default:
                                 throw new System.Exception("FacingDir out of bounds!");
                         }
-                        ExpensiveAccurateCollision.CollideWithScenery(animator, roomColliders, PosMod, collider);
+                        ExpensiveAccurateCollision.CollideWithScenery(wpnManager.master.mover, roomColliders, PosMod, collider);
                     }
                 }
             }

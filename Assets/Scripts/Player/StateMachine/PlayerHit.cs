@@ -15,7 +15,7 @@ public class PlayerHit : StateMachineBehaviour {
     {
         if (controller.KnockbackFrames > 0)
         {
-            ExpensiveAccurateCollision.CollideWithScenery(animator, controller.world.activeRoom.collision.allCollision, controller.KnockbackHeading, controller.collider);
+            ExpensiveAccurateCollision.CollideWithScenery(controller.mover, controller.world.activeRoom.collision.allCollision, controller.KnockbackHeading, controller.collider);
             controller.KnockbackFrames--;
         }
     }

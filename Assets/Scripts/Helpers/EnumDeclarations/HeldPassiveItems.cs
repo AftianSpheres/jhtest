@@ -16,5 +16,6 @@ public enum HeldPassiveItems
     TabooRegenUpThingy = 1 << 9,
     ForestMonolithChunk = 1 << 10,
     ValleyMonolithChunk = 1 << 11,
-    MarinaMonolithChunk = 1 << 12
+    MarinaMonolithChunk = 1 << 12,
+    DriftwoodTotem = 1 << 13
 }
