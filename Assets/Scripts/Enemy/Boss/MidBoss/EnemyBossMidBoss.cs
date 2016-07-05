@@ -63,13 +63,13 @@ public class EnemyBossMidBoss : EnemyModule
                 case BossMidBoss_Attacks.ThingyToss:
                     Vector3 destination;
                     destination = new Vector3(float.MinValue, common.collider.bounds.center.y, common.collider.bounds.center.z );
-                    common.room.world.EnemyBullets.FireBullet(WeaponType.eGeneric, 2.0f, common.ShotDmg, 2, destination, common.collider.bounds.center, true);
+                    common.room.world.EnemyBullets.FireBullet(WeaponType.eGenericMid, 2.0f, common.ShotDmg, 2, destination, common.collider.bounds.center, true);
                     destination = new Vector3(float.MaxValue, common.collider.bounds.center.y, common.collider.bounds.center.z);
-                    common.room.world.EnemyBullets.FireBullet(WeaponType.eGeneric, 2.0f, common.ShotDmg, 2, destination, common.collider.bounds.center, true);
+                    common.room.world.EnemyBullets.FireBullet(WeaponType.eGenericMid, 2.0f, common.ShotDmg, 2, destination, common.collider.bounds.center, true);
                     destination = new Vector3(common.collider.bounds.center.x, float.MinValue, common.collider.bounds.center.z);
-                    common.room.world.EnemyBullets.FireBullet(WeaponType.eGeneric, 2.0f, common.ShotDmg, 2, destination, common.collider.bounds.center, true);
+                    common.room.world.EnemyBullets.FireBullet(WeaponType.eGenericMid, 2.0f, common.ShotDmg, 2, destination, common.collider.bounds.center, true);
                     destination = new Vector3(common.collider.bounds.center.x, float.MaxValue, common.collider.bounds.center.z);
-                    common.room.world.EnemyBullets.FireBullet(WeaponType.eGeneric, 2.0f, common.ShotDmg, 2, destination, common.collider.bounds.center, true);
+                    common.room.world.EnemyBullets.FireBullet(WeaponType.eGenericMid, 2.0f, common.ShotDmg, 2, destination, common.collider.bounds.center, true);
                     break;
             }
         }
@@ -91,13 +91,13 @@ public class EnemyBossMidBoss : EnemyModule
                 {
                     Vector3 origin = new Vector3(common.room.bounds.min.x + spacing, common.room.bounds.max.y, transform.position.z);
                     Vector3 destination = new Vector3(common.room.bounds.min.x + spacing, common.room.bounds.min.y, transform.position.z);
-                    common.room.world.EnemyBullets.FireBullet(WeaponType.eMidBoss_Arrow_Vert, 2.0f, common.ShotDmg, 2, destination, origin, true);
+                    common.room.world.EnemyBullets.FireBullet(WeaponType.pDarkBow, 2.0f, common.ShotDmg, 2, destination, origin, true);
                 }
                 else
                 {
                     Vector3 origin = new Vector3(common.room.bounds.min.x + spacing, common.room.bounds.min.y + 12, transform.position.z);
                     Vector3 destination = new Vector3(common.room.bounds.min.x + spacing, common.room.bounds.max.y + 12, transform.position.z);
-                    common.room.world.EnemyBullets.FireBullet(WeaponType.eMidBoss_Arrow_Vert, 2.0f, common.ShotDmg, 2, destination, origin, true);
+                    common.room.world.EnemyBullets.FireBullet(WeaponType.pDarkBow, 2.0f, common.ShotDmg, 2, destination, origin, true);
                 }
                 i++;
                 yield return null;
@@ -113,13 +113,13 @@ public class EnemyBossMidBoss : EnemyModule
                 {
                     Vector3 origin = new Vector3(common.room.bounds.min.x, common.room.bounds.min.y + spacing, transform.position.z);
                     Vector3 destination = new Vector3(common.room.bounds.max.x, common.room.bounds.min.y + spacing, transform.position.z);
-                    common.room.world.EnemyBullets.FireBullet(WeaponType.eMidBoss_Arrow_Horiz, 2.0f, common.ShotDmg, 2, destination, origin, true);
+                    common.room.world.EnemyBullets.FireBullet(WeaponType.pDarkBow, 2.0f, common.ShotDmg, 2, destination, origin, true);
                 }
                 else
                 {
                     Vector3 origin = new Vector3(common.room.bounds.max.x - 12, common.room.bounds.min.y + spacing, transform.position.z);
                     Vector3 destination = new Vector3(common.room.bounds.min.x - 12, common.room.bounds.min.y + spacing, transform.position.z);
-                    common.room.world.EnemyBullets.FireBullet(WeaponType.eMidBoss_Arrow_Horiz, 2.0f, common.ShotDmg, 2, destination, origin, true);
+                    common.room.world.EnemyBullets.FireBullet(WeaponType.pDarkBow, 2.0f, common.ShotDmg, 2, destination, origin, true);
                 }
                 i++;
                 yield return null;

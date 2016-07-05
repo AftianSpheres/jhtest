@@ -132,19 +132,6 @@ public class BulletController : MonoBehaviour
                 Range = 160;
                 snapToThing = world.player.transform.position;
                 break;
-            case WeaponType.eGeneric:
-                renderer.sprite = pool.frames[0];
-                break;
-            case WeaponType.eMidBoss_Arrow_Vert:
-                renderer.sprite = pool.frames[1];
-                break;
-            case WeaponType.eMidBoss_Arrow_Horiz:
-                renderer.sprite = pool.frames[2];
-                break;
-            case WeaponType.eGenericBomb:
-                renderer.sprite = pool.frames[0];
-                isExplosive = true;
-                break;
             case WeaponType.spEnergyRecover:
                 renderer.sprite = Resources.Load<Sprite>(GlobalStaticResourcePaths.p_EnergyRecoverGFX);
                 break;
@@ -184,11 +171,11 @@ public class BulletController : MonoBehaviour
                 boomPool.StartBoom(collider.bounds.center, BoomType.EnergyThingy);
                 _Retire_pShadow();
                 break;
-            case WeaponType.eGeneric:
+            case WeaponType.eGenericTiny:
+            case WeaponType.eGenericMid:
+            case WeaponType.eGenericBig:
+            case WeaponType.eRing:
                 boomPool.StartBoom(collider.bounds.center, BoomType.EnergyThingy);
-                break;
-            case WeaponType.eGenericBomb:
-                boomPool.StartBoom(collider.bounds.center, BoomType.SmokePuff, true, 50, 20, 16, owner);
                 break;
         }
     }

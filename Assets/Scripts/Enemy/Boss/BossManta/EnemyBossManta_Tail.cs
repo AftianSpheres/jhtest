@@ -154,7 +154,7 @@ public class EnemyBossManta_Tail : MonoBehaviour
                 {
                     dest = new Vector3(tailBits[i].collider.bounds.center.x + 1, tailBits[i].collider.bounds.center.y, tailBits[i].collider.bounds.center.z - 1);
                 }
-                master.common.room.world.EnemyBullets.FireBullet(WeaponType.eGeneric, 2, master.common.ShotDmg, 5, tailBits[i].collider.bounds.center, dest, true, master.common.room.world.player.collider, 16, int.MaxValue, master.gameObject);
+                master.common.room.world.EnemyBullets.FireBullet(WeaponType.eGenericTiny, 2, master.common.ShotDmg, 5, tailBits[i].collider.bounds.center, dest, true, master.common.room.world.player.collider, 16, int.MaxValue, master.gameObject);
             }
             master.common.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_EnemyFireStrangeBurstSFX));
             yield return null;

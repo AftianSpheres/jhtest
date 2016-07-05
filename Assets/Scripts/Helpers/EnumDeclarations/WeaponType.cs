@@ -30,10 +30,10 @@ public enum WeaponType
     pPsychicRing,
     pPsychicRay,
 
-    eGeneric = 100000,
-    eMidBoss_Arrow_Vert,
-    eMidBoss_Arrow_Horiz,
-    eGenericBomb,
+    eGenericTiny = 100000,
+    eGenericMid,
+    eGenericBig,
+    eRing,
 
     spEnergyRecover = 500000
 }

@@ -490,7 +490,7 @@ public class EnemyBossManta : EnemyModule
                 {
                     dest = new Vector3(playerPosBuffer.x + (2 * horizVal), playerPosBuffer.y + (2 * vertVal), playerPosBuffer.z);
                 }
-                common.room.world.EnemyBullets.FireBullet(WeaponType.eGeneric, 1.75f, common.ShotDmg, 3, dest, origins[i % 2], true);
+                common.room.world.EnemyBullets.FireBullet(WeaponType.eGenericMid, 1.75f, common.ShotDmg, 3, dest, origins[i % 2], true);
             }
             RemainingVolleys--;
         }
@@ -527,7 +527,7 @@ public class EnemyBossManta : EnemyModule
                 throw new System.Exception("Invalid direction for firing: " + facingDir.ToString());
         }
         Vector3 dest = common.room.world.player.collider.bounds.center;
-        common.room.world.EnemyBullets.FireBullet(WeaponType.eGenericBomb, 5f, Mathf.RoundToInt(common.ShotDmg * 2.5f), 6, dest, origin, true, common.room.world.player.collider, 4, 128, gameObject);
+        common.room.world.EnemyBullets.FireBullet(WeaponType.eRing, 5f, Mathf.RoundToInt(common.ShotDmg * 2.5f), 6, dest, origin, true, common.room.world.player.collider, 4, 128, gameObject);
         MissilePrimed = false;
         common.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_FireShadowSFX));
     }
