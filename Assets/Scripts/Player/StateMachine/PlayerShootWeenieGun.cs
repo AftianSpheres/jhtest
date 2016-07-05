@@ -49,7 +49,7 @@ public class PlayerShootWeenieGun : StateMachineBehaviour
         if (active == true)
         {
             FrameCtr = animator.GetInteger("FrameCtr");
-            if (FrameCtr % 20 == 0 || (animator.GetBool("Shooting") == false && animator.GetInteger("Cooldown") <= -1))
+            if (FrameCtr % 15 == 0 || (animator.GetBool("Shooting") == false && animator.GetInteger("Cooldown") <= -1))
             {
                 if ((animator.GetBool("HeldFire1") == true && animator.GetBool("FireSlotB") == false) || (animator.GetBool("HeldFire2") == true && animator.GetBool("FireSlotB") == true))
                 {
@@ -57,7 +57,7 @@ public class PlayerShootWeenieGun : StateMachineBehaviour
                     source.PlayOneShot(sfx, 0.5f);
                     animator.SetBool("FireRoundDone", true);
                     animator.SetBool("Shooting", true);
-                    animator.SetInteger("Cooldown", 20);
+                    animator.SetInteger("Cooldown", 15);
                 }
             }
         }

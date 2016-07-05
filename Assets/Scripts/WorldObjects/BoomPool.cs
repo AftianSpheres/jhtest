@@ -62,7 +62,7 @@ public class BoomPool : MonoBehaviour
                     throw new System.Exception("Invalid boom type: " + type);
             }
             boomEffect.Boom(collideable, damage, duration, pushbackStrength, sprites);
-            boomEffect.transform.position = new Vector3(center.x - .5f * boomEffect.collider.bounds.extents.x, center.y + .5f * boomEffect.collider.bounds.extents.y, 0);
+            boomEffect.transform.position = center;
         }
     }
 }

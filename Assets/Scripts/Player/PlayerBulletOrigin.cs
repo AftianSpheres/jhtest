@@ -10,7 +10,7 @@ public class PlayerBulletOrigin : MonoBehaviour
     new public SpriteRenderer renderer;
     public Sprite[] spriteSet_00;
     public Sprite[] spriteSet_01;
-    private static Vector3[] offsets = { new Vector3(1, -5, 0), new Vector3(7, -1, 0), new Vector3(-1, -5, 0), new Vector3(7, -5, 0) };
+    private static Vector3[] offsets = { new Vector3(4, -11, 0), new Vector3(10, -7, 0), new Vector3(-1, -11, 0), new Vector3(7, -11, 0) };
 	
 	// Update is called once per frame
 	void Update ()

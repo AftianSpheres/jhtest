@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: f92fdf3e3ff6d5149840e06447e066e1
-timeCreated: 1467186171
+timeCreated: 1467743424
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -466,10 +466,10 @@ TextureImporter:
     - name: player0000_lpistol
       rect:
         serializedVersion: 2
-        x: 40
-        y: 169
+        x: 6
+        y: 137
         width: 10
-        height: 6
+        height: 8
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -477,10 +477,10 @@ TextureImporter:
     - name: player0000_rpistol
       rect:
         serializedVersion: 2
-        x: 41
-        y: 162
+        x: 24
+        y: 137
         width: 10
-        height: 6
+        height: 8
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -488,10 +488,10 @@ TextureImporter:
     - name: player0000_dpistol
       rect:
         serializedVersion: 2
-        x: 54
-        y: 168
+        x: 1
+        y: 153
         width: 3
-        height: 6
+        height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -499,10 +499,10 @@ TextureImporter:
     - name: player0000_upistol
       rect:
         serializedVersion: 2
-        x: 54
-        y: 160
+        x: 12
+        y: 153
         width: 3
-        height: 6
+        height: 7
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -510,10 +510,10 @@ TextureImporter:
     - name: player0000_lshotgun
       rect:
         serializedVersion: 2
-        x: 14
-        y: 169
+        x: 43
+        y: 137
         width: 13
-        height: 7
+        height: 8
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -521,10 +521,10 @@ TextureImporter:
     - name: player0000_rshotgun
       rect:
         serializedVersion: 2
-        x: 14
-        y: 161
+        x: 64
+        y: 137
         width: 13
-        height: 7
+        height: 8
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -532,10 +532,10 @@ TextureImporter:
     - name: player0000_dshotgun
       rect:
         serializedVersion: 2
-        x: 29
-        y: 168
+        x: 40
+        y: 153
         width: 5
-        height: 8
+        height: 9
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -543,10 +543,10 @@ TextureImporter:
     - name: player0000_ushotgun
       rect:
         serializedVersion: 2
-        x: 29
-        y: 159
+        x: 51
+        y: 153
         width: 5
-        height: 8
+        height: 9
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -642,8 +642,8 @@ TextureImporter:
     - name: player0000_shadow
       rect:
         serializedVersion: 2
-        x: 123
-        y: 173
+        x: 3
+        y: 21
         width: 10
         height: 6
       alignment: 1

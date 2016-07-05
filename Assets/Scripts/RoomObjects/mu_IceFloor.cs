@@ -34,7 +34,17 @@ public class mu_IceFloor : MonoBehaviour
             }
             if (playerMomentumValue != Vector3.zero)
             {
-                ExpensiveAccurateCollision.CollideWithScenery(room.world.player.mover, room.collision.allCollision, playerMomentumValue, room.world.player.collider, room.world.player.IgnoreCollision);
+                if (room.world.player.Locked == true) // don't interact with ice physics while locked
+                {
+                    playerMomentumValue = Vector3.zero;
+                    room.world.player.animator.SetFloat(PlayerAnimatorHashes.paramExternalMoveSpeedMulti, 1.0f);
+                    playerSpeedAdjusted = false;
+                    playerIsOccupant = false;
+                }
+                else
+                {
+                    ExpensiveAccurateCollision.CollideWithScenery(room.world.player.mover, room.collision.allCollision, playerMomentumValue, room.world.player.collider, room.world.player.IgnoreCollision);
+                }
             }
             ax = 0;
             ay = 0;

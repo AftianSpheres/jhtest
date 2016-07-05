@@ -100,7 +100,7 @@ public class mu_Ledge : MonoBehaviour
         room.world.player.transform.position += Vector3.up * 8;
         if (direction == Direction.Left || direction == Direction.Right)
         {
-            room.world.player.shadow.transform.localPosition += Vector3.down * 8;
+            room.world.player.shadow.transform.localPosition += Vector3.down * 16;
         }
         switch (direction)
         {

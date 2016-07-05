@@ -12,7 +12,6 @@ public class BulletPool : MonoBehaviour
     public Queue<BulletController> q;
     public int MaximumAllowedBullets;
     public GameObject prefab;
-    public Sprite[] frames;
     public BoomPool boomPool;
 
     // Use this for initialization

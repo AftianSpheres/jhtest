@@ -39,31 +39,33 @@ public class PlayerShootCommon : StateMachineBehaviour
 	// OnStateMove is called before OnStateMove is called on any state inside this state machine
 	override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        float dx = player.transform.position.x - reticle.transform.position.x;
-        float dy = player.transform.position.y - reticle.transform.position.y;
-        if (Math.Abs(dy) > Math.Abs(dx))
+        if (player.transform.position != null && reticle.transform.position != null)
         {
-            if (dy < 0)
+            float dx = player.transform.position.x - reticle.transform.position.x;
+            float dy = player.transform.position.y - reticle.transform.position.y;
+            if (Math.Abs(dy) > Math.Abs(dx))
             {
-                animator.SetInteger("FacingDir", 1);
+                if (dy < 0)
+                {
+                    animator.SetInteger("FacingDir", 1);
+                }
+                else
+                {
+                    animator.SetInteger("FacingDir", 0);
+                }
             }
             else
             {
-                animator.SetInteger("FacingDir", 0);
+                if (dx < 0)
+                {
+                    animator.SetInteger("FacingDir", 3);
+                }
+                else
+                {
+                    animator.SetInteger("FacingDir", 2);
+                }
             }
         }
-        else
-        {
-            if (dx < 0)
-            {
-                animator.SetInteger("FacingDir", 3);
-            }
-            else
-            {
-                animator.SetInteger("FacingDir", 2);
-            }
-        }
-
     }
 
 	// OnStateIK is called before OnStateIK is called on any state inside this state machine

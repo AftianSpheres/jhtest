@@ -3,6 +3,7 @@
 public class SpriteMover : MonoBehaviour
 {
     new public Collider2D collider;
+    public PlayerController player;
     public Vector3 heading;
     public Vector3 virtualPosition;
     Bounds prospectivePos;
@@ -15,7 +16,12 @@ public class SpriteMover : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (heading != Vector3.zero)
+        if (player != null && player.Locked == true)
+        {
+            virtualPosition = transform.position;
+            heading = Vector3.zero;
+        }
+        else if (heading != Vector3.zero)
         {
             virtualPosition += heading;
             heading = Vector3.zero;
