@@ -8,9 +8,25 @@ public class EnemyJellyFire : StateMachineBehaviour
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         controller = animator.GetComponent<CommonEnemyController>();
-        controller.room.world.EnemyBullets.FireBullet(WeaponType.eGenericMid, 1.0f, controller.ShotDmg, 1, controller.room.world.player.GetComponent<Collider2D>().bounds.center, controller.transform.position);
-        controller.room.world.EnemyBullets.FireBullet(WeaponType.eGenericMid, 2.0f, controller.ShotDmg, 1, controller.room.world.player.GetComponent<Collider2D>().bounds.center, controller.transform.position);
-        controller.room.world.EnemyBullets.FireBullet(WeaponType.eGenericMid, 3.0f, controller.ShotDmg, 1, controller.room.world.player.GetComponent<Collider2D>().bounds.center, controller.transform.position);
+        Vector3 hiPos;
+        Vector3 loPos;
+        float px = controller.transform.position.x - controller.room.world.player.collider.bounds.center.x;
+        float py = controller.transform.position.y - controller.room.world.player.collider.bounds.center.y;
+
+        if (Mathf.Abs(px) > Mathf.Abs(py))
+        {
+            hiPos = controller.room.world.player.collider.bounds.center + (16f * Vector3.up);
+            loPos = controller.room.world.player.collider.bounds.center + (16f * Vector3.down);
+        }
+        else
+        {
+            hiPos = controller.room.world.player.collider.bounds.center + (16f * Vector3.right);
+            loPos = controller.room.world.player.collider.bounds.center + (16f * Vector3.left);
+        }
+        int speed = Random.Range(2, 4);
+        controller.room.world.EnemyBullets.FireBullet(WeaponType.eGenericMid, speed, controller.ShotDmg, 1, loPos, controller.collider.bounds.center);
+        controller.room.world.EnemyBullets.FireBullet(WeaponType.eGenericMid, speed, controller.ShotDmg, 1, controller.room.world.player.collider.bounds.center, controller.collider.bounds.center);
+        controller.room.world.EnemyBullets.FireBullet(WeaponType.eGenericMid, speed, controller.ShotDmg, 1, hiPos, controller.collider.bounds.center);
     }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

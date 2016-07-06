@@ -540,9 +540,9 @@ public class PlayerController : MonoBehaviour {
 
     }
 
-    public void StartHitFlash ()
+    public void StartHitFlash (int invulnTime = 30)
     {
         StartCoroutine(GFXHelpers.FlashEffect(renderer, 15));
-        InvulnTime += 30;
+        InvulnTime = invulnTime;
     }
 }

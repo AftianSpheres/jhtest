@@ -20,6 +20,7 @@ public class RoomController : MonoBehaviour
     public Bounds bounds;
     public FXLayer fx;
     public Vector2 BigRoomCellSize;
+    public uint replacementValue = 0;
     public uint xPosition;
     public uint yPosition;
     public bool isActiveRoom;
@@ -33,6 +34,15 @@ public class RoomController : MonoBehaviour
     /// MonoBehaviour.Awake()
     /// </summary>
     void Awake ()
+    {
+        if (replacementValue == 0)
+        {
+            PutRoomInWorldCoords();
+        }
+        gameStateManager = GameObject.Find("Universe/GameStateManager").GetComponent<GameStateManager>();
+    }
+
+    public void PutRoomInWorldCoords ()
     {
         if (BigRoomCellSize.x > 1 || BigRoomCellSize.y > 1)
         {
@@ -48,7 +58,6 @@ public class RoomController : MonoBehaviour
         {
             world.rooms[yPosition, xPosition] = this;
         }
-        gameStateManager = GameObject.Find("Universe/GameStateManager").GetComponent<GameStateManager>();
     }
 
     /// <summary>

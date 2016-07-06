@@ -13,28 +13,49 @@ public class PlayerDodging : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         controller = animator.gameObject.GetComponent<PlayerController>();
-        roomColliders = controller.world.activeRoom.collision.allCollision;
-        collider = animator.GetComponent<Collider2D>();
-        controller.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_PlayerRollSFX));
-        if ((controller.world.GameStateManager.heldPassiveItems & HeldPassiveItems.DodgeBooster) == HeldPassiveItems.DodgeBooster)
+        if (controller.world.activeRoom != null)
         {
-            dodgeBonus = dodgeBoostLength;
-            animator.SetFloat("DodgeAnimsSpeedMulti", 2f);          
+            roomColliders = controller.world.activeRoom.collision.allCollision;
+            collider = animator.GetComponent<Collider2D>();
+            controller.source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_PlayerRollSFX));
+            if ((controller.world.GameStateManager.heldPassiveItems & HeldPassiveItems.DodgeBooster) == HeldPassiveItems.DodgeBooster)
+            {
+                dodgeBonus = dodgeBoostLength;
+                animator.SetFloat("DodgeAnimsSpeedMulti", 2f);
+            }
+            else
+            {
+                dodgeBonus = 0;
+                animator.SetFloat("DodgeAnimsSpeedMulti", 1f);
+            }
+            if ((controller.world.GameStateManager.heldPassiveItems & HeldPassiveItems.DodgeAttack) == HeldPassiveItems.DodgeAttack)
+            {
+                animator.SetBool("DodgeIsFireball", true);
+            }
+            else
+            {
+                animator.SetBool("DodgeIsFireball", false);
+            }
+            FrameCtr = 0;
         }
         else
         {
-            dodgeBonus = 0;
-            animator.SetFloat("DodgeAnimsSpeedMulti", 1f);
+            switch ((Direction)animator.GetInteger(PlayerAnimatorHashes.paramFacingDir))
+            {
+                case Direction.Down:
+                    animator.Play(PlayerAnimatorHashes.PlayerStand_D);
+                    break;
+                case Direction.Up:
+                    animator.Play(PlayerAnimatorHashes.PlayerStand_U);
+                    break;
+                case Direction.Left:
+                    animator.Play(PlayerAnimatorHashes.PlayerStand_L);
+                    break;
+                case Direction.Right:
+                    animator.Play(PlayerAnimatorHashes.PlayerStand_R);
+                    break;
+            }
         }
-        if ((controller.world.GameStateManager.heldPassiveItems & HeldPassiveItems.DodgeAttack) == HeldPassiveItems.DodgeAttack)
-        {
-            animator.SetBool("DodgeIsFireball", true);
-        }
-        else
-        {
-            animator.SetBool("DodgeIsFireball", false);
-        }
-        FrameCtr = 0;
     }
 
     override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

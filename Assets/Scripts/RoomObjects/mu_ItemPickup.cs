@@ -43,10 +43,6 @@ public class mu_ItemPickup : MonoBehaviour
                 {
                     room.world.BGM0.Play();
                 }
-                if (pickupType == PickupType.Weapon && room.world.player.Locked == true)
-                {
-                    room.world.player.Locked = false;
-                }
                 Destroy(gameObject);
             }
         }
@@ -73,9 +69,6 @@ public class mu_ItemPickup : MonoBehaviour
             case PickupType.Weapon:
                 room.world.player.wpnManager.AddWeapon(weaponType);
                 text = Resources.Load<TextAsset>(GlobalStaticResourcePaths.p_wpn_descs[(int)weaponType]);
-                room.world.player.Locked = true;
-                room.world.player.mover.heading = Vector3.zero;
-                room.world.player.mover.virtualPosition = room.world.player.transform.position;
                 room.world.player.DoSpecialPose();
                 room.world.BGM0.Stop();
                 stoppedBGM = true;

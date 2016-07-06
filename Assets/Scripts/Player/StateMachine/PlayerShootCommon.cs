@@ -39,7 +39,7 @@ public class PlayerShootCommon : StateMachineBehaviour
 	// OnStateMove is called before OnStateMove is called on any state inside this state machine
 	override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (player.transform.position != null && reticle.transform.position != null)
+        if (player != null && reticle != null)
         {
             float dx = player.transform.position.x - reticle.transform.position.x;
             float dy = player.transform.position.y - reticle.transform.position.y;

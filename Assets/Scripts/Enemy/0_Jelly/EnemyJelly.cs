@@ -4,11 +4,12 @@ using System.Collections;
 [RequireComponent(typeof(CommonEnemyController))]
 public class EnemyJelly: EnemyModule
 {
+    int firingTimer = 0;
 
 	// Use this for initialization
 	void Start ()
     {
-	
+        firingTimer = Random.Range(120, 200);
 	}
 
     // Update is called once per frame
@@ -16,6 +17,7 @@ public class EnemyJelly: EnemyModule
     {
         if (common.isDead == false && common.register.Toggled == true)
         {
+            firingTimer--;
             bool FireThisFrame = true;
             for (int i = 0; i < common.register.room.collision.allCollision.Length; i++)
             {
@@ -27,13 +29,14 @@ public class EnemyJelly: EnemyModule
                     }
                 }
             }
-            if (Random.Range(0, 90) != 0)
+            if (Random.Range(0, firingTimer) > 0)
             {
                 FireThisFrame = false;
             }
             if (FireThisFrame == true)
             {
                 common.animator.SetTrigger("Fire");
+                firingTimer = Random.Range(120, 200);
             }
         }
     }

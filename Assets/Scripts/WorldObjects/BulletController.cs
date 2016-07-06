@@ -40,7 +40,6 @@ public class BulletController : MonoBehaviour
     public int Weight;
     public GameObject owner;
     private Vector2 lastHeading;
-    static int animatorEntryState = Animator.StringToHash("EntryState");
     static int directionParam = Animator.StringToHash("Direction");
     static int shotTypeParam = Animator.StringToHash("ShotType");
     private static int enemyShotsBase = (int)WeaponType.eGenericTiny;

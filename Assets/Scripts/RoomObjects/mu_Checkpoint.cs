@@ -11,7 +11,7 @@ public class mu_Checkpoint : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        if (room.world.GameStateManager.LastCheckpoint == Checkpoints.None)
+        if (room.world.GameStateManager.LastCheckpoint == Checkpoints.None && room.replacementValue == 0)
         {
             Activate();
         }

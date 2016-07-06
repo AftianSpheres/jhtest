@@ -287,6 +287,7 @@
     <Compile Include="Assets\Scripts\RoomObjects\FlagManagers\mufm_Generic.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\Hurtbox.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\RegisteredSprite.cs" />
+    <Compile Include="Assets\Scripts\RoomObjects\ReplacementRoom.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\SpriteMover.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_Checkpoint.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_Chest.cs" />

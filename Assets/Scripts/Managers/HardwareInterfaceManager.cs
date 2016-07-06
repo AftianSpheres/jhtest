@@ -89,10 +89,8 @@ public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
 
     void RefreshVirtualButtons ()
     {
-
         if (controlPrefs.setControlMode == ControlModeType.Gamepad)
         {
-            InputDevice device = InputManager.ActiveDevice;
             Left = new VirtualButton(controlPrefs.GamepadLeft);
             Right = new VirtualButton(controlPrefs.GamepadRight);
             Up = new VirtualButton(controlPrefs.GamepadUp);
@@ -122,7 +120,6 @@ public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
             QuickTaboo = new VirtualButton(controlPrefs.KBMQuickTaboo);
             LeftBumper = new VirtualButton(controlPrefs.KBMBumpLeft);
             RightBumper = new VirtualButton(controlPrefs.KBMBumpRight);
-
         }
     }
 

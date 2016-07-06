@@ -12,7 +12,6 @@ public class HUDSubregionNamePopup : MonoBehaviour
     public TextMesh aliasText;
     public MeshRenderer aliasRenderer;
     private SubregionType subregion = SubregionType.None;
-    private Vector3 bgPos;
     private string[] lines;
     private AudioClip clip;
     public AudioSource source;
@@ -21,7 +20,6 @@ public class HUDSubregionNamePopup : MonoBehaviour
     {
         clip = Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_SubregionPopupFanfare);
         lines = Resources.Load<TextAsset>(GlobalStaticResourcePaths.p_subregion_names).ToString().Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
-        bgPos = bgRenderer.transform.localPosition;
     }
 
 	// Update is called once per frame

@@ -58,6 +58,7 @@ public class HUDMainTextbox : MonoBehaviour
         Cursor.enabled = false;
         Printer.Stop();
         world.reticle.gameObject.SetActive(true);
+        world.player.Locked = false;
         world.Unpause();
     }
 
@@ -100,6 +101,9 @@ public class HUDMainTextbox : MonoBehaviour
         {
             transform.localPosition = new Vector3(transform.localPosition.x, higherY, transform.localPosition.z);
         }
+        world.player.Locked = true;
+        world.player.mover.heading = Vector3.zero;
+        world.player.mover.virtualPosition = world.player.transform.position;
         world.reticle.gameObject.SetActive(false);
         world.Pause();
         PrintNextBlock();

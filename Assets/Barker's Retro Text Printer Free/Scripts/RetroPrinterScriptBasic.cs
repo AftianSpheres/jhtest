@@ -9,7 +9,6 @@ public class RetroPrinterScriptBasic : MonoBehaviour {
 	#region Private fields
 	
 	public AudioSource source;
-    private WorldController world;
 	
 	private string mainText = "";
 	
@@ -40,7 +39,6 @@ public class RetroPrinterScriptBasic : MonoBehaviour {
 
 	void Start ()
     {
-        world = GameObject.Find("World").GetComponent<WorldController>();	
 		Init();
 
         if (runOnStart == true)
