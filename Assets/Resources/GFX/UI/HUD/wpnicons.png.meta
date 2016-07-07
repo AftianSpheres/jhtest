@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 4bf7b1b8f7b057549817b0290dfaeee7
-timeCreated: 1461151369
+timeCreated: 1467915081
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -8,6 +8,7 @@ TextureImporter:
     21300002: wpnicons_1
     21300004: wpnicons_2
     21300006: wpnicons_3
+    21300008: wpnicons_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -91,6 +92,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
+        y: 112
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: wpnicons_4
+      rect:
+        serializedVersion: 2
+        x: 64
         y: 112
         width: 16
         height: 16

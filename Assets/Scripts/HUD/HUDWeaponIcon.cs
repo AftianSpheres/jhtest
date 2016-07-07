@@ -11,6 +11,7 @@ public class HUDWeaponIcon : MonoBehaviour
     new public SpriteRenderer renderer;
     public WeaponType wpnValueCache;
     public bool isSlotB;
+    private Sprite[] frames;
 
 	/// <summary>
     /// Monobehaviour.Start()
@@ -18,7 +19,8 @@ public class HUDWeaponIcon : MonoBehaviour
 	void Start ()
     {
         wpnManager = world.player.wpnManager;
-	}
+        frames = Resources.LoadAll<Sprite>(GlobalStaticResourcePaths.p_PlayerWeaponIcons);
+    }
 	
 	/// <summary>
     /// Monobehaviour.Update()
@@ -36,7 +38,7 @@ public class HUDWeaponIcon : MonoBehaviour
                 }
                 else
                 {
-                    renderer.sprite = Resources.LoadAll<Sprite>(GlobalStaticResourcePaths.p_PlayerWeaponIcons)[(int)wpnManager.SlotAWpn];
+                    renderer.sprite = frames[(int)wpnManager.SlotAWpn];
                 }
             }
         }
@@ -51,7 +53,7 @@ public class HUDWeaponIcon : MonoBehaviour
                 }
                 else
                 {
-                    renderer.sprite = Resources.LoadAll<Sprite>(GlobalStaticResourcePaths.p_PlayerWeaponIcons)[(int)wpnManager.SlotBWpn];
+                    renderer.sprite = frames[(int)wpnManager.SlotBWpn];
                 }
             }
         }

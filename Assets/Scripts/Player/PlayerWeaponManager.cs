@@ -26,7 +26,7 @@ public class PlayerWeaponManager : MonoBehaviour
         0, // wgII
         15, // shotgun
         10, // shadow
-        10, // flamethrower
+        5, // flamethrower
         3 // icicle
         };
     public static int[] DamageMultipliers =
@@ -35,7 +35,7 @@ public class PlayerWeaponManager : MonoBehaviour
         5, // wgII
         1, // shotgun
         2, // shadow
-        1, // flamethrower
+        3, // flamethrower
         1, // icicle
         };
     private static int SlotAWpnHash = Animator.StringToHash("SlotAWpn");
@@ -170,7 +170,7 @@ public class PlayerWeaponManager : MonoBehaviour
                 }
                 break;
             case WeaponType.pShadow:
-                bulletPool.FireBullet(shot, 5f, CalcShotDamage(shot), 1, r, master.bulletOrigin.transform.position);
+                bulletPool.FireBullet(shot, 5f, CalcShotDamage(shot), 1, r, master.bulletOrigin.transform.position, false, null, 0, int.MaxValue, gameObject, 160);
                 master.collider.enabled = false;
                 master.Locked = true;
                 master.animator.enabled = false;
@@ -178,6 +178,9 @@ public class PlayerWeaponManager : MonoBehaviour
                 master.fs.skip = true;
                 master.bulletOrigin.gameObject.SetActive(false);
                 // We restore all of these things when the bullet hits, except we change our position to match the bullet's current position
+                break;
+            case WeaponType.pFlamethrower:
+                bulletPool.FireBullet(shot, 1f, CalcShotDamage(shot), 2, r, master.bulletOrigin.transform.position, true, null, 0, int.MaxValue, gameObject, 40);
                 break;
             default:
                 throw new System.Exception("Tried to fire an invalid player weapon type");

@@ -9,5 +9,6 @@ public enum EventFlags_TestMap
     BossDead = 1 << 2,
     BossDropShadowObtained = 1 << 3,
     Rm0x1NorthDoorOpen = 1 << 4,
-    ShittyDemoLadder = 1 << 5
+    ShittyDemoLadder = 1 << 5,
+    FlamethrowerGotten = 1 << 6
 }

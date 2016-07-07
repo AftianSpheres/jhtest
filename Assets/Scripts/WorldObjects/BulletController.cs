@@ -198,7 +198,6 @@ public class BulletController : MonoBehaviour
     public void Fire (WeaponType shot, float speed, int damage, int weight, Vector3 source, Vector3 to, BulletPool pool, bool pierceScenery, BoxCollider2D homingTarget = default(BoxCollider2D), int homingPrecision = 0, int homingWindow = int.MaxValue)
     {
         tag = OriginalTag;
-        Range = -1;
         Trail = Vector2.zero;
         transform.position = source;
         roomColliders = world.activeRoom.collision.fullCollide;
@@ -274,7 +273,6 @@ public class BulletController : MonoBehaviour
         switch (ShotType)
         {
             case WeaponType.pShadow:
-                Range = 160;
                 snapToThing = world.player.transform.position;
                 break;
         }
