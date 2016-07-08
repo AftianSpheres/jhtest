@@ -26,8 +26,10 @@ AnimationClip:
       value: {fileID: 21300102, guid: f92fdf3e3ff6d5149840e06447e066e1, type: 3}
     - time: 0.25
       value: {fileID: 21300104, guid: f92fdf3e3ff6d5149840e06447e066e1, type: 3}
+    - time: 0.33333334
+      value: {fileID: 0}
     - time: 0.5
-      value: {fileID: 21300104, guid: f92fdf3e3ff6d5149840e06447e066e1, type: 3}
+      value: {fileID: 0}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -50,7 +52,8 @@ AnimationClip:
     - {fileID: 21300100, guid: f92fdf3e3ff6d5149840e06447e066e1, type: 3}
     - {fileID: 21300102, guid: f92fdf3e3ff6d5149840e06447e066e1, type: 3}
     - {fileID: 21300104, guid: f92fdf3e3ff6d5149840e06447e066e1, type: 3}
-    - {fileID: 21300104, guid: f92fdf3e3ff6d5149840e06447e066e1, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -76,4 +79,11 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.5
+    functionName: RespawnAfterPitfall
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

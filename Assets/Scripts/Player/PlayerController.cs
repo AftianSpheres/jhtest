@@ -21,6 +21,7 @@ public static class PlayerAnimatorHashes
     public static int CutsceneWalk_L = Animator.StringToHash("Base Layer.Neutral.Walking.CutsceneWalk_L");
     public static int CutsceneWalk_R = Animator.StringToHash("Base Layer.Neutral.Walking.CutsceneWalk_R");
     public static int Dead = Animator.StringToHash("Base Layer.Dead");
+    public static int Pitfall = Animator.StringToHash("Base Layer.PlayerFall");
     public static int paramDead = Animator.StringToHash("Dead");
     public static int paramFacingDir = Animator.StringToHash("FacingDir");
     public static int paramHeldFire1 = Animator.StringToHash("HeldFire1");
@@ -51,17 +52,20 @@ public class PlayerController : MonoBehaviour {
     public Animator animator;
     public AudioSource source;
     public FlickerySprite fs;
+    public PitfallableSprite pitfallable;
     public Hurtbox dodgeHurtbox;
     public PlayerBulletOrigin bulletOrigin;
     public PlayerEnergy energy;
     public PlayerWeaponManager wpnManager;
     public Vector3 KnockbackHeading;
+    public AudioClip fallSFX;
     public AudioClip hitSFX;
     public AudioClip regainSFX;
     public bool DontWarp;
     public bool IgnoreCollision;
     public bool Invincible;
     public bool Locked;
+    public bool isFlying;
     public int InvulnTime;
     public int KnockbackFrames;
     public int DodgeHurtboxBaseDamage;
@@ -506,6 +510,14 @@ public class PlayerController : MonoBehaviour {
         } 
     }
     
+    public void Pitfall ()
+    {
+        source.PlayOneShot(fallSFX);
+        mover.heading = Vector3.zero;
+        mover.virtualPosition = transform.position;
+        animator.Play(PlayerAnimatorHashes.Pitfall, 0);
+    }
+
     /// <summary>
     /// Respawns player.
     /// </summary>
@@ -514,6 +526,21 @@ public class PlayerController : MonoBehaviour {
         world.GameStateManager.RespawnPlayer();
         animator.ResetTrigger("Hit");
         hasBeenHit = false;
+    }
+
+    /// <summary>
+    /// Damages player and puts them on safe ground after pitfalling.
+    /// </summary>
+    public void RespawnAfterPitfall()
+    {
+        transform.position = pitfallable.respawnPosition;
+        mover.heading = Vector3.zero;
+        mover.virtualPosition = transform.position;
+        animator.SetTrigger("Hit");
+        energy.CurrentEnergy -= 20 * energy.Level;
+        energy.ChangeMultiplier(-99999);
+        source.PlayOneShot(hitSFX);
+        hasBeenHit = true;
     }
 
     /// <summary>

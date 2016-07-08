@@ -182,7 +182,6 @@
     <Compile Include="Assets\InControl\Source\XInput\XInputDotNetPure\GamePad.cs" />
     <Compile Include="Assets\InControl\Source\XInput\XInputDotNetPure\Utils.cs" />
     <Compile Include="Assets\InControl\Test\TestInputManager.cs" />
-    <Compile Include="Assets\PlayerFall.cs" />
     <Compile Include="Assets\Scripts\BitsNBobs\AudioSourceCompanion.cs" />
     <Compile Include="Assets\Scripts\BitsNBobs\ScrollingLayer.cs" />
     <Compile Include="Assets\Scripts\BitsNBobs\SimpleTextLocalizer.cs" />
@@ -288,6 +287,7 @@
     <Compile Include="Assets\Scripts\RoomObjects\FlagManagers\mufm_Event_TestMap.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\FlagManagers\mufm_Generic.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\Hurtbox.cs" />
+    <Compile Include="Assets\Scripts\RoomObjects\PitfallableSprite.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\RegisteredSprite.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\ReplacementRoom.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\SpriteMover.cs" />
@@ -300,7 +300,6 @@
     <Compile Include="Assets\Scripts\RoomObjects\mu_IceFloor.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_ItemPickup.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_Ledge.cs" />
-    <Compile Include="Assets\Scripts\RoomObjects\mu_Pitfall.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_RoomEvent.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_UnrollingTiles.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_Warp.cs" />
