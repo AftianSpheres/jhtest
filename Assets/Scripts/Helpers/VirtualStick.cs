@@ -54,6 +54,7 @@ public class VirtualStick
         {
             _y *= -1;
         }
+        _x /= (1f - deadZone);
     }
 
     public VirtualStick(InputControlType _xcontrol, InputControlType _ycontrol, float _deadZone, float _sensitivity, bool _invertX, bool _invertY)

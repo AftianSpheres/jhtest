@@ -10,7 +10,9 @@ public class PlayerBulletOrigin : MonoBehaviour
     new public SpriteRenderer renderer;
     public Sprite[] spriteSet_00;
     public Sprite[] spriteSet_01;
-    private static Vector3[] offsets = { new Vector3(4, -11, 0), new Vector3(10, -7, 0), new Vector3(-1, -11, 0), new Vector3(7, -11, 0) };
+    public Sprite[] spriteSet_02;
+    public Sprite[] spriteSet_03;
+    private static Vector3[] offsets = { new Vector3(0, -11, 0), new Vector3(0, -7, 0), new Vector3(-16, -6, 0), new Vector3(8, -6, 0) };
 	
 	// Update is called once per frame
 	void Update ()
@@ -42,7 +44,10 @@ public class PlayerBulletOrigin : MonoBehaviour
                     renderer.sprite = spriteSet_01[master.animator.GetInteger("FacingDir")];
                     break;
                 case WeaponType.pShadow:
-                    renderer.sprite = default(Sprite);
+                    renderer.sprite = spriteSet_02[master.animator.GetInteger("FacingDir")];
+                    break;
+                case WeaponType.pFlamethrower:
+                    renderer.sprite = spriteSet_03[master.animator.GetInteger("FacingDir")];
                     break;
             }
             if (master.animator.GetInteger("FacingDir") == 1 || master.animator.GetInteger("FacingDir") == 2)

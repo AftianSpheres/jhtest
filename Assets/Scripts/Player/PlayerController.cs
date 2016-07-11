@@ -8,18 +8,18 @@ using System.Collections.Generic;
 /// </summary>
 public static class PlayerAnimatorHashes
 {
-    public static int PlayerStand_D = Animator.StringToHash("Base Layer.Neutral.Standing.PlayerStand_D");
-    public static int PlayerStand_U = Animator.StringToHash("Base Layer.Neutral.Standing.PlayerStand_U");
-    public static int PlayerStand_L = Animator.StringToHash("Base Layer.Neutral.Standing.PlayerStand_L");
-    public static int PlayerStand_R = Animator.StringToHash("Base Layer.Neutral.Standing.PlayerStand_R");
-    public static int PlayerWalk_D = Animator.StringToHash("Base Layer.Neutral.Walking.PlayerWalk_D");
-    public static int PlayerWalk_U = Animator.StringToHash("Base Layer.Neutral.Walking.PlayerWalk_U");
-    public static int PlayerWalk_L = Animator.StringToHash("Base Layer.Neutral.Walking.PlayerWalk_L");
-    public static int PlayerWalk_R = Animator.StringToHash("Base Layer.Neutral.Walking.PlayerWalk_R");
-    public static int CutsceneWalk_D = Animator.StringToHash("Base Layer.Neutral.Walking.CutsceneWalk_D");
-    public static int CutsceneWalk_U = Animator.StringToHash("Base Layer.Neutral.Walking.CutsceneWalk_U");
-    public static int CutsceneWalk_L = Animator.StringToHash("Base Layer.Neutral.Walking.CutsceneWalk_L");
-    public static int CutsceneWalk_R = Animator.StringToHash("Base Layer.Neutral.Walking.CutsceneWalk_R");
+    public static int PlayerStand_D = Animator.StringToHash("Base Layer.StdStates.Neutral.Standing.PlayerStand_D");
+    public static int PlayerStand_U = Animator.StringToHash("Base Layer.StdStates.Neutral.Standing.PlayerStand_U");
+    public static int PlayerStand_L = Animator.StringToHash("Base Layer.StdStates.Neutral.Standing.PlayerStand_L");
+    public static int PlayerStand_R = Animator.StringToHash("Base Layer.StdStates.Neutral.Standing.PlayerStand_R");
+    public static int PlayerWalk_D = Animator.StringToHash("Base Layer.StdStates.Neutral.Walking.PlayerWalk_D");
+    public static int PlayerWalk_U = Animator.StringToHash("Base Layer.StdStates.Neutral.Walking.PlayerWalk_U");
+    public static int PlayerWalk_L = Animator.StringToHash("Base Layer.StdStates.Neutral.Walking.PlayerWalk_L");
+    public static int PlayerWalk_R = Animator.StringToHash("Base Layer.StdStates.Neutral.Walking.PlayerWalk_R");
+    public static int CutsceneWalk_D = Animator.StringToHash("Base Layer.StdStates.Neutral.Walking.CutsceneWalk_D");
+    public static int CutsceneWalk_U = Animator.StringToHash("Base Layer.StdStates.Neutral.Walking.CutsceneWalk_U");
+    public static int CutsceneWalk_L = Animator.StringToHash("Base Layer.StdStates.Neutral.Walking.CutsceneWalk_L");
+    public static int CutsceneWalk_R = Animator.StringToHash("Base Layer.StdStates.Neutral.Walking.CutsceneWalk_R");
     public static int Dead = Animator.StringToHash("Base Layer.Dead");
     public static int Pitfall = Animator.StringToHash("Base Layer.PlayerFall");
     public static int paramDead = Animator.StringToHash("Dead");
@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour {
     public bool Invincible;
     public bool Locked;
     public bool isFlying;
+    public bool isVanished = false;
     public int InvulnTime;
     public int KnockbackFrames;
     public int DodgeHurtboxBaseDamage;
@@ -404,6 +405,7 @@ public class PlayerController : MonoBehaviour {
                     energy.ChangeMultiplier(-99999);
                     source.PlayOneShot(hitSFX);
                     hasBeenHit = true;
+                    InvulnTime = 270;
                 }
             }
             else
@@ -436,6 +438,7 @@ public class PlayerController : MonoBehaviour {
                     energy.ChangeMultiplier(-99999);
                     source.PlayOneShot(hitSFX);
                     hasBeenHit = true;
+                    InvulnTime = 270;
                 }
             }
             else

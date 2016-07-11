@@ -44,7 +44,7 @@ public class PitfallableSprite : MonoBehaviour
                         touchingPit = true;
                     }
                 }
-                if (touchingPit == false && player.renderer.enabled == true)
+                if (touchingPit == false && player.isVanished == false)
                 {
                     respawnPosition = player.transform.position;
                 }

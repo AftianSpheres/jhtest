@@ -69,6 +69,12 @@ public class WorldController : MonoBehaviour
         get { return _BGS0; }
     }
     [SerializeField]
+    private FanfarePlayer _FanfarePlayer;
+    public FanfarePlayer FanfarePlayer
+    {
+        get { return _FanfarePlayer; }
+    }
+    [SerializeField]
     private BulletPool playerBullets;
     public BulletPool PlayerBullets
     {

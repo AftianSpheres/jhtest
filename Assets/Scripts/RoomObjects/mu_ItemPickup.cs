@@ -9,13 +9,25 @@ public class mu_ItemPickup : MonoBehaviour
     public RoomController room;
     public PickupType pickupType;
     public WeaponType weaponType;
-    public AudioSource source;
     public mufm_Generic Flag;
     public int displayLifespan;
     private bool isOverhead;
     private bool stoppedBGM = false;
     private bool markedForDeath = false;
+    AudioClip clip;
 	
+    void Awake ()
+    {
+        if (pickupType == PickupType.Weapon)
+        {
+            clip = Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_WeaponGetFanfare);
+        }
+        else if (pickupType == PickupType.AreaKey)
+        {
+            clip = Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_KeySFX);
+        }
+    }
+
 	/// <summary>
     /// Monobehaviour.Update()
     /// </summary>
@@ -70,9 +82,7 @@ public class mu_ItemPickup : MonoBehaviour
                 room.world.player.wpnManager.AddWeapon(weaponType);
                 text = Resources.Load<TextAsset>(GlobalStaticResourcePaths.p_wpn_descs[(int)weaponType]);
                 room.world.player.DoSpecialPose();
-                room.world.BGM0.Stop();
-                stoppedBGM = true;
-                source.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_WeaponGetFanfare));
+                room.world.FanfarePlayer.Play(clip);
                 break;
             case PickupType.PassiveItem:
                 throw new System.NotImplementedException();
@@ -85,7 +95,7 @@ public class mu_ItemPickup : MonoBehaviour
                 {
                     throw new System.Exception("Tried to pick up an area key, but WorldController.Area is defined as None!");
                 }
-                room.world.BGS0.PlayOneShot(Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_KeySFX));
+                room.world.BGS0.PlayOneShot(clip);
                 break;
             default:
                 throw new System.Exception("Pickup " + gameObject.name + " is of invalid type " + pickupType);

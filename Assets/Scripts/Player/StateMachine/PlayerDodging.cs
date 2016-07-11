@@ -2,6 +2,7 @@
 
 public class PlayerDodging : StateMachineBehaviour
 {
+    public AudioClip clip;
     private Bounds[] roomColliders;
     private Collider2D collider;
     private PlayerController controller;
@@ -86,7 +87,11 @@ public class PlayerDodging : StateMachineBehaviour
             }
         }
         PosMod *= (animator.GetFloat(PlayerAnimatorHashes.paramMoveSpeed) * animator.GetFloat(PlayerAnimatorHashes.paramInternalMoveSpeedMulti) * animator.GetFloat(PlayerAnimatorHashes.paramExternalMoveSpeedMulti));
-        ExpensiveAccurateCollision.CollideWithScenery(controller.mover, roomColliders, PosMod, collider);
+        if (ExpensiveAccurateCollision.CollideWithScenery(controller.mover, roomColliders, PosMod, collider) == true)
+        {
+            animator.SetBool(PlayerAnimatorHashes.triggerDodgeBurst, false);
+            controller.source.PlayOneShot(clip);
+        }
     }
 
     private Vector3 _in_RollInDirection (Vector3 baseVector, Animator animator, bool input, bool moveVertically)

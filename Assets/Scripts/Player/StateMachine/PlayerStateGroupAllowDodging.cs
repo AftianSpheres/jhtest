@@ -3,8 +3,8 @@ using System.Collections;
 
 public class PlayerStateGroupAllowDodging : StateMachineBehaviour {
     static int[] dodgeHashes = { Animator.StringToHash("DodgeDown"), Animator.StringToHash("DodgeUp"), Animator.StringToHash("DodgeLeft"), Animator.StringToHash("DodgeRight"),
-                                 Animator.StringToHash("Base Layer.Dodging.PlayerDodge_D"), Animator.StringToHash("Base Layer.Dodging.PlayerDodge_U"),
-                                 Animator.StringToHash("Base Layer.Dodging.PlayerDodge_L"), Animator.StringToHash("Base Layer.Dodging.PlayerDodge_R")};
+                                 Animator.StringToHash("Base Layer.StdStates.Dodging.PlayerDodge_D"), Animator.StringToHash("Base Layer.StdStates.Dodging.PlayerDodge_U"),
+                                 Animator.StringToHash("Base Layer.StdStates.Dodging.PlayerDodge_L"), Animator.StringToHash("Base Layer.StdStates.Dodging.PlayerDodge_R")};
 
 
 	// OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine

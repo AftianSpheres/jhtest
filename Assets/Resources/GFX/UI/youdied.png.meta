@@ -1,0 +1,133 @@
+fileFormatVersion: 2
+guid: b3421407ec99bec43b35c6a2b79728f9
+timeCreated: 1468182796
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: youdied_0
+    21300002: youdied_1
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -2
+  maxTextureSize: 256
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 1
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: youdied_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 72
+        width: 160
+        height: 72
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 101, y: -48}
+        - {x: 97, y: -48}
+        - {x: 96, y: -50}
+        - {x: 96, y: -57}
+        - {x: 94, y: -58}
+        - {x: 94, y: -53}
+        - {x: 92, y: -49}
+        - {x: 79, y: -48}
+        - {x: 43, y: -48}
+        - {x: 42, y: -53}
+        - {x: 42, y: -68}
+        - {x: 119, y: -68}
+        - {x: 119, y: -52}
+        - {x: 116, y: -49}
+      - - {x: 28, y: -48}
+        - {x: 12, y: -48}
+        - {x: 12, y: -54}
+        - {x: 14, y: -60}
+        - {x: 37, y: -60}
+        - {x: 41, y: -54}
+        - {x: 41, y: -52}
+        - {x: 38, y: -49}
+      - - {x: 120, y: -48}
+        - {x: 120, y: -60}
+        - {x: 148, y: -60}
+        - {x: 148, y: -51}
+        - {x: 147, y: -48}
+    - name: youdied_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 160
+        height: 72
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 122, y: -6}
+        - {x: 114, y: -5}
+        - {x: 17, y: -5}
+        - {x: 2, y: -9}
+        - {x: 1, y: -12}
+        - {x: 1, y: -15}
+        - {x: 15, y: -26}
+        - {x: 87, y: -26}
+        - {x: 92, y: -25}
+        - {x: 97, y: -23}
+        - {x: 95, y: -24}
+        - {x: 97, y: -26}
+        - {x: 129, y: -26}
+        - {x: 136, y: -24}
+        - {x: 136, y: -18}
+        - {x: 135, y: -17}
+      - - {x: 132, y: -5}
+        - {x: 128, y: -6}
+        - {x: 125, y: -8}
+        - {x: 125, y: -12}
+        - {x: 127, y: -17}
+        - {x: 156, y: -17}
+        - {x: 159, y: -16}
+        - {x: 159, y: -8}
+        - {x: 158, y: -5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

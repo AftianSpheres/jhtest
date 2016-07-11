@@ -329,11 +329,11 @@ MonoBehaviour:
   flag: {fileID: 11412186}
   room: {fileID: 0}
   stemOpenSprite: {fileID: 21300812, guid: e928bc454c016bf4c9daeeb8440de94b, type: 3}
-  capOpenSprite: {fileID: 21300822, guid: e928bc454c016bf4c9daeeb8440de94b, type: 3}
+  capOpenSprite: {fileID: 21300826, guid: e928bc454c016bf4c9daeeb8440de94b, type: 3}
   rollOutSprites:
   - {fileID: 21300814, guid: e928bc454c016bf4c9daeeb8440de94b, type: 3}
-  - {fileID: 21300820, guid: e928bc454c016bf4c9daeeb8440de94b, type: 3}
-  - {fileID: 21300818, guid: e928bc454c016bf4c9daeeb8440de94b, type: 3}
+  - {fileID: 21300824, guid: e928bc454c016bf4c9daeeb8440de94b, type: 3}
+  - {fileID: 21300822, guid: e928bc454c016bf4c9daeeb8440de94b, type: 3}
   stemRenderer: {fileID: 21276874}
   capRenderer: {fileID: 21230284}
   rollOutTileRenderers:

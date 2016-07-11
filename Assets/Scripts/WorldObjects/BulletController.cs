@@ -390,6 +390,7 @@ public class BulletController : MonoBehaviour
         world.player.collider.enabled = true;
         world.player.animator.enabled = true;
         world.player.fs.skip = false;
+        world.player.isVanished = false;
         world.player.bulletOrigin.gameObject.SetActive(true);
         Vector3 np = ExpensiveAccurateCollision.ShoveOutOfScenery(world.player.collider, world.activeRoom.collision.allCollision, new Vector3(nx, ny, 0));
         world.player.transform.position = new Vector3(np.x, np.y, 0) + new Vector3(world.player.transform.position.x - world.player.collider.bounds.center.x, world.player.transform.position.y - world.player.collider.bounds.center.y, world.player.transform.position.z);

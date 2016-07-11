@@ -143,6 +143,7 @@ public class PlayerWeaponManager : MonoBehaviour
     {
         BoxCollider2D homingTarget = default(BoxCollider2D);
         float nearestDist = float.MaxValue;
+        Vector3 s = master.bulletOrigin.renderer.bounds.center;
         Vector3 r = (new Vector3(reticle.transform.position.x + reticle.HalfSizeOfReticleSprite, reticle.transform.position.y - reticle.HalfSizeOfReticleSprite, transform.position.z));
         for (int i = 0; i < master.world.activeRoom.Enemies.Length; i++)
         {
@@ -161,26 +162,27 @@ public class PlayerWeaponManager : MonoBehaviour
         {
             case WeaponType.pWG:
             case WeaponType.pWGII:
-                bulletPool.FireBullet(shot, 2f, CalcShotDamage(shot), 1, r, master.bulletOrigin.transform.position, false);
+                bulletPool.FireBullet(shot, 2f, CalcShotDamage(shot), 1, r, s, false);
                 break;
             case WeaponType.pShotgun:
                 for (int i = 0; i < 8; i++)
                 {
-                    bulletPool.FireBullet(shot, Random.Range(2.25f, 3.75f), CalcShotDamage(shot), 5, r + Random.Range(-3, 4) * Vector3.right + Random.Range(-3, 4) * Vector3.up, master.bulletOrigin.transform.position);
+                    bulletPool.FireBullet(shot, Random.Range(2.25f, 3.75f), CalcShotDamage(shot), 5, r + Random.Range(-3, 4) * Vector3.right + Random.Range(-3, 4) * Vector3.up, s);
                 }
                 break;
             case WeaponType.pShadow:
-                bulletPool.FireBullet(shot, 5f, CalcShotDamage(shot), 1, r, master.bulletOrigin.transform.position, false, null, 0, int.MaxValue, gameObject, 160);
+                bulletPool.FireBullet(shot, 5f, CalcShotDamage(shot), 1, r, s, false, null, 0, int.MaxValue, gameObject, 160);
                 master.collider.enabled = false;
                 master.Locked = true;
                 master.animator.enabled = false;
                 master.renderer.enabled = false;
                 master.fs.skip = true;
+                master.isVanished = true;
                 master.bulletOrigin.gameObject.SetActive(false);
                 // We restore all of these things when the bullet hits, except we change our position to match the bullet's current position
                 break;
             case WeaponType.pFlamethrower:
-                bulletPool.FireBullet(shot, 1f, CalcShotDamage(shot), 2, r, master.bulletOrigin.transform.position, true, null, 0, int.MaxValue, gameObject, 40);
+                bulletPool.FireBullet(shot, 1f, CalcShotDamage(shot), 2, r, s, true, null, 0, int.MaxValue, gameObject, 40);
                 break;
             default:
                 throw new System.Exception("Tried to fire an invalid player weapon type");
