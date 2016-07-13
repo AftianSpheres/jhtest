@@ -1,5 +1,5 @@
 Ver. 0.1a
-Press Start/Enter
+Press [!sp: btnMenu!]
 New Game
 Continue
 Options
@@ -14,3 +14,6 @@ SFX Volume
 Confirm
 Cancel
 Defaults
+Are these video settings okay?
+Press Confirm to finalize settings,
+or Cancel to revert.

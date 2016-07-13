@@ -279,7 +279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 68379646}
   resourcePath: system/main
-  lineIndex: 1
+  linesIndex: 01000000
 --- !u!114 &68379650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,7 +449,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 152809501}
   resourcePath: system/main
-  lineIndex: 6
+  linesIndex: 06000000
 --- !u!1 &157754022
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,7 +926,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 239569381}
   resourcePath: system/main
-  lineIndex: 2
+  linesIndex: 02000000
 --- !u!1 &313107713
 GameObject:
   m_ObjectHideFlags: 0
@@ -1263,7 +1263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 399306060}
   resourcePath: system/main
-  lineIndex: 8
+  linesIndex: 08000000
 --- !u!1 &414567086
 GameObject:
   m_ObjectHideFlags: 0
@@ -1493,7 +1493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 459631635}
   resourcePath: system/main
-  lineIndex: 5
+  linesIndex: 05000000
 --- !u!1 &518768894
 GameObject:
   m_ObjectHideFlags: 0
@@ -1662,7 +1662,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 563874287}
   resourcePath: system/main
-  lineIndex: 7
+  linesIndex: 07000000
 --- !u!1 &619914827
 GameObject:
   m_ObjectHideFlags: 0
@@ -1928,7 +1928,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 630171114}
   resourcePath: system/main
-  lineIndex: 10
+  linesIndex: 0a000000
 --- !u!1 &688698389
 GameObject:
   m_ObjectHideFlags: 0
@@ -2020,7 +2020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 688698391}
   resourcePath: system/main
-  lineIndex: 11
+  linesIndex: 0b000000
 --- !u!1 &691726027
 GameObject:
   m_ObjectHideFlags: 0
@@ -2346,6 +2346,7 @@ GameObject:
   - 4: {fileID: 770937535}
   - 23: {fileID: 770937537}
   - 102: {fileID: 770937536}
+  - 114: {fileID: 770937538}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -2417,6 +2418,20 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &770937538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 770937534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676db92d88cc02e448bcdb6d95867f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 0}
+  resourcePath: system/main
+  linesIndex: 100000001100000012000000
 --- !u!1 &778577891
 GameObject:
   m_ObjectHideFlags: 0
@@ -2508,7 +2523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 778577893}
   resourcePath: system/main
-  lineIndex: 14
+  linesIndex: 0e000000
 --- !u!1 &788878302
 GameObject:
   m_ObjectHideFlags: 0
@@ -2655,7 +2670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 809338887}
   resourcePath: system/main
-  lineIndex: 0
+  linesIndex: 00000000
 --- !u!1 &923330751
 GameObject:
   m_ObjectHideFlags: 0
@@ -3936,7 +3951,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: -140, y: -204, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_Children: []
   m_Father: {fileID: 1179583139}
   m_RootOrder: 0
@@ -4199,7 +4214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 1452158696}
   resourcePath: system/main
-  lineIndex: 13
+  linesIndex: 0d000000
 --- !u!1 &1452972176
 GameObject:
   m_ObjectHideFlags: 0
@@ -4370,7 +4385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 1518891459}
   resourcePath: system/main
-  lineIndex: 3
+  linesIndex: 03000000
 --- !u!1 &1580359466
 GameObject:
   m_ObjectHideFlags: 0
@@ -4462,7 +4477,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 1580359468}
   resourcePath: system/main
-  lineIndex: 9
+  linesIndex: 09000000
 --- !u!1 &1595294302
 GameObject:
   m_ObjectHideFlags: 0
@@ -4554,7 +4569,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 1595294304}
   resourcePath: system/main
-  lineIndex: 4
+  linesIndex: 04000000
 --- !u!1 &1688074320
 GameObject:
   m_ObjectHideFlags: 0
@@ -4723,7 +4738,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 1689892856}
   resourcePath: system/main
-  lineIndex: 15
+  linesIndex: 0f000000
 --- !u!1 &1894109463
 GameObject:
   m_ObjectHideFlags: 0
@@ -4815,7 +4830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 1894109465}
   resourcePath: system/main
-  lineIndex: 12
+  linesIndex: 0c000000
 --- !u!1 &1896967277
 GameObject:
   m_ObjectHideFlags: 0

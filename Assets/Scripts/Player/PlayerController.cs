@@ -16,6 +16,8 @@ public static class PlayerAnimatorHashes
     public static int PlayerWalk_U = Animator.StringToHash("Base Layer.StdStates.Neutral.Walking.PlayerWalk_U");
     public static int PlayerWalk_L = Animator.StringToHash("Base Layer.StdStates.Neutral.Walking.PlayerWalk_L");
     public static int PlayerWalk_R = Animator.StringToHash("Base Layer.StdStates.Neutral.Walking.PlayerWalk_R");
+    public static int PlayerCorpse = Animator.StringToHash("Base Layer.StdStates.PlayerCorpse");
+    public static int PlayerDisintegrate = Animator.StringToHash("Base Layer.StdStates.PlayerDisintegrate");
     public static int CutsceneWalk_D = Animator.StringToHash("Base Layer.StdStates.Neutral.Walking.CutsceneWalk_D");
     public static int CutsceneWalk_U = Animator.StringToHash("Base Layer.StdStates.Neutral.Walking.CutsceneWalk_U");
     public static int CutsceneWalk_L = Animator.StringToHash("Base Layer.StdStates.Neutral.Walking.CutsceneWalk_L");
@@ -62,6 +64,7 @@ public class PlayerController : MonoBehaviour {
     public AudioClip hitSFX;
     public AudioClip regainSFX;
     public bool DontWarp;
+    public bool Dead;
     public bool IgnoreCollision;
     public bool Invincible;
     public bool Locked;
@@ -242,6 +245,7 @@ public class PlayerController : MonoBehaviour {
     void Die ()
     {
         animator.SetBool(PlayerAnimatorHashes.paramDead, true);
+        Dead = true;
         animator.SetTrigger(PlayerAnimatorHashes.triggerDie);
     }
 
@@ -526,6 +530,7 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     public void Respawn ()
     {
+        Dead = false;
         world.GameStateManager.RespawnPlayer();
         animator.ResetTrigger("Hit");
         hasBeenHit = false;

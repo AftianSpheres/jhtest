@@ -172,6 +172,7 @@
     <None Include="Assets\Resources\Text\en-us\system\inventory\wpn24.txt" />
     <None Include="Assets\Resources\Text\en-us\system\inventory\wpn_names.txt" />
     <None Include="Assets\Resources\Text\en-us\system\main.txt" />
+    <None Include="Assets\Resources\Text\en-us\system\ui.txt" />
     <None Include="Assets\Resources\Text\en-us\system\windowed_resolutions.txt" />
     <None Include="Assets\Resources\Text\en-us\system\world\subregions.txt" />
     <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
