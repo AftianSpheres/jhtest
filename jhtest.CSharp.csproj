@@ -296,6 +296,7 @@
     <Compile Include="Assets\Scripts\RoomObjects\mu_Chest.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_Door.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_EventManagedObject.cs" />
+    <Compile Include="Assets\Scripts\RoomObjects\mu_FallingRock.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_FalseWall.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_FlagManagedObject.cs" />
     <Compile Include="Assets\Scripts\RoomObjects\mu_IceFloor.cs" />

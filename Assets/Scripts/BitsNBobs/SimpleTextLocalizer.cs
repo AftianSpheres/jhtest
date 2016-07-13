@@ -19,7 +19,6 @@ public class SimpleTextLocalizer : MonoBehaviour
     {
         string[] res = Resources.Load<TextAsset>(textResourcesPath + resourcePath).ToString().Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
         textMesh.text = "";
-        Debug.Log(res);
         for (int i = 0; i < linesIndex.Length; i++)
         {
             string s;

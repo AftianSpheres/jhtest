@@ -63,6 +63,7 @@ public class YouDiedScreen : MonoBehaviour
                 if (ctr > stage1length)
                 {
                     world.player.animator.Play(PlayerAnimatorHashes.PlayerDisintegrate);
+                    spr0.enabled = false;
                     ctr = -1;
                 }
                 else if (ctr > -1)
@@ -71,7 +72,7 @@ public class YouDiedScreen : MonoBehaviour
                 }
                 if (source.isPlaying == false)
                 {
-                    spr0.enabled = spr1.enabled = false;
+                    spr1.enabled = false;
                 }
                 if (world.player.Dead == false && world.Curtain.activeInHierarchy == false)
                 {

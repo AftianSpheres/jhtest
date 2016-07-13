@@ -381,6 +381,38 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    public void Hit(int dmg, Vector3 center, int knockback)
+    {
+        if (Invincible == false && Locked == false && animator.GetBool("Dead") == false && hasBeenHit == false)
+        {
+            if (animator.GetBool(PlayerAnimatorHashes.triggerDodgeBurst) == false && InvulnTime < 1)
+            {
+                animator.SetTrigger("Hit");
+                energy.CurrentEnergy -= dmg;
+                energy.ChangeMultiplier(-99999);
+                source.PlayOneShot(hitSFX);
+                hasBeenHit = true;
+                if (center.y > collider.bounds.center.y)
+                {
+                    KnockbackHeading = Vector2.down * knockback;
+                }
+                else if (center.y < collider.bounds.center.y)
+                {
+                    KnockbackHeading = Vector2.up * knockback;
+                }
+                else if (center.x < collider.bounds.center.x)
+                {
+                    KnockbackHeading = Vector2.left * knockback;
+                }
+                else
+                {
+                    KnockbackHeading = Vector2.right * knockback;
+                }
+                KnockbackFrames = knockback;
+            }
+        }
+    }
+
     /// <summary>
     /// We've been hit by something: in this case, a bullet.
     /// </summary>
@@ -485,7 +517,7 @@ public class PlayerController : MonoBehaviour {
                 {
                     KnockbackHeading = Vector2.up * boom.PushbackStrength;
                 }
-                else if (boom.collider.bounds.center.y < collider.bounds.center.y)
+                else if (boom.collider.bounds.center.x < collider.bounds.center.x)
                 {
                     KnockbackHeading = Vector2.left * boom.PushbackStrength;
                 }
