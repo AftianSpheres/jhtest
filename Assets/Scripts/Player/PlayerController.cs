@@ -173,31 +173,24 @@ public class PlayerController : MonoBehaviour {
             CurrentWorldCoords[1] = world.activeRoom.xPosition + chkVal;
             CurrentRoomCoords[1] = chkVal;
         }
-        if (energy.CurrentEnergy < 1 && animator.GetBool(PlayerAnimatorHashes.paramDead) == false)
+        if (Locked == false)
         {
-            Die();
+            facingDir = (Direction)animator.GetInteger(PlayerAnimatorHashes.paramFacingDir);
+            isNeutral = DodgeAllowedStates.Contains(animator.GetCurrentAnimatorStateInfo(0).fullPathHash);
+            HandleInputs();
+            if (DontWarp == true)
+            {
+                DontWarp = false;
+            }
         }
         else
         {
-            if (Locked == false)
-            {
-                facingDir = (Direction)animator.GetInteger(PlayerAnimatorHashes.paramFacingDir);
-                isNeutral = DodgeAllowedStates.Contains(animator.GetCurrentAnimatorStateInfo(0).fullPathHash);
-                HandleInputs();
-                if (DontWarp == true)
-                {
-                    DontWarp = false;
-                }
-            }
-            else
-            {
-                animator.SetBool(PlayerAnimatorHashes.paramHeldFire1, false);
-                animator.SetBool(PlayerAnimatorHashes.paramHeldFire2, false);
-                animator.SetBool(PlayerAnimatorHashes.paramHeldRight, false);
-                animator.SetBool(PlayerAnimatorHashes.paramHeldLeft, false);
-                animator.SetBool(PlayerAnimatorHashes.paramHeldDown, false);
-                animator.SetBool(PlayerAnimatorHashes.paramHeldUp, false);
-            }
+            animator.SetBool(PlayerAnimatorHashes.paramHeldFire1, false);
+            animator.SetBool(PlayerAnimatorHashes.paramHeldFire2, false);
+            animator.SetBool(PlayerAnimatorHashes.paramHeldRight, false);
+            animator.SetBool(PlayerAnimatorHashes.paramHeldLeft, false);
+            animator.SetBool(PlayerAnimatorHashes.paramHeldDown, false);
+            animator.SetBool(PlayerAnimatorHashes.paramHeldUp, false);
         }
         if (InvulnTime > 0)
         {
@@ -242,7 +235,7 @@ public class PlayerController : MonoBehaviour {
     /// <summary>
     /// Die motherfucker die motherfucker die.
     /// </summary>
-    void Die ()
+    public void Die ()
     {
         animator.SetBool(PlayerAnimatorHashes.paramDead, true);
         Dead = true;
@@ -388,8 +381,7 @@ public class PlayerController : MonoBehaviour {
             if (animator.GetBool(PlayerAnimatorHashes.triggerDodgeBurst) == false && InvulnTime < 1)
             {
                 animator.SetTrigger("Hit");
-                energy.CurrentEnergy -= dmg;
-                energy.ChangeMultiplier(-99999);
+                energy.Damage(dmg);
                 source.PlayOneShot(hitSFX);
                 hasBeenHit = true;
                 if (center.y > collider.bounds.center.y)
@@ -425,7 +417,7 @@ public class PlayerController : MonoBehaviour {
         else if (bullet.ShotType == WeaponType.spEnergyRecover) // not a "real" bullet, but a thing that acts like an enemy bullet, sorta
         {
             bullet.HitTarget();
-            energy.Recover(100);
+            energy.Reset();
         }
         else if (Invincible == false && Locked == false && hasBeenHit == false)
         {
@@ -435,22 +427,13 @@ public class PlayerController : MonoBehaviour {
                 {
                     bullet.HitTarget();
                     animator.SetTrigger("Hit");
-                    energy.CurrentEnergy = energy.CurrentEnergy - bullet.Damage;
+                    energy.Damage(bullet.Damage);
                     KnockbackHeading = bullet.Heading;
                     KnockbackFrames = bullet.Weight;
-                    energy.ChangeMultiplier(-99999);
                     source.PlayOneShot(hitSFX);
                     hasBeenHit = true;
                     InvulnTime = 270;
                 }
-            }
-            else
-            {
-                bullet.HitTarget();
-                energy.Recover(4 * energy.CurrentMultiplierLevel + 1);
-                energy.ChangeMultiplier(1);
-                source.PlayOneShot(regainSFX);
-                StartHitFlash();
             }
         }
     }
@@ -468,10 +451,9 @@ public class PlayerController : MonoBehaviour {
                 if (InvulnTime < 1)
                 {
                     animator.SetTrigger("Hit");
-                    energy.CurrentEnergy = energy.CurrentEnergy - enemy.CollideDmg;
+                    energy.Damage(enemy.CollideDmg);
                     KnockbackHeading = enemy.Heading;
                     KnockbackFrames = enemy.Weight;
-                    energy.ChangeMultiplier(-99999);
                     source.PlayOneShot(hitSFX);
                     hasBeenHit = true;
                     InvulnTime = 270;
@@ -483,13 +465,6 @@ public class PlayerController : MonoBehaviour {
                 {
                     dodgeHurtbox.Damage = energy.Level * DodgeHurtboxBaseDamage;
                     dodgeHurtbox.Hurt(enemy);
-                }
-                if (enemy.inMovingAttack == true)
-                {
-                    energy.Recover(4 * energy.CurrentMultiplierLevel + 1);
-                    energy.ChangeMultiplier(1);
-                    source.PlayOneShot(regainSFX);
-                    StartHitFlash();
                 }
             }
         }
@@ -505,8 +480,7 @@ public class PlayerController : MonoBehaviour {
             if (animator.GetBool(PlayerAnimatorHashes.triggerDodgeBurst) == false && boom.Collideable == true && InvulnTime < 1)
             {
                 animator.SetTrigger("Hit");
-                energy.CurrentEnergy = energy.CurrentEnergy - boom.Damage;
-                energy.ChangeMultiplier(-99999);
+                energy.Damage(boom.Damage);
                 source.PlayOneShot(hitSFX);
                 hasBeenHit = true;
                 if (boom.collider.bounds.center.y > collider.bounds.center.y)
@@ -577,8 +551,7 @@ public class PlayerController : MonoBehaviour {
         mover.heading = Vector3.zero;
         mover.virtualPosition = transform.position;
         animator.SetTrigger("Hit");
-        energy.CurrentEnergy -= 20 * energy.Level;
-        energy.ChangeMultiplier(-99999);
+        energy.Damage(20 * energy.Level, true);
         source.PlayOneShot(hitSFX);
         hasBeenHit = true;
     }

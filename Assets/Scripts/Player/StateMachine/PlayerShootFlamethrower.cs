@@ -52,14 +52,12 @@ public class PlayerShootFlamethrower : StateMachineBehaviour
             {
                 if ((animator.GetBool("HeldFire1") == true && animator.GetBool("FireSlotB") == false) || (animator.GetBool("HeldFire2") == true && animator.GetBool("FireSlotB") == true))
                 {
-                    if (wpnManager.master.energy.CheckIfCanFireWpn(PlayerWeaponManager.ShotEnergyCosts[wt]) == true)
-                    {
-                        wpnManager.FireBullet((WeaponType)wt);
-                        source.PlayOneShot(sfx, 0.5f);
-                        animator.SetBool("FireRoundDone", true);
-                        animator.SetBool("Shooting", true);
-                        animator.SetInteger("Cooldown", 15);
-                    }
+                    wpnManager.master.energy.Damage(PlayerWeaponManager.ShotEnergyCosts[wt], true);
+                    wpnManager.FireBullet((WeaponType)wt);
+                    source.PlayOneShot(sfx, 0.5f);
+                    animator.SetBool("FireRoundDone", true);
+                    animator.SetBool("Shooting", true);
+                    animator.SetInteger("Cooldown", 15);
                 }
             }
         }

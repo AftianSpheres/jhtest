@@ -102,7 +102,7 @@ public class GameStateManager : Manager<GameStateManager>
         world.player.mover.virtualPosition = respawnPosition;
         world.player.mover.heading = Vector3.zero;
         world.player.transform.position = respawnPosition;
-        world.player.energy.Recover(100);
+        world.player.energy.Reset();
         world.player.animator.Play(PlayerAnimatorHashes.PlayerStand_D);
         world.player.animator.SetBool("Dead", false);
     }

@@ -8,75 +8,120 @@ using System.Collections;
 public class PlayerEnergy : MonoBehaviour
 {
     public PlayerController master;
-    public int Level;
-    public int CurrentEnergy;
-    public int MaxEnergy;
-    public int CurrentMultiplierLevel;
+    public bool isBerserk { get; private set; }
+    public ushort Level { get; private set; }
+    public int CurrentEnergy { get; private set; }
+    public int EnergyBound { get; private set; }
     public static int LevelMax = 20;
-    public static int EnergyPerLevel = 100;
-    public static int MultiplierMax = 10;
+    private static int EnergyPerLevel = 100;
+    private bool energyMeterMovesLeft = false;
+    private int FrameCtr;
+    private int BerserkTime;
 
 
 
 	// Use this for initialization
 	void Start ()
     {
-        MaxEnergy = EnergyPerLevel * Level;
-        CurrentEnergy = MaxEnergy;
+        EnergyBound = EnergyPerLevel * Level;
+        CurrentEnergy = 0;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (master.world.activeRoom != null && master.world.activeRoom.RoomCheckpoint != null && master.Locked == false)
+        FrameCtr++;
+        if (BerserkTime > 0)
         {
-            Recover(1);
+            BerserkTime--;
+            if (BerserkTime == 0)
+            {
+                isBerserk = false;
+            }
+        }
+        if (energyMeterMovesLeft == false)
+        {
+            if (CurrentEnergy >= EnergyBound)
+            {
+                if (master.animator.GetBool(PlayerAnimatorHashes.paramDead) == false)
+                {
+                    master.Die();
+                }
+            }
+            else if (CurrentEnergy > 0)
+            {
+                if (FrameCtr == 30)
+                {
+                    CurrentEnergy--;
+                    FrameCtr = 0;
+                }
+            }
+            else if (CurrentEnergy < 0)
+            {
+                if (FrameCtr == 15)
+                {
+                    CurrentEnergy++;
+                    FrameCtr = 0;
+                }
+            }
+        }
+        else if (energyMeterMovesLeft == true)
+        {
+            if (CurrentEnergy <= -EnergyBound)
+            {
+                if (master.animator.GetBool(PlayerAnimatorHashes.paramDead) == false)
+                {
+                    master.Die();
+                }
+            }
+            else if (CurrentEnergy > 0)
+            {
+                if (FrameCtr == 15)
+                {
+                    CurrentEnergy--;
+                    FrameCtr = 0;
+                }
+            }
+            else if (CurrentEnergy < 0)
+            {
+                if (FrameCtr == 30)
+                {
+                    CurrentEnergy++;
+                    FrameCtr = 0;
+                }
+            }
         }
 	}
 
-    /// <summary>
-    /// Changes bonus multiplier. 
-    /// Doesn't allow multiplier to exceed cap or
-    /// go below 0.
-    /// </summary>
-    public void ChangeMultiplier(int stages)
+    public void Damage(int damage, bool damageButDontKill = false)
     {
-        CurrentMultiplierLevel += stages;
-        if (CurrentMultiplierLevel > MultiplierMax)
+        if (isBerserk == true)
         {
-            CurrentMultiplierLevel = MultiplierMax;
+            damage *= 2;
         }
-        else if (CurrentMultiplierLevel < 0)
+        if (energyMeterMovesLeft == false)
         {
-            CurrentMultiplierLevel = 0;
+            CurrentEnergy += damage;
+            if (damageButDontKill == true && CurrentEnergy >= EnergyBound)
+            {
+                CurrentEnergy = EnergyBound - 1;
+            }
+        }
+        else
+        {
+            CurrentEnergy -= damage;
+            if (damageButDontKill == true && CurrentEnergy <= EnergyBound)
+            {
+                CurrentEnergy = -EnergyBound + 1;
+            }
         }
     }
 
-    /// <summary>
-    /// Checks if player can fire an arbitrary weapon that
-    /// used Percentage energy.
-    /// if apply_immediate == true, then removes that much energy
-    /// automatically.
-    /// </summary>
-    public bool CheckIfCanFireWpn(int Percentage, bool apply_immediate = true)
+    public void Flip ()
     {
-        if (master.Invincible == true)
-        {
-            return true;
-        }
-        if (Percentage > 100 || Percentage < 0)
-        {
-            throw new System.Exception("Invalid weapon energy percentage!");
-        }
-        if (CurrentEnergy - (Percentage * Level) > 0)
-        {
-            if (apply_immediate == true)
-            {
-                CurrentEnergy = CurrentEnergy - (Percentage * Level);
-            }
-            return true;
-        }
-        return false;  
+        isBerserk = true;
+        // determine berserk time...
+        energyMeterMovesLeft = !energyMeterMovesLeft;
     }
 
     /// <summary>
@@ -87,23 +132,17 @@ public class PlayerEnergy : MonoBehaviour
     {
         if (Level <= LevelMax)
         {
-            int old_ecap = MaxEnergy;
+            int old_ecap = EnergyBound;
             Level++;
-            MaxEnergy = MaxEnergy + EnergyPerLevel;
-            CurrentEnergy = CurrentEnergy * (MaxEnergy / old_ecap);
+            EnergyBound = EnergyBound + EnergyPerLevel;
+            CurrentEnergy = 0;
         }
     }
 
-    /// <summary>
-    /// Recovers specified percentage of HP.
-    /// Doesn't exceed max energy.
-    /// </summary>
-    public void Recover (int Percentage)
+    public void Reset()
     {
-        CurrentEnergy = CurrentEnergy + (Percentage * Level);
-        if (CurrentEnergy > MaxEnergy)
-        {
-            CurrentEnergy = MaxEnergy;
-        }
+        CurrentEnergy = 0;
+        isBerserk = false;
+        BerserkTime = 0;
     }
 }

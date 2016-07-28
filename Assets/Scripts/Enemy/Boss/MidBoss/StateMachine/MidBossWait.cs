@@ -69,7 +69,7 @@ public class MidBossWait : StateMachineBehaviour
         }
         else if (FrameCtr > 240)
         {
-            if (common.room.world.player.energy.CheckIfCanFireWpn(33, false) == false)
+            if (common.room.world.player.energy.CurrentEnergy >= (2/3f * common.room.world.player.energy.EnergyBound) || common.room.world.player.energy.CurrentEnergy <= (2/3f * -common.room.world.player.energy.EnergyBound))
             {
                 ChargeThisFrame = true;
             }

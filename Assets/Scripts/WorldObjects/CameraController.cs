@@ -240,7 +240,7 @@ public class CameraController : MonoBehaviour
         player.Locked = false;
         world.ChangeRoom(nextRoom);
         bool changedBGM = world.ChangeBGM(nextRoom.bgm);
-        if (nextRoom.Subregion == lastRoom.Subregion && changedBGM == true)
+        if (lastRoom == null || (nextRoom.Subregion == lastRoom.Subregion && changedBGM == true))
         {
             world.BGM0.Play(); // if we change subregions, wait until the popup closes
         }

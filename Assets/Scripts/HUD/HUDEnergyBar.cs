@@ -18,7 +18,7 @@ public class HUDEnergyBar : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        float v = (float)Math.Round(EnergyBarLen * ((float)playerEnergy.CurrentEnergy / playerEnergy.MaxEnergy), 0, MidpointRounding.AwayFromZero);
+        float v = (float)Math.Round(EnergyBarLen * ((float)playerEnergy.CurrentEnergy / playerEnergy.EnergyBound), 0, MidpointRounding.AwayFromZero);
         if (v < 0)
         {
             v = 0;

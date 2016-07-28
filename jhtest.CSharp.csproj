@@ -73,7 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Barker&apos;s Retro Text Printer Free\Scripts\RetroPrinterScriptBasic.cs" />
-    <Compile Include="Assets\FanfarePlayer.cs" />
+    <Compile Include="Assets\Enemy_IceZombie.cs" />
     <Compile Include="Assets\InControl\Examples\Basic\CubeController.cs" />
     <Compile Include="Assets\InControl\Examples\CustomProfile\CubeController.cs" />
     <Compile Include="Assets\InControl\Examples\CustomProfile\KeyboardAndMouseProfile.cs" />
@@ -215,6 +215,7 @@
     <Compile Include="Assets\Scripts\HUD\HUDTabooIcon.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDWeaponIcon.cs" />
     <Compile Include="Assets\Scripts\HUD\TabooOverlay.cs" />
+    <Compile Include="Assets\Scripts\HUD\YouDiedScreen.cs" />
     <Compile Include="Assets\Scripts\Helpers\ControlPrefs.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\AreaType.cs" />
     <Compile Include="Assets\Scripts\Helpers\EnumDeclarations\BossType.cs" />
@@ -312,6 +313,7 @@
     <Compile Include="Assets\Scripts\WorldObjects\CameraBlocker.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\CameraController.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\FXLayer.cs" />
+    <Compile Include="Assets\Scripts\WorldObjects\FanfarePlayer.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\FlickerySprite.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\PauseableSprite.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\RoomCollider.cs" />
@@ -322,7 +324,6 @@
     <Compile Include="Assets\Universe\Scripts\Manager.cs" />
     <Compile Include="Assets\Universe\Scripts\ManagerBase.cs" />
     <Compile Include="Assets\Universe\Scripts\Universe.cs" />
-    <Compile Include="Assets\YouDiedScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Barker&apos;s Retro Text Printer Free\readme.txt" />

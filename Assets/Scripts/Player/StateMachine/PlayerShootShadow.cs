@@ -35,13 +35,11 @@ public class PlayerShootShadow : StateMachineBehaviour
             {
                 if ((animator.GetBool("HeldFire1") == true && animator.GetBool("FireSlotB") == false) || (animator.GetBool("HeldFire2") == true && animator.GetBool("FireSlotB") == true))
                 {
-                    if (wpnManager.master.energy.CheckIfCanFireWpn(PlayerWeaponManager.ShotEnergyCosts[(int)WeaponType.pShadow]) == true)
-                    {
-                        wpnManager.FireBullet(WeaponType.pShadow);
-                        source.PlayOneShot(sfx, 0.5f);
-                        animator.SetBool("Shooting", true);
-                        animator.SetInteger("Cooldown", 10);
-                    }
+                    wpnManager.master.energy.Damage(PlayerWeaponManager.ShotEnergyCosts[(int)WeaponType.pShadow], true);
+                    wpnManager.FireBullet(WeaponType.pShadow);
+                    source.PlayOneShot(sfx, 0.5f);
+                    animator.SetBool("Shooting", true);
+                    animator.SetInteger("Cooldown", 10);
                 }
             }
         }
