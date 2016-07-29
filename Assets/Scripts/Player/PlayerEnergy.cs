@@ -8,13 +8,13 @@ using System.Collections;
 public class PlayerEnergy : MonoBehaviour
 {
     public PlayerController master;
-    public bool isBerserk { get; private set; }
-    public ushort Level { get; private set; }
-    public int CurrentEnergy { get; private set; }
-    public int EnergyBound { get; private set; }
+    public bool isBerserk;
+    public ushort Level;
+    public int CurrentEnergy;
+    public int EnergyBound;
     public static int LevelMax = 20;
     private static int EnergyPerLevel = 100;
-    private bool energyMeterMovesLeft = false;
+    public bool energyMeterMovesLeft;
     private int FrameCtr;
     private int BerserkTime;
 
