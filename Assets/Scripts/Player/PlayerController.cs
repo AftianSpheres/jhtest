@@ -259,8 +259,13 @@ public class PlayerController : MonoBehaviour {
         {
             DiscardDodgeInputs = true;
         }
+        // Meter flip
+        if (world.HardwareInterfaceManager.FlipMeter.BtnDown == true && Dead == false && energy.CurrentEnergy != 0 && energy.isBerserk == false && (energy.CurrentEnergy < 0) == energy.energyMeterMovesLeft)
+        {
+            energy.Flip();
+        }
         // Taboos
-        if (wpnManager.Taboo != TabooType.None && wpnManager.TabooReady == true && world.HardwareInterfaceManager.Fire1.Pressed == true && world.HardwareInterfaceManager.Fire2.Pressed == true && 
+        else if (wpnManager.Taboo != TabooType.None && wpnManager.TabooReady == true && world.HardwareInterfaceManager.Fire1.Pressed == true && world.HardwareInterfaceManager.Fire2.Pressed == true && 
             animator.GetBool("HeldFire1") == false && animator.GetBool("HeldFire2") == false)
         {
             wpnManager.TabooCooldownTimer = PlayerWeaponManager.TabooCooldownTime;

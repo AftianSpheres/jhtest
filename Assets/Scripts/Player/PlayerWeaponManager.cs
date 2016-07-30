@@ -110,14 +110,20 @@ public class PlayerWeaponManager : MonoBehaviour
     /// </summary>
     public int CalcShotDamage(WeaponType shot)
     {
+        int s = 1;
+        if (energy.isBerserk == true)
+        {
+            s = 2;
+        }
         if (ShotEnergyCosts[(int)shot] == 0)
         {
-            return energy.Level * DamageMultipliers[(int)shot];
+            s *= energy.Level * DamageMultipliers[(int)shot];
         }
         else
         {
-            return ShotEnergyCosts[(int)shot] * energy.Level * DamageMultipliers[(int)shot];
+            s *= ShotEnergyCosts[(int)shot] * energy.Level * DamageMultipliers[(int)shot];
         }
+        return s;
     }
 
     public void ChangeActiveWeapon(WeaponType wpn, bool isSlotB = false)

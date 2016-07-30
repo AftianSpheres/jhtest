@@ -25,6 +25,7 @@ public struct ControlPrefs
     public KeyCode KBMFire2;
     public KeyCode KBMDodge;
     public KeyCode KBMQuickTaboo;
+    public KeyCode KBMFlipMeter;
     public KeyCode KBMBumpLeft;
     public KeyCode KBMBumpRight;
     public bool GamepadDPadIsMappedToAxis;
@@ -65,6 +66,10 @@ public struct ControlPrefs
     public float GamepadQuickTabooAxisMin;
     public float GamepadQuickTabooAxisMax;
     public InputControlType GamepadQuickTaboo;
+    public bool inHybridFlipMeterIsOnMouse;
+    public float GamepadFlipMeterAxisMin;
+    public float GamepadFlipMeterAxisMax;
+    public InputControlType GamepadFlipMeter;
 
     public ControlPrefs(ControlModeType mode)
     {
@@ -84,6 +89,7 @@ public struct ControlPrefs
         KBMFire2 = KeyCode.Mouse1;
         KBMDodge = KeyCode.Space;
         KBMQuickTaboo = KeyCode.Mouse2;
+        KBMFlipMeter = KeyCode.G;
         KBMBumpLeft = KeyCode.Z;
         KBMBumpRight = KeyCode.C;
         GamepadDPadIsMappedToAxis = false;
@@ -124,5 +130,9 @@ public struct ControlPrefs
         GamepadQuickTabooAxisMin = 0.1f;
         GamepadQuickTabooAxisMax = 1.0f;
         GamepadQuickTaboo = InputControlType.LeftTrigger;
+        inHybridFlipMeterIsOnMouse = false;
+        GamepadFlipMeterAxisMin = 0.1f;
+        GamepadFlipMeterAxisMax = 1.0f;
+        GamepadFlipMeter = InputControlType.Action3;
     }
 }

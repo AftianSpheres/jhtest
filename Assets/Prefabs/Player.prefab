@@ -444,6 +444,9 @@ MonoBehaviour:
   CurrentEnergy: 0
   EnergyBound: 100
   energyMeterMovesLeft: 0
+  berserkSFX_lo: {fileID: 8300000, guid: ff97e631c72772141b410a64f816c7c7, type: 3}
+  berserkSFX_mid: {fileID: 8300000, guid: 0b5c34e83aba96548bc32f1fc2814568, type: 3}
+  berserkSFX_hi: {fileID: 8300000, guid: 33fc8a89812f65c4d84f6e7ca15d36d2, type: 3}
 --- !u!114 &11445364
 MonoBehaviour:
   m_ObjectHideFlags: 1

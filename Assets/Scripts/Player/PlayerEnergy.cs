@@ -17,8 +17,9 @@ public class PlayerEnergy : MonoBehaviour
     public bool energyMeterMovesLeft;
     private int FrameCtr;
     private int BerserkTime;
-
-
+    public AudioClip berserkSFX_lo;
+    public AudioClip berserkSFX_mid;
+    public AudioClip berserkSFX_hi;
 
 	// Use this for initialization
 	void Start ()
@@ -50,7 +51,7 @@ public class PlayerEnergy : MonoBehaviour
             }
             else if (CurrentEnergy > 0)
             {
-                if (FrameCtr == 30)
+                if (FrameCtr > 30)
                 {
                     CurrentEnergy--;
                     FrameCtr = 0;
@@ -58,7 +59,7 @@ public class PlayerEnergy : MonoBehaviour
             }
             else if (CurrentEnergy < 0)
             {
-                if (FrameCtr == 15)
+                if (FrameCtr > 15)
                 {
                     CurrentEnergy++;
                     FrameCtr = 0;
@@ -76,7 +77,7 @@ public class PlayerEnergy : MonoBehaviour
             }
             else if (CurrentEnergy > 0)
             {
-                if (FrameCtr == 15)
+                if (FrameCtr > 15)
                 {
                     CurrentEnergy--;
                     FrameCtr = 0;
@@ -84,7 +85,7 @@ public class PlayerEnergy : MonoBehaviour
             }
             else if (CurrentEnergy < 0)
             {
-                if (FrameCtr == 30)
+                if (FrameCtr > 30)
                 {
                     CurrentEnergy++;
                     FrameCtr = 0;
@@ -120,7 +121,21 @@ public class PlayerEnergy : MonoBehaviour
     public void Flip ()
     {
         isBerserk = true;
-        // determine berserk time...
+        if (CurrentEnergy > (.9f * EnergyBound) ||  CurrentEnergy < -(.9f * EnergyBound))
+        {
+            BerserkTime = 900;
+            master.source.PlayOneShot(berserkSFX_hi);
+        }
+        else if (CurrentEnergy > ((2/3f) * EnergyBound) || CurrentEnergy < -((2/3f) * EnergyBound))
+        {
+            BerserkTime = 450;
+            master.source.PlayOneShot(berserkSFX_mid);
+        }
+        else
+        {
+            BerserkTime = 240;
+            master.source.PlayOneShot(berserkSFX_lo);
+        }
         energyMeterMovesLeft = !energyMeterMovesLeft;
     }
 
@@ -142,6 +157,8 @@ public class PlayerEnergy : MonoBehaviour
     public void Reset()
     {
         CurrentEnergy = 0;
+        energyMeterMovesLeft = false;
+        FrameCtr = 0;
         isBerserk = false;
         BerserkTime = 0;
     }

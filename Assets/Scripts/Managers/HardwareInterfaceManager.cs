@@ -36,6 +36,7 @@ public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
     public VirtualButton LeftBumper;
     public VirtualButton RightBumper;
     public VirtualButton QuickTaboo;
+    public VirtualButton FlipMeter;
     public VirtualStick RightStick;
     public WindowedResolutionMultiplier windowedRes = WindowedResolutionMultiplier.x4;
     private ControlPrefs controlPrefs;
@@ -68,6 +69,7 @@ public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
         Fire2.Update();
         Dodge.Update();
         QuickTaboo.Update();
+        FlipMeter.Update();
         if (controlPrefs.setControlMode == ControlModeType.Gamepad)
         {
             RightStick.Update();
@@ -102,6 +104,7 @@ public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
             Fire2 = new VirtualButton(controlPrefs.GamepadFire2);
             Dodge = LeftBumper = new VirtualButton(controlPrefs.GamepadDodge);
             QuickTaboo = new VirtualButton(controlPrefs.GamepadQuickTaboo);
+            FlipMeter = new VirtualButton(controlPrefs.GamepadFlipMeter);
             RightStick = new VirtualStick(controlPrefs.GamepadAimXAxis, controlPrefs.GamepadAimYAxis, 
             controlPrefs.GamepadAimDeadZone, controlPrefs.GamepadAimSensitivity, controlPrefs.GamepadAimXAxisInverted, controlPrefs.GamepadAimYAxisInverted);
         }
@@ -118,6 +121,7 @@ public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
             Fire2 = new VirtualButton(controlPrefs.KBMFire2);
             Dodge = new VirtualButton(controlPrefs.KBMDodge);
             QuickTaboo = new VirtualButton(controlPrefs.KBMQuickTaboo);
+            FlipMeter = new VirtualButton(controlPrefs.KBMFlipMeter);
             LeftBumper = new VirtualButton(controlPrefs.KBMBumpLeft);
             RightBumper = new VirtualButton(controlPrefs.KBMBumpRight);
         }
