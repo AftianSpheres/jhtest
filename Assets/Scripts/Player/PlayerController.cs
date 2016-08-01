@@ -22,8 +22,8 @@ public static class PlayerAnimatorHashes
     public static int CutsceneWalk_U = Animator.StringToHash("Base Layer.StdStates.Neutral.Walking.CutsceneWalk_U");
     public static int CutsceneWalk_L = Animator.StringToHash("Base Layer.StdStates.Neutral.Walking.CutsceneWalk_L");
     public static int CutsceneWalk_R = Animator.StringToHash("Base Layer.StdStates.Neutral.Walking.CutsceneWalk_R");
-    public static int Dead = Animator.StringToHash("Base Layer.Dead");
-    public static int Pitfall = Animator.StringToHash("Base Layer.PlayerFall");
+    public static int Dead = Animator.StringToHash("Base Layer.StdStates.Dead");
+    public static int Pitfall = Animator.StringToHash("Base Layer.StdStates.PlayerFall");
     public static int paramDead = Animator.StringToHash("Dead");
     public static int paramFacingDir = Animator.StringToHash("FacingDir");
     public static int paramHeldFire1 = Animator.StringToHash("HeldFire1");
@@ -32,6 +32,7 @@ public static class PlayerAnimatorHashes
     public static int paramHeldLeft = Animator.StringToHash("HeldLeft");
     public static int paramHeldDown = Animator.StringToHash("HeldDown");
     public static int paramHeldUp = Animator.StringToHash("HeldUp");
+    public static int paramNowFiring = Animator.StringToHash("NowFiring");
     public static int triggerDie = Animator.StringToHash("Die");
     public static int triggerDodgeBurst = Animator.StringToHash("DodgeBurst");
     public static int paramExternalMoveSpeedMulti = Animator.StringToHash("ExternalMoveSpeedMulti");

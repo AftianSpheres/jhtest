@@ -73,7 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Barker&apos;s Retro Text Printer Free\Scripts\RetroPrinterScriptBasic.cs" />
-    <Compile Include="Assets\Enemy_IceZombie.cs" />
     <Compile Include="Assets\InControl\Examples\Basic\CubeController.cs" />
     <Compile Include="Assets\InControl\Examples\CustomProfile\CubeController.cs" />
     <Compile Include="Assets\InControl\Examples\CustomProfile\KeyboardAndMouseProfile.cs" />
@@ -183,6 +182,7 @@
     <Compile Include="Assets\InControl\Source\XInput\XInputDotNetPure\GamePad.cs" />
     <Compile Include="Assets\InControl\Source\XInput\XInputDotNetPure\Utils.cs" />
     <Compile Include="Assets\InControl\Test\TestInputManager.cs" />
+    <Compile Include="Assets\PlayerWeapon.cs" />
     <Compile Include="Assets\Scripts\BitsNBobs\AudioSourceCompanion.cs" />
     <Compile Include="Assets\Scripts\BitsNBobs\ScrollingLayer.cs" />
     <Compile Include="Assets\Scripts\BitsNBobs\SimpleTextLocalizer.cs" />
@@ -204,6 +204,7 @@
     <Compile Include="Assets\Scripts\Enemy\Common\CommonEnemyDead.cs" />
     <Compile Include="Assets\Scripts\Enemy\Common\CommonEnemyInvuln.cs" />
     <Compile Include="Assets\Scripts\Enemy\Common\EnemyModule.cs" />
+    <Compile Include="Assets\Scripts\Enemy_IceZombie.cs" />
     <Compile Include="Assets\Scripts\HUD\Cartographer.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDBossLifebar.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDDebug.cs" />

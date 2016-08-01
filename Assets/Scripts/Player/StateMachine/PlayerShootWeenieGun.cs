@@ -53,6 +53,7 @@ public class PlayerShootWeenieGun : StateMachineBehaviour
             {
                 if ((animator.GetBool("HeldFire1") == true && animator.GetBool("FireSlotB") == false) || (animator.GetBool("HeldFire2") == true && animator.GetBool("FireSlotB") == true))
                 {
+                    wpnManager.master.energy.Damage(PlayerWeaponManager.ShotEnergyCosts[wt]);
                     wpnManager.FireBullet((WeaponType)wt);
                     source.PlayOneShot(sfx, 0.5f);
                     animator.SetBool("FireRoundDone", true);

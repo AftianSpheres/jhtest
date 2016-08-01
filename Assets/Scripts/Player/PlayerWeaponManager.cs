@@ -22,21 +22,21 @@ public class PlayerWeaponManager : MonoBehaviour
     public static int TabooCooldownTime = 3600;
     public static int[] ShotEnergyCosts =
         {
-        0, // weenie gun
-        0, // wgII
+        2, // weenie gun
+        2, // wgII
         15, // shotgun
-        10, // shadow
+        20, // shadow
         5, // flamethrower
         3 // icicle
         };
-    public static int[] DamageMultipliers =
+    public static int[] ShotBaseDamages =
         {
-        1, // weenie gun
-        5, // wgII
-        1, // shotgun
-        2, // shadow
-        3, // flamethrower
-        1, // icicle
+        10, // weenie gun
+        50, // wgII
+        10, // shotgun
+        20, // shadow
+        15, // flamethrower
+        5, // icicle
         };
     private static int SlotAWpnHash = Animator.StringToHash("SlotAWpn");
     private static int SlotBWpnHash = Animator.StringToHash("SlotBWpn");
@@ -115,14 +115,7 @@ public class PlayerWeaponManager : MonoBehaviour
         {
             s = 2;
         }
-        if (ShotEnergyCosts[(int)shot] == 0)
-        {
-            s *= energy.Level * DamageMultipliers[(int)shot];
-        }
-        else
-        {
-            s *= ShotEnergyCosts[(int)shot] * energy.Level * DamageMultipliers[(int)shot];
-        }
+        s *= energy.Level * ShotBaseDamages[(int)shot];
         return s;
     }
 

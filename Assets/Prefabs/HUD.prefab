@@ -1251,7 +1251,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   world: {fileID: 0}
   EnergyBarLen: 58
-  EnergyBarFill: {fileID: 21235166}
+  EnergyBarCursor: {fileID: 0}
+  f_CursorLeft: {fileID: 0}
+  f_CursorRight: {fileID: 0}
+  f_CursorLeft_Berserk: {fileID: 0}
+  f_CursorRight_Berserk: {fileID: 0}
 --- !u!114 &11438716
 MonoBehaviour:
   m_ObjectHideFlags: 1

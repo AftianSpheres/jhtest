@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 478c976de0b588649af3a12040800ec2
-timeCreated: 1467704348
+timeCreated: 1470082343
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -58,6 +58,14 @@ TextureImporter:
     21300102: shot_playerFire1_downLeft
     21300104: shot_playerFire1_down
     21300106: shot_playerFire1_downRight
+    21300108: shot_playerSTDnew_upLeft
+    21300110: shot_playerSTDnew_up
+    21300112: shot_playerSTDnew_upRight
+    21300114: shot_playerSTDnew_left
+    21300116: shot_playerSTDnew_downLeft
+    21300118: shot_playerSTDnew_down
+    21300120: shot_playerSTDnew_downRight
+    21300122: shot_playerSTDnew_right
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -692,6 +700,94 @@ TextureImporter:
         serializedVersion: 2
         x: 192
         y: 744
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: shot_playerSTDnew_upLeft
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 720
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: shot_playerSTDnew_up
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 720
+        width: 24
+        height: 24
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: shot_playerSTDnew_upRight
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 720
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: shot_playerSTDnew_left
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 696
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: shot_playerSTDnew_downLeft
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 672
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: shot_playerSTDnew_down
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 672
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: shot_playerSTDnew_downRight
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 672
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: shot_playerSTDnew_right
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 696
         width: 24
         height: 24
       alignment: 0
