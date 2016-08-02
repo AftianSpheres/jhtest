@@ -369,21 +369,24 @@ public class BulletController : MonoBehaviour
         world.player.transform.position = snapToThing;
         float nx = collider.bounds.center.x;
         float ny = collider.bounds.center.y;
-        if (nx < world.activeRoom.bounds.min.x)
+        if (world.activeRoom != null)
         {
-            nx = world.activeRoom.bounds.min.x;
-        }
-        else if (nx > world.activeRoom.bounds.max.x)
-        {
-            nx = world.activeRoom.bounds.max.x;
-        }
-        if (ny < world.activeRoom.bounds.min.y)
-        {
-            ny = world.activeRoom.bounds.min.y;
-        }
-        else if (ny > world.activeRoom.bounds.max.y)
-        {
-            ny = world.activeRoom.bounds.max.y;
+            if (nx < world.activeRoom.bounds.min.x)
+            {
+                nx = world.activeRoom.bounds.min.x;
+            }
+            else if (nx > world.activeRoom.bounds.max.x)
+            {
+                nx = world.activeRoom.bounds.max.x;
+            }
+            if (ny < world.activeRoom.bounds.min.y)
+            {
+                ny = world.activeRoom.bounds.min.y;
+            }
+            else if (ny > world.activeRoom.bounds.max.y)
+            {
+                ny = world.activeRoom.bounds.max.y;
+            }
         }
         world.player.Locked = false;
         world.player.renderer.enabled = true;

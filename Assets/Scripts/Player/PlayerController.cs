@@ -26,8 +26,6 @@ public static class PlayerAnimatorHashes
     public static int Pitfall = Animator.StringToHash("Base Layer.StdStates.PlayerFall");
     public static int paramDead = Animator.StringToHash("Dead");
     public static int paramFacingDir = Animator.StringToHash("FacingDir");
-    public static int paramHeldFire1 = Animator.StringToHash("HeldFire1");
-    public static int paramHeldFire2 = Animator.StringToHash("HeldFire2");
     public static int paramHeldRight = Animator.StringToHash("HeldRight");
     public static int paramHeldLeft = Animator.StringToHash("HeldLeft");
     public static int paramHeldDown = Animator.StringToHash("HeldDown");
@@ -60,6 +58,8 @@ public class PlayerController : MonoBehaviour {
     public PlayerBulletOrigin bulletOrigin;
     public PlayerEnergy energy;
     public PlayerWeaponManager wpnManager;
+    public PlayerWeapon wpn1;
+    public PlayerWeapon wpn2;
     public Vector3 KnockbackHeading;
     public AudioClip fallSFX;
     public AudioClip hitSFX;
@@ -186,8 +186,6 @@ public class PlayerController : MonoBehaviour {
         }
         else
         {
-            animator.SetBool(PlayerAnimatorHashes.paramHeldFire1, false);
-            animator.SetBool(PlayerAnimatorHashes.paramHeldFire2, false);
             animator.SetBool(PlayerAnimatorHashes.paramHeldRight, false);
             animator.SetBool(PlayerAnimatorHashes.paramHeldLeft, false);
             animator.SetBool(PlayerAnimatorHashes.paramHeldDown, false);
@@ -267,7 +265,7 @@ public class PlayerController : MonoBehaviour {
         }
         // Taboos
         else if (wpnManager.Taboo != TabooType.None && wpnManager.TabooReady == true && world.HardwareInterfaceManager.Fire1.Pressed == true && world.HardwareInterfaceManager.Fire2.Pressed == true && 
-            animator.GetBool("HeldFire1") == false && animator.GetBool("HeldFire2") == false)
+            animator.GetBool(PlayerAnimatorHashes.paramNowFiring) == false)
         {
             wpnManager.TabooCooldownTimer = PlayerWeaponManager.TabooCooldownTime;
             wpnManager.TabooReady = false;
@@ -275,27 +273,16 @@ public class PlayerController : MonoBehaviour {
             animator.SetBool("CastTaboo", true);
             wpnManager.InvokeTaboo();
         }
-        else
+        else if (HardwareInterfaceManager.Instance.Fire1.Pressed == false || HardwareInterfaceManager.Instance.Fire2.Pressed == false)
         {
-            //HeldFire1 bool
-            if (world.HardwareInterfaceManager.Fire1.Pressed == true && wpnManager.SlotAWpn != WeaponType.None)
-            {
-                animator.SetBool("HeldFire1", true);
-            }
-            else
-            {
-                animator.SetBool("HeldFire1", false);
-            }
-            //HeldFire2 bool
-            if (world.HardwareInterfaceManager.Fire2.Pressed == true && wpnManager.SlotBWpn != WeaponType.None)
-            {
-                animator.SetBool("HeldFire2", true);
-                animator.SetBool("FireSlotB", true);
-            }
-            else
-            {
-                animator.SetBool("HeldFire2", false);
-            }
+            wpn1.ReceiveInput(HardwareInterfaceManager.Instance.Fire1);
+            wpn2.ReceiveInput(HardwareInterfaceManager.Instance.Fire2);
+        }
+        else if (wpn1.state != WeaponState.Recoil && wpn2.state != WeaponState.Recoil)
+        {
+            wpn1.Flush();
+            wpn2.Flush();
+            animator.SetBool(PlayerAnimatorHashes.paramNowFiring, false);
         }
         if (DiscardDodgeInputs == false)
         {

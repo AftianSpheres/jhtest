@@ -17,6 +17,7 @@ public class PlayerWeaponManager : MonoBehaviour
     public WeaponType SlotAWpn;
     public WeaponType SlotBWpn;
     public HeldWeapons WpnUnlocks;
+    public PlayerWeapon lastFiredWeapon;
     public bool TabooReady = true;
     public int TabooCooldownTimer;
     public static int TabooCooldownTime = 3600;
@@ -125,13 +126,11 @@ public class PlayerWeaponManager : MonoBehaviour
         {
             SlotAWpn = wpn;
             master.world.GameStateManager.activePlayerWeapons[0] = SlotAWpn;
-            master.animator.SetInteger(SlotAWpnHash, (int)SlotAWpn);
         }
         else
         {
             SlotBWpn = wpn;
             master.world.GameStateManager.activePlayerWeapons[1] = SlotBWpn;
-            master.animator.SetInteger(SlotBWpnHash, (int)SlotBWpn);
         }
     }
 

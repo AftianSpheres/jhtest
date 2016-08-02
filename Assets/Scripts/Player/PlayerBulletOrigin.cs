@@ -18,24 +18,27 @@ public class PlayerBulletOrigin : MonoBehaviour
 	void Update ()
     {
         float z = 0;
-        if (master.animator.GetBool("Shooting") == false)
+        if (master.animator.GetBool(PlayerAnimatorHashes.paramNowFiring) == false)
         {
             renderer.enabled = false;
         }
         else
         {
             renderer.enabled = true;
-            WeaponType wpn;
-            if (master.animator.GetBool("FireSlotB") == true)
+            WeaponType wpn = WeaponType.None;
+            if (master.wpnManager.lastFiredWeapon == master.wpn2)
             {
                 wpn = master.wpnManager.SlotBWpn;
             }
-            else
+            else if (master.wpnManager.lastFiredWeapon == master.wpn1)
             {
                 wpn = master.wpnManager.SlotAWpn;
             }
             switch (wpn)
             {
+                case WeaponType.None:
+                    renderer.sprite = default(Sprite);
+                    break;
                 case WeaponType.pWG:
                 case WeaponType.pWGII:
                     renderer.sprite = spriteSet_00[master.animator.GetInteger("FacingDir")];

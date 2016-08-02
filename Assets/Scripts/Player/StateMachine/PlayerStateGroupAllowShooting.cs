@@ -3,14 +3,6 @@ using System.Collections;
 
 public class PlayerStateGroupAllowShooting : StateMachineBehaviour {
 
-    // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
-	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        animator.SetBool("Shooting", false);
-        animator.SetBool("FireRoundDone", false);
-        animator.SetBool("FireSlotB", false);
-	}
-
 	// OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -19,7 +11,7 @@ public class PlayerStateGroupAllowShooting : StateMachineBehaviour {
             animator.Play("Taboo", 0);
             animator.SetBool("CastTaboo", false);
         }
-	    else if (animator.GetBool("HeldFire1") || animator.GetBool("HeldFire2"))
+	    else if (animator.GetBool("NowFiring"))
         {
             switch (animator.GetInteger("FacingDir"))
             {

@@ -67,6 +67,7 @@ public static class GlobalStaticResourcePaths
     public static string p_FireBasicSFX = "SFX/fire_wg";
     public static string p_FireShotgunSFX = "SFX/fire_sg";
     public static string p_FireShadowSFX = "SFX/fire_shd";
+    public static string p_FireFlameSFX = "SFX/door";
     public static string p_KeySFX = "SFX/key";
     public static string p_MenuCloseSFX = "SFX/menu_close";
     public static string p_MenuOpenSFX = "SFX/menu_open";

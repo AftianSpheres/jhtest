@@ -87,6 +87,8 @@ GameObject:
   - 114: {fileID: 11474658}
   - 114: {fileID: 11454656}
   - 114: {fileID: 11480380}
+  - 114: {fileID: 11480722}
+  - 114: {fileID: 11476948}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -469,6 +471,8 @@ MonoBehaviour:
   bulletOrigin: {fileID: 11429164}
   energy: {fileID: 11438828}
   wpnManager: {fileID: 11414976}
+  wpn1: {fileID: 11480722}
+  wpn2: {fileID: 11476948}
   KnockbackHeading: {x: 0, y: 0, z: 0}
   fallSFX: {fileID: 8300000, guid: 58a3b7e141cf00448bf51960d4f62e08, type: 3}
   hitSFX: {fileID: 8300000, guid: ecc26790967ca894eaa77343a2e546ea, type: 3}
@@ -578,6 +582,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMusic: 0
   source: {fileID: 8288394}
+--- !u!114 &11476948
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d667625b1b93f024c8409047878446c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 11414976}
+  isWpn2: 1
+  wpnTypeBuffer: -1
+  cooldown: 0
+  charge: 0
+  firingDone: 0
+  recoilDone: 0
 --- !u!114 &11480380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -593,6 +615,24 @@ MonoBehaviour:
   player: {fileID: 11445364}
   enemy: {fileID: 0}
   respawnPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &11480722
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d667625b1b93f024c8409047878446c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 11414976}
+  isWpn2: 0
+  wpnTypeBuffer: -1
+  cooldown: 0
+  charge: 0
+  firingDone: 0
+  recoilDone: 0
 --- !u!114 &11494838
 MonoBehaviour:
   m_ObjectHideFlags: 1

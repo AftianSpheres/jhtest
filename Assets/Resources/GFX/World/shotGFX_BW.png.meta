@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 478c976de0b588649af3a12040800ec2
-timeCreated: 1470082343
+timeCreated: 1470145768
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -720,12 +720,12 @@ TextureImporter:
     - name: shot_playerSTDnew_up
       rect:
         serializedVersion: 2
-        x: 24
+        x: 22
         y: 720
         width: 24
         height: 24
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: shot_playerSTDnew_upRight
