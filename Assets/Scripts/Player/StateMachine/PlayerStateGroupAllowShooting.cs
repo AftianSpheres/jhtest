@@ -3,8 +3,13 @@ using System.Collections;
 
 public class PlayerStateGroupAllowShooting : StateMachineBehaviour {
 
-	// OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
-	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        animator.SetBool(PlayerAnimatorHashes.paramFiringAllowed, true);
+    }
+
+    // OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (animator.GetBool("CastTaboo") == true)
         {
@@ -32,11 +37,6 @@ public class PlayerStateGroupAllowShooting : StateMachineBehaviour {
             }
         }
 	}
-
-	// OnStateExit is called before OnStateExit is called on any state inside this state machine
-	//override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//
-	//}
 
 	// OnStateMove is called before OnStateMove is called on any state inside this state machine
 	//override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {

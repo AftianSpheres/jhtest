@@ -14,21 +14,25 @@ public class PlayerStateGroupAllowDodging : StateMachineBehaviour {
         {
             animator.Play(dodgeHashes[4], 0);
             animator.SetBool(dodgeHashes[0], false);
+            animator.SetBool(PlayerAnimatorHashes.paramFiringAllowed, false);
         }
         else if (animator.GetBool(dodgeHashes[1]) == true)
         {
             animator.Play(dodgeHashes[5], 0);
             animator.SetBool(dodgeHashes[0], false);
+            animator.SetBool(PlayerAnimatorHashes.paramFiringAllowed, false);
         }
         else if (animator.GetBool(dodgeHashes[2]) == true)
         {
             animator.Play(dodgeHashes[6], 0);
             animator.SetBool(dodgeHashes[0], false);
+            animator.SetBool(PlayerAnimatorHashes.paramFiringAllowed, false);
         }
         else if (animator.GetBool(dodgeHashes[3]) == true)
         {
             animator.Play(dodgeHashes[7], 0);
             animator.SetBool(dodgeHashes[0], false);
+            animator.SetBool(PlayerAnimatorHashes.paramFiringAllowed, false);
         }
     }
 }

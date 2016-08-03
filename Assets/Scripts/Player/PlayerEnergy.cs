@@ -147,7 +147,6 @@ public class PlayerEnergy : MonoBehaviour
     {
         if (Level <= LevelMax)
         {
-            int old_ecap = EnergyBound;
             Level++;
             EnergyBound = EnergyBound + EnergyPerLevel;
             CurrentEnergy = 0;

@@ -39,8 +39,6 @@ public class PlayerWeaponManager : MonoBehaviour
         15, // flamethrower
         5, // icicle
         };
-    private static int SlotAWpnHash = Animator.StringToHash("SlotAWpn");
-    private static int SlotBWpnHash = Animator.StringToHash("SlotBWpn");
 
     /// <summary>
     /// MonoBehaviour.Start()

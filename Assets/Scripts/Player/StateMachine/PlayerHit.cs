@@ -9,6 +9,7 @@ public class PlayerHit : StateMachineBehaviour {
     {
         controller = animator.gameObject.GetComponent<PlayerController>();
         animator.SetBool(PlayerAnimatorHashes.triggerDodgeBurst, false);
+        animator.SetBool(PlayerAnimatorHashes.paramFiringAllowed, false);
     }
 
     public override void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

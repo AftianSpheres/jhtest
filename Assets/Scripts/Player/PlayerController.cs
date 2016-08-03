@@ -26,6 +26,7 @@ public static class PlayerAnimatorHashes
     public static int Pitfall = Animator.StringToHash("Base Layer.StdStates.PlayerFall");
     public static int paramDead = Animator.StringToHash("Dead");
     public static int paramFacingDir = Animator.StringToHash("FacingDir");
+    public static int paramFiringAllowed = Animator.StringToHash("FiringAllowed");
     public static int paramHeldRight = Animator.StringToHash("HeldRight");
     public static int paramHeldLeft = Animator.StringToHash("HeldLeft");
     public static int paramHeldDown = Animator.StringToHash("HeldDown");
