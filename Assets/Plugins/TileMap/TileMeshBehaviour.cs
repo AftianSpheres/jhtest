@@ -42,7 +42,7 @@ namespace UnityTileMap
 
                 if (m_material == null)
                 {
-                    m_material = new Material(Shader.Find("Sprites/EZ"));
+                    m_material = new Material(Shader.Find("Sprites/ColorFlash"));
                 }
 
 

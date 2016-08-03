@@ -111,7 +111,7 @@ public class PlayerEnergy : MonoBehaviour
         else
         {
             CurrentEnergy -= damage;
-            if (damageButDontKill == true && CurrentEnergy <= EnergyBound)
+            if (damageButDontKill == true && CurrentEnergy <= -EnergyBound)
             {
                 CurrentEnergy = -EnergyBound + 1;
             }

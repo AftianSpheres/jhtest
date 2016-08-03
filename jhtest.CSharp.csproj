@@ -250,6 +250,7 @@
     <Compile Include="Assets\Scripts\Helpers\GlobalStaticResourcePaths.cs" />
     <Compile Include="Assets\Scripts\Helpers\HammerConstants.cs" />
     <Compile Include="Assets\Scripts\Helpers\VirtualButton.cs" />
+    <Compile Include="Assets\Scripts\Helpers\VirtualButtonMultiplexer.cs" />
     <Compile Include="Assets\Scripts\Helpers\VirtualStick.cs" />
     <Compile Include="Assets\Scripts\Managers\GameSaveManager.cs" />
     <Compile Include="Assets\Scripts\Managers\GameStateManager.cs" />

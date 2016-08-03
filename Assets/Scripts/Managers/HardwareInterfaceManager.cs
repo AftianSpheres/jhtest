@@ -23,10 +23,10 @@ public enum WindowedResolutionMultiplier
 public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
 {
     public Resolution fullscreenRes;
-    public VirtualButton Left;
-    public VirtualButton Right;
-    public VirtualButton Up;
-    public VirtualButton Down;
+    private VirtualButton _left;
+    private VirtualButton _right;
+    private VirtualButton _up;
+    private VirtualButton _down;
     public VirtualButton Menu;
     public VirtualButton Dodge;
     public VirtualButton Confirm;
@@ -37,7 +37,12 @@ public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
     public VirtualButton RightBumper;
     public VirtualButton QuickTaboo;
     public VirtualButton FlipMeter;
+    public VirtualStick LeftStick;
     public VirtualStick RightStick;
+    public VirtualButtonMultiplexer Left;
+    public VirtualButtonMultiplexer Right;
+    public VirtualButtonMultiplexer Up;
+    public VirtualButtonMultiplexer Down;
     public WindowedResolutionMultiplier windowedRes = WindowedResolutionMultiplier.x4;
     private ControlPrefs controlPrefs;
 
@@ -58,10 +63,10 @@ public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
 
     void Update ()
     {
-        Left.Update();
-        Right.Update();
-        Up.Update();
-        Down.Update();
+        _left.Update();
+        _right.Update();
+        _up.Update();
+        _down.Update();
         Confirm.Update();
         Cancel.Update();
         Menu.Update();
@@ -72,8 +77,13 @@ public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
         FlipMeter.Update();
         if (controlPrefs.setControlMode == ControlModeType.Gamepad)
         {
+            LeftStick.Update();
             RightStick.Update();
-        }     
+        }
+        Left.Update();
+        Right.Update();
+        Up.Update();
+        Down.Update();
     }
 
     public Resolution GetRecommendedFullscreenResolution ()
@@ -93,10 +103,10 @@ public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
     {
         if (controlPrefs.setControlMode == ControlModeType.Gamepad)
         {
-            Left = new VirtualButton(controlPrefs.GamepadLeft);
-            Right = new VirtualButton(controlPrefs.GamepadRight);
-            Up = new VirtualButton(controlPrefs.GamepadUp);
-            Down = new VirtualButton(controlPrefs.GamepadDown);
+            _left = new VirtualButton(controlPrefs.GamepadLeft);
+            _right = new VirtualButton(controlPrefs.GamepadRight);
+            _up = new VirtualButton(controlPrefs.GamepadUp);
+            _down = new VirtualButton(controlPrefs.GamepadDown);
             Confirm = new VirtualButton(controlPrefs.GamepadConfirm);
             Cancel = new VirtualButton(controlPrefs.GamepadCancel);
             Menu = new VirtualButton(controlPrefs.GamepadMenu);
@@ -105,15 +115,21 @@ public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
             Dodge = LeftBumper = new VirtualButton(controlPrefs.GamepadDodge);
             QuickTaboo = new VirtualButton(controlPrefs.GamepadQuickTaboo);
             FlipMeter = new VirtualButton(controlPrefs.GamepadFlipMeter);
+            LeftStick = new VirtualStick(controlPrefs.GamepadDPadXAxis, controlPrefs.GamepadDPadYAxis, 
+            controlPrefs.GamepadDPadDeadZone, 1.0f, controlPrefs.GamepadDPadXAxisInverted, controlPrefs.GamepadDPadYAxisInverted);
             RightStick = new VirtualStick(controlPrefs.GamepadAimXAxis, controlPrefs.GamepadAimYAxis, 
             controlPrefs.GamepadAimDeadZone, controlPrefs.GamepadAimSensitivity, controlPrefs.GamepadAimXAxisInverted, controlPrefs.GamepadAimYAxisInverted);
+            Left = new VirtualButtonMultiplexer(_left, LeftStick, false, true);
+            Right = new VirtualButtonMultiplexer(_right, LeftStick, false, false);
+            Up = new VirtualButtonMultiplexer(_up, LeftStick, true, false);
+            Down = new VirtualButtonMultiplexer(_down, LeftStick, true, true);
         }
         else // hybrid isn't implemented atm
         {
-            Left = new VirtualButton(controlPrefs.KBMLeft);
-            Right = new VirtualButton(controlPrefs.KBMRight);
-            Up = new VirtualButton(controlPrefs.KBMUp);
-            Down = new VirtualButton(controlPrefs.KBMDown);
+            _left = new VirtualButton(controlPrefs.KBMLeft);
+            _right = new VirtualButton(controlPrefs.KBMRight);
+            _up = new VirtualButton(controlPrefs.KBMUp);
+            _down = new VirtualButton(controlPrefs.KBMDown);
             Confirm = new VirtualButton(controlPrefs.KBMConfirm);
             Cancel = new VirtualButton(controlPrefs.KBMCancel);
             Menu = new VirtualButton(controlPrefs.KBMMenu);
@@ -124,6 +140,10 @@ public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
             FlipMeter = new VirtualButton(controlPrefs.KBMFlipMeter);
             LeftBumper = new VirtualButton(controlPrefs.KBMBumpLeft);
             RightBumper = new VirtualButton(controlPrefs.KBMBumpRight);
+            Left = new VirtualButtonMultiplexer(_left);
+            Right = new VirtualButtonMultiplexer(_right);
+            Up = new VirtualButtonMultiplexer(_up);
+            Down = new VirtualButtonMultiplexer(_down);
         }
     }
 
