@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Experimental.Director;
 
 public class PlayerDodging : StateMachineBehaviour
 {
@@ -6,8 +7,8 @@ public class PlayerDodging : StateMachineBehaviour
     private Bounds[] roomColliders;
     private Collider2D collider;
     private PlayerController controller;
-    private static int basicDodgeFrameLength = 30;
-    private static int dodgeBoostLength = 10;
+    private static int basicDodgeFrameLength = 45;
+    private static int dodgeBoostLength = 11;
     private int dodgeBonus;
     int FrameCtr;
 
@@ -94,8 +95,9 @@ public class PlayerDodging : StateMachineBehaviour
         }
     }
 
-    private Vector3 _in_RollInDirection (Vector3 baseVector, Animator animator, bool input, bool moveVertically)
+    private Vector3 _in_RollInDirection (Vector3 _baseVector, Animator animator, bool input, bool moveVertically)
     {
+        Vector3 baseVector = _baseVector;
         if (input == true)
         {
             baseVector = baseVector * 2;
@@ -103,6 +105,10 @@ public class PlayerDodging : StateMachineBehaviour
         else if (FrameCtr >= basicDodgeFrameLength)
         {
             animator.SetBool(PlayerAnimatorHashes.triggerDodgeBurst, false); // you can cancel dodges early if you have the dodge booster, so you're never forced into a longer animation because you're holding it
+        }
+        if (FrameCtr > (basicDodgeFrameLength + dodgeBonus) * (2/3f))
+        {
+            baseVector -= _baseVector;
         }
         if (moveVertically == true)
         {
