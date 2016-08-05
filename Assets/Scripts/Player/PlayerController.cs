@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour {
     public GameObject shadow;
     public bool isNeutral = true;
     public SpriteMover mover;
+    int frameCtr = 0;
 
 	void Start ()
     {
@@ -156,6 +157,7 @@ public class PlayerController : MonoBehaviour {
         }
         #endregion
 #endif
+        frameCtr++;
         uint chkVal;
         if (world.activeRoom != null && (lastRoom != world.activeRoom || world.activeRoom.BigRoomCellSize.x > 0 || world.activeRoom.BigRoomCellSize.y > 0))
         {
@@ -195,6 +197,22 @@ public class PlayerController : MonoBehaviour {
         if (InvulnTime > 0)
         {
             InvulnTime--;
+            if (frameCtr > 8)
+            {
+                if (renderer.color == Color.white)
+                {
+                    renderer.color = Color.clear;
+                }
+                else
+                {
+                    renderer.color = Color.white;
+                }
+                frameCtr = 0;
+            }
+            if (InvulnTime < 1)
+            {
+                renderer.color = Color.white;
+            }
         }
     }
 
@@ -239,6 +257,8 @@ public class PlayerController : MonoBehaviour {
     {
         animator.SetBool(PlayerAnimatorHashes.paramDead, true);
         Dead = true;
+        InvulnTime = 0;
+        renderer.color = Color.white;
         animator.SetTrigger(PlayerAnimatorHashes.triggerDie);
     }
 
@@ -426,7 +446,6 @@ public class PlayerController : MonoBehaviour {
                     KnockbackFrames = bullet.Weight;
                     source.PlayOneShot(hitSFX);
                     hasBeenHit = true;
-                    InvulnTime = 270;
                 }
             }
         }
@@ -450,7 +469,6 @@ public class PlayerController : MonoBehaviour {
                     KnockbackFrames = enemy.Weight;
                     source.PlayOneShot(hitSFX);
                     hasBeenHit = true;
-                    InvulnTime = 270;
                 }
             }
             else
@@ -574,9 +592,10 @@ public class PlayerController : MonoBehaviour {
 
     }
 
-    public void StartHitFlash (int invulnTime = 30)
+    public void StartHitFlash (int invulnTime = 305)
     {
         StartCoroutine(GFXHelpers.FlashEffect(renderer, 15));
+        frameCtr = 0;
         InvulnTime = invulnTime;
     }
 }

@@ -95,6 +95,10 @@ public class PlayerWalking : StateMachineBehaviour
         {
             OffFrame = false;
         }
+        if (FrameCtr % 8 == 0)
+        {
+            PosMod *= 2;
+        }
         PosMod *= (animator.GetFloat(PlayerAnimatorHashes.paramMoveSpeed) * animator.GetFloat(PlayerAnimatorHashes.paramInternalMoveSpeedMulti) * animator.GetFloat(PlayerAnimatorHashes.paramExternalMoveSpeedMulti));
         ExpensiveAccurateCollision.CollideWithScenery(controller.mover, roomColliders, PosMod, collider);
 
