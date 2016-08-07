@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Experimental.Director;
 
 public class PlayerDodging : StateMachineBehaviour
 {
@@ -11,6 +10,7 @@ public class PlayerDodging : StateMachineBehaviour
     private static int dodgeBoostLength = 11;
     private int dodgeBonus;
     int FrameCtr;
+    bool hitWall = false;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -87,10 +87,34 @@ public class PlayerDodging : StateMachineBehaviour
                 PosMod = _in_RollInDirection(Vector3.right, animator, animator.GetBool("HeldRight"), false);
             }
         }
+        else if (hitWall == true)
+        {
+            if (FrameCtr % 4 == 0)
+            {
+                if (animator.GetCurrentAnimatorStateInfo(0).IsTag("FaceDown"))
+                {
+                    PosMod = Vector3.up * 1;
+                }
+                else if (animator.GetCurrentAnimatorStateInfo(0).IsTag("FaceUp"))
+                {
+                    PosMod = Vector3.down * 1;
+                }
+                else if (animator.GetCurrentAnimatorStateInfo(0).IsTag("FaceLeft"))
+                {
+                    PosMod = Vector3.right * 1;
+                }
+                else if (animator.GetCurrentAnimatorStateInfo(0).IsTag("FaceRight"))
+                {
+                    PosMod = Vector3.left * 1;
+                }
+            }
+        }
         PosMod *= (animator.GetFloat(PlayerAnimatorHashes.paramMoveSpeed) * animator.GetFloat(PlayerAnimatorHashes.paramInternalMoveSpeedMulti) * animator.GetFloat(PlayerAnimatorHashes.paramExternalMoveSpeedMulti));
         if (ExpensiveAccurateCollision.CollideWithScenery(controller.mover, roomColliders, PosMod, collider) == true)
         {
             animator.SetBool(PlayerAnimatorHashes.triggerDodgeBurst, false);
+            animator.SetBool("DodgeHitWall", true);
+            hitWall = true;
             controller.source.PlayOneShot(clip);
         }
     }

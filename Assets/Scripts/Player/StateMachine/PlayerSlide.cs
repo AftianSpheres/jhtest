@@ -7,9 +7,15 @@ public class PlayerSlide : StateMachineBehaviour
     private Bounds[] roomColliders;
     private Collider2D collider;
     private PlayerController master;
+    bool doSlide = true;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (animator.GetBool("DodgeHitWall") == true)
+        {
+            animator.SetBool("DodgeHitWall", false);
+            doSlide = false;
+        }
         PlayerController pc = animator.gameObject.GetComponent<PlayerController>();
         if (pc.world.activeRoom == null)
         {
@@ -44,7 +50,7 @@ public class PlayerSlide : StateMachineBehaviour
 
 	override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (roomColliders != null)
+        if (roomColliders != null && doSlide == true)
         {
             frameCtr++;
             if (frameCtr == slideInterval)

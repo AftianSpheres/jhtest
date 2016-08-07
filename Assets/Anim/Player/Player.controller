@@ -50,6 +50,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+  - m_Name: DodgeHitWall
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   - m_Name: DodgeIsFireball
     m_Type: 4
     m_DefaultFloat: 0
@@ -210,7 +216,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb9a8200d0144c14386bf3bb9d812b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 023575d5467062542bcafef25705f4af, type: 3}
+  clip: {fileID: 8300000, guid: 2075035f6bce5074abda675c799fb002, type: 3}
+  hitSprite: {fileID: 21300092, guid: f92fdf3e3ff6d5149840e06447e066e1, type: 3}
 --- !u!114 &11413104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -323,7 +330,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb9a8200d0144c14386bf3bb9d812b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 023575d5467062542bcafef25705f4af, type: 3}
+  clip: {fileID: 8300000, guid: 2075035f6bce5074abda675c799fb002, type: 3}
+  hitSprite: {fileID: 21300094, guid: f92fdf3e3ff6d5149840e06447e066e1, type: 3}
 --- !u!114 &11439872
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -368,7 +376,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb9a8200d0144c14386bf3bb9d812b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 023575d5467062542bcafef25705f4af, type: 3}
+  clip: {fileID: 8300000, guid: 2075035f6bce5074abda675c799fb002, type: 3}
+  hitSprite: {fileID: 0}
 --- !u!114 &11461018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -437,7 +446,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb9a8200d0144c14386bf3bb9d812b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 023575d5467062542bcafef25705f4af, type: 3}
+  clip: {fileID: 8300000, guid: 2075035f6bce5074abda675c799fb002, type: 3}
+  hitSprite: {fileID: 21300090, guid: f92fdf3e3ff6d5149840e06447e066e1, type: 3}
 --- !u!114 &11473506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -471,7 +481,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb9a8200d0144c14386bf3bb9d812b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 023575d5467062542bcafef25705f4af, type: 3}
+  clip: {fileID: 8300000, guid: 2075035f6bce5074abda675c799fb002, type: 3}
+  hitSprite: {fileID: 21300096, guid: f92fdf3e3ff6d5149840e06447e066e1, type: 3}
 --- !u!114 &11482940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -505,7 +516,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb9a8200d0144c14386bf3bb9d812b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 023575d5467062542bcafef25705f4af, type: 3}
+  clip: {fileID: 8300000, guid: 2075035f6bce5074abda675c799fb002, type: 3}
+  hitSprite: {fileID: 0}
 --- !u!114 &11492500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -517,7 +529,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb9a8200d0144c14386bf3bb9d812b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 023575d5467062542bcafef25705f4af, type: 3}
+  clip: {fileID: 8300000, guid: 2075035f6bce5074abda675c799fb002, type: 3}
+  hitSprite: {fileID: 0}
 --- !u!114 &11493142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -529,7 +542,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb9a8200d0144c14386bf3bb9d812b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 023575d5467062542bcafef25705f4af, type: 3}
+  clip: {fileID: 8300000, guid: 2075035f6bce5074abda675c799fb002, type: 3}
+  hitSprite: {fileID: 0}
 --- !u!114 &11498652
 MonoBehaviour:
   m_ObjectHideFlags: 1
