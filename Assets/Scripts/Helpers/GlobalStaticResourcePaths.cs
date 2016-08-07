@@ -75,7 +75,9 @@ public static class GlobalStaticResourcePaths
     public static string p_PlayerRollSFX = "SFX/player_roll";
     public static string p_SubregionPopupFanfare = "SFX/ff_subregion_popup";
     public static string p_TextPrintSFX = "SFX/text_print";
-    public static string p_WeaponGetFanfare = "SFX/ff_wpn";
+    public static string p_ArtifactGetFanfare = "Music/ff_artifact";
+    public static string p_PassiveGetFanfare = "Music/ff_item";
+    public static string p_WeaponGetFanfare = "Music/ff_wpn";
     public static string p_FlashMat = "FlashMat";
 
     public static string p_BoomGFX = "GFX/World/boom";

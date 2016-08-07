@@ -10,5 +10,6 @@ public enum EventFlags_TestMap
     BossDropShadowObtained = 1 << 3,
     Rm0x1NorthDoorOpen = 1 << 4,
     ShittyDemoLadder = 1 << 5,
-    FlamethrowerGotten = 1 << 6
+    FlamethrowerGotten = 1 << 6,
+    CentiRingGet = 1 << 7
 }

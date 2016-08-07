@@ -88,6 +88,7 @@ public class PlayerController : MonoBehaviour {
     public bool isNeutral = true;
     public SpriteMover mover;
     int frameCtr = 0;
+    public int interactTimer = 0;
 
 	void Start ()
     {
@@ -194,6 +195,7 @@ public class PlayerController : MonoBehaviour {
             animator.SetBool(PlayerAnimatorHashes.paramHeldDown, false);
             animator.SetBool(PlayerAnimatorHashes.paramHeldUp, false);
         }
+        interactTimer--;
         if (InvulnTime > 0)
         {
             InvulnTime--;

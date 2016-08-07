@@ -15,6 +15,7 @@ public class HUDSubregionNamePopup : MonoBehaviour
     private string[] lines;
     private AudioClip clip;
     public AudioSource source;
+    private bool usingFanfarePlayer;
 	
     void Awake ()
     {
@@ -37,7 +38,11 @@ public class HUDSubregionNamePopup : MonoBehaviour
         world.BGM0.Stop();
         subregion = world.activeRoom.Subregion;
         world.BGM0.volume = 0.33f;
-        source.PlayOneShot(clip);
+        if (world.FanfarePlayer.fanfarePlaying == false)
+        {
+            source.PlayOneShot(clip);
+            usingFanfarePlayer = true;
+        }
         renderer.enabled = true;
         bgRenderer.enabled = true;
         aliasRenderer.enabled = true;
@@ -49,7 +54,11 @@ public class HUDSubregionNamePopup : MonoBehaviour
         renderer.enabled = false;
         bgRenderer.enabled = false;
         aliasRenderer.enabled = false;
-        world.BGM0.volume = 1.0f;
-        world.BGM0.Play();
+        if (usingFanfarePlayer == true && (world.FanfarePlayer.lastClip == clip || world.FanfarePlayer.lastClip == null))
+        {
+            world.BGM0.volume = 1.0f;
+            world.BGM0.Play();
+        }
+
     }
 }

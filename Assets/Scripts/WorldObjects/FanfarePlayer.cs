@@ -5,7 +5,8 @@ public class FanfarePlayer : MonoBehaviour
 {
     public AudioSource bgm;
     public AudioSource source;
-    bool fanfarePlaying;
+    public bool fanfarePlaying;
+    public AudioClip lastClip = default(AudioClip);
 
     void Update ()
     {
@@ -25,6 +26,7 @@ public class FanfarePlayer : MonoBehaviour
     {
         bgm.Stop();
         source.Stop();
+        lastClip = clip;
         source.PlayOneShot(clip);
         fanfarePlaying = true;
     }

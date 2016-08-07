@@ -184,6 +184,7 @@
     <None Include="Assets\Resources\Text\en-us\system\ui.txt" />
     <None Include="Assets\Resources\Text\en-us\system\windowed_resolutions.txt" />
     <None Include="Assets\Resources\Text\en-us\system\world\subregions.txt" />
+    <None Include="Assets\Resources\Text\en-us\test\[1,1]sign0.txt" />
     <None Include="Assets\Universe\Documentation\Universe - ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />

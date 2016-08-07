@@ -9,6 +9,7 @@ public class mu_ItemPickup : MonoBehaviour
     public RoomController room;
     public PickupType pickupType;
     public WeaponType weaponType;
+    public HeldPassiveItems passiveType;
     public mufm_Generic Flag;
     public int displayLifespan;
     private bool isOverhead;
@@ -21,6 +22,18 @@ public class mu_ItemPickup : MonoBehaviour
         if (pickupType == PickupType.Weapon)
         {
             clip = Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_WeaponGetFanfare);
+        }
+        else if (pickupType == PickupType.PassiveItem)
+        {
+            if (passiveType == HeldPassiveItems.ForestMonolithChunk || passiveType == HeldPassiveItems.MarinaMonolithChunk || passiveType == HeldPassiveItems.ValleyMonolithChunk ||
+                passiveType == HeldPassiveItems.WorldChangeToken || passiveType == HeldPassiveItems.EndgameKey)
+            {
+                clip = Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_ArtifactGetFanfare);
+            }
+            else
+            {
+                clip = Resources.Load<AudioClip>(GlobalStaticResourcePaths.p_PassiveGetFanfare);
+            }
         }
         else if (pickupType == PickupType.AreaKey)
         {
@@ -44,6 +57,12 @@ public class mu_ItemPickup : MonoBehaviour
                 case PickupType.Weapon:
                     int mask = 1 << ((int)weaponType);
                     if (((int)room.world.player.wpnManager.WpnUnlocks & mask) == mask) // even if the flag isn't set, if the weapon's already been obtained the pickup doesn't appear
+                    {
+                        markedForDeath = true;
+                    }
+                    break;
+                case PickupType.PassiveItem:
+                    if ((GameStateManager.Instance.heldPassiveItems & passiveType) == passiveType) // even if the flag isn't set, if the weapon's already been obtained the pickup doesn't appear
                     {
                         markedForDeath = true;
                     }
@@ -85,7 +104,18 @@ public class mu_ItemPickup : MonoBehaviour
                 room.world.FanfarePlayer.Play(clip);
                 break;
             case PickupType.PassiveItem:
-                throw new System.NotImplementedException();
+                GameStateManager.Instance.heldPassiveItems |= passiveType;
+                int i = 1;
+                int index = 0;
+                while (i < (int)passiveType)
+                {
+                    i = i << 1;
+                    index++;
+                }
+                text = Resources.Load<TextAsset>(GlobalStaticResourcePaths.p_passive_descs[index]);
+                room.world.player.DoSpecialPose();
+                room.world.FanfarePlayer.Play(clip);
+                break;
             case PickupType.AreaKey:
                 if (room.world.Area > AreaType.None)
                 {
