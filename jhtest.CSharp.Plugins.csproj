@@ -71,6 +71,7 @@
     <Compile Include="Assets\Plugins\TileMap\IAStar.cs" />
     <Compile Include="Assets\Plugins\TileMap\KeyboardInputBehaviour.cs" />
     <Compile Include="Assets\Plugins\TileMap\MeshMode.cs" />
+    <Compile Include="Assets\Plugins\TileMap\TileAnim.cs" />
     <Compile Include="Assets\Plugins\TileMap\TileChunkManager.cs" />
     <Compile Include="Assets\Plugins\TileMap\TileEnumMapper.cs" />
     <Compile Include="Assets\Plugins\TileMap\TileMapBehaviour.cs" />

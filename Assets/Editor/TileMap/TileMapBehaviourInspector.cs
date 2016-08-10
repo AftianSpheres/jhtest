@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityTileMap;
+using UnityEditor.SceneManagement;
 
 // For obtaining list of sorting layers.
 using UnityEditorInternal;
@@ -31,10 +32,21 @@ public class TileMapBehaviourInspector : Editor
     [SerializeField]
     private bool m_sortSpritesByName;
 
+    [SerializeField]
+    private bool m_showAnims;
+
     private readonly Dictionary<string, Texture2D> m_thumbnailCache = new Dictionary<string, Texture2D>();
 
     private TileMapBehaviour m_tileMap;
     private TileSheet m_tileSheet;
+    private TileAnim[] m_tileAnims;
+
+    private TileEntry[] m_tileAnimsRoots;
+    private int m_tileAnimsLen;
+    private int[] m_tileAnimsLens;
+    private int[] m_tileAnimsIntervals;
+    private int[][] m_tileAnimsFrames;
+    // array of arrays containing sprite indices
 
     private int m_tilesX;
     private int m_tilesY;
@@ -55,6 +67,7 @@ public class TileMapBehaviourInspector : Editor
     {
         m_tileMap = (TileMapBehaviour)target;
         m_tileSheet = m_tileMap.TileSheet;
+        m_tileAnims = m_tileMap.TileAnims;
 
         var meshSettings = m_tileMap.MeshSettings;
         if (meshSettings != null)
@@ -67,6 +80,12 @@ public class TileMapBehaviourInspector : Editor
             m_textureFormat = meshSettings.TextureFormat;
         }
         m_activeInEditMode = m_tileMap.ActiveInEditMode;
+        if (!Application.isPlaying) EditorApplication.update += m_tileMap.UpdateAnim;
+    }
+
+    private void OnDisable()
+    {
+        if (!Application.isPlaying) EditorApplication.update -= m_tileMap.UpdateAnim;
     }
 
     // Taken from: http://answers.unity3d.com/questions/585108/how-do-you-access-sorting-layers-via-scripting.html
@@ -80,7 +99,6 @@ public class TileMapBehaviourInspector : Editor
     public override void OnInspectorGUI()
     {
         //		base.OnInspectorGUI();
-
         m_showMapSettings = EditorGUILayout.Foldout(m_showMapSettings, "Map Settings");
         if (m_showMapSettings)
         {
@@ -264,8 +282,115 @@ public class TileMapBehaviourInspector : Editor
                     GUILayout.Box("", GUILayout.ExpandWidth(true), GUILayout.Height(1));
             }
         }
-
-        EditorUtility.SetDirty(this);
+        EditorGUI.BeginChangeCheck();
+        m_showAnims = EditorGUILayout.Foldout(m_showAnims, "Tile Animations");
+        if (m_showAnims)
+        {
+            if (m_tileAnims == null)
+            {
+                if (m_tileMap.TileAnims != null)
+                {
+                    m_tileAnims = m_tileMap.TileAnims;
+                }
+                else
+                {
+                    m_tileAnims = new TileAnim[m_tileAnimsLen];
+                }
+            }
+            m_tileAnimsLen = EditorGUILayout.IntField(new GUIContent("No. of tile anims", "Number of animated tiles tied to this tilemap."), m_tileAnims.Length);
+            // populate lens
+            m_tileAnimsLens = new int[m_tileAnimsLen];
+            // populate intervals
+            m_tileAnimsIntervals = new int[m_tileAnimsLen];
+            for (int i = 0; i < m_tileAnimsLen; i++)
+            {
+                if (i < m_tileAnims.Length && m_tileAnims[i] != null)
+                {
+                    m_tileAnimsIntervals[i] = m_tileAnims[i].frameInterval;
+                }
+                else
+                {
+                    m_tileAnimsIntervals[i] = 0;
+                }
+            }
+            // populate roots
+            m_tileAnimsRoots = new TileEntry[m_tileAnimsLen];
+            for (int i = 0; i < m_tileAnimsLen; i++)
+            {
+                if ( i < m_tileAnims.Length && m_tileAnims[i] != null)
+                {
+                    m_tileAnimsRoots[i] = m_tileSheet.GetEntry(m_tileAnims[i].Id);
+                }
+                else
+                {
+                    m_tileAnimsRoots[i] = m_tileSheet.GetEntry(0);
+                }
+            }
+            // populate frames
+            m_tileAnimsFrames = new int[m_tileAnimsLen][];
+            for (int i = 0; i < m_tileAnimsLen; i++)
+            {
+                if (i < m_tileAnims.Length && m_tileAnims[i] != null)
+                {
+                    m_tileAnimsFrames[i] = m_tileAnims[i].frameIds;
+                }
+                else
+                {
+                    m_tileAnimsFrames[i] = new int[0];
+                }
+                m_tileAnimsLens[i] = m_tileAnimsFrames[i].Length;
+            }
+            // start tile anims block
+            EditorGUILayout.LabelField("______________________________________________________________________________________");
+            for (int i = 0; i < m_tileAnimsLen; i++)
+            {
+                EditorGUILayout.LabelField("Anim " + i.ToString());
+                m_tileAnimsLens[i] = EditorGUILayout.IntField(new GUIContent("Anim " + i.ToString() + " length", "Number of frames in this animation."), m_tileAnimsLens[i]);
+                int[] mt = m_tileAnimsFrames[i];
+                m_tileAnimsFrames[i] = new int[m_tileAnimsLens[i]];
+                for (int ix = 0; ix < m_tileAnimsFrames[i].Length; ix++)
+                {
+                    if (ix >= mt.Length)
+                    {
+                        m_tileAnimsFrames[i][ix] = 0;
+                    }
+                    else
+                    {
+                        m_tileAnimsFrames[i][ix] = mt[ix];
+                    }
+                }
+                m_tileAnimsIntervals[i] = EditorGUILayout.IntField(new GUIContent("Anim " + i.ToString() + " interval", "Number of frames between sprite changes."), m_tileAnimsIntervals[i]);
+                // root
+                if (m_tileAnimsRoots[i] == null)
+                {
+                    m_tileAnimsRoots[i] = m_tileSheet.GetEntry(0);
+                }
+                Sprite s = m_tileAnimsRoots[i].Sprite;
+                GUILayout.Label(new GUIContent(s.name, GetThumbnail(s), s.textureRect.ToString()));
+                m_tileAnimsRoots[i] = m_tileSheet.GetEntry(EditorGUILayout.IntField(new GUIContent("Root tile ID: " + m_tileAnimsRoots[i].Id.ToString(), "Tilesheet ID of anim root"), m_tileAnimsRoots[i].Id));
+                // the other sprites
+                for (int ix = 0; ix < m_tileAnimsFrames[i].Length; ix++)
+                {
+                    s = m_tileSheet.Get(m_tileAnimsFrames[i][ix]);
+                    GUILayout.Label(new GUIContent(GetThumbnail(s), s.textureRect.ToString()));
+                    m_tileAnimsFrames[i][ix] = EditorGUILayout.IntField(m_tileAnimsFrames[i][ix], GUILayout.Width(32));
+                }
+                EditorGUILayout.LabelField("______________________________________________________________________________________");
+            }
+            m_tileAnims = new TileAnim[m_tileAnimsLen];
+            for (int i = 0; i < m_tileAnimsLen; i++)
+            {
+                m_tileAnims[i] = new TileAnim();
+                m_tileAnims[i].Id = m_tileAnimsRoots[i].Id;
+                m_tileAnims[i].frameInterval = m_tileAnimsIntervals[i];
+                m_tileAnims[i].frameIds = m_tileAnimsFrames[i];
+            }
+        }
+        if (EditorGUI.EndChangeCheck())
+        {
+            Undo.RecordObject(m_tileMap, "Changed tileanims");
+            m_tileMap.SetAnims(m_tileAnims);
+        }
     }
 
     private int FindStringIndex(ref string[] strings, string layer)

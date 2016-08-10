@@ -82,7 +82,7 @@ namespace UnityTileMap
             }
         }
 
-        private TileEntry GetEntry(int id)
+        public TileEntry GetEntry(int id)
         {
             return m_tiles.FirstOrDefault(entry => entry.Id == id);
         }
@@ -110,12 +110,13 @@ namespace UnityTileMap
                     return id;
             }
         }
+    }
 
-        [Serializable]
-        private class TileEntry
-        {
-            public int Id;
-            public Sprite Sprite;
-        }
+    [Serializable]
+    public class TileEntry
+    {
+        public int Id;
+        public Sprite Sprite;
+        public Sprite originalSprite;
     }
 }

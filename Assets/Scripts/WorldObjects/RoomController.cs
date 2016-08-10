@@ -29,6 +29,7 @@ public class RoomController : MonoBehaviour
     public Vector2[] EntryPoints;
     private GameStateManager gameStateManager;
     public Bounds[] pitfallZones;
+    public UnityTileMap.TileMapBehaviour tilemap;
 
 
     /// <summary>
@@ -72,11 +73,19 @@ public class RoomController : MonoBehaviour
             {
                 WakeUpOccupants();
             }
+            if (tilemap != null)
+            {
+                tilemap.animateTiles = true;
+            }
             isActiveRoom = true;
         }
 	    else
         {
             isActiveRoom = false;
+            if (tilemap != null)
+            {
+                tilemap.animateTiles = false;
+            }
         }
         if (RoomCheckpoint != null)
         {

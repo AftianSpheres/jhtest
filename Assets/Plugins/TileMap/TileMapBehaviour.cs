@@ -3,6 +3,9 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace UnityTileMap
 {
@@ -10,6 +13,7 @@ namespace UnityTileMap
     [Serializable]
     public class TileMapBehaviour : MonoBehaviour, IEnumerable<KeyValuePair<Vector2Int, int>>
     {
+        public bool animateTiles;
         [SerializeField]
         private TileMapData m_tileMapData;
 
@@ -21,6 +25,9 @@ namespace UnityTileMap
 
         [SerializeField]
         private bool m_activeInEditMode = true;
+
+        [SerializeField]
+        private TileAnim[] m_tileAnims;
 
         private TileChunkManager m_chunkManager;
 
@@ -76,6 +83,11 @@ namespace UnityTileMap
             get { return m_tileSheet; }
         }
 
+        public TileAnim[] TileAnims
+        {
+            get { return m_tileAnims; }
+        }
+
         public int TileCount
         {
             get
@@ -95,7 +107,6 @@ namespace UnityTileMap
             {
                 if (m_chunkManager == null)
                 {
-                    Debug.Log("Recreating TileMeshGrid");
                     m_chunkManager = new TileChunkManager();
                     m_chunkManager.Initialize(this, m_tileMeshSettings);
                 }
@@ -116,6 +127,7 @@ namespace UnityTileMap
             if (m_tileSheet == null)
                 m_tileSheet = ScriptableObject.CreateInstance<TileSheet>();
 
+
             if (m_chunkManager == null)
             {
                 m_chunkManager = new TileChunkManager();
@@ -128,8 +140,61 @@ namespace UnityTileMap
                 m_tileMapData.SetSize(m_tileMeshSettings.TilesX, m_tileMeshSettings.TilesY);
             }
 
+            if (m_tileAnims == null)
+            {
+                m_tileAnims = new TileAnim[0];
+            }
+
             if (Application.isPlaying || m_activeInEditMode)
+            {
                 CreateMesh();
+            }
+            for (int i = 0; i < m_tileAnims.Length; i++)
+            {
+                m_tileAnims[i].Start(m_tileSheet);
+            }
+        }
+#if UNITY_EDITOR
+        private double time = 0;
+
+        public void UpdateAnim()
+        {
+            if (EditorApplication.timeSinceStartup - time >= 1d / 60d)
+            {
+                time = EditorApplication.timeSinceStartup;
+                if (TileAnims != null && TileAnims.Length > 0)
+                {
+                    if (TileAnims[0].initialized == false)
+                    {
+                        for (int i = 0; i < TileAnims.Length; i++)
+                        {
+                            TileAnims[i].Start(TileSheet);
+                        }
+                    }
+                    for (int i = 0; i < m_tileAnims.Length; i++)
+                    {
+                        if (m_tileAnims[i].Update() == true && animateTiles == true)
+                        {
+                            CreateMesh();
+                        }
+                    }
+                }
+            }
+        }
+#endif
+
+        void Update()
+        {
+            if (Application.isPlaying)
+            {
+                for (int i = 0; i < m_tileAnims.Length; i++)
+                {
+                    if (m_tileAnims[i].Update() == true && animateTiles == true)
+                    {
+                        CreateMesh();
+                    }
+                }
+            }
         }
 
         public int this[int x, int y]
@@ -221,6 +286,11 @@ namespace UnityTileMap
             if (singleQuad == null)
                 throw new InvalidOperationException("Painting tiles is only supported in SingleQuad MeshMode");
             singleQuad.SetTile(x, y, color);
+        }
+
+        public void SetAnims (TileAnim[] anims)
+        {
+            m_tileAnims = anims;
         }
 
         private void SetTile(int x, int y, Sprite sprite)

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: e928bc454c016bf4c9daeeb8440de94b
-timeCreated: 1470596943
+timeCreated: 1470780365
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -419,6 +419,7 @@ TextureImporter:
     21300824: tileset_valley_bw_150
     21300826: tileset_valley_bw_151
     21300828: tileset_valley_bw_152
+    21300830: tileset_valley_bw_153
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -2141,6 +2142,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_153
+      rect:
+        serializedVersion: 2
+        x: 96
         y: 208
         width: 16
         height: 16
