@@ -83,7 +83,7 @@
     <Compile Include="Assets\Plugins\TileMap\TileMeshSingleQuadBehaviour.cs" />
     <Compile Include="Assets\Plugins\TileMap\TilePainter.cs" />
     <Compile Include="Assets\Plugins\TileMap\TileSheet.cs" />
-    <Compile Include="Assets\Plugins\TileMap\TilesetProps.cs" />
+    <Compile Include="Assets\Plugins\TileMap\TilesetAnimsContainer.cs" />
     <Compile Include="Assets\Plugins\TileMap\TilesetType.cs" />
     <Compile Include="Assets\Plugins\TileMap\Vector2Int.cs" />
   </ItemGroup>

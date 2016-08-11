@@ -8,11 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 69a52eab1ad97ff4986497554b89aed3, type: 3}
   m_Name: anims_valley
   m_EditorClassIdentifier: Assembly-CSharp-firstpass:UnityTileMap:TilesetAnimsContainer
   tileAnims:
   - frameIds: 000000000100000002000000030000000400000006000000
     frameInterval: 3
     Id: 153
-    initialized: 0
+    initialized: 1

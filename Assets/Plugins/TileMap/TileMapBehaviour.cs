@@ -160,8 +160,19 @@ namespace UnityTileMap
 #if UNITY_EDITOR
         private double time = 0;
 
-        public void SpecialUpdateAnim()
+        void OnEnable()
         {
+            if (!Application.isPlaying) EditorApplication.update += SpecialAnimate;
+        }
+
+        void OnDisable()
+        {
+            if (!Application.isPlaying) EditorApplication.update -= SpecialAnimate;
+        }
+
+        public void SpecialAnimate()
+        {
+            if (Application.isPlaying) throw new Exception("Can't call SpecialAnimate while playing!");
             if (EditorApplication.timeSinceStartup - time >= 1d / 60d)
             {
                 time = EditorApplication.timeSinceStartup;
@@ -200,7 +211,7 @@ namespace UnityTileMap
             }
             if (meshDirty == true)
             {
-                CreateMesh();
+                DrawTiles();
                 meshDirty = false;
             }
         }
@@ -225,6 +236,11 @@ namespace UnityTileMap
                 ChunkManager.Settings = m_tileMeshSettings;
 
             // restore tilemap data
+            DrawTiles();
+        }
+
+        void DrawTiles ()
+        {
             for (int x = 0; x < m_tileMapData.SizeX; x++)
             {
                 for (int y = 0; y < m_tileMapData.SizeY; y++)
@@ -335,4 +351,5 @@ namespace UnityTileMap
             return GetEnumerator();
         }
     }
+
 }

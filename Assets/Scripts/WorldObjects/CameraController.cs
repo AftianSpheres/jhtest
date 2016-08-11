@@ -39,6 +39,7 @@ public class CameraController : MonoBehaviour
     /// </summary>
     void Update ()
     {
+        if (nextRoom != null && nextRoom.tilemap != null) nextRoom.tilemap.animateTiles = true;
         if (ForceScroll != 0)
         {
             if (ScrollVertical == true)

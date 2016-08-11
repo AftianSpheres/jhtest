@@ -472,5 +472,5 @@ MonoBehaviour:
     Sprite: {fileID: 21300828, guid: e928bc454c016bf4c9daeeb8440de94b, type: 3}
     originalSprite: {fileID: 0}
   - Id: 153
-    Sprite: {fileID: 21300830, guid: e928bc454c016bf4c9daeeb8440de94b, type: 3}
-    originalSprite: {fileID: 0}
+    Sprite: {fileID: 21300524, guid: e928bc454c016bf4c9daeeb8440de94b, type: 3}
+    originalSprite: {fileID: 21300526, guid: e928bc454c016bf4c9daeeb8440de94b, type: 3}

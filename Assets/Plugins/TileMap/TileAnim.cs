@@ -3,6 +3,7 @@ using System;
 
 namespace UnityTileMap
 {
+    [ExecuteInEditMode]
     [Serializable]
     public class TileAnim
     {
