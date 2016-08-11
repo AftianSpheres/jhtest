@@ -41,6 +41,8 @@ public class TileMapBehaviourInspector : Editor
     private TileSheet m_tileSheet;
     private TileAnim[] m_tileAnims;
 
+    private TilesetType m_tileset;
+
     private TileEntry[] m_tileAnimsRoots;
     private int m_tileAnimsLen;
     private int[] m_tileAnimsLens;
@@ -66,8 +68,13 @@ public class TileMapBehaviourInspector : Editor
     private void OnEnable()
     {
         m_tileMap = (TileMapBehaviour)target;
+        if (m_tileMap.TileSheet == null)
+        {
+            m_tileMap.SetTileSheet(CreateInstance<TileSheet>());
+        }
         m_tileSheet = m_tileMap.TileSheet;
         m_tileAnims = m_tileMap.TileAnims;
+        m_tileset = m_tileMap.tileset;
 
         var meshSettings = m_tileMap.MeshSettings;
         if (meshSettings != null)
@@ -80,12 +87,12 @@ public class TileMapBehaviourInspector : Editor
             m_textureFormat = meshSettings.TextureFormat;
         }
         m_activeInEditMode = m_tileMap.ActiveInEditMode;
-        if (!Application.isPlaying) EditorApplication.update += m_tileMap.UpdateAnim;
+        if (!Application.isPlaying) EditorApplication.update += m_tileMap.SpecialUpdateAnim;
     }
 
     private void OnDisable()
     {
-        if (!Application.isPlaying) EditorApplication.update -= m_tileMap.UpdateAnim;
+        if (!Application.isPlaying) EditorApplication.update -= m_tileMap.SpecialUpdateAnim;
     }
 
     // Taken from: http://answers.unity3d.com/questions/585108/how-do-you-access-sorting-layers-via-scripting.html
@@ -103,6 +110,15 @@ public class TileMapBehaviourInspector : Editor
         if (m_showMapSettings)
         {
             m_activeInEditMode = EditorGUILayout.Toggle("Active In Edit Mode", m_activeInEditMode);
+
+            EditorGUI.BeginChangeCheck();
+            m_tileset = (TilesetType)EditorGUILayout.EnumPopup(new GUIContent("Tileset", "Tileset used by this map"), m_tileset);
+            if (EditorGUI.EndChangeCheck() == true)
+            {
+                Undo.RecordObject(m_tileMap.gameObject, "Changed tilemap tileset");
+                m_tileMap.tileset = m_tileset;
+                LoadTileset();
+            }
 
             m_tilesX = EditorGUILayout.IntField(
                 new GUIContent("Tiles X", "The number of tiles on the X axis"),
@@ -262,6 +278,7 @@ public class TileMapBehaviourInspector : Editor
                 foreach (var id in m_tileMap.TileSheet.Ids)
                     m_tileMap.TileSheet.Remove(id);
                 m_thumbnailCache.Clear();
+                SaveTileset();
             }
 
             if (GUILayout.Button("Refresh thumbnails"))
@@ -390,6 +407,7 @@ public class TileMapBehaviourInspector : Editor
         {
             Undo.RecordObject(m_tileMap, "Changed tileanims");
             m_tileMap.SetAnims(m_tileAnims);
+            SaveTileset();
         }
     }
 
@@ -446,8 +464,9 @@ public class TileMapBehaviourInspector : Editor
                     // to drag and drop, so assume only one
                     var dropped = DragAndDrop.objectReferences.FirstOrDefault();
                     TryImport(dropped);
-
+                    
                     Event.current.Use();
+                    SaveTileset();
                 }
                 break;
         }
@@ -634,6 +653,132 @@ public class TileMapBehaviourInspector : Editor
                 e.Use();
             }
         }
+    }
+
+    private void LoadTileset ()
+    {
+        TilesetAnimsContainer animsContainer;
+        TileSheet tileSheet;
+        switch (m_tileMap.tileset)
+        {
+            case TilesetType.Village:
+                animsContainer = Resources.Load<TilesetAnimsContainer>("GFX/Tilesets/Metadata/anims_village");
+                if (animsContainer == null) goto default;
+                break;
+            case TilesetType.Forest:
+                animsContainer = Resources.Load<TilesetAnimsContainer>("GFX/Tilesets/Metadata/anims_forest");
+                if (animsContainer == null) goto default;
+                break;
+            case TilesetType.Valley:
+                animsContainer = Resources.Load<TilesetAnimsContainer>("GFX/Tilesets/Metadata/anims_valley");
+                if (animsContainer == null) goto default;
+                break;
+            case TilesetType.Marina:
+                animsContainer = Resources.Load<TilesetAnimsContainer>("GFX/Tilesets/Metadata/anims_marina");
+                if (animsContainer == null) goto default;
+                break;
+            case TilesetType.Mandala:
+                animsContainer = Resources.Load<TilesetAnimsContainer>("GFX/Tilesets/Metadata/anims_mandala");
+                if (animsContainer == null) goto default;
+                break;
+            case TilesetType.Tower:
+                animsContainer = Resources.Load<TilesetAnimsContainer>("GFX/Tilesets/Metadata/anims_tower");
+                if (animsContainer == null) goto default;
+                break;
+            case TilesetType.Tutorial:
+                animsContainer = Resources.Load<TilesetAnimsContainer>("GFX/Tilesets/Metadata/anims_tutorial");
+                if (animsContainer == null) goto default;
+                break;
+            default:
+                animsContainer = CreateInstance<TilesetAnimsContainer>();
+                break;
+        }
+        switch (m_tileMap.tileset)
+        {
+            case TilesetType.Village:
+                tileSheet = Resources.Load<TileSheet>("GFX/Tilesets/Metadata/tiles_village");
+                if (tileSheet == null) goto default;
+                break;
+            case TilesetType.Forest:
+                tileSheet = Resources.Load<TileSheet>("GFX/Tilesets/Metadata/tiles_forest");
+                if (tileSheet == null) goto default;
+                break;
+            case TilesetType.Valley:
+                tileSheet = Resources.Load<TileSheet>("GFX/Tilesets/Metadata/tiles_valley");
+                if (tileSheet == null) goto default;
+                break;
+            case TilesetType.Marina:
+                tileSheet = Resources.Load<TileSheet>("GFX/Tilesets/Metadata/tiles_marina");
+                if (tileSheet == null) goto default;
+                break;
+            case TilesetType.Mandala:
+                tileSheet = Resources.Load<TileSheet>("GFX/Tilesets/Metadata/tiles_mandala");
+                if (tileSheet == null) goto default;
+                break;
+            case TilesetType.Tower:
+                tileSheet = Resources.Load<TileSheet>("GFX/Tilesets/Metadata/tiles_tower");
+                if (tileSheet == null) goto default;
+                break;
+            case TilesetType.Tutorial:
+                tileSheet = Resources.Load<TileSheet>("GFX/Tilesets/Metadata/tiles_tutorial");
+                if (tileSheet == null) goto default;
+                break;
+            default:
+                tileSheet = CreateInstance<TileSheet>();
+                break;
+        }
+        if (animsContainer.tileAnims != null)
+        {
+            m_tileMap.SetAnims(animsContainer.tileAnims);
+            m_tileMap.SetTileSheet(tileSheet);
+            m_tileMap.CreateMesh();
+            EditorSceneManager.MarkSceneDirty(m_tileMap.gameObject.scene);
+        }
+    }
+
+    private void SaveTileset ()
+    {
+        TilesetAnimsContainer tp = CreateInstance<TilesetAnimsContainer>();
+        tp.tileAnims = m_tileMap.TileAnims;
+        string animsPath = "Assets/Resources/GFX/Tilesets/Metadata/anims_unknown.asset";
+        string sheetPath = "Assets/Resources/GFX/Tilesets/Metadata/tiles_unknown.asset";
+        switch (m_tileMap.tileset)
+        {
+            case TilesetType.Village:
+                animsPath = "Assets/Resources/GFX/Tilesets/Metadata/anims_village.asset";
+                sheetPath = "Assets/Resources/GFX/Tilesets/Metadata/tiles_village.asset";
+                break;
+            case TilesetType.Forest:
+                animsPath = "Assets/Resources/GFX/Tilesets/Metadata/anims_forest.asset";
+                sheetPath = "Assets/Resources/GFX/Tilesets/Metadata/tiles_forest.asset";
+                break;
+            case TilesetType.Valley:
+                animsPath = "Assets/Resources/GFX/Tilesets/Metadata/anims_valley.asset";
+                sheetPath = "Assets/Resources/GFX/Tilesets/Metadata/tiles_valley.asset";
+                break;
+            case TilesetType.Marina:
+                animsPath = "Assets/Resources/GFX/Tilesets/Metadata/anims_marina.asset";
+                sheetPath = "Assets/Resources/GFX/Tilesets/Metadata/tiles_marina.asset";
+                break;
+            case TilesetType.Mandala:
+                animsPath = "Assets/Resources/GFX/Tilesets/Metadata/anims_mandala.asset";
+                sheetPath = "Assets/Resources/GFX/Tilesets/Metadata/tiles_mandala.asset";
+                break;
+            case TilesetType.Tower:
+                animsPath = "Assets/Resources/GFX/Tilesets/anims_tower.asset";
+                sheetPath = "Assets/Resources/GFX/Tilesets/tiles_tower.asset";
+                break;
+            case TilesetType.Tutorial:
+                animsPath = "Assets/Resources/GFX/Tilesets/anims_tutorial.asset";
+                sheetPath = "Assets/Resources/GFX/Tilesets/tiles_tutorial.asset";
+                break;
+        }
+        if (AssetDatabase.LoadAssetAtPath(sheetPath, typeof(TileSheet)) == null)
+        {
+            AssetDatabase.CreateAsset(m_tileMap.TileSheet, sheetPath);
+        }
+        AssetDatabase.CreateAsset(tp, animsPath);
+        AssetDatabase.SaveAssets();
     }
 
     private bool UpdateMouseHit()

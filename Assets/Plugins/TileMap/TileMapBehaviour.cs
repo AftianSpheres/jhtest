@@ -14,6 +14,9 @@ namespace UnityTileMap
     public class TileMapBehaviour : MonoBehaviour, IEnumerable<KeyValuePair<Vector2Int, int>>
     {
         public bool animateTiles;
+        public bool meshDirty;
+        public TilesetType tileset;
+
         [SerializeField]
         private TileMapData m_tileMapData;
 
@@ -157,7 +160,7 @@ namespace UnityTileMap
 #if UNITY_EDITOR
         private double time = 0;
 
-        public void UpdateAnim()
+        public void SpecialUpdateAnim()
         {
             if (EditorApplication.timeSinceStartup - time >= 1d / 60d)
             {
@@ -191,9 +194,14 @@ namespace UnityTileMap
                 {
                     if (m_tileAnims[i].Update() == true && animateTiles == true)
                     {
-                        CreateMesh();
+                        meshDirty = true;
                     }
                 }
+            }
+            if (meshDirty == true)
+            {
+                CreateMesh();
+                meshDirty = false;
             }
         }
 
@@ -291,6 +299,11 @@ namespace UnityTileMap
         public void SetAnims (TileAnim[] anims)
         {
             m_tileAnims = anims;
+        }
+
+        public void SetTileSheet (TileSheet sheet)
+        {
+            m_tileSheet = sheet;
         }
 
         private void SetTile(int x, int y, Sprite sprite)
