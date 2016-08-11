@@ -49,37 +49,38 @@ public class VirtualButtonMultiplexer
     public void Update()
     {
         bool stickInUse = _stick != null && (Mathf.Abs(_stick.x) > 0.2f || Mathf.Abs(_stick.y) > 0.2f);
+        bool _rawIsPressed;
         if (_isYAxis == true && stickInUse)
         {
             if (_isNegative == true)
             {
-                _isPressed = (_stick.y < -0.2f);
+                _rawIsPressed = (_stick.y < -0.2f);
             }
             else
             {
-                _isPressed = (_stick.y > 0.2f);
+                _rawIsPressed = (_stick.y > 0.2f);
             }
         }
         else if (_isYAxis == false && stickInUse)
         {
             if (_isNegative == true)
             {
-                _isPressed = (_stick.x < -0.2f);
+                _rawIsPressed = (_stick.x < -0.2f);
             }
             else
             {
-                _isPressed = (_stick.x > 0.2f);
+                _rawIsPressed = (_stick.x > 0.2f);
             }
         }
         else
         {
-            _isPressed = _btn.Pressed;
+            _rawIsPressed = _btn.Pressed;
         }
         if (_isKeyDown == true)
         {
             _isKeyDown = false;
         }
-        else if (_isPressed == false && _isPressed == true)
+        else if (_isPressed == false && _rawIsPressed == true)
         {
             _isKeyDown = true;
         }
@@ -87,9 +88,10 @@ public class VirtualButtonMultiplexer
         {
             _isKeyUp = false;
         }
-        else if (_isPressed == true && _isPressed == false)
+        else if (_isPressed == true && _rawIsPressed == false)
         {
             _isKeyUp = true;
         }
+        _isPressed = _rawIsPressed;
     }
 }
