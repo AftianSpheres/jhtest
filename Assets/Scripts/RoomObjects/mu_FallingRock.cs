@@ -62,7 +62,7 @@ public class mu_FallingRock : MonoBehaviour
                     {
                         rockRenderer.enabled = true;
                         rockRenderer.sprite = rockSprite;
-                        rockRenderer.transform.position = transform.position + (fallLength * Vector3.up);
+                        rockRenderer.transform.position = rockRenderer.transform.position + (fallLength * Vector3.up);
                         state = FallingRockState.Falling;
                         timer = fallLength;
                         source.PlayOneShot(fallSFX);

@@ -120,7 +120,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195096}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 32, y: 64, z: 0}
+  m_LocalPosition: {x: 96, y: 80, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -160,7 +160,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139994}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: -3, y: 8, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -297,11 +297,11 @@ MonoBehaviour:
   damage: 34
   weight: 3
   fallLength: 64
-  minFallTimeDelay: 10
-  maxFallTimeDelay: 45
+  minFallTimeDelay: 0
+  maxFallTimeDelay: 20
   permittedArea:
-    m_Center: {x: 280, y: -8, z: 0}
-    m_Extent: {x: 24, y: 16, z: 500}
+    m_Center: {x: 336, y: -8, z: 0}
+    m_Extent: {x: 48, y: 48, z: 500}
 --- !u!114 &11424984
 MonoBehaviour:
   m_ObjectHideFlags: 1

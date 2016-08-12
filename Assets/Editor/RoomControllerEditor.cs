@@ -50,9 +50,10 @@ public class RoomControllerEditor : Editor
         UnityTileMap.TileMapBehaviour tileMap = _room.gameObject.GetComponentInChildren<UnityTileMap.TileMapBehaviour>();
         if (tileMap == null)
         {
-            childBuffer = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/EmptyTilemap.asset"));
+            childBuffer = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/EmptyTilemap.prefab"));
             childBuffer.transform.SetParent(_room.transform);
             childBuffer.transform.localPosition = new Vector3(0, 0, 200);
+            childBuffer.name = "Tilemap";
             tileMap = childBuffer.GetComponent<UnityTileMap.TileMapBehaviour>();
         }
         if (_room.tilemap != tileMap)
@@ -152,11 +153,11 @@ public class RoomControllerEditor : Editor
                 for (int i = 0; i < prop.arraySize; i++)
                 {
                     SerializedProperty p = prop.GetArrayElementAtIndex(i);
-                    r = EditorGUILayout.RectField(new GUIContent("Pitfall " + i.ToString() + " bounds", "Worldspace bounds of pitfall " + i.ToString()), 
+                    r = EditorGUILayout.RectField(new GUIContent("Pitfall " + i.ToString() + " bounds", "Worldspace bounds of pitfall " + i.ToString()),
                         new Rect(p.boundsValue.min.x, p.boundsValue.min.y, p.boundsValue.size.x, p.boundsValue.size.y));
                     p.boundsValue = new Bounds(new Vector3(r.center.x, r.center.y, 0), new Vector3(r.size.x, r.size.y, 5000));
                 }
-            }  
+            }
         }
 
         // Collision map
@@ -230,6 +231,14 @@ public class RoomControllerEditor : Editor
         {
             prop.InsertArrayElementAtIndex(i);
             prop.GetArrayElementAtIndex(i).objectReferenceValue = ecs[i];
+        }
+        if (_room.BigRoomCellSize.x > 1 || _room.BigRoomCellSize.y > 1)
+        {
+            _room.gameObject.name = "BigRoom (" + _room.xPosition.ToString() + ", " + _room.yPosition.ToString() + " - " + (_room.xPosition + (int)_room.BigRoomCellSize.x - 1).ToString() + ", " + (_room.yPosition + (int)_room.BigRoomCellSize.y - 1).ToString() + ")";
+        }
+        else
+        {
+            _room.gameObject.name = "Room (" + _room.xPosition.ToString() + ", " + _room.yPosition.ToString() + ")";
         }
         s.ApplyModifiedProperties();
     }
