@@ -204,7 +204,6 @@
     <Compile Include="Assets\Scripts\Enemy\Common\CommonEnemyInvuln.cs" />
     <Compile Include="Assets\Scripts\Enemy\Common\EnemyModule.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_IceZombie.cs" />
-    <Compile Include="Assets\Scripts\HUD\Cartographer.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDBossLifebar.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDDebug.cs" />
     <Compile Include="Assets\Scripts\HUD\HUDEnergyBar.cs" />
@@ -252,6 +251,7 @@
     <Compile Include="Assets\Scripts\Helpers\VirtualButton.cs" />
     <Compile Include="Assets\Scripts\Helpers\VirtualButtonMultiplexer.cs" />
     <Compile Include="Assets\Scripts\Helpers\VirtualStick.cs" />
+    <Compile Include="Assets\Scripts\Helpers\__FIXER__UnhideThingy.cs" />
     <Compile Include="Assets\Scripts\Managers\GameSaveManager.cs" />
     <Compile Include="Assets\Scripts\Managers\GameStateManager.cs" />
     <Compile Include="Assets\Scripts\Managers\HardwareInterfaceManager.cs" />

@@ -116,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Editor\PackageExporter.cs" />
+    <Compile Include="Assets\Editor\RoomControllerEditor.cs" />
     <Compile Include="Assets\Editor\TileMap\TileMapBehaviourInspector.cs" />
     <Compile Include="Assets\Editor\VersionUpdater.cs" />
     <Compile Include="Assets\InControl\Editor\InControlBuilder.cs" />

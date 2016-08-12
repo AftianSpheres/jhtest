@@ -24,8 +24,6 @@ public class RoomController : MonoBehaviour
     public uint xPosition;
     public uint yPosition;
     public bool isActiveRoom;
-    public bool[] topSideConnections;
-    public bool[] rightSideConnections;
     public Vector2[] EntryPoints;
     private GameStateManager gameStateManager;
     public Bounds[] pitfallZones;
@@ -132,19 +130,18 @@ public class RoomController : MonoBehaviour
 #if UNITY_EDITOR
     void OnDrawGizmosSelected()
     {
-
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(new Vector3(bounds.min.x, bounds.min.y, bounds.min.z - 100), new Vector3(bounds.max.x, bounds.min.y, bounds.min.z - 100));
-        Gizmos.DrawLine(new Vector3(bounds.max.x, bounds.min.y, bounds.min.z - 100), new Vector3(bounds.max.x, bounds.max.y, bounds.min.z - 100));
-        Gizmos.DrawLine(new Vector3(bounds.min.x, bounds.min.y, bounds.min.z - 100), new Vector3(bounds.min.x, bounds.max.y, bounds.min.z - 100));
-        Gizmos.DrawLine(new Vector3(bounds.min.x, bounds.max.y, bounds.min.z - 100), new Vector3(bounds.max.x, bounds.max.y, bounds.min.z - 100));
+        Gizmos.DrawLine(new Vector3(bounds.min.x, bounds.min.y, 0), new Vector3(bounds.max.x, bounds.min.y, 0));
+        Gizmos.DrawLine(new Vector3(bounds.max.x, bounds.min.y, 0), new Vector3(bounds.max.x, bounds.max.y, 0));
+        Gizmos.DrawLine(new Vector3(bounds.min.x, bounds.min.y, 0), new Vector3(bounds.min.x, bounds.max.y, 0));
+        Gizmos.DrawLine(new Vector3(bounds.min.x, bounds.max.y, 0), new Vector3(bounds.max.x, bounds.max.y, 0));
         Gizmos.color = Color.yellow;
         for (int i = 0; i < pitfallZones.Length; i++)
         {
-            Gizmos.DrawLine(new Vector3(pitfallZones[i].min.x, pitfallZones[i].min.y, pitfallZones[i].min.z - 100), new Vector3(pitfallZones[i].max.x, pitfallZones[i].min.y, pitfallZones[i].min.z - 100));
-            Gizmos.DrawLine(new Vector3(pitfallZones[i].max.x, pitfallZones[i].min.y, pitfallZones[i].min.z - 100), new Vector3(pitfallZones[i].max.x, pitfallZones[i].max.y, pitfallZones[i].min.z - 100));
-            Gizmos.DrawLine(new Vector3(pitfallZones[i].min.x, pitfallZones[i].min.y, pitfallZones[i].min.z - 100), new Vector3(pitfallZones[i].min.x, pitfallZones[i].max.y, pitfallZones[i].min.z - 100));
-            Gizmos.DrawLine(new Vector3(pitfallZones[i].min.x, pitfallZones[i].max.y, pitfallZones[i].min.z - 100), new Vector3(pitfallZones[i].max.x, pitfallZones[i].max.y, pitfallZones[i].min.z - 100));
+            Gizmos.DrawLine(new Vector3(pitfallZones[i].min.x, pitfallZones[i].min.y, 0), new Vector3(pitfallZones[i].max.x, pitfallZones[i].min.y, 0));
+            Gizmos.DrawLine(new Vector3(pitfallZones[i].max.x, pitfallZones[i].min.y, 0), new Vector3(pitfallZones[i].max.x, pitfallZones[i].max.y, 0));
+            Gizmos.DrawLine(new Vector3(pitfallZones[i].min.x, pitfallZones[i].min.y, 0), new Vector3(pitfallZones[i].min.x, pitfallZones[i].max.y, 0));
+            Gizmos.DrawLine(new Vector3(pitfallZones[i].min.x, pitfallZones[i].max.y, 0), new Vector3(pitfallZones[i].max.x, pitfallZones[i].max.y, 0));
         }
     }
 #endif
