@@ -12,7 +12,55 @@ MonoBehaviour:
   m_Name: anims_valley
   m_EditorClassIdentifier: Assembly-CSharp-firstpass:UnityTileMap:TilesetAnimsContainer
   tileAnims:
-  - frameIds: 000000000100000002000000030000000400000006000000
-    frameInterval: 3
+  - frameIds: ab000000b1000000ac000000b2000000
+    frameInterval: 9
+    Id: 159
+    initialized: 1
+  - frameIds: a6000000b8000000
+    frameInterval: 9
+    Id: 152
+    initialized: 1
+  - frameIds: a7000000b9000000
+    frameInterval: 9
     Id: 153
+    initialized: 1
+  - frameIds: a8000000ba000000
+    frameInterval: 9
+    Id: 154
+    initialized: 1
+  - frameIds: ad000000be000000
+    frameInterval: 9
+    Id: 158
+    initialized: 1
+  - frameIds: ae000000bf000000
+    frameInterval: 9
+    Id: 160
+    initialized: 1
+  - frameIds: b3000000c3000000
+    frameInterval: 9
+    Id: 163
+    initialized: 1
+  - frameIds: b4000000c4000000
+    frameInterval: 9
+    Id: 164
+    initialized: 1
+  - frameIds: b5000000c5000000
+    frameInterval: 9
+    Id: 165
+    initialized: 1
+  - frameIds: a9000000b6000000
+    frameInterval: 9
+    Id: 155
+    initialized: 1
+  - frameIds: aa000000b7000000
+    frameInterval: 9
+    Id: 156
+    initialized: 1
+  - frameIds: af000000bb000000
+    frameInterval: 9
+    Id: 161
+    initialized: 1
+  - frameIds: b0000000bc000000
+    frameInterval: 9
+    Id: 162
     initialized: 1
