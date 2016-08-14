@@ -490,8 +490,8 @@ MonoBehaviour:
     Sprite: {fileID: 21300870, guid: e928bc454c016bf4c9daeeb8440de94b, type: 3}
     originalSprite: {fileID: 21300870, guid: e928bc454c016bf4c9daeeb8440de94b, type: 3}
   - Id: 159
-    Sprite: {fileID: 21300866, guid: e928bc454c016bf4c9daeeb8440de94b, type: 3}
-    originalSprite: {fileID: 21300868, guid: e928bc454c016bf4c9daeeb8440de94b, type: 3}
+    Sprite: {fileID: 21300868, guid: e928bc454c016bf4c9daeeb8440de94b, type: 3}
+    originalSprite: {fileID: 21300866, guid: e928bc454c016bf4c9daeeb8440de94b, type: 3}
   - Id: 160
     Sprite: {fileID: 21300872, guid: e928bc454c016bf4c9daeeb8440de94b, type: 3}
     originalSprite: {fileID: 21300872, guid: e928bc454c016bf4c9daeeb8440de94b, type: 3}
@@ -500,7 +500,7 @@ MonoBehaviour:
     originalSprite: {fileID: 21300874, guid: e928bc454c016bf4c9daeeb8440de94b, type: 3}
   - Id: 162
     Sprite: {fileID: 21300876, guid: e928bc454c016bf4c9daeeb8440de94b, type: 3}
-    originalSprite: {fileID: 21300876, guid: e928bc454c016bf4c9daeeb8440de94b, type: 3}
+    originalSprite: {fileID: 21300900, guid: e928bc454c016bf4c9daeeb8440de94b, type: 3}
   - Id: 163
     Sprite: {fileID: 21300882, guid: e928bc454c016bf4c9daeeb8440de94b, type: 3}
     originalSprite: {fileID: 21300882, guid: e928bc454c016bf4c9daeeb8440de94b, type: 3}

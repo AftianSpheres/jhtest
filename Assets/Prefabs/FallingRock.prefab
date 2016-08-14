@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 463348}
   - 212: {fileID: 21293366}
+  - 65: {fileID: 6595884}
   m_Layer: 0
   m_Name: Rubble (1)
   m_TagString: Untagged
@@ -25,6 +26,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 490592}
   - 212: {fileID: 21247578}
+  - 65: {fileID: 6551700}
   m_Layer: 0
   m_Name: Rubble (2)
   m_TagString: Untagged
@@ -58,6 +60,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 422218}
   - 212: {fileID: 21228340}
+  - 65: {fileID: 6565986}
   m_Layer: 0
   m_Name: Rubble
   m_TagString: Untagged
@@ -74,6 +77,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 461434}
   - 212: {fileID: 21219684}
+  - 65: {fileID: 6548862}
   m_Layer: 0
   m_Name: Rubble (3)
   m_TagString: Untagged
@@ -93,6 +97,8 @@ GameObject:
   - 114: {fileID: 11400194}
   - 114: {fileID: 11424984}
   - 82: {fileID: 8242164}
+  - 114: {fileID: 11496858}
+  - 114: {fileID: 11443694}
   m_Layer: 0
   m_Name: FallingRock
   m_TagString: Untagged
@@ -120,7 +126,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195096}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 96, y: 80, z: 0}
+  m_LocalPosition: {x: 32, y: 64, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -160,7 +166,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139994}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 8, z: -1}
+  m_LocalPosition: {x: -3, y: 8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -195,6 +201,54 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 14, y: 14, z: 500}
   m_Center: {x: 8, y: -8, z: 0}
+--- !u!65 &6548862
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187072}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8, y: 8, z: 500}
+  m_Center: {x: 4, y: -4, z: 0}
+--- !u!65 &6551700
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116788}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8, y: 8, z: 500}
+  m_Center: {x: 4, y: -4, z: 0}
+--- !u!65 &6565986
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 175714}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8, y: 8, z: 500}
+  m_Center: {x: 4, y: -4, z: 0}
+--- !u!65 &6595884
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114324}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8, y: 8, z: 500}
+  m_Center: {x: 4, y: -4, z: 0}
 --- !u!82 &8242164
 AudioSource:
   m_ObjectHideFlags: 1
@@ -285,6 +339,10 @@ MonoBehaviour:
   impactSFX: {fileID: 8300000, guid: 123f98ad0e0ea894ebb2d8a3d381baf9, type: 3}
   source: {fileID: 8242164}
   rockCollider: {fileID: 6514268}
+  rubbleCollider0: {fileID: 6565986}
+  rubbleCollider1: {fileID: 6595884}
+  rubbleCollider2: {fileID: 6551700}
+  rubbleCollider3: {fileID: 6548862}
   rockSprite: {fileID: 21300000, guid: 994dedf616c33bb4185d161947e70099, type: 3}
   breakSprite: {fileID: 21300002, guid: 994dedf616c33bb4185d161947e70099, type: 3}
   rubbleSprite: {fileID: 21300004, guid: 994dedf616c33bb4185d161947e70099, type: 3}
@@ -315,6 +373,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMusic: 0
   source: {fileID: 8242164}
+--- !u!114 &11443694
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907ea04a7b9882346a24097e4ea653b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11496858
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a58e25ce9ddd900479a1f4fab004bf69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  room: {fileID: 0}
+  Toggled: 0
 --- !u!212 &21219684
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -1,8 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace UnityTileMap
 {
+    struct BufferedTex
+    {
+        public int[] places;
+        public Texture2D tex;
+    }
+
     /// <summary>
     /// The base class for behaviours that holds and renders the actual mesh that is the TileMap.
     /// </summary>
@@ -96,5 +103,7 @@ namespace UnityTileMap
         }
 
         protected abstract Mesh CreateMesh();
+
+        public abstract void AnimateMesh(TileAnim[] m_tileAnims, Grid<Sprite> tiles);
     }
 }

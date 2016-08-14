@@ -12,8 +12,8 @@ namespace UnityTileMap
         public int Id;
         public bool initialized = false;
         private int frameCtr;
-        private int place;
-        private Sprite[] sprite_cycle;
+        public int place;
+        public Sprite[] sprite_cycle;
         private TileEntry entry;
         private TileSheet sheet;
 

@@ -16,6 +16,10 @@ public class mu_FallingRock : MonoBehaviour
     public AudioClip impactSFX;
     public AudioSource source;
     public BoxCollider rockCollider;
+    public BoxCollider rubbleCollider0;
+    public BoxCollider rubbleCollider1;
+    public BoxCollider rubbleCollider2;
+    public BoxCollider rubbleCollider3;
     public Sprite rockSprite;
     public Sprite breakSprite;
     public Sprite rubbleSprite;
@@ -61,6 +65,7 @@ public class mu_FallingRock : MonoBehaviour
                     if (timer < 1)
                     {
                         rockRenderer.enabled = true;
+                        rockRenderer.transform.position += Vector3.back * 50;
                         rockRenderer.sprite = rockSprite;
                         rockRenderer.transform.position = rockRenderer.transform.position + (fallLength * Vector3.up);
                         state = FallingRockState.Falling;
@@ -77,12 +82,14 @@ public class mu_FallingRock : MonoBehaviour
                         source.PlayOneShot(impactSFX);
                         state = FallingRockState.Breaking;
                         rockRenderer.sprite = breakSprite;
-                        rockCollider.enabled = rubbleRenderer0.enabled = rubbleRenderer1.enabled = rubbleRenderer2.enabled = rubbleRenderer3.enabled = true;
+                        rockCollider.enabled = rubbleRenderer0.enabled = rubbleRenderer1.enabled = rubbleRenderer2.enabled = rubbleRenderer3.enabled =
+                            rubbleCollider0.enabled = rubbleCollider1.enabled = rubbleCollider2.enabled = rubbleCollider3.enabled = true;
                         rubbleRenderer0.transform.position = rockRenderer.transform.position + (Vector3.left * (4 + rubbleSprite.bounds.size.x));
                         rubbleRenderer1.transform.position = rockRenderer.transform.position + (Vector3.right * (4 + breakSprite.bounds.size.x));
                         rubbleRenderer2.transform.position = rockRenderer.transform.position + (Vector3.left * (4 + rubbleSprite.bounds.size.x)) + (Vector3.up * 6);
                         rubbleRenderer3.transform.position = rockRenderer.transform.position + (Vector3.right * (4 + breakSprite.bounds.size.x)) + (Vector3.up * 6);
                         timer = 60;
+                        rockRenderer.transform.position -= Vector3.back * 50;
                     }
                     break;
                 case FallingRockState.Breaking:
@@ -105,13 +112,42 @@ public class mu_FallingRock : MonoBehaviour
                         {
                             room.world.player.Hit(damage, rockCollider.bounds.center, weight);
                         }
+                        else if (rubbleCollider0.bounds.Intersects(room.world.player.collider.bounds))
+                        {
+                            room.world.player.Hit(damage, rubbleCollider0.bounds.center, weight / 2);
+                        }
+                        else if (rubbleCollider1.bounds.Intersects(room.world.player.collider.bounds))
+                        {
+                            room.world.player.Hit(damage, rubbleCollider1.bounds.center, weight / 2);
+                        }
+                        else if (rubbleCollider2.bounds.Intersects(room.world.player.collider.bounds))
+                        {
+                            room.world.player.Hit(damage, rubbleCollider2.bounds.center, weight / 2);
+                        }
+                        else if (rubbleCollider3.bounds.Intersects(room.world.player.collider.bounds))
+                        {
+                            room.world.player.Hit(damage, rubbleCollider3.bounds.center, weight / 2);
+                        }
                     }
                     if (timer < 1)
                     {
-                        rockRenderer.enabled = rubbleRenderer0.enabled = rubbleRenderer1.enabled = rubbleRenderer2.enabled = rubbleRenderer3.enabled = shadowRenderer.enabled = false;
                         state = FallingRockState.Undeployed;
                         timer = Random.Range(minFallTimeDelay, maxFallTimeDelay + 1);
-                        transform.position = new Vector3(Random.Range((int)permittedArea.min.x, (int)permittedArea.max.x + 1 - rockSprite.bounds.size.x), Random.Range((int)permittedArea.min.y + rockSprite.bounds.size.y, (int)permittedArea.max.y + 1), transform.position.z);
+                        bool cont = true;
+                        while (cont == true)
+                        {
+                            cont = false;
+                            transform.position = new Vector3(Random.Range((int)permittedArea.min.x, (int)permittedArea.max.x + 1 - rockSprite.bounds.size.x), Random.Range((int)permittedArea.min.y + rockSprite.bounds.size.y, (int)permittedArea.max.y + 1), transform.position.z);
+                            for (int i = 0; i < room.collision.allCollision.Length; i++)
+                            {
+                                if (shadowRenderer.bounds.Intersects(room.collision.allCollision[i]))
+                                {
+                                    cont = true;
+                                }
+                            }
+                        }
+                        rockRenderer.enabled = rubbleRenderer0.enabled = rubbleRenderer1.enabled = rubbleRenderer2.enabled = rubbleRenderer3.enabled = shadowRenderer.enabled =
+                            rubbleCollider0.enabled = rubbleCollider1.enabled = rubbleCollider2.enabled = rubbleCollider3.enabled = false;
                     }
                     break;
             }

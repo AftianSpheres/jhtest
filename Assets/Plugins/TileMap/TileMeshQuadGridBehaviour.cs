@@ -100,5 +100,10 @@ namespace UnityTileMap
         {
             return new Vector2(xy.x / texture.width, xy.y / texture.height);
         }
+
+        public override void AnimateMesh(TileAnim[] m_tileAnims, Grid<Sprite> tiles)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

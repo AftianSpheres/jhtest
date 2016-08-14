@@ -9,6 +9,7 @@ using UnityEditor;
 
 namespace UnityTileMap
 {
+
     [ExecuteInEditMode]
     [Serializable]
     public class TileMapBehaviour : MonoBehaviour, IEnumerable<KeyValuePair<Vector2Int, int>>
@@ -35,6 +36,8 @@ namespace UnityTileMap
         private TileChunkManager m_chunkManager;
 
         private TileMapVisibilityBehaviour m_visibility;
+
+        private bool registeredUpdateWithEditor;
 
         /// <summary>
         /// When ActiveInEditMode the mesh for the tilemap will be created and rendered in edit mode.
@@ -124,6 +127,7 @@ namespace UnityTileMap
 
         protected virtual void Awake()
         {
+            registeredUpdateWithEditor = false;
             if (m_tileMeshSettings == null)
                 m_tileMeshSettings = new TileMeshSettings(2, 2, 16, 1f, MeshMode.SingleQuad);
 
@@ -162,16 +166,26 @@ namespace UnityTileMap
 
         void OnEnable()
         {
-            if (!Application.isPlaying) EditorApplication.update += SpecialAnimate;
+            if (!Application.isPlaying && registeredUpdateWithEditor == false)
+            {
+                EditorApplication.update += SpecialAnimate;
+                registeredUpdateWithEditor = true;
+            }
         }
 
         void OnDisable()
         {
-            if (!Application.isPlaying) EditorApplication.update -= SpecialAnimate;
+            if (!Application.isPlaying)
+            {
+                EditorApplication.update -= SpecialAnimate;
+                registeredUpdateWithEditor = false;
+            }
+
         }
 
         public void SpecialAnimate()
         {
+            bool spDirty = false;
             if (Application.isPlaying) throw new Exception("Can't call SpecialAnimate while playing!");
             if (EditorApplication.timeSinceStartup - time >= 1d / 60d)
             {
@@ -187,13 +201,14 @@ namespace UnityTileMap
                     }
                     for (int i = 0; i < m_tileAnims.Length; i++)
                     {
-                        if (m_tileAnims[i].Update() == true && animateTiles == true)
+                        if (m_tileAnims[i].Update() == true)
                         {
-                            CreateMesh();
+                            spDirty = true;
                         }
                     }
                 }
             }
+            if (spDirty == true) CreateMesh(); // the nicer new behavior breaks horribly in editor
         }
 #endif
 
@@ -211,7 +226,16 @@ namespace UnityTileMap
             }
             if (meshDirty == true)
             {
-                DrawTiles();
+                Grid<Sprite> spriteGrid = new Grid<Sprite>();
+                spriteGrid.SetSize(m_tileMapData.SizeX, m_tileMapData.SizeY, TileSheet.Get(0));
+                for (int y = 0; y < spriteGrid.SizeY; y++)
+                {
+                    for (int x = 0; x < spriteGrid.SizeX; x++)
+                    {
+                        spriteGrid[x, y] = m_tileSheet.Get(m_tileMapData[x, y]);
+                    }
+                }
+                m_chunkManager.Chunk.AnimateMesh(m_tileAnims, spriteGrid);   
                 meshDirty = false;
             }
         }
