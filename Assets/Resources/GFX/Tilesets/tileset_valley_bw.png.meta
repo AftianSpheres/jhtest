@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: e928bc454c016bf4c9daeeb8440de94b
-timeCreated: 1471066118
+timeCreated: 1471243115
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -471,11 +471,318 @@ TextureImporter:
     21300928: tileset_valley_bw_202
     21300930: tileset_valley_bw_203
     21300932: tileset_valley_bw_204
+    21300934: tileset_valley_bw_205
+    21300936: tileset_valley_bw_206
+    21300938: tileset_valley_bw_207
+    21300940: tileset_valley_bw_208
+    21300942: tileset_valley_bw_209
+    21300944: tileset_valley_bw_210
+    21300946: tileset_valley_bw_211
+    21300948: tileset_valley_bw_212
+    21300950: tileset_valley_bw_213
+    21300952: tileset_valley_bw_214
+    21300954: tileset_valley_bw_215
+    21300956: tileset_valley_bw_216
+    21300958: tileset_valley_bw_217
+    21300960: tileset_valley_bw_218
+    21300962: tileset_valley_bw_219
+    21300964: tileset_valley_bw_220
+    21300966: tileset_valley_bw_221
+    21300968: tileset_valley_bw_222
+    21300970: tileset_valley_bw_223
+    21300972: tileset_valley_bw_224
+    21300974: tileset_valley_bw_225
+    21300976: tileset_valley_bw_226
+    21300978: tileset_valley_bw_227
+    21300980: tileset_valley_bw_228
+    21300982: tileset_valley_bw_229
+    21300984: tileset_valley_bw_230
+    21300986: tileset_valley_bw_231
+    21300988: tileset_valley_bw_232
+    21300990: tileset_valley_bw_233
+    21300992: tileset_valley_bw_234
+    21300994: tileset_valley_bw_235
+    21300996: tileset_valley_bw_236
+    21300998: tileset_valley_bw_237
+    21301000: tileset_valley_bw_238
+    21301002: tileset_valley_bw_239
+    21301004: tileset_valley_bw_240
+    21301006: tileset_valley_bw_241
+    21301008: tileset_valley_bw_242
+    21301010: tileset_valley_bw_243
+    21301012: tileset_valley_bw_244
+    21301014: tileset_valley_bw_245
+    21301016: tileset_valley_bw_246
+    21301018: tileset_valley_bw_247
+    21301020: tileset_valley_bw_248
+    21301022: tileset_valley_bw_249
+    21301024: tileset_valley_bw_250
+    21301026: tileset_valley_bw_251
+    21301028: tileset_valley_bw_252
+    21301030: tileset_valley_bw_253
+    21301032: tileset_valley_bw_254
+    21301034: tileset_valley_bw_255
+    21301036: tileset_valley_bw_256
+    21301038: tileset_valley_bw_257
+    21301040: tileset_valley_bw_258
+    21301042: tileset_valley_bw_259
+    21301044: tileset_valley_bw_260
+    21301046: tileset_valley_bw_261
+    21301048: tileset_valley_bw_262
+    21301050: tileset_valley_bw_263
+    21301052: tileset_valley_bw_264
+    21301054: tileset_valley_bw_265
+    21301056: tileset_valley_bw_266
+    21301058: tileset_valley_bw_267
+    21301060: tileset_valley_bw_268
+    21301062: tileset_valley_bw_269
+    21301064: tileset_valley_bw_270
+    21301066: tileset_valley_bw_271
+    21301068: tileset_valley_bw_272
+    21301070: tileset_valley_bw_273
+    21301072: tileset_valley_bw_274
+    21301074: tileset_valley_bw_275
+    21301076: tileset_valley_bw_276
+    21301078: tileset_valley_bw_277
+    21301080: tileset_valley_bw_278
+    21301082: tileset_valley_bw_279
+    21301084: tileset_valley_bw_280
+    21301086: tileset_valley_bw_281
+    21301088: tileset_valley_bw_282
+    21301090: tileset_valley_bw_283
+    21301092: tileset_valley_bw_284
+    21301094: tileset_valley_bw_285
+    21301096: tileset_valley_bw_286
+    21301098: tileset_valley_bw_287
+    21301100: tileset_valley_bw_288
+    21301102: tileset_valley_bw_289
+    21301104: tileset_valley_bw_290
+    21301106: tileset_valley_bw_291
+    21301108: tileset_valley_bw_292
+    21301110: tileset_valley_bw_293
+    21301112: tileset_valley_bw_294
+    21301114: tileset_valley_bw_295
+    21301116: tileset_valley_bw_296
+    21301118: tileset_valley_bw_297
+    21301120: tileset_valley_bw_298
+    21301122: tileset_valley_bw_299
+    21301124: tileset_valley_bw_300
+    21301126: tileset_valley_bw_301
+    21301128: tileset_valley_bw_302
+    21301130: tileset_valley_bw_303
+    21301132: tileset_valley_bw_304
+    21301134: tileset_valley_bw_305
+    21301136: tileset_valley_bw_306
+    21301138: tileset_valley_bw_307
+    21301140: tileset_valley_bw_308
+    21301142: tileset_valley_bw_309
+    21301144: tileset_valley_bw_310
+    21301146: tileset_valley_bw_311
+    21301148: tileset_valley_bw_312
+    21301150: tileset_valley_bw_313
+    21301152: tileset_valley_bw_314
+    21301154: tileset_valley_bw_315
+    21301156: tileset_valley_bw_316
+    21301158: tileset_valley_bw_317
+    21301160: tileset_valley_bw_318
+    21301162: tileset_valley_bw_319
+    21301164: tileset_valley_bw_320
+    21301166: tileset_valley_bw_321
+    21301168: tileset_valley_bw_322
+    21301170: tileset_valley_bw_323
+    21301172: tileset_valley_bw_324
+    21301174: tileset_valley_bw_325
+    21301176: tileset_valley_bw_326
+    21301178: tileset_valley_bw_327
+    21301180: tileset_valley_bw_328
+    21301182: tileset_valley_bw_329
+    21301184: tileset_valley_bw_330
+    21301186: tileset_valley_bw_331
+    21301188: tileset_valley_bw_332
+    21301190: tileset_valley_bw_333
+    21301192: tileset_valley_bw_334
+    21301194: tileset_valley_bw_335
+    21301196: tileset_valley_bw_336
+    21301198: tileset_valley_bw_337
+    21301200: tileset_valley_bw_338
+    21301202: tileset_valley_bw_339
+    21301204: tileset_valley_bw_340
+    21301206: tileset_valley_bw_341
+    21301208: tileset_valley_bw_342
+    21301210: tileset_valley_bw_343
+    21301212: tileset_valley_bw_344
+    21301214: tileset_valley_bw_345
+    21301216: tileset_valley_bw_346
+    21301218: tileset_valley_bw_347
+    21301220: tileset_valley_bw_348
+    21301222: tileset_valley_bw_349
+    21301224: tileset_valley_bw_350
+    21301226: tileset_valley_bw_351
+    21301228: tileset_valley_bw_352
+    21301230: tileset_valley_bw_353
+    21301232: tileset_valley_bw_354
+    21301234: tileset_valley_bw_355
+    21301236: tileset_valley_bw_356
+    21301238: tileset_valley_bw_357
+    21301240: tileset_valley_bw_358
+    21301242: tileset_valley_bw_359
+    21301244: tileset_valley_bw_360
+    21301246: tileset_valley_bw_361
+    21301248: tileset_valley_bw_362
+    21301250: tileset_valley_bw_363
+    21301252: tileset_valley_bw_364
+    21301254: tileset_valley_bw_365
+    21301256: tileset_valley_bw_366
+    21301258: tileset_valley_bw_367
+    21301260: tileset_valley_bw_368
+    21301262: tileset_valley_bw_369
+    21301264: tileset_valley_bw_370
+    21301266: tileset_valley_bw_371
+    21301268: tileset_valley_bw_372
+    21301270: tileset_valley_bw_373
+    21301272: tileset_valley_bw_374
+    21301274: tileset_valley_bw_375
+    21301276: tileset_valley_bw_376
+    21301278: tileset_valley_bw_377
+    21301280: tileset_valley_bw_378
+    21301282: tileset_valley_bw_379
+    21301284: tileset_valley_bw_380
+    21301286: tileset_valley_bw_381
+    21301288: tileset_valley_bw_382
+    21301290: tileset_valley_bw_383
+    21301292: tileset_valley_bw_384
+    21301294: tileset_valley_bw_385
+    21301296: tileset_valley_bw_386
+    21301298: tileset_valley_bw_387
+    21301300: tileset_valley_bw_388
+    21301302: tileset_valley_bw_389
+    21301304: tileset_valley_bw_390
+    21301306: tileset_valley_bw_391
+    21301308: tileset_valley_bw_392
+    21301310: tileset_valley_bw_393
+    21301312: tileset_valley_bw_394
+    21301314: tileset_valley_bw_395
+    21301316: tileset_valley_bw_396
+    21301318: tileset_valley_bw_397
+    21301320: tileset_valley_bw_398
+    21301322: tileset_valley_bw_399
+    21301324: tileset_valley_bw_400
+    21301326: tileset_valley_bw_401
+    21301328: tileset_valley_bw_402
+    21301330: tileset_valley_bw_403
+    21301332: tileset_valley_bw_404
+    21301334: tileset_valley_bw_405
+    21301336: tileset_valley_bw_406
+    21301338: tileset_valley_bw_407
+    21301340: tileset_valley_bw_408
+    21301342: tileset_valley_bw_409
+    21301344: tileset_valley_bw_410
+    21301346: tileset_valley_bw_411
+    21301348: tileset_valley_bw_412
+    21301350: tileset_valley_bw_413
+    21301352: tileset_valley_bw_414
+    21301354: tileset_valley_bw_415
+    21301356: tileset_valley_bw_416
+    21301358: tileset_valley_bw_417
+    21301360: tileset_valley_bw_418
+    21301362: tileset_valley_bw_419
+    21301364: tileset_valley_bw_420
+    21301366: tileset_valley_bw_421
+    21301368: tileset_valley_bw_422
+    21301370: tileset_valley_bw_423
+    21301372: tileset_valley_bw_424
+    21301374: tileset_valley_bw_425
+    21301376: tileset_valley_bw_426
+    21301378: tileset_valley_bw_427
+    21301380: tileset_valley_bw_428
+    21301382: tileset_valley_bw_429
+    21301384: tileset_valley_bw_430
+    21301386: tileset_valley_bw_431
+    21301388: tileset_valley_bw_432
+    21301390: tileset_valley_bw_433
+    21301392: tileset_valley_bw_434
+    21301394: tileset_valley_bw_435
+    21301396: tileset_valley_bw_436
+    21301398: tileset_valley_bw_437
+    21301400: tileset_valley_bw_438
+    21301402: tileset_valley_bw_439
+    21301404: tileset_valley_bw_440
+    21301406: tileset_valley_bw_441
+    21301408: tileset_valley_bw_442
+    21301410: tileset_valley_bw_443
+    21301412: tileset_valley_bw_444
+    21301414: tileset_valley_bw_445
+    21301416: tileset_valley_bw_446
+    21301418: tileset_valley_bw_447
+    21301420: tileset_valley_bw_448
+    21301422: tileset_valley_bw_449
+    21301424: tileset_valley_bw_450
+    21301426: tileset_valley_bw_451
+    21301428: tileset_valley_bw_452
+    21301430: tileset_valley_bw_453
+    21301432: tileset_valley_bw_454
+    21301434: tileset_valley_bw_455
+    21301436: tileset_valley_bw_456
+    21301438: tileset_valley_bw_457
+    21301440: tileset_valley_bw_458
+    21301442: tileset_valley_bw_459
+    21301444: tileset_valley_bw_460
+    21301446: tileset_valley_bw_461
+    21301448: tileset_valley_bw_462
+    21301450: tileset_valley_bw_463
+    21301452: tileset_valley_bw_464
+    21301454: tileset_valley_bw_465
+    21301456: tileset_valley_bw_466
+    21301458: tileset_valley_bw_467
+    21301460: tileset_valley_bw_468
+    21301462: tileset_valley_bw_469
+    21301464: tileset_valley_bw_470
+    21301466: tileset_valley_bw_471
+    21301468: tileset_valley_bw_472
+    21301470: tileset_valley_bw_473
+    21301472: tileset_valley_bw_474
+    21301474: tileset_valley_bw_475
+    21301476: tileset_valley_bw_476
+    21301478: tileset_valley_bw_477
+    21301480: tileset_valley_bw_478
+    21301482: tileset_valley_bw_479
+    21301484: tileset_valley_bw_480
+    21301486: tileset_valley_bw_481
+    21301488: tileset_valley_bw_482
+    21301490: tileset_valley_bw_483
+    21301492: tileset_valley_bw_484
+    21301494: tileset_valley_bw_485
+    21301496: tileset_valley_bw_486
+    21301498: tileset_valley_bw_487
+    21301500: tileset_valley_bw_488
+    21301502: tileset_valley_bw_489
+    21301504: tileset_valley_bw_490
+    21301506: tileset_valley_bw_491
+    21301508: tileset_valley_bw_492
+    21301510: tileset_valley_bw_493
+    21301512: tileset_valley_bw_494
+    21301514: tileset_valley_bw_495
+    21301516: tileset_valley_bw_496
+    21301518: tileset_valley_bw_497
+    21301520: tileset_valley_bw_498
+    21301522: tileset_valley_bw_499
+    21301524: tileset_valley_bw_500
+    21301526: tileset_valley_bw_501
+    21301528: tileset_valley_bw_502
+    21301530: tileset_valley_bw_503
+    21301532: tileset_valley_bw_504
+    21301534: tileset_valley_bw_505
+    21301536: tileset_valley_bw_506
+    21301538: tileset_valley_bw_507
+    21301540: tileset_valley_bw_508
+    21301542: tileset_valley_bw_509
+    21301544: tileset_valley_bw_510
+    21301546: tileset_valley_bw_511
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
-    linearTexture: 1
+    linearTexture: 0
     correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
@@ -494,7 +801,7 @@ TextureImporter:
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: 4
-  maxTextureSize: 512
+  maxTextureSize: 1024
   textureSettings:
     filterMode: 0
     aniso: 16
@@ -521,7 +828,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 496
+        y: 1008
         width: 16
         height: 16
       alignment: 1
@@ -532,7 +839,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 496
+        y: 1008
         width: 16
         height: 16
       alignment: 1
@@ -543,7 +850,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 496
+        y: 1008
         width: 16
         height: 16
       alignment: 1
@@ -554,7 +861,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 496
+        y: 1008
         width: 16
         height: 16
       alignment: 1
@@ -565,7 +872,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 496
+        y: 1008
         width: 16
         height: 16
       alignment: 1
@@ -576,7 +883,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 496
+        y: 1008
         width: 16
         height: 16
       alignment: 1
@@ -587,7 +894,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 496
+        y: 1008
         width: 16
         height: 16
       alignment: 1
@@ -598,7 +905,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 112
-        y: 496
+        y: 1008
         width: 16
         height: 16
       alignment: 1
@@ -609,7 +916,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 480
+        y: 992
         width: 16
         height: 16
       alignment: 1
@@ -620,7 +927,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 480
+        y: 992
         width: 16
         height: 16
       alignment: 1
@@ -631,7 +938,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 480
+        y: 992
         width: 16
         height: 16
       alignment: 1
@@ -642,7 +949,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 480
+        y: 992
         width: 16
         height: 16
       alignment: 1
@@ -653,7 +960,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 480
+        y: 992
         width: 16
         height: 16
       alignment: 1
@@ -664,7 +971,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 480
+        y: 992
         width: 16
         height: 16
       alignment: 1
@@ -675,7 +982,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 480
+        y: 992
         width: 16
         height: 16
       alignment: 1
@@ -686,7 +993,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 112
-        y: 480
+        y: 992
         width: 16
         height: 16
       alignment: 1
@@ -697,7 +1004,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 464
+        y: 976
         width: 16
         height: 16
       alignment: 1
@@ -708,7 +1015,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 464
+        y: 976
         width: 16
         height: 16
       alignment: 1
@@ -719,7 +1026,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 464
+        y: 976
         width: 16
         height: 16
       alignment: 1
@@ -730,7 +1037,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 464
+        y: 976
         width: 16
         height: 16
       alignment: 1
@@ -741,7 +1048,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 464
+        y: 976
         width: 16
         height: 16
       alignment: 1
@@ -752,7 +1059,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 464
+        y: 976
         width: 16
         height: 16
       alignment: 1
@@ -763,7 +1070,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 464
+        y: 976
         width: 16
         height: 16
       alignment: 1
@@ -774,7 +1081,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 112
-        y: 464
+        y: 976
         width: 16
         height: 16
       alignment: 1
@@ -785,7 +1092,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 448
+        y: 960
         width: 16
         height: 16
       alignment: 1
@@ -796,7 +1103,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 448
+        y: 960
         width: 16
         height: 16
       alignment: 1
@@ -807,7 +1114,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 448
+        y: 960
         width: 16
         height: 16
       alignment: 1
@@ -818,7 +1125,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 448
+        y: 960
         width: 16
         height: 16
       alignment: 1
@@ -829,7 +1136,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 448
+        y: 960
         width: 16
         height: 16
       alignment: 1
@@ -840,7 +1147,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 448
+        y: 960
         width: 16
         height: 16
       alignment: 1
@@ -851,7 +1158,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 448
+        y: 960
         width: 16
         height: 16
       alignment: 1
@@ -862,7 +1169,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 112
-        y: 448
+        y: 960
         width: 16
         height: 16
       alignment: 1
@@ -873,7 +1180,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 432
+        y: 944
         width: 16
         height: 16
       alignment: 1
@@ -884,7 +1191,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 432
+        y: 944
         width: 16
         height: 16
       alignment: 1
@@ -895,7 +1202,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 432
+        y: 944
         width: 16
         height: 16
       alignment: 1
@@ -906,7 +1213,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 432
+        y: 944
         width: 16
         height: 16
       alignment: 1
@@ -917,7 +1224,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 432
+        y: 944
         width: 16
         height: 16
       alignment: 1
@@ -928,7 +1235,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 432
+        y: 944
         width: 16
         height: 16
       alignment: 1
@@ -939,7 +1246,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 432
+        y: 944
         width: 16
         height: 16
       alignment: 1
@@ -950,7 +1257,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 112
-        y: 432
+        y: 944
         width: 16
         height: 16
       alignment: 1
@@ -961,7 +1268,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 416
+        y: 928
         width: 16
         height: 16
       alignment: 1
@@ -972,7 +1279,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 416
+        y: 928
         width: 16
         height: 16
       alignment: 1
@@ -983,7 +1290,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 416
+        y: 928
         width: 16
         height: 16
       alignment: 1
@@ -994,7 +1301,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 416
+        y: 928
         width: 16
         height: 16
       alignment: 1
@@ -1005,7 +1312,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 416
+        y: 928
         width: 16
         height: 16
       alignment: 1
@@ -1016,7 +1323,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 416
+        y: 928
         width: 16
         height: 16
       alignment: 1
@@ -1027,7 +1334,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 416
+        y: 928
         width: 16
         height: 16
       alignment: 1
@@ -1038,7 +1345,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 112
-        y: 416
+        y: 928
         width: 16
         height: 16
       alignment: 1
@@ -1049,7 +1356,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 400
+        y: 912
         width: 16
         height: 16
       alignment: 1
@@ -1060,7 +1367,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 400
+        y: 912
         width: 16
         height: 16
       alignment: 1
@@ -1071,7 +1378,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 400
+        y: 912
         width: 16
         height: 16
       alignment: 1
@@ -1082,7 +1389,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 400
+        y: 912
         width: 16
         height: 16
       alignment: 1
@@ -1093,7 +1400,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 400
+        y: 912
         width: 16
         height: 16
       alignment: 1
@@ -1104,7 +1411,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 400
+        y: 912
         width: 16
         height: 16
       alignment: 1
@@ -1115,7 +1422,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 400
+        y: 912
         width: 16
         height: 16
       alignment: 1
@@ -1126,7 +1433,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 112
-        y: 400
+        y: 912
         width: 16
         height: 16
       alignment: 1
@@ -1137,7 +1444,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 384
+        y: 896
         width: 16
         height: 16
       alignment: 1
@@ -1148,7 +1455,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 384
+        y: 896
         width: 16
         height: 16
       alignment: 1
@@ -1159,7 +1466,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 384
+        y: 896
         width: 16
         height: 16
       alignment: 1
@@ -1170,7 +1477,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 384
+        y: 896
         width: 16
         height: 16
       alignment: 1
@@ -1181,7 +1488,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 384
+        y: 896
         width: 16
         height: 16
       alignment: 1
@@ -1192,7 +1499,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 384
+        y: 896
         width: 16
         height: 16
       alignment: 1
@@ -1203,7 +1510,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 384
+        y: 896
         width: 16
         height: 16
       alignment: 1
@@ -1214,7 +1521,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 112
-        y: 384
+        y: 896
         width: 16
         height: 16
       alignment: 1
@@ -1225,7 +1532,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 368
+        y: 880
         width: 16
         height: 16
       alignment: 1
@@ -1236,7 +1543,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 368
+        y: 880
         width: 16
         height: 16
       alignment: 1
@@ -1247,7 +1554,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 368
+        y: 880
         width: 16
         height: 16
       alignment: 1
@@ -1258,7 +1565,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 368
+        y: 880
         width: 16
         height: 16
       alignment: 1
@@ -1269,7 +1576,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 368
+        y: 880
         width: 16
         height: 16
       alignment: 1
@@ -1280,7 +1587,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 368
+        y: 880
         width: 16
         height: 16
       alignment: 1
@@ -1291,7 +1598,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 368
+        y: 880
         width: 16
         height: 16
       alignment: 1
@@ -1302,7 +1609,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 112
-        y: 368
+        y: 880
         width: 16
         height: 16
       alignment: 1
@@ -1313,7 +1620,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 352
+        y: 864
         width: 16
         height: 16
       alignment: 1
@@ -1324,7 +1631,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 352
+        y: 864
         width: 16
         height: 16
       alignment: 1
@@ -1335,7 +1642,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 352
+        y: 864
         width: 16
         height: 16
       alignment: 1
@@ -1346,7 +1653,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 352
+        y: 864
         width: 16
         height: 16
       alignment: 1
@@ -1357,7 +1664,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 352
+        y: 864
         width: 16
         height: 16
       alignment: 1
@@ -1368,7 +1675,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 352
+        y: 864
         width: 16
         height: 16
       alignment: 1
@@ -1379,7 +1686,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 352
+        y: 864
         width: 16
         height: 16
       alignment: 1
@@ -1390,7 +1697,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 112
-        y: 352
+        y: 864
         width: 16
         height: 16
       alignment: 1
@@ -1401,7 +1708,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 336
+        y: 848
         width: 16
         height: 16
       alignment: 1
@@ -1412,7 +1719,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 336
+        y: 848
         width: 16
         height: 16
       alignment: 1
@@ -1423,7 +1730,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 336
+        y: 848
         width: 16
         height: 16
       alignment: 1
@@ -1434,7 +1741,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 336
+        y: 848
         width: 16
         height: 16
       alignment: 1
@@ -1445,7 +1752,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 336
+        y: 848
         width: 16
         height: 16
       alignment: 1
@@ -1456,7 +1763,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 336
+        y: 848
         width: 16
         height: 16
       alignment: 1
@@ -1467,7 +1774,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 336
+        y: 848
         width: 16
         height: 16
       alignment: 1
@@ -1478,7 +1785,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 112
-        y: 336
+        y: 848
         width: 16
         height: 16
       alignment: 1
@@ -1489,7 +1796,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 320
+        y: 832
         width: 16
         height: 16
       alignment: 1
@@ -1500,7 +1807,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 320
+        y: 832
         width: 16
         height: 16
       alignment: 1
@@ -1511,7 +1818,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 320
+        y: 832
         width: 16
         height: 16
       alignment: 1
@@ -1522,7 +1829,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 320
+        y: 832
         width: 16
         height: 16
       alignment: 1
@@ -1533,7 +1840,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 320
+        y: 832
         width: 16
         height: 16
       alignment: 1
@@ -1544,7 +1851,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 320
+        y: 832
         width: 16
         height: 16
       alignment: 1
@@ -1555,7 +1862,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 320
+        y: 832
         width: 16
         height: 16
       alignment: 1
@@ -1566,7 +1873,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 112
-        y: 320
+        y: 832
         width: 16
         height: 16
       alignment: 1
@@ -1577,7 +1884,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 304
+        y: 816
         width: 16
         height: 16
       alignment: 1
@@ -1588,7 +1895,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 304
+        y: 816
         width: 16
         height: 16
       alignment: 1
@@ -1599,7 +1906,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 304
+        y: 816
         width: 16
         height: 16
       alignment: 1
@@ -1610,7 +1917,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 304
+        y: 816
         width: 16
         height: 16
       alignment: 1
@@ -1621,7 +1928,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 304
+        y: 816
         width: 16
         height: 16
       alignment: 1
@@ -1632,7 +1939,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 304
+        y: 816
         width: 16
         height: 16
       alignment: 1
@@ -1643,7 +1950,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 304
+        y: 816
         width: 16
         height: 16
       alignment: 1
@@ -1654,7 +1961,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 112
-        y: 304
+        y: 816
         width: 16
         height: 16
       alignment: 1
@@ -1665,7 +1972,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 288
+        y: 800
         width: 16
         height: 16
       alignment: 1
@@ -1676,7 +1983,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 288
+        y: 800
         width: 16
         height: 16
       alignment: 1
@@ -1687,7 +1994,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 288
+        y: 800
         width: 16
         height: 16
       alignment: 1
@@ -1698,7 +2005,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 288
+        y: 800
         width: 16
         height: 16
       alignment: 1
@@ -1709,7 +2016,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 288
+        y: 800
         width: 16
         height: 16
       alignment: 1
@@ -1720,7 +2027,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 288
+        y: 800
         width: 16
         height: 16
       alignment: 1
@@ -1731,7 +2038,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 288
+        y: 800
         width: 16
         height: 16
       alignment: 1
@@ -1742,7 +2049,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 112
-        y: 288
+        y: 800
         width: 16
         height: 16
       alignment: 1
@@ -1753,7 +2060,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 272
+        y: 784
         width: 16
         height: 16
       alignment: 1
@@ -1764,7 +2071,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 272
+        y: 784
         width: 16
         height: 16
       alignment: 1
@@ -1775,7 +2082,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 272
+        y: 784
         width: 16
         height: 16
       alignment: 1
@@ -1786,7 +2093,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 272
+        y: 784
         width: 16
         height: 16
       alignment: 1
@@ -1797,7 +2104,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 272
+        y: 784
         width: 16
         height: 16
       alignment: 1
@@ -1808,7 +2115,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 272
+        y: 784
         width: 16
         height: 16
       alignment: 1
@@ -1819,7 +2126,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 272
+        y: 784
         width: 16
         height: 16
       alignment: 1
@@ -1830,7 +2137,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 112
-        y: 272
+        y: 784
         width: 16
         height: 16
       alignment: 1
@@ -1841,7 +2148,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 256
+        y: 768
         width: 16
         height: 16
       alignment: 1
@@ -1852,7 +2159,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 256
+        y: 768
         width: 16
         height: 16
       alignment: 1
@@ -1863,7 +2170,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 256
+        y: 768
         width: 16
         height: 16
       alignment: 1
@@ -1874,7 +2181,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 256
+        y: 768
         width: 16
         height: 16
       alignment: 1
@@ -1885,7 +2192,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 256
+        y: 768
         width: 16
         height: 16
       alignment: 1
@@ -1896,7 +2203,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 256
+        y: 768
         width: 16
         height: 16
       alignment: 1
@@ -1907,7 +2214,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 256
+        y: 768
         width: 16
         height: 16
       alignment: 1
@@ -1918,7 +2225,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 112
-        y: 256
+        y: 768
         width: 16
         height: 16
       alignment: 1
@@ -1929,7 +2236,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 240
+        y: 752
         width: 16
         height: 16
       alignment: 1
@@ -1940,7 +2247,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 240
+        y: 752
         width: 16
         height: 16
       alignment: 1
@@ -1951,7 +2258,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 240
+        y: 752
         width: 16
         height: 16
       alignment: 1
@@ -1962,7 +2269,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 240
+        y: 752
         width: 16
         height: 16
       alignment: 1
@@ -1973,7 +2280,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 240
+        y: 752
         width: 16
         height: 16
       alignment: 1
@@ -1984,7 +2291,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 240
+        y: 752
         width: 16
         height: 16
       alignment: 1
@@ -1995,7 +2302,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 240
+        y: 752
         width: 16
         height: 16
       alignment: 1
@@ -2006,7 +2313,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 112
-        y: 240
+        y: 752
         width: 16
         height: 16
       alignment: 1
@@ -2017,7 +2324,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 224
+        y: 736
         width: 16
         height: 16
       alignment: 1
@@ -2028,7 +2335,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 224
+        y: 736
         width: 16
         height: 16
       alignment: 1
@@ -2039,7 +2346,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 224
+        y: 736
         width: 16
         height: 16
       alignment: 1
@@ -2050,7 +2357,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 224
+        y: 736
         width: 16
         height: 16
       alignment: 1
@@ -2061,7 +2368,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 224
+        y: 736
         width: 16
         height: 16
       alignment: 1
@@ -2072,7 +2379,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 224
+        y: 736
         width: 16
         height: 16
       alignment: 1
@@ -2083,7 +2390,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 224
+        y: 736
         width: 16
         height: 16
       alignment: 1
@@ -2094,7 +2401,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 112
-        y: 224
+        y: 736
         width: 16
         height: 16
       alignment: 1
@@ -2105,7 +2412,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 208
+        y: 720
         width: 16
         height: 16
       alignment: 1
@@ -2116,7 +2423,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 208
+        y: 720
         width: 16
         height: 16
       alignment: 1
@@ -2127,7 +2434,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 208
+        y: 720
         width: 16
         height: 16
       alignment: 1
@@ -2138,7 +2445,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 208
+        y: 720
         width: 16
         height: 16
       alignment: 1
@@ -2149,7 +2456,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 208
+        y: 720
         width: 16
         height: 16
       alignment: 1
@@ -2160,7 +2467,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 208
+        y: 720
         width: 16
         height: 16
       alignment: 1
@@ -2170,8 +2477,8 @@ TextureImporter:
     - name: tileset_valley_bw_150
       rect:
         serializedVersion: 2
-        x: 0
-        y: 192
+        x: 96
+        y: 720
         width: 16
         height: 16
       alignment: 1
@@ -2181,8 +2488,8 @@ TextureImporter:
     - name: tileset_valley_bw_151
       rect:
         serializedVersion: 2
-        x: 16
-        y: 192
+        x: 112
+        y: 720
         width: 16
         height: 16
       alignment: 1
@@ -2192,8 +2499,8 @@ TextureImporter:
     - name: tileset_valley_bw_152
       rect:
         serializedVersion: 2
-        x: 32
-        y: 192
+        x: 0
+        y: 704
         width: 16
         height: 16
       alignment: 1
@@ -2203,8 +2510,8 @@ TextureImporter:
     - name: tileset_valley_bw_153
       rect:
         serializedVersion: 2
-        x: 48
-        y: 192
+        x: 16
+        y: 704
         width: 16
         height: 16
       alignment: 1
@@ -2214,8 +2521,8 @@ TextureImporter:
     - name: tileset_valley_bw_154
       rect:
         serializedVersion: 2
-        x: 64
-        y: 192
+        x: 32
+        y: 704
         width: 16
         height: 16
       alignment: 1
@@ -2225,8 +2532,8 @@ TextureImporter:
     - name: tileset_valley_bw_155
       rect:
         serializedVersion: 2
-        x: 80
-        y: 192
+        x: 48
+        y: 704
         width: 16
         height: 16
       alignment: 1
@@ -2236,8 +2543,8 @@ TextureImporter:
     - name: tileset_valley_bw_156
       rect:
         serializedVersion: 2
-        x: 96
-        y: 192
+        x: 64
+        y: 704
         width: 16
         height: 16
       alignment: 1
@@ -2247,8 +2554,8 @@ TextureImporter:
     - name: tileset_valley_bw_157
       rect:
         serializedVersion: 2
-        x: 0
-        y: 176
+        x: 80
+        y: 704
         width: 16
         height: 16
       alignment: 1
@@ -2258,8 +2565,8 @@ TextureImporter:
     - name: tileset_valley_bw_158
       rect:
         serializedVersion: 2
-        x: 32
-        y: 176
+        x: 96
+        y: 704
         width: 16
         height: 16
       alignment: 1
@@ -2269,8 +2576,8 @@ TextureImporter:
     - name: tileset_valley_bw_159
       rect:
         serializedVersion: 2
-        x: 48
-        y: 176
+        x: 112
+        y: 704
         width: 16
         height: 16
       alignment: 1
@@ -2280,8 +2587,8 @@ TextureImporter:
     - name: tileset_valley_bw_160
       rect:
         serializedVersion: 2
-        x: 64
-        y: 176
+        x: 0
+        y: 688
         width: 16
         height: 16
       alignment: 1
@@ -2291,8 +2598,8 @@ TextureImporter:
     - name: tileset_valley_bw_161
       rect:
         serializedVersion: 2
-        x: 80
-        y: 176
+        x: 16
+        y: 688
         width: 16
         height: 16
       alignment: 1
@@ -2302,8 +2609,8 @@ TextureImporter:
     - name: tileset_valley_bw_162
       rect:
         serializedVersion: 2
-        x: 96
-        y: 176
+        x: 32
+        y: 688
         width: 16
         height: 16
       alignment: 1
@@ -2313,8 +2620,8 @@ TextureImporter:
     - name: tileset_valley_bw_163
       rect:
         serializedVersion: 2
-        x: 32
-        y: 160
+        x: 48
+        y: 688
         width: 16
         height: 16
       alignment: 1
@@ -2324,8 +2631,8 @@ TextureImporter:
     - name: tileset_valley_bw_164
       rect:
         serializedVersion: 2
-        x: 48
-        y: 160
+        x: 64
+        y: 688
         width: 16
         height: 16
       alignment: 1
@@ -2335,8 +2642,8 @@ TextureImporter:
     - name: tileset_valley_bw_165
       rect:
         serializedVersion: 2
-        x: 64
-        y: 160
+        x: 80
+        y: 688
         width: 16
         height: 16
       alignment: 1
@@ -2346,8 +2653,8 @@ TextureImporter:
     - name: tileset_valley_bw_166
       rect:
         serializedVersion: 2
-        x: 0
-        y: 144
+        x: 96
+        y: 688
         width: 16
         height: 16
       alignment: 1
@@ -2357,8 +2664,8 @@ TextureImporter:
     - name: tileset_valley_bw_167
       rect:
         serializedVersion: 2
-        x: 16
-        y: 144
+        x: 112
+        y: 688
         width: 16
         height: 16
       alignment: 1
@@ -2368,8 +2675,8 @@ TextureImporter:
     - name: tileset_valley_bw_168
       rect:
         serializedVersion: 2
-        x: 32
-        y: 144
+        x: 0
+        y: 672
         width: 16
         height: 16
       alignment: 1
@@ -2379,8 +2686,8 @@ TextureImporter:
     - name: tileset_valley_bw_169
       rect:
         serializedVersion: 2
-        x: 48
-        y: 144
+        x: 16
+        y: 672
         width: 16
         height: 16
       alignment: 1
@@ -2390,8 +2697,8 @@ TextureImporter:
     - name: tileset_valley_bw_170
       rect:
         serializedVersion: 2
-        x: 64
-        y: 144
+        x: 32
+        y: 672
         width: 16
         height: 16
       alignment: 1
@@ -2401,8 +2708,8 @@ TextureImporter:
     - name: tileset_valley_bw_171
       rect:
         serializedVersion: 2
-        x: 80
-        y: 144
+        x: 48
+        y: 672
         width: 16
         height: 16
       alignment: 1
@@ -2412,8 +2719,8 @@ TextureImporter:
     - name: tileset_valley_bw_172
       rect:
         serializedVersion: 2
-        x: 96
-        y: 144
+        x: 64
+        y: 672
         width: 16
         height: 16
       alignment: 1
@@ -2423,8 +2730,8 @@ TextureImporter:
     - name: tileset_valley_bw_173
       rect:
         serializedVersion: 2
-        x: 0
-        y: 128
+        x: 80
+        y: 672
         width: 16
         height: 16
       alignment: 1
@@ -2434,8 +2741,8 @@ TextureImporter:
     - name: tileset_valley_bw_174
       rect:
         serializedVersion: 2
-        x: 32
-        y: 128
+        x: 96
+        y: 672
         width: 16
         height: 16
       alignment: 1
@@ -2445,8 +2752,8 @@ TextureImporter:
     - name: tileset_valley_bw_175
       rect:
         serializedVersion: 2
-        x: 48
-        y: 128
+        x: 112
+        y: 672
         width: 16
         height: 16
       alignment: 1
@@ -2456,8 +2763,8 @@ TextureImporter:
     - name: tileset_valley_bw_176
       rect:
         serializedVersion: 2
-        x: 64
-        y: 128
+        x: 0
+        y: 656
         width: 16
         height: 16
       alignment: 1
@@ -2467,8 +2774,8 @@ TextureImporter:
     - name: tileset_valley_bw_177
       rect:
         serializedVersion: 2
-        x: 80
-        y: 128
+        x: 16
+        y: 656
         width: 16
         height: 16
       alignment: 1
@@ -2478,8 +2785,8 @@ TextureImporter:
     - name: tileset_valley_bw_178
       rect:
         serializedVersion: 2
-        x: 96
-        y: 128
+        x: 32
+        y: 656
         width: 16
         height: 16
       alignment: 1
@@ -2489,8 +2796,8 @@ TextureImporter:
     - name: tileset_valley_bw_179
       rect:
         serializedVersion: 2
-        x: 0
-        y: 112
+        x: 48
+        y: 656
         width: 16
         height: 16
       alignment: 1
@@ -2500,8 +2807,8 @@ TextureImporter:
     - name: tileset_valley_bw_180
       rect:
         serializedVersion: 2
-        x: 16
-        y: 112
+        x: 64
+        y: 656
         width: 16
         height: 16
       alignment: 1
@@ -2511,8 +2818,8 @@ TextureImporter:
     - name: tileset_valley_bw_181
       rect:
         serializedVersion: 2
-        x: 32
-        y: 112
+        x: 80
+        y: 656
         width: 16
         height: 16
       alignment: 1
@@ -2522,8 +2829,8 @@ TextureImporter:
     - name: tileset_valley_bw_182
       rect:
         serializedVersion: 2
-        x: 48
-        y: 112
+        x: 96
+        y: 656
         width: 16
         height: 16
       alignment: 1
@@ -2533,8 +2840,8 @@ TextureImporter:
     - name: tileset_valley_bw_183
       rect:
         serializedVersion: 2
-        x: 64
-        y: 112
+        x: 112
+        y: 656
         width: 16
         height: 16
       alignment: 1
@@ -2545,7 +2852,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 96
+        y: 640
         width: 16
         height: 16
       alignment: 1
@@ -2556,7 +2863,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 96
+        y: 640
         width: 16
         height: 16
       alignment: 1
@@ -2567,7 +2874,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 96
+        y: 640
         width: 16
         height: 16
       alignment: 1
@@ -2578,7 +2885,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 96
+        y: 640
         width: 16
         height: 16
       alignment: 1
@@ -2589,7 +2896,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 96
+        y: 640
         width: 16
         height: 16
       alignment: 1
@@ -2600,7 +2907,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 96
+        y: 640
         width: 16
         height: 16
       alignment: 1
@@ -2608,6 +2915,3020 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: tileset_valley_bw_190
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 640
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_191
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 640
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_192
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 624
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_193
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 624
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_194
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 624
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_195
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 624
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_196
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 624
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_197
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 624
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_198
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 624
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_199
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 624
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_200
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 608
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_201
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 608
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_202
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 608
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_203
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 608
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_204
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 608
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_205
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 608
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_206
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 608
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_207
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 608
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_208
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 592
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_209
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 592
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_210
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 592
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_211
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 592
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_212
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 592
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_213
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 592
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_214
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 592
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_215
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 592
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_216
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 576
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_217
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 576
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_218
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 576
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_219
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 576
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_220
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 576
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_221
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 576
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_222
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 576
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_223
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 576
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_224
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 560
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_225
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 560
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_226
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 560
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_227
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 560
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_228
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 560
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_229
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 560
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_230
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 560
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_231
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 560
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_232
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 544
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_233
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 544
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_234
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 544
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_235
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 544
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_236
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 544
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_237
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 544
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_238
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 544
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_239
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 544
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_240
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 528
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_241
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 528
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_242
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 528
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_243
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 528
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_244
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 528
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_245
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 528
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_246
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 528
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_247
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 528
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_248
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_249
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 512
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_250
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 512
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_251
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 512
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_252
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 512
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_253
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 512
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_254
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 512
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_255
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 512
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_256
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 496
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_257
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 496
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_258
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 496
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_259
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 496
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_260
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 496
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_261
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 496
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_262
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 496
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_263
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 496
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_264
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 480
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_265
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 480
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_266
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 480
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_267
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 480
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_268
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 480
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_269
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 480
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_270
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 480
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_271
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 480
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_272
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 464
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_273
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 464
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_274
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 464
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_275
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 464
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_276
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 464
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_277
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 464
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_278
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 464
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_279
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 464
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_280
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 448
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_281
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 448
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_282
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 448
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_283
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 448
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_284
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 448
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_285
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 448
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_286
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 448
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_287
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 448
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_288
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 432
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_289
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 432
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_290
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 432
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_291
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 432
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_292
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 432
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_293
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 432
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_294
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 432
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_295
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 432
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_296
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 416
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_297
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 416
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_298
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 416
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_299
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 416
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_300
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 416
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_301
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 416
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_302
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 416
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_303
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 416
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_304
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 400
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_305
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 400
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_306
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 400
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_307
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 400
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_308
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 400
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_309
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 400
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_310
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 400
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_311
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 400
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_312
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_313
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 384
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_314
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 384
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_315
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 384
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_316
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 384
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_317
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 384
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_318
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 384
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_319
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 384
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_320
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 368
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_321
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 368
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_322
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 368
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_323
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 368
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_324
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 368
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_325
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 368
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_326
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 368
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_327
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 368
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_328
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 352
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_329
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 352
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_330
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 352
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_331
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 352
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_332
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 352
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_333
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 352
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_334
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 352
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_335
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 352
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_336
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 336
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_337
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 336
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_338
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 336
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_339
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 336
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_340
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 336
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_341
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 336
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_342
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 336
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_343
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 336
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_344
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_345
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 320
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_346
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 320
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_347
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 320
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_348
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 320
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_349
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 320
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_350
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 320
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_351
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 320
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_352
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 304
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_353
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 304
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_354
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 304
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_355
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 304
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_356
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 304
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_357
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 304
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_358
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 304
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_359
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 304
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_360
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 288
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_361
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 288
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_362
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 288
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_363
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 288
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_364
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 288
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_365
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 288
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_366
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 288
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_367
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 288
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_368
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 272
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_369
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 272
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_370
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 272
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_371
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 272
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_372
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 272
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_373
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 272
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_374
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 272
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_375
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 272
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_376
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_377
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 256
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_378
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 256
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_379
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 256
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_380
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 256
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_381
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 256
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_382
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 256
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_383
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 256
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_384
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 240
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_385
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 240
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_386
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 240
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_387
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 240
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_388
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 240
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_389
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 240
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_390
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 240
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_391
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 240
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_392
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 224
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_393
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 224
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_394
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 224
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_395
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 224
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_396
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 224
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_397
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 224
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_398
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 224
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_399
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 224
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_400
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 208
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_401
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 208
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_402
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 208
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_403
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 208
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_404
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 208
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_405
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 208
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_406
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 208
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_407
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 208
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_408
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_409
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 192
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_410
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 192
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_411
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 192
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_412
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_413
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 192
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_414
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 192
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_415
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 192
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_416
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 176
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_417
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 176
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_418
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 176
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_419
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 176
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_420
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 176
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_421
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 176
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_422
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 176
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_423
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 176
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_424
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_425
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 160
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_426
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 160
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_427
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 160
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_428
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 160
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_429
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 160
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_430
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 160
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_431
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 160
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_432
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 144
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_433
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 144
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_434
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 144
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_435
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 144
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_436
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 144
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_437
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 144
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_438
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 144
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_439
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 144
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_440
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_441
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 128
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_442
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 128
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_443
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 128
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_444
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_445
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 128
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_446
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_447
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 128
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_448
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 112
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_449
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 112
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_450
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 112
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_451
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 112
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_452
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 112
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_453
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 112
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_454
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 112
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_455
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 112
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_456
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_457
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 96
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_458
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_459
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 96
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_460
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_461
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 96
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_462
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_463
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 96
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_464
       rect:
         serializedVersion: 2
         x: 0
@@ -2618,7 +5939,18 @@ TextureImporter:
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: tileset_valley_bw_191
+    - name: tileset_valley_bw_465
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 80
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_466
       rect:
         serializedVersion: 2
         x: 32
@@ -2629,7 +5961,7 @@ TextureImporter:
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: tileset_valley_bw_192
+    - name: tileset_valley_bw_467
       rect:
         serializedVersion: 2
         x: 48
@@ -2640,7 +5972,7 @@ TextureImporter:
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: tileset_valley_bw_193
+    - name: tileset_valley_bw_468
       rect:
         serializedVersion: 2
         x: 64
@@ -2651,7 +5983,7 @@ TextureImporter:
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: tileset_valley_bw_194
+    - name: tileset_valley_bw_469
       rect:
         serializedVersion: 2
         x: 80
@@ -2662,7 +5994,29 @@ TextureImporter:
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: tileset_valley_bw_195
+    - name: tileset_valley_bw_470
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 80
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_471
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 80
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_472
       rect:
         serializedVersion: 2
         x: 0
@@ -2673,7 +6027,7 @@ TextureImporter:
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: tileset_valley_bw_196
+    - name: tileset_valley_bw_473
       rect:
         serializedVersion: 2
         x: 16
@@ -2684,7 +6038,7 @@ TextureImporter:
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: tileset_valley_bw_197
+    - name: tileset_valley_bw_474
       rect:
         serializedVersion: 2
         x: 32
@@ -2695,7 +6049,7 @@ TextureImporter:
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: tileset_valley_bw_198
+    - name: tileset_valley_bw_475
       rect:
         serializedVersion: 2
         x: 48
@@ -2706,11 +6060,396 @@ TextureImporter:
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: tileset_valley_bw_199
+    - name: tileset_valley_bw_476
       rect:
         serializedVersion: 2
         x: 64
         y: 64
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_477
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 64
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_478
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_479
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 64
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_480
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_481
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 48
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_482
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 48
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_483
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 48
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_484
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 48
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_485
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 48
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_486
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 48
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_487
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 48
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_488
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_489
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_490
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_491
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_492
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_493
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 32
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_494
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_495
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 32
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_496
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_497
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_498
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_499
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_500
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_501
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 16
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_502
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 16
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_503
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 16
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_504
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_505
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_506
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_507
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_508
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_509
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_510
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: tileset_valley_bw_511
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
         width: 16
         height: 16
       alignment: 1
