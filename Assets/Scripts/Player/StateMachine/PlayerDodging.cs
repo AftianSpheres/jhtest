@@ -110,12 +110,64 @@ public class PlayerDodging : StateMachineBehaviour
             }
         }
         PosMod *= (animator.GetFloat(PlayerAnimatorHashes.paramMoveSpeed) * animator.GetFloat(PlayerAnimatorHashes.paramInternalMoveSpeedMulti) * animator.GetFloat(PlayerAnimatorHashes.paramExternalMoveSpeedMulti));
+        bool hit = false;
         if (ExpensiveAccurateCollision.CollideWithScenery(controller.mover, roomColliders, PosMod, collider) == true)
         {
-            animator.SetBool(PlayerAnimatorHashes.triggerDodgeBurst, false);
-            animator.SetBool("DodgeHitWall", true);
-            hitWall = true;
-            controller.source.PlayOneShot(clip);
+            hit = true;
+        }
+        if (hit == true)
+        {
+            Vector3 v0;
+            Vector3 v1;
+            Vector3 vBase;
+            if (animator.GetCurrentAnimatorStateInfo(0).IsTag("FaceDown"))
+            {
+                v0 = Vector3.left;
+                v1 = Vector3.right;
+                vBase = Vector3.down;
+            }
+            else if (animator.GetCurrentAnimatorStateInfo(0).IsTag("FaceUp"))
+            {
+                v0 = Vector3.left;
+                v1 = Vector3.right;
+                vBase = Vector3.up;
+            }
+            else if (animator.GetCurrentAnimatorStateInfo(0).IsTag("FaceLeft"))
+            {
+                v0 = Vector3.up;
+                v1 = Vector3.down;
+                vBase = Vector3.left;
+            }
+            else
+            {
+                v0 = Vector3.up;
+                v1 = Vector3.down;
+                vBase = Vector3.right;
+            }
+            Vector3 prospectivePosMod;
+            controller.mover.heading = Vector3.zero;
+            for (int i = 1; i < 7; i++)
+            {
+                prospectivePosMod = (v0 * i);
+                if (ExpensiveAccurateCollision.CollideWithScenery(controller.mover, roomColliders, prospectivePosMod, collider) == false && 
+                    ExpensiveAccurateCollision.CollideWithScenery(controller.mover, roomColliders, vBase, collider) == false) hit = false;
+                else
+                {
+                    controller.mover.heading = Vector3.zero;
+                    prospectivePosMod = (v1 * i);
+                    if (ExpensiveAccurateCollision.CollideWithScenery(controller.mover, roomColliders, prospectivePosMod, collider) == false &&
+                        ExpensiveAccurateCollision.CollideWithScenery(controller.mover, roomColliders, vBase, collider) == false) hit = false;
+                    else controller.mover.heading = Vector3.zero;
+                }
+                if (hit == false) break;
+            }
+            if (hit == true)
+            {
+                animator.SetBool(PlayerAnimatorHashes.triggerDodgeBurst, false);
+                animator.SetBool("DodgeHitWall", true);
+                hitWall = true;
+                controller.source.PlayOneShot(clip);
+            }
         }
     }
 

@@ -65,7 +65,6 @@ public class HUDMainTextbox : MonoBehaviour
     public void StartPrinting(TextAsset a)
     {
         List<string> allLines = new List<string>(a.ToString().Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None));
-        Debug.Log(allLines);
         FrameCtr = 0;
         Active = true;
         textMesh.enabled = true;

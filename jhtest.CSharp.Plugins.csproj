@@ -66,6 +66,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Plugins\IntValuePair.cs" />
     <Compile Include="Assets\Plugins\TileMap\FieldOfView.cs" />
     <Compile Include="Assets\Plugins\TileMap\Grid.cs" />
     <Compile Include="Assets\Plugins\TileMap\IAStar.cs" />

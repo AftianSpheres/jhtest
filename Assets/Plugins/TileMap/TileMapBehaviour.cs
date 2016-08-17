@@ -37,6 +37,11 @@ namespace UnityTileMap
 
         private TileMapVisibilityBehaviour m_visibility;
 
+        private List<IntValuePair> animatedTileCoords;
+
+        private Grid<Sprite> spriteGrid;
+
+
         private bool registeredUpdateWithEditor;
 
         /// <summary>
@@ -59,7 +64,7 @@ namespace UnityTileMap
                     if (m_activeInEditMode)
                         CreateMesh();
                     else
-                        DestroyMesh();
+                        DestroyMesh();                 
                 }
             }
         }
@@ -160,6 +165,19 @@ namespace UnityTileMap
             {
                 m_tileAnims[i].Start(m_tileSheet);
             }
+            animatedTileCoords = new List<IntValuePair>();
+            for (int y = 0; y < m_tileMapData.SizeY; y++)
+            {
+                for (int x = 0; x < m_tileMapData.SizeX; x++)
+                {
+                    for (int i = 0; i < m_tileAnims.Length; i++)
+                    {
+                        if (m_tileMapData[x, y] == m_tileAnims[i].Id) animatedTileCoords.Add(new IntValuePair(x, y));
+                    }
+                }
+            }
+            spriteGrid = new Grid<Sprite>();
+            spriteGrid.SetSize(m_tileMapData.SizeX, m_tileMapData.SizeY, TileSheet.Get(0));
         }
 #if UNITY_EDITOR
         private double time = 0;
@@ -214,30 +232,33 @@ namespace UnityTileMap
 
         void Update()
         {
-            if (Application.isPlaying)
+            if (animatedTileCoords != null && animatedTileCoords.Count > 0)
             {
-                for (int i = 0; i < m_tileAnims.Length; i++)
+                if (Application.isPlaying)
                 {
-                    if (m_tileAnims[i].Update() == true && animateTiles == true)
+                    for (int i = 0; i < m_tileAnims.Length; i++)
                     {
-                        meshDirty = true;
+                        if (m_tileAnims[i].Update() == true && animateTiles == true)
+                        {
+                            meshDirty = true;
+                        }
                     }
                 }
-            }
-            if (meshDirty == true)
-            {
-                Grid<Sprite> spriteGrid = new Grid<Sprite>();
-                spriteGrid.SetSize(m_tileMapData.SizeX, m_tileMapData.SizeY, TileSheet.Get(0));
-                for (int y = 0; y < spriteGrid.SizeY; y++)
+                if (meshDirty == true)
                 {
-                    for (int x = 0; x < spriteGrid.SizeX; x++)
+                    for (int y = 0; y < spriteGrid.SizeY; y++)
                     {
-                        spriteGrid[x, y] = m_tileSheet.Get(m_tileMapData[x, y]);
+                        for (int x = 0; x < spriteGrid.SizeX; x++)
+                        {
+                            if (animatedTileCoords.Contains(new IntValuePair(x, y))) spriteGrid[x, y] = m_tileSheet.Get(m_tileMapData[x, y]);
+                            else spriteGrid[x, y] = default(Sprite);
+                        }
                     }
+                    m_chunkManager.Chunk.AnimateMesh(m_tileAnims, spriteGrid);
+                    meshDirty = false;
                 }
-                m_chunkManager.Chunk.AnimateMesh(m_tileAnims, spriteGrid);   
-                meshDirty = false;
             }
+
         }
 
         public int this[int x, int y]

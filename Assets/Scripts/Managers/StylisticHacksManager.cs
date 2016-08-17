@@ -12,8 +12,8 @@ public class StylisticHacksManager : Manager<StylisticHacksManager>
     public WorldController world;
     public static uint SpritesAllowedOnScreen = 40;
     public Queue<FlickerySprite> sprites;
-    public float fps;
-    private float timeCtr;
+    private float lastUpdateTime = 0;
+    public float fps = 60;
 
     // Use this for initialization
     void Start () {
@@ -73,12 +73,8 @@ public class StylisticHacksManager : Manager<StylisticHacksManager>
             {
                 Application.targetFrameRate = 60;
             }
-            timeCtr+= Time.deltaTime;
-            if (timeCtr > .25f)
-            {
-                fps = Mathf.Ceil((Application.targetFrameRate) /4f / timeCtr);
-                timeCtr -= .25f;
-            }
+            fps = Mathf.Round(1 / (Time.realtimeSinceStartup - lastUpdateTime));
+            lastUpdateTime = Time.realtimeSinceStartup;
         }
     }
 	

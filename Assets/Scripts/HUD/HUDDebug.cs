@@ -20,7 +20,7 @@ public class HUDDebug : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        textMesh.text = "--";
+        textMesh.text = "60";
     }
 
     /// <summary>

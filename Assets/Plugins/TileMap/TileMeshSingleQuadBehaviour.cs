@@ -12,9 +12,6 @@ namespace UnityTileMap
     {
         private Texture2D m_texture;
         private bool m_textureDirty;
-        private bool m_bufferDirty;
-        int[] places;
-        private List<BufferedTex> texBuffer;
 
         public override TileMeshSettings Settings
         {
@@ -46,13 +43,6 @@ namespace UnityTileMap
             {
                 m_texture.Apply();
                 m_textureDirty = false;
-            }
-            if (m_bufferDirty)
-            {
-                BufferedTex b = new BufferedTex();
-                b.tex = m_texture;
-                b.places = places;
-                texBuffer.Add(b);
             }
         }
 
@@ -177,37 +167,12 @@ namespace UnityTileMap
 
         public override void AnimateMesh(TileAnim[] tileAnims, Grid<Sprite> tiles)
         {
-            if (texBuffer == null)
+            for (int y = 0; y < tiles.SizeY; y++)
             {
-                texBuffer = new List<BufferedTex>();
-            }
-            Texture2D tex = default(Texture2D);
-            places = new int[tileAnims.Length];
-            for (int i = 0; i < tileAnims.Length; i++)
-            {
-                places[i] = tileAnims[i].place;
-            }
-            for (int i = 0; i < texBuffer.Count; i++)
-            {
-                if (texBuffer[i].places.SequenceEqual(places))
+                for (int x = 0; x < tiles.SizeX; x++)
                 {
-                    m_texture = texBuffer[i].tex;
-                    MaterialTexture = m_texture;
-                    tex = m_texture;
-                    break;
+                    if (tiles[x, y] != null) SetTile(x, y, tiles[x, y]);
                 }
-            }
-            if (tex == null)
-            {
-                CreateTexture();
-                for (int y = 0; y < tiles.SizeY; y++)
-                {
-                    for (int x = 0; x < tiles.SizeX; x++)
-                    {
-                        SetTile(x, y, tiles[x, y]);
-                    }
-                }
-                m_bufferDirty = true;
             }
         }
     }
