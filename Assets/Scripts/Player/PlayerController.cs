@@ -45,6 +45,8 @@ public static class PlayerAnimatorHashes
 /// </summary>
 [RequireComponent(typeof(PauseableSprite))]
 public class PlayerController : MonoBehaviour {
+    bool sortingLayerAboveFX = false;
+
     private static int[] DodgeAllowedStates = { PlayerAnimatorHashes.PlayerStand_D, PlayerAnimatorHashes.PlayerStand_U, PlayerAnimatorHashes.PlayerStand_L, PlayerAnimatorHashes.PlayerStand_R,
     PlayerAnimatorHashes.PlayerWalk_D, PlayerAnimatorHashes.PlayerWalk_U, PlayerAnimatorHashes.PlayerWalk_L, PlayerAnimatorHashes.PlayerWalk_R };
 
@@ -215,6 +217,20 @@ public class PlayerController : MonoBehaviour {
             {
                 renderer.color = Color.white;
             }
+        }
+        if (world.activeRoom == null && world.cameraController.nextRoom != null)
+        {
+
+        }
+        else if (world.activeRoom.fx != null && sortingLayerAboveFX == true)
+        {
+            renderer.sortingLayerID = HammerConstants.l_underFX;
+            sortingLayerAboveFX = false;
+        }
+        else if (world.activeRoom.fx == null && sortingLayerAboveFX == false)
+        {
+            renderer.sortingLayerID = HammerConstants.l_aboveFX;
+            sortingLayerAboveFX = true;
         }
     }
 

@@ -53,6 +53,11 @@ public class mu_UnrollingTiles : MonoBehaviour
                 rollOutTileColliders[i].enabled = deactivateCollisionWhenUnrolled;
             }
         }
+        for (int i = 0; i < rollOutTileRenderers.Length; i++)
+        {
+            if (room.fx != null) rollOutTileRenderers[i].sortingLayerID = HammerConstants.l_underFX;
+            else rollOutTileRenderers[i].sortingLayerID = HammerConstants.l_aboveFX;
+        }
 	}
 	
     /// <summary>

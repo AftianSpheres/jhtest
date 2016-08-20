@@ -12,6 +12,15 @@ public class FXLayer : MonoBehaviour
     public float clipVolume;
     private bool active = false;
 	
+    void Awake ()
+    {
+        for (int i = 0; i < gfxElements.Length; i++)
+        {
+            gfxElements[i].enabled = true;
+        }
+        scrollingLayer.enabled = true;
+    }
+
 	// Update is called once per frame
 	void Update ()
     {
@@ -22,22 +31,12 @@ public class FXLayer : MonoBehaviour
         }
         if (active == false && gfxElements[0].enabled == true)
         {
-            for (int i = 0; i < gfxElements.Length; i++)
-            {
-                gfxElements[i].enabled = false;
-            }
-            scrollingLayer.enabled = false;
             world.BGS0.clip = default(AudioClip);
             world.BGS0.Stop();
             world.BGS0.volume /= clipVolume;
         }
         else if (active == true && gfxElements[0].enabled == false)
         {
-            for (int i = 0; i < gfxElements.Length; i++)
-            {
-                gfxElements[i].enabled = true;
-            }
-            scrollingLayer.enabled = true;
             world.BGS0.clip = bgs;
             world.BGS0.volume *= clipVolume;
             world.BGS0.Play();

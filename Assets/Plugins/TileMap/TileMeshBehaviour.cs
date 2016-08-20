@@ -55,10 +55,10 @@ namespace UnityTileMap
 
                 m_mesh = CreateMesh();
 
-                var meshFilter = GetComponent<MeshFilter>();
+                MeshFilter meshFilter = GetComponent<MeshFilter>();
                 meshFilter.mesh = m_mesh;
 
-                var meshRenderer = GetComponent<MeshRenderer>();
+                MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
                 meshRenderer.material = m_material;
             }
         }
@@ -100,6 +100,12 @@ namespace UnityTileMap
             rect.x += position.x;
             rect.y += position.y;
             return rect;
+        }
+
+        public void SetLayer (int l)
+        {
+            MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+            meshRenderer.sortingLayerID = l;
         }
 
         protected abstract Mesh CreateMesh();

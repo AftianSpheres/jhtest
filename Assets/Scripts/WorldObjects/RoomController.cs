@@ -42,6 +42,32 @@ public class RoomController : MonoBehaviour
         gameStateManager = GameObject.Find("Universe/GameStateManager").GetComponent<GameStateManager>();
     }
 
+    void Start ()
+    {
+        if (fx != null) tilemap.SetLayer(HammerConstants.l_underFX);
+        else tilemap.SetLayer(HammerConstants.l_aboveFX);
+        Transform go = transform.Find("RoomObjects");
+        for (int i = 0; i < go.childCount; i++)
+        {
+            SpriteRenderer r = go.GetChild(i).GetComponent<SpriteRenderer>();
+            if (r != null)
+            {
+                if (fx != null) r.sortingLayerID = HammerConstants.l_underFX;
+                else r.sortingLayerID = HammerConstants.l_aboveFX;
+            }
+        }
+        go = transform.Find("Enemies");
+        for (int i = 0; i < go.childCount; i++)
+        {
+            SpriteRenderer r = go.GetChild(i).GetComponent<SpriteRenderer>();
+            if (r != null)
+            {
+                if (fx != null) r.sortingLayerID = HammerConstants.l_underFX;
+                else r.sortingLayerID = HammerConstants.l_aboveFX;
+            }
+        }
+    }
+
     public void PutRoomInWorldCoords ()
     {
         if (BigRoomCellSize.x > 1 || BigRoomCellSize.y > 1)

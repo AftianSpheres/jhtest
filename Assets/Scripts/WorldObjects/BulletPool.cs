@@ -46,6 +46,8 @@ public class BulletPool : MonoBehaviour
             BulletController bulletController = q.Dequeue();
             bulletController.fs.room = world.activeRoom;
             bulletController.gameObject.SetActive(true);
+            if (world.activeRoom.fx != null) bulletController.renderer.sortingLayerID = HammerConstants.l_underFX;
+            else bulletController.renderer.sortingLayerID = HammerConstants.l_aboveFX;
             bulletController.owner = owner;
             bulletController.Range = range;
             bulletController.Fire(shot, speed, damage, weight, from, to, this, pierce, homingTarget, homingPrecision, homingWindow);

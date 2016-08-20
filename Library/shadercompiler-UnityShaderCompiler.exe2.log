@@ -1,2 +1,12 @@
 Base path: C:/Program Files/Unity/Editor/Data
 Cmd: getPlatforms
+Cmd: compileSnippet
+  api=8 type=0 insize=2217 outsize=1073 kw= pd=UNITY_NO_LINEAR_COLORSPACE UNITY_PBS_USE_BRDF3 ok=1
+Cmd: compileSnippet
+  api=8 type=1 insize=2217 outsize=833 kw= pd=UNITY_NO_LINEAR_COLORSPACE UNITY_PBS_USE_BRDF3 ok=1
+Cmd: compileSnippet
+  api=8 type=1 insize=2221 outsize=681 kw= pd=UNITY_NO_LINEAR_COLORSPACE UNITY_PBS_USE_BRDF3 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=1515 outsize=593 kw= pd=UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=1444 outsize=593 kw= pd=UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1

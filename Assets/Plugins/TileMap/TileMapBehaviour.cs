@@ -380,6 +380,11 @@ namespace UnityTileMap
             ChunkManager.Chunk.SetTile(x, y, sprite);
         }
 
+        public void SetLayer(int l)
+        {
+            ChunkManager.Chunk.SetLayer(l);
+        }
+
         public IEnumerator<KeyValuePair<Vector2Int, int>> GetEnumerator()
         {
             for (int x = 0; x < m_tileMeshSettings.TilesX; x++)

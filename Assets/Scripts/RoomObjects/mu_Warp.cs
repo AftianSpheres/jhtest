@@ -37,6 +37,7 @@ public class mu_Warp : MonoBehaviour
                     else if (destinationLevel > AreaType.None)
                     {
                         int[] coords = { (int)destinationRoomCoords.y, (int)destinationRoomCoords.x };
+                        room.world.Curtain.SetActive(true);
                         LevelLoadManager.Instance.EnterLevel(destinationLevel, coords, DestinationEntryPoint, WarpedPlayerFacingDir);
                     }
                     if (clip != null)

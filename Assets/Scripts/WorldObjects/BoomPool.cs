@@ -37,6 +37,8 @@ public class BoomPool : MonoBehaviour
         {
             BoomEffect boomEffect = q.Dequeue();
             boomEffect.gameObject.SetActive(true);
+            if (world.activeRoom.fx != null) boomEffect.renderer.sortingLayerID = HammerConstants.l_underFX;
+            else boomEffect.renderer.sortingLayerID = HammerConstants.l_aboveFX;
             boomEffect.fs.room = world.activeRoom;
             boomEffect.owner = owner;
             boomEffect.q = q;

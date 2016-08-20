@@ -23,6 +23,14 @@ public enum WindowedResolutionMultiplier
 public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
 {
     public Resolution fullscreenRes;
+    public WindowedResolutionMultiplier resMulti
+    {
+        get
+        {
+            if (Screen.fullScreen) return fsMulti;
+            else return windowedRes;
+        }
+    }
     private VirtualButton _left;
     private VirtualButton _right;
     private VirtualButton _up;
@@ -43,6 +51,7 @@ public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
     public VirtualButtonMultiplexer Right;
     public VirtualButtonMultiplexer Up;
     public VirtualButtonMultiplexer Down;
+    private WindowedResolutionMultiplier fsMulti = WindowedResolutionMultiplier.x1;
     public WindowedResolutionMultiplier windowedRes = WindowedResolutionMultiplier.x4;
     private ControlPrefs controlPrefs;
 
@@ -84,6 +93,12 @@ public class HardwareInterfaceManager : Manager <HardwareInterfaceManager>
         Right.Update();
         Up.Update();
         Down.Update();
+#if UNITY_EDITOR
+        if (Application.isEditor && Application.isPlaying)
+        {
+            windowedRes = (WindowedResolutionMultiplier) ((Screen.width / 160) - 1);
+        }
+#endif
     }
 
     public Resolution GetRecommendedFullscreenResolution ()

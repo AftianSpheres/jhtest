@@ -60,6 +60,10 @@ public class LevelLoadManager : Manager<LevelLoadManager>
                 GameStateManager.Instance.levelLoadPlayerAnimHash = PlayerAnimatorHashes.PlayerStand_L;
                 break;
         }
+        for (int i = 0; i < 8; i++)
+        {
+            yield return null; // this gives the scene calling EnterLevel time to do neat screen transitions, etc. even if we load instantly
+        }
         AsyncOperation loading = SceneManager.LoadSceneAsync(index, LoadSceneMode.Single);
         while (loading.isDone == false)
         {

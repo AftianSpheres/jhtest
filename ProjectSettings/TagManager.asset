@@ -9,6 +9,7 @@ TagManager:
   - EnemyBullet
   - Boom
   - Pickup
+  - Reticle
   layers:
   - Default
   - TransparentFX
@@ -45,4 +46,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: underFX
+    uniqueID: 2052660159
+    locked: 0
+  - name: aboveFX
+    uniqueID: 1066588281
+    locked: 0
+  - name: UI
+    uniqueID: 473597735
+    locked: 0
+  - name: overlay
+    uniqueID: 4170526129
     locked: 0
