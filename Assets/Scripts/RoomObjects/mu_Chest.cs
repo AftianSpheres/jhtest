@@ -25,6 +25,7 @@ public class mu_Chest : MonoBehaviour
             open = true;
             Destroy(pickup);
         }
+        pickup.GetComponent<SpriteRenderer>().sortingLayerID = renderer.sortingLayerID;
     }
 	
 	void Update ()

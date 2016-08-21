@@ -60,6 +60,11 @@ public class PlayerDodging : StateMachineBehaviour
         }
     }
 
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        animator.SetInteger(PlayerAnimatorHashes.paramDodgeCooldown, 45);
+    }
+
     override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         FrameCtr++;

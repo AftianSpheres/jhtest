@@ -9,6 +9,9 @@ public class CameraGBFX : MonoBehaviour
 
     void Start ()
     {
+#if UNITY_EDITOR
+        if (HardwareInterfaceManager.Instance == null) return; // bandaid over dumb editor bug related to script compilation
+#endif
         res = HardwareInterfaceManager.Instance.resMulti;
         GenerateOverlayTexture();
     }

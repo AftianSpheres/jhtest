@@ -204,7 +204,8 @@ namespace UnityTileMap
         public void SpecialAnimate()
         {
             bool spDirty = false;
-            if (Application.isPlaying) throw new Exception("Can't call SpecialAnimate while playing!");
+            const string s = "Can't call SpecialAnimate while playing!";
+            if (Application.isPlaying) throw new Exception(s);
             if (EditorApplication.timeSinceStartup - time >= 1d / 60d)
             {
                 time = EditorApplication.timeSinceStartup;

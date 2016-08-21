@@ -37,6 +37,7 @@ public static class PlayerAnimatorHashes
     public static int paramExternalMoveSpeedMulti = Animator.StringToHash("ExternalMoveSpeedMulti");
     public static int paramInternalMoveSpeedMulti = Animator.StringToHash("InternalMoveSpeedMulti");
     public static int paramMoveSpeed = Animator.StringToHash("MoveSpeed");
+    public static int paramDodgeCooldown = Animator.StringToHash("DodgeCooldown");
 }
 
 /// <summary>
@@ -220,7 +221,16 @@ public class PlayerController : MonoBehaviour {
         }
         if (world.activeRoom == null && world.cameraController.nextRoom != null)
         {
-
+            if (world.cameraController.nextRoom.fx != null)
+            {
+                renderer.sortingLayerID = HammerConstants.l_underFX;
+                sortingLayerAboveFX = false;
+            }
+            else
+            {
+                renderer.sortingLayerID = HammerConstants.l_aboveFX;
+                sortingLayerAboveFX = true;
+            }
         }
         else if (world.activeRoom.fx != null && sortingLayerAboveFX == true)
         {

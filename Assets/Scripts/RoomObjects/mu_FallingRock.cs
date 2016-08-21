@@ -42,6 +42,7 @@ public class mu_FallingRock : MonoBehaviour
 	void Awake ()
     {
         state = FallingRockState.Undeployed;
+        rockRenderer.sortingLayerID = rubbleRenderer0.sortingLayerID = rubbleRenderer1.sortingLayerID = rubbleRenderer2.sortingLayerID = rubbleRenderer3.sortingLayerID = shadowRenderer.sortingLayerID;
         rockCollider.enabled = rockRenderer.enabled = rubbleRenderer0.enabled = rubbleRenderer1.enabled = rubbleRenderer2.enabled = rubbleRenderer3.enabled = shadowRenderer.enabled = false;
         rockRenderer.sprite = rockSprite;
         rubbleRenderer0.sprite = rubbleRenderer1.sprite = rubbleRenderer2.sprite = rubbleRenderer3.sprite = rubbleSprite;

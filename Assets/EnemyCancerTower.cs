@@ -13,29 +13,32 @@ public class EnemyCancerTower : EnemyModule
     public SpriteRenderer[] bits;
     public BoxCollider2D[] bitColliders;
     public Sprite[] bitFrames;
+    public AudioClip scream;
+    public AudioClip toss;
     CancerTowerState state;
     int TimeToNextFiring;
     int frameCtr;
 
+    int[] bitFrameIndices;
     Vector3[] bitDefaultPositions;
     Vector3[] bitOrigins;
     Vector3[] bitDestinations;
     Vector3[] bitVirtualPositions;
-    bool[] bitsReachedTerminus;
     float m = 0;
 
     // Use this for initialization
     void Start ()
     {
         frameCtr = 0;
-        bitsReachedTerminus = new bool[] {false, false, false, false};
         bitDefaultPositions = new Vector3[bits.Length];
+        bitFrameIndices = new int[bits.Length];
         bitOrigins = new Vector3[bits.Length];
         bitVirtualPositions = new Vector3[bitDefaultPositions.Length];
         bitDestinations = new Vector3[bitDefaultPositions.Length];
         SetFiringDelay();
         for (int i = 0; i < bitVirtualPositions.Length; i++)
         {
+            bitFrameIndices[i] = i;
             bitDefaultPositions[i] = bitOrigins[i] = bits[i].transform.position;
             bitDestinations[i] = bitDefaultPositions[i];
             bitVirtualPositions[i] = bitDefaultPositions[i];
@@ -46,7 +49,7 @@ public class EnemyCancerTower : EnemyModule
 	// Update is called once per frame
 	void Update ()
     {
-        if (common.room.isActiveRoom)
+        if (common.room.isActiveRoom && !common.isDead)
         {
             for (int i = 0; i < bitVirtualPositions.Length; i++)
             {
@@ -55,6 +58,7 @@ public class EnemyCancerTower : EnemyModule
             switch (state)
             {
                 case CancerTowerState.Neutral:
+                    if (TimeToNextFiring == 45) common.source.PlayOneShot(scream);
                     if (TimeToNextFiring < 1)
                     {
                         for (int i = 0; i < bitDestinations.Length; i++)
@@ -64,8 +68,9 @@ public class EnemyCancerTower : EnemyModule
                         }
                         m = 0;
                         state = CancerTowerState.FiringBits;
+                        common.Vulnerable = true;
                     }
-                    else if (frameCtr > 20)
+                    else if (frameCtr % 20 == 0)
                     {
                         m = 0;
                         for (int i = 0; i < bitDefaultPositions.Length; i++)
@@ -73,9 +78,8 @@ public class EnemyCancerTower : EnemyModule
                             bitOrigins[i] = bits[i].transform.position;
                             bitDestinations[i] = bitDefaultPositions[i];
                         }
-                        frameCtr = 0;
                     }
-                    else if (frameCtr == 10)
+                    else if (frameCtr % 10 == 0)
                     {
                         m = 0;
                         for (int i = 0; i < bitDefaultPositions.Length; i++)
@@ -124,12 +128,24 @@ public class EnemyCancerTower : EnemyModule
                     {
                         SetFiringDelay();
                         state = CancerTowerState.Neutral;
+                        common.Vulnerable = false;
                     }
                     break;
             }
             for (int i = 0; i < bits.Length; i++)
             {
                 bitVirtualPositions[i] = Vector3.Lerp(bitOrigins[i], bitDestinations[i], m);
+                if (frameCtr % 6 == 0)
+                {
+                    bitFrameIndices[i]++;
+                    if (bitFrameIndices[i] >= bitFrameIndices.Length) bitFrameIndices[i] = 0;
+                    bits[i].sprite = bitFrames[bitFrameIndices[i]];
+                }
+                Bounds bc = new Bounds(new Vector3(bitColliders[i].bounds.center.x, bitColliders[i].bounds.center.y, 0), new Vector3(bitColliders[i].bounds.size.x, bitColliders[i].bounds.size.y, float.MaxValue));
+                if (bc.Intersects(common.room.world.player.collider.bounds))
+                {
+                    common.room.world.player.Hit(common.ShotDmg, bitColliders[i].bounds.center, common.Weight);
+                }
             }
             frameCtr++;
             TimeToNextFiring--;
@@ -139,5 +155,20 @@ public class EnemyCancerTower : EnemyModule
     void SetFiringDelay()
     {
         TimeToNextFiring = Random.Range(150, 420);
+    }
+
+    new public void Respawn()
+    {
+        SetFiringDelay();
+        frameCtr = 0;
+        m = 0;
+        for (int i = 0; i < bitVirtualPositions.Length; i++)
+        {
+            bits[i].gameObject.SetActive(true);
+            bitFrameIndices[i] = i;
+            bitDestinations[i] = bitDefaultPositions[i];
+            bitVirtualPositions[i] = bitDefaultPositions[i];
+        }
+        state = CancerTowerState.Neutral;
     }
 }

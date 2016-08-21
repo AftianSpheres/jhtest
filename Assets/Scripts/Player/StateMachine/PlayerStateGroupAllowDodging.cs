@@ -10,29 +10,41 @@ public class PlayerStateGroupAllowDodging : StateMachineBehaviour {
 	// OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (animator.GetBool(dodgeHashes[0]) == true)
+        int dc = animator.GetInteger(PlayerAnimatorHashes.paramDodgeCooldown);
+        if (dc > 0)
         {
-            animator.Play(dodgeHashes[4], 0);
+            animator.SetInteger(PlayerAnimatorHashes.paramDodgeCooldown, dc - 1);
             animator.SetBool(dodgeHashes[0], false);
-            animator.SetBool(PlayerAnimatorHashes.paramFiringAllowed, false);
-        }
-        else if (animator.GetBool(dodgeHashes[1]) == true)
+            animator.SetBool(dodgeHashes[1], false);
+            animator.SetBool(dodgeHashes[2], false);
+            animator.SetBool(dodgeHashes[3], false);
+        } 
+        else
         {
-            animator.Play(dodgeHashes[5], 0);
-            animator.SetBool(dodgeHashes[0], false);
-            animator.SetBool(PlayerAnimatorHashes.paramFiringAllowed, false);
-        }
-        else if (animator.GetBool(dodgeHashes[2]) == true)
-        {
-            animator.Play(dodgeHashes[6], 0);
-            animator.SetBool(dodgeHashes[0], false);
-            animator.SetBool(PlayerAnimatorHashes.paramFiringAllowed, false);
-        }
-        else if (animator.GetBool(dodgeHashes[3]) == true)
-        {
-            animator.Play(dodgeHashes[7], 0);
-            animator.SetBool(dodgeHashes[0], false);
-            animator.SetBool(PlayerAnimatorHashes.paramFiringAllowed, false);
+            if (animator.GetBool(dodgeHashes[0]) == true)
+            {
+                animator.Play(dodgeHashes[4], 0);
+                animator.SetBool(dodgeHashes[0], false);
+                animator.SetBool(PlayerAnimatorHashes.paramFiringAllowed, false);
+            }
+            else if (animator.GetBool(dodgeHashes[1]) == true)
+            {
+                animator.Play(dodgeHashes[5], 0);
+                animator.SetBool(dodgeHashes[1], false);
+                animator.SetBool(PlayerAnimatorHashes.paramFiringAllowed, false);
+            }
+            else if (animator.GetBool(dodgeHashes[2]) == true)
+            {
+                animator.Play(dodgeHashes[6], 0);
+                animator.SetBool(dodgeHashes[2], false);
+                animator.SetBool(PlayerAnimatorHashes.paramFiringAllowed, false);
+            }
+            else if (animator.GetBool(dodgeHashes[3]) == true)
+            {
+                animator.Play(dodgeHashes[7], 0);
+                animator.SetBool(dodgeHashes[3], false);
+                animator.SetBool(PlayerAnimatorHashes.paramFiringAllowed, false);
+            }
         }
     }
 }
