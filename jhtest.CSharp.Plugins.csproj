@@ -67,6 +67,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Plugins\IntValuePair.cs" />
+    <Compile Include="Assets\Plugins\Pair.cs" />
+    <Compile Include="Assets\Plugins\TextMonger\BitmapFont.cs" />
+    <Compile Include="Assets\Plugins\TextMonger\TextBlock.cs" />
+    <Compile Include="Assets\Plugins\TextMonger\TextCanvas.cs" />
+    <Compile Include="Assets\Plugins\TextMonger\TextLine.cs" />
     <Compile Include="Assets\Plugins\TileMap\FieldOfView.cs" />
     <Compile Include="Assets\Plugins\TileMap\Grid.cs" />
     <Compile Include="Assets\Plugins\TileMap\IAStar.cs" />

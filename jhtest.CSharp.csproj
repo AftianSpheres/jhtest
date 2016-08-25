@@ -251,6 +251,7 @@
     <Compile Include="Assets\Scripts\Helpers\GFXHelpers.cs" />
     <Compile Include="Assets\Scripts\Helpers\GlobalStaticResourcePaths.cs" />
     <Compile Include="Assets\Scripts\Helpers\HammerConstants.cs" />
+    <Compile Include="Assets\Scripts\Helpers\TextParsing.cs" />
     <Compile Include="Assets\Scripts\Helpers\VirtualButton.cs" />
     <Compile Include="Assets\Scripts\Helpers\VirtualButtonMultiplexer.cs" />
     <Compile Include="Assets\Scripts\Helpers\VirtualStick.cs" />
