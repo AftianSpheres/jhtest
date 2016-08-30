@@ -37,7 +37,7 @@ namespace UnityTileMap
 
         private TileMapVisibilityBehaviour m_visibility;
 
-        private List<IntValuePair> animatedTileCoords;
+        private List<Pair<int, int>> animatedTileCoords;
 
         private Grid<Sprite> spriteGrid;
 
@@ -165,14 +165,14 @@ namespace UnityTileMap
             {
                 m_tileAnims[i].Start(m_tileSheet);
             }
-            animatedTileCoords = new List<IntValuePair>();
+            animatedTileCoords = new List<Pair<int, int>>();
             for (int y = 0; y < m_tileMapData.SizeY; y++)
             {
                 for (int x = 0; x < m_tileMapData.SizeX; x++)
                 {
                     for (int i = 0; i < m_tileAnims.Length; i++)
                     {
-                        if (m_tileMapData[x, y] == m_tileAnims[i].Id) animatedTileCoords.Add(new IntValuePair(x, y));
+                        if (m_tileMapData[x, y] == m_tileAnims[i].Id) animatedTileCoords.Add(new Pair<int, int>(x, y));
                     }
                 }
             }
@@ -251,7 +251,7 @@ namespace UnityTileMap
                     {
                         for (int x = 0; x < spriteGrid.SizeX; x++)
                         {
-                            if (animatedTileCoords.Contains(new IntValuePair(x, y))) spriteGrid[x, y] = m_tileSheet.Get(m_tileMapData[x, y]);
+                            if (animatedTileCoords.Contains(new Pair<int, int>(x, y))) spriteGrid[x, y] = m_tileSheet.Get(m_tileMapData[x, y]);
                             else spriteGrid[x, y] = default(Sprite);
                         }
                     }

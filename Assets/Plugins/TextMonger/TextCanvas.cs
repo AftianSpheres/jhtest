@@ -93,7 +93,7 @@ namespace TextMonger
         void Awake ()
         {
             if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
-            if (font == null) font = new BitmapFont();
+            if (font == null) font = ScriptableObject.CreateInstance<BitmapFont>();
             CreateTexture();
             texture.Apply();
             dirty = false;
@@ -178,7 +178,7 @@ namespace TextMonger
         /// </summary>
         void DrawCharacterAt (char _char, int _x, int _y, Color fontColor)
         {
-            Sprite s = font.GetCharacter(_char);
+            Sprite s = font.GetCharacter(_char).sprite;
             DrawCharacterAt(s, _x, _y, fontColor);
         }
 
@@ -198,7 +198,7 @@ namespace TextMonger
         /// </summary>
         void DrawCharacterColumnAt (char _char, int column, int _x, int _y, Color fontColor)
         {
-            Sprite s = font.GetCharacter(_char);
+            Sprite s = font.GetCharacter(_char).sprite;
             DrawCharacterColumnAt(s, column, _x, _y, fontColor);
         }
 
@@ -231,7 +231,7 @@ namespace TextMonger
         /// </summary>
         void DrawCharacterRowAt (char _char, int row, int _x, int _y, Color fontColor)
         {
-            Sprite s = font.GetCharacter(_char);
+            Sprite s = font.GetCharacter(_char).sprite;
             DrawCharacterRowAt(s, row, _x, _y, fontColor);
         }
 
@@ -253,7 +253,7 @@ namespace TextMonger
         /// </summary>
         void DrawEmptyColumnAt (int x, int _height)
         {
-            for (int y = _height; y < _height + font.characterHeight; y++)
+            for (int y = _height; y < _height + font.spaceHeight; y++)
             {
                 DrawBGPixelAt(x, y);
             }
@@ -287,7 +287,7 @@ namespace TextMonger
             {
                 if (c < line.text.Length)
                 {
-                    Sprite s = font.GetCharacter(line.text[c]);
+                    Sprite s = font.GetCharacter(line.text[c]).sprite;
                     if (s != null)
                     {
                         DrawCharacterAt(s, x, _height, currentFontColor);
@@ -366,7 +366,7 @@ namespace TextMonger
             int m;
             if (negative) m = -1;
             else m = 1;
-            s = font.GetCharacter(line.text[c]);
+            s = font.GetCharacter(line.text[c]).sprite;
             if (s != null)
             {
                 DrawCharacterAt(s, x, _height, currentFontColor);
@@ -399,7 +399,7 @@ namespace TextMonger
                     c++;
                     if (c < line.text.Length)
                     {
-                        s = font.GetCharacter(line.text[c]);
+                        s = font.GetCharacter(line.text[c]).sprite;
                         if (printLeftToRight) column = 0;
                         else
                         {
@@ -417,7 +417,7 @@ namespace TextMonger
                     c++;
                     if (c < line.text.Length)
                     {
-                        s = font.GetCharacter(line.text[c]);
+                        s = font.GetCharacter(line.text[c]).sprite;
                         if (printLeftToRight) column = 0;
                         else
                         {
@@ -435,8 +435,8 @@ namespace TextMonger
         {
             for (int l = 0; l < linesOnCanvas; l++)
             {
-                yield return StartCoroutine(PrintLine_Horizontal(blocks[currentBlockIndex].lines[currentLineIndex], topMargin - font.characterHeight - (l * (font.characterHeight + lineSpacing))));
-                DrawLineMargin(topMargin - ((font.characterHeight + lineSpacing) * (l + 1)));
+                yield return StartCoroutine(PrintLine_Horizontal(blocks[currentBlockIndex].lines[currentLineIndex], topMargin - font.spaceHeight - (l * (font.spaceHeight + lineSpacing))));
+                DrawLineMargin(topMargin - ((font.spaceHeight + lineSpacing) * (l + 1)));
                 currentLineIndex++;
                 if (currentLineIndex >= blocks[currentBlockIndex].lines.Length)
                 {
@@ -455,7 +455,7 @@ namespace TextMonger
             currentFontColor = line.lineStartColor;
             int x;
             int column;
-            Sprite s = font.GetCharacter(line.text[0]);
+            Sprite s = font.GetCharacter(line.text[0]).sprite;
             if (printLeftToRight)
             {
                 x = leftMargin;
@@ -537,8 +537,8 @@ namespace TextMonger
                             ClearTexture();
                             if (currentLineIndex + i < blocks[currentBlockIndex].lines.Length)
                             {
-                                DrawLine(blocks[currentBlockIndex].lines[currentLineIndex], topMargin - ((font.characterHeight + lineSpacing) * i) + heightMod);
-                                DrawLineMargin(topMargin - ((font.characterHeight + lineSpacing) * i) - (lineSpacing + (i * lineSpacing)) + heightMod);
+                                DrawLine(blocks[currentBlockIndex].lines[currentLineIndex], topMargin - ((font.spaceHeight + lineSpacing) * i) + heightMod);
+                                DrawLineMargin(topMargin - ((font.spaceHeight + lineSpacing) * i) - (lineSpacing + (i * lineSpacing)) + heightMod);
                             }
                         }
                         heightMod++;

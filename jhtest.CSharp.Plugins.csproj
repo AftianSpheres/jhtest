@@ -66,9 +66,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Plugins\IntValuePair.cs" />
+    <Compile Include="Assets\Plugins\BmFont\BmFont.cs" />
     <Compile Include="Assets\Plugins\Pair.cs" />
     <Compile Include="Assets\Plugins\TextMonger\BitmapFont.cs" />
+    <Compile Include="Assets\Plugins\TextMonger\Parser.cs" />
     <Compile Include="Assets\Plugins\TextMonger\TextBlock.cs" />
     <Compile Include="Assets\Plugins\TextMonger\TextCanvas.cs" />
     <Compile Include="Assets\Plugins\TextMonger\TextLine.cs" />
@@ -134,6 +135,7 @@
   <ItemGroup>
     <None Include="Assets\Barker&apos;s Retro Text Printer Free\readme.txt" />
     <None Include="Assets\InControl\README\README.txt" />
+    <None Include="Assets\Plugins\TextMonger\Fonts\liberation-sans.xml" />
     <None Include="Assets\Resources\SpritesColorFlash.shader" />
     <None Include="Assets\Resources\Text\en-us\area_village\circle_text.txt" />
     <None Include="Assets\Resources\Text\en-us\area_village\necro_text.txt" />
